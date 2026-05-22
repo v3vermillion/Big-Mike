@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>New Client Onboarding · Big Mike Ely Coaching</title>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#020202"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ozgemcvnjzqfumpjxwcq.supabase.co; connect-src 'self' https://ozgemcvnjzqfumpjxwcq.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(), geolocation=(), payment=()">
+<meta name="description" content="Start your coaching journey with IFBB Pro Big Mike Ely. Fill out your onboarding form."/>
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<style>
+:root{
+  --bg:#020202;--bg2:#050505;--card:#0a0a0c;--cardH:#111114;
+  --border:rgba(212,168,48,.28);--borderH:rgba(212,168,48,.35);--borderS:rgba(212,168,48,.15);
+  --acc:#D4AF37;--accD:#A8862B;--accDeep:#7D6420;--accVib:#F5E38C;--accBright:#F7DA5E;
+  --accS:rgba(200,160,40,0.06);--accB:rgba(212,168,48,.45);--accM:rgba(200,160,40,0.30);
+  --accGlow:rgba(200,160,40,0.25);
+  --ice:#f0e8d0;--wh:#f0ece4;--ow:#c8c0b0;--mu:#908878;--dm:#605848;--dmL:#3a3428;
+  --glass:rgba(200,160,40,0.02);--glassB:rgba(200,160,40,0.04);
+  --warn:#e8b878;--danger:#d87878;--success:#78c878;
+  --display:'Cinzel',serif;--body:'Rajdhani',sans-serif;--mono:'IBM Plex Mono',monospace;
+  --goldGrad:linear-gradient(135deg,#5A3F0F 0%,#8A6418 22%,#E8C547 50%,#8A6418 78%,#5A3F0F 100%);
+}
+body.theme-crimson{
+  --acc:#D03030;--accD:#A01818;--accDeep:#881818;--accVib:#F04040;--accBright:#F05050;
+  --accS:rgba(210,40,40,0.06);--accB:rgba(210,40,40,.45);--accM:rgba(210,40,40,0.30);
+  --accGlow:rgba(210,40,40,0.25);
+  --border:rgba(210,40,40,.28);--borderH:rgba(210,40,40,.35);--borderS:rgba(210,40,40,.15);
+  --goldGrad:linear-gradient(135deg,#8B1414,#C42828,#E84040,#C42828,#8B1414);
+  --ice:#f0e0e0;--wh:#f0e8e8;--ow:#c8b8b8;
+  --glass:rgba(210,40,40,0.02);--glassB:rgba(210,40,40,0.04);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{height:100%;overflow-x:hidden;overscroll-behavior:none}
+body{min-height:100dvh;min-height:100vh;overflow-x:hidden;overscroll-behavior:none;background:var(--bg);color:var(--wh);font-family:var(--body);-webkit-font-smoothing:antialiased;touch-action:manipulation;position:relative}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}}
+input,textarea,select{font-family:var(--body);color:var(--wh);background:rgba(255,255,255,.02);border:1.5px solid var(--borderH);border-radius:10px;padding:13px 16px;font-size:16px;outline:none;width:100%;box-sizing:border-box;-webkit-appearance:none;appearance:none;transition:border-color .3s,box-shadow .3s,background .3s;min-height:46px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+textarea{resize:vertical;line-height:1.5}
+input:focus,textarea:focus,select:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--accGlow),0 0 20px var(--accS),0 4px 16px rgba(200,160,40,.06);background:rgba(200,160,40,.03)}
+input::placeholder,textarea::placeholder{color:var(--dm);opacity:.5;font-style:italic;font-size:13px}
+button{font-family:var(--body);cursor:pointer;border:none;outline:none;transition:all .18s ease}
+.btn{background:var(--goldGrad);background-size:200% 100%;color:var(--bg);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.15em;padding:18px 20px;border-radius:12px;width:100%;box-shadow:0 4px 24px var(--accM),0 0 40px var(--accS);text-transform:uppercase;animation:shimmer 3s ease-in-out infinite,btnBreathe 4s ease-in-out infinite;min-height:50px;position:relative}
+.btn:hover{box-shadow:0 6px 32px var(--accB),0 0 60px var(--accS);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn:disabled{opacity:.4;pointer-events:none;animation:none}
+@keyframes btnBreathe{0%,100%{box-shadow:0 4px 24px var(--accM),0 0 30px var(--accS)}50%{box-shadow:0 4px 28px var(--accB),0 0 50px var(--accGlow)}}
+.btn2{background:var(--accS);color:var(--acc);border:1.5px solid var(--borderH);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;padding:10px 16px;border-radius:10px;text-transform:uppercase;transition:all .18s}
+.btn2:hover{background:var(--accGlow);border-color:var(--acc);color:var(--accBright)}
+.cd{background:linear-gradient(160deg,rgba(14,14,16,.94),rgba(6,6,8,.97));border:1px solid transparent;border-radius:clamp(14px,2vw,20px);padding:16px;margin-bottom:10px;transition:box-shadow .3s;box-shadow:0 4px 30px rgba(0,0,0,.6),0 0 80px rgba(0,0,0,.3),0 0 2px var(--accS),inset 0 1px 0 rgba(200,160,40,.06),inset 0 -1px 0 rgba(200,160,40,.02);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);position:relative;animation:cardBreathe 5s ease-in-out infinite;overflow:hidden}
+.cd::before{content:'';position:absolute;inset:-1px;border-radius:inherit;background:conic-gradient(from var(--card-angle,0deg),transparent 0%,transparent 30%,var(--accD) 45%,var(--acc) 50%,var(--accD) 55%,transparent 70%,transparent 100%);z-index:-1;animation:cardBorderSweep 6s linear infinite;opacity:.45}
+.cd::after{content:'';position:absolute;inset:1px;border-radius:inherit;background:linear-gradient(160deg,rgba(14,14,16,.97),rgba(6,6,8,.99));z-index:-1}
+@property --card-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes cardBorderSweep{from{--card-angle:0deg}to{--card-angle:360deg}}
+@keyframes cardBreathe{0%,100%{box-shadow:0 4px 30px rgba(0,0,0,.6),0 0 60px rgba(0,0,0,.2),0 0 2px var(--accS)}50%{box-shadow:0 6px 40px rgba(0,0,0,.6),0 0 80px rgba(0,0,0,.25),0 0 8px var(--accGlow),0 0 40px var(--accS)}}
+@keyframes cardScan{0%{top:-10%;opacity:0}10%{opacity:.6}90%{opacity:.6}100%{top:110%;opacity:0}}
+.cd>.cd-scan{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,160,40,.12),rgba(200,160,40,.25),rgba(200,160,40,.12),transparent);z-index:2;pointer-events:none;animation:cardScan 8s ease-in-out infinite;box-shadow:0 0 20px rgba(200,160,40,.08),0 0 40px rgba(200,160,40,.04)}
+.lb{font-size:10px;font-weight:700;color:var(--mu);font-family:var(--mono);letter-spacing:.12em;display:block;margin-bottom:8px;text-transform:uppercase;transition:color .3s}
+.sl{font-size:10px;font-weight:700;color:var(--acc);letter-spacing:.18em;font-family:var(--mono);margin-bottom:12px;text-transform:uppercase;line-height:1.4;text-shadow:0 0 20px var(--accGlow),0 0 40px var(--accS)}
+.gw{height:1px;background:linear-gradient(90deg,transparent,var(--accDeep),var(--acc),var(--accDeep),transparent);margin:28px 0}
+.field{margin-bottom:16px}
+#app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative;z-index:1;padding:0 16px}
+
+/* Phone input */
+.phone-wrap{position:relative;margin-bottom:16px}
+.phone-prefix{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:14px;color:var(--mu);font-weight:600;pointer-events:none}
+.phone-input{padding-left:44px;font-family:var(--mono);font-size:16px;letter-spacing:.06em;font-weight:500}
+
+/* Chips (selectable) */
+.chip-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{padding:10px 16px;border-radius:10px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--ow);background:var(--glassB);border:1.5px solid var(--borderS);cursor:pointer;transition:all .2s;text-transform:uppercase;text-align:center}
+.chip:hover{border-color:var(--borderH);background:var(--accS)}
+.chip.on{border-color:var(--accB);background:var(--accGlow);color:var(--accBright);box-shadow:0 0 16px var(--accS)}
+
+/* Background layers */
+.bg-ghost{position:fixed;inset:-10%;z-index:0;pointer-events:none;background:url('img/hero-stage-2025.jpg') center 10%/cover no-repeat;filter:brightness(.14) contrast(1.1) saturate(.35) blur(4px);opacity:.85;animation:ghostDrift 50s ease-in-out infinite alternate}
+.bg-ghost-ov{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 65% 55% at 50% 25%,rgba(2,2,2,.35),rgba(2,2,2,.25) 40%,transparent 80%),radial-gradient(ellipse at 50% 50%,rgba(2,2,2,.1),rgba(2,2,2,.45) 45%,rgba(2,2,2,.88) 100%),linear-gradient(180deg,rgba(2,2,2,.15) 0%,rgba(2,2,2,.25) 100%)}
+.bg-grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.03;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:200px 200px}
+@keyframes ghostDrift{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.06) translate(-1%,-1.5%)}}
+.bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-glow::before{content:'';position:absolute;top:-15%;left:50%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(200,160,40,.2),rgba(200,160,40,.07) 35%,transparent 65%);transform:translate(-50%,-50%);animation:orbFloat 12s ease-in-out infinite;filter:blur(80px)}
+.bg-glow::after{content:'';position:absolute;top:35%;left:25%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(200,160,40,.07),transparent 55%);transform:translate(-50%,-50%);animation:orbFloat2 9s ease-in-out infinite 2s;filter:blur(60px)}
+.bg-orb3{position:fixed;top:60%;right:-5%;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(200,160,40,.06),transparent 55%);z-index:0;pointer-events:none;filter:blur(50px);animation:orbFloat 14s ease-in-out infinite 4s}
+.bg-warmth{position:fixed;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,rgba(224,176,48,.035),rgba(224,176,48,.01) 50%,transparent);z-index:0;pointer-events:none}
+.bg-vignette{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 75% 65% at 50% 40%,transparent 25%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.55) 100%);animation:vigBreathe 8s ease-in-out infinite}
+@keyframes vigBreathe{0%,100%{opacity:.8}50%{opacity:.95}}
+.bg-flare{position:fixed;top:0;left:0;right:0;height:1px;z-index:0;pointer-events:none;background:linear-gradient(90deg,transparent 5%,var(--accD) 30%,var(--acc) 50%,var(--accD) 70%,transparent 95%);opacity:.35}
+.bg-flare::after{content:'';position:absolute;top:-4px;left:10%;right:10%;height:10px;background:linear-gradient(90deg,transparent,rgba(200,160,40,.08),rgba(200,160,40,.15),rgba(200,160,40,.08),transparent);filter:blur(4px)}
+.bg-dust{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-dust span{position:absolute;width:2px;height:2px;background:var(--acc);border-radius:50%;opacity:0;animation:dustFloat linear infinite;box-shadow:0 0 4px rgba(224,176,48,.3)}
+@keyframes dustFloat{0%{opacity:0;transform:translateY(0) scale(.5)}10%{opacity:.5}90%{opacity:.4}100%{opacity:0;transform:translateY(-100vh) scale(.8)}}
+
+/* Header */
+.portal-hdr{text-align:center;padding:clamp(40px,8vh,80px) 0 8px;position:relative;animation:hdrReveal 1.4s cubic-bezier(.22,1,.36,1) both}
+@keyframes hdrReveal{from{opacity:0;transform:translateY(-16px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.logo-mark{width:clamp(68px,10vw,96px);height:clamp(68px,10vw,96px);border-radius:clamp(18px,2.5vw,24px);background:linear-gradient(145deg,#0c0c0c,#060606);border:1.5px solid var(--accB);display:inline-flex;align-items:center;justify-content:center;font-family:var(--display);font-size:clamp(36px,5vw,50px);font-weight:900;box-shadow:0 0 15px var(--accM),0 0 40px var(--accGlow),0 0 80px var(--accS),0 0 140px rgba(200,160,40,.05),inset 0 0 20px var(--accS);animation:neonBreathe 4s ease-in-out infinite;margin-bottom:clamp(16px,2.5vh,28px);position:relative}
+.logo-mark::before{content:'';position:absolute;inset:-9px;border-radius:clamp(22px,3vw,28px);border:1px solid var(--accS);animation:ringPulse 4s ease-in-out infinite;pointer-events:none}
+.logo-mark::after{content:'';position:absolute;inset:-18px;border-radius:clamp(26px,3.5vw,34px);border:1px solid rgba(200,160,40,.05);animation:ringPulse 4s ease-in-out infinite 1.2s;pointer-events:none}
+@keyframes ringPulse{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:.7;transform:scale(1.03)}}
+.logo-mark span{background:var(--goldGrad);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldShimmer 4s ease-in-out infinite}
+.portal-title{font-family:var(--display);font-size:clamp(24px,4vw,42px);font-weight:800;letter-spacing:.08em;margin-bottom:6px;background:linear-gradient(180deg,#faf3e0 0%,var(--ice) 30%,rgba(200,180,140,.7) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 12px rgba(200,160,40,.15))}
+.portal-sub{font-size:clamp(8px,1.1vw,11px);color:var(--mu);font-family:var(--mono);letter-spacing:.35em;text-transform:uppercase;margin-bottom:clamp(14px,2.5vh,24px);text-shadow:0 0 20px rgba(0,0,0,.9)}
+.portal-hdr .hdr-rule{display:flex;align-items:center;justify-content:center;gap:14px}
+.portal-hdr .hdr-rule::before,.portal-hdr .hdr-rule::after{content:'';width:clamp(50px,8vw,120px);height:1px}
+.portal-hdr .hdr-rule::before{background:linear-gradient(90deg,transparent,var(--accD))}
+.portal-hdr .hdr-rule::after{background:linear-gradient(90deg,var(--accD),transparent)}
+.portal-hdr .hdr-diamond{width:7px;height:7px;border:1.5px solid var(--acc);transform:rotate(45deg);box-shadow:0 0 10px var(--accGlow);animation:diamondPulse 3s ease-in-out infinite}
+@keyframes diamondPulse{0%,100%{box-shadow:0 0 6px var(--accGlow);opacity:.6}50%{box-shadow:0 0 18px var(--accM);opacity:1}}
+.portal-corners{position:fixed;inset:0;z-index:0;pointer-events:none}
+.portal-corners::before,.portal-corners::after{content:'';position:absolute;width:clamp(30px,4vw,50px);height:clamp(30px,4vw,50px)}
+.portal-corners::before{top:20px;left:16px;border-top:1px solid rgba(200,160,40,.15);border-left:1px solid rgba(200,160,40,.15)}
+.portal-corners::after{top:20px;right:16px;border-top:1px solid rgba(200,160,40,.15);border-right:1px solid rgba(200,160,40,.15)}
+.portal-corners-btm{position:fixed;inset:0;z-index:0;pointer-events:none}
+.portal-corners-btm::before,.portal-corners-btm::after{content:'';position:absolute;width:clamp(30px,4vw,50px);height:clamp(30px,4vw,50px)}
+.portal-corners-btm::before{bottom:20px;left:16px;border-bottom:1px solid rgba(200,160,40,.07);border-left:1px solid rgba(200,160,40,.07)}
+.portal-corners-btm::after{bottom:20px;right:16px;border-bottom:1px solid rgba(200,160,40,.07);border-right:1px solid rgba(200,160,40,.07)}
+
+/* Steps */
+.steps{display:flex;align-items:center;justify-content:center;gap:6px;margin:20px 0 22px}
+.step-dot{width:8px;height:8px;border-radius:50%;background:var(--borderS);transition:all .3s}
+.step-dot.active{background:var(--acc);box-shadow:0 0 12px var(--accGlow);width:24px;border-radius:4px}
+.step-dot.done{background:var(--accD)}
+
+/* Sections */
+.section{display:none;animation:slideUp .35s ease}
+.section.active{display:block;animation:sectionIn .6s ease-out .3s both}
+@keyframes sectionIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* Success */
+.success-wrap{text-align:center;padding:40px 0}
+.success-check{width:80px;height:80px;border-radius:50%;background:rgba(120,200,120,.08);border:2px solid rgba(120,200,120,.3);display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;animation:breatheGreen 3s ease-in-out infinite}
+.success-title{font-family:var(--display);font-size:22px;color:var(--ice);margin-bottom:8px}
+.success-sub{font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:24px}
+
+/* Toast */
+.toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,rgba(12,12,18,.99),rgba(8,8,14,.99));color:var(--accBright);border:1px solid var(--accB);font-family:var(--mono);font-size:11px;font-weight:700;padding:11px 28px;border-radius:10px;z-index:1000;animation:toastIn .3s ease;box-shadow:0 8px 32px rgba(0,0,0,.5);letter-spacing:.08em;pointer-events:none;white-space:nowrap}
+
+/* Loading */
+.loading-overlay{position:fixed;inset:0;z-index:999;background:rgba(2,2,2,.85);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.loading-overlay .sl{animation:fadeIn .4s ease}
+.loading-dots{display:inline-flex;gap:4px;align-items:center}
+.loading-dots span{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:dotPulse 1.2s ease-in-out infinite}
+.loading-dots span:nth-child(2){animation-delay:.15s}
+.loading-dots span:nth-child(3){animation-delay:.3s}
+
+/* Footer */
+.portal-footer{text-align:center;padding:30px 0 40px;font-size:9px;color:var(--dmL);font-family:var(--mono);letter-spacing:.1em}
+.portal-footer a{color:var(--dm);text-decoration:none}
+
+/* Animations */
+@keyframes shimmer{0%{background-position:100% 50%}50%{background-position:0% 50%}100%{background-position:100% 50%}}
+@keyframes goldShimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes neonBreathe{0%,100%{box-shadow:0 0 10px var(--accGlow),0 0 28px var(--accS),0 0 55px var(--accS),inset 0 0 15px var(--accS);border-color:var(--accB)}50%{box-shadow:0 0 18px var(--accM),0 0 40px var(--accGlow),0 0 70px var(--accS),inset 0 0 25px var(--accS);border-color:var(--accB)}}
+@keyframes orbFloat{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.7}50%{transform:translate(-50%,-50%) scale(1.15);opacity:1}}
+@keyframes orbFloat2{0%,100%{transform:translate(-50%,-50%) scale(1.1);opacity:.4}50%{transform:translate(-50%,-50%) scale(.9);opacity:.7}}
+@keyframes breatheGreen{0%,100%{box-shadow:0 0 20px rgba(120,200,120,.1)}50%{box-shadow:0 0 40px rgba(120,200,120,.2)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes dotPulse{0%,80%,100%{transform:scale(.4);opacity:.3}40%{transform:scale(1);opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:rgba(255,255,255,.02)}
+::-webkit-scrollbar-thumb{background:var(--borderH);border-radius:2px}
+
+/* Safe area */
+@supports(padding-top:env(safe-area-inset-top)){
+  body{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+  #app{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+  .portal-footer{padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+}
+/* Mobile */
+@media(max-width:480px){
+  #app{padding:0 12px}
+  .btn{padding:14px 16px;min-height:46px;font-size:10px}
+  .bg-ghost{filter:brightness(.16) contrast(1.08) saturate(.38) blur(4px)}
+  .bg-ghost-ov{background:radial-gradient(ellipse 70% 60% at 50% 30%,rgba(2,2,2,.25),rgba(2,2,2,.15) 40%,transparent 80%),radial-gradient(ellipse at 50% 50%,rgba(2,2,2,.08),rgba(2,2,2,.35) 45%,rgba(2,2,2,.85) 100%),linear-gradient(180deg,rgba(2,2,2,.1) 0%,rgba(2,2,2,.2) 100%)}
+}
+@media(min-width:900px){
+  #app{max-width:580px;padding:0 28px}
+  .sl{font-size:11px;letter-spacing:.22em}
+  .lb{font-size:11px}
+  .btn{padding:20px 28px;min-height:56px;font-size:12px;border-radius:14px;letter-spacing:.18em}
+  .btn2{padding:12px 20px;font-size:11px}
+  .cd{padding:24px;border-radius:18px}
+  input,textarea,select{padding:16px 18px;font-size:15px;border-radius:12px}
+  .phone-input{font-size:17px}
+  .portal-footer{font-size:10px;padding:36px 0 48px}
+  .toast{font-size:12px;padding:13px 32px}
+  .portal-corners::before{top:28px;left:28px}
+  .portal-corners::after{top:28px;right:28px}
+  .portal-corners-btm::before{bottom:28px;left:28px}
+  .portal-corners-btm::after{bottom:28px;right:28px}
+  .bg-ghost{filter:brightness(.12) contrast(1.12) saturate(.35) blur(4px)}
+}
+@media(min-width:1200px){
+  #app{max-width:620px;padding:0 36px}
+  .btn{padding:22px 32px;min-height:60px;font-size:13px;max-width:480px;margin-left:auto;margin-right:auto;display:block}
+  .cd{padding:28px;border-radius:20px}
+  input,textarea,select{padding:18px 20px;font-size:16px;border-radius:14px;min-height:52px}
+  .phone-input{font-size:18px}
+  .bg-ghost{filter:brightness(.14) contrast(1.1) saturate(.35) blur(4px)}
+  .portal-corners::before,.portal-corners::after{width:60px;height:60px}
+  .portal-corners-btm::before,.portal-corners-btm::after{width:60px;height:60px}
+}
+/* Existing-client bounce link — small, muted, sits above the onboarding
+   form. New clients ignore it; returning clients who landed here by
+   mistake see an obvious way back to their portal. */
+.existing-client-hint{text-align:center;margin:0 auto 18px;padding:0 16px}
+.existing-client-hint a{display:inline-block;padding:8px 14px;
+  font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(200,175,120,.55);text-decoration:none;line-height:1.4;
+  border-radius:4px;transition:color .25s ease,background .25s ease}
+.existing-client-hint a span{color:rgba(232,197,71,.9);font-weight:700;margin-left:2px}
+.existing-client-hint a:hover,.existing-client-hint a:focus-visible{color:rgba(232,197,71,.95);background:rgba(232,197,71,.05)}
+.existing-client-hint a:focus-visible{outline:1px solid rgba(232,197,71,.55);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="bg-ghost"></div>
+<div class="bg-ghost-ov"></div>
+<div class="bg-glow"></div>
+<div class="bg-orb3"></div>
+<div class="bg-warmth"></div>
+<div class="bg-vignette"></div>
+<div class="bg-flare"></div>
+<div class="bg-dust" id="bgDust"></div>
+<div class="bg-grain"></div>
+<div class="portal-corners"></div>
+<div class="portal-corners-btm"></div>
+
+<div id="app">
+  <div class="portal-hdr">
+    <div class="logo-mark"><span>M</span></div>
+    <div class="portal-title">Big Mike Ely</div>
+    <div class="portal-sub">IFBB PRO &middot; NEW CLIENT ONBOARDING</div>
+    <div class="hdr-rule"><div class="hdr-diamond"></div></div>
+  </div>
+  <!-- Existing client shortcut — onboarding is for new clients; returning
+       clients can bounce straight to their portal login. -->
+  <div class="existing-client-hint">
+    <a href="portal.html" aria-label="Already a client? Sign in to your portal">Already a client? <span>Sign in &rarr;</span></a>
+  </div>
+  <div class="steps" id="stepDots"></div>
+  <!-- STEP 1: Personal Information -->
+  <div class="section" id="sec-1">
+    <div class="sl" style="text-align:center">Personal Information</div>
+    <div class="cd" style="padding:clamp(24px,4vw,36px) clamp(20px,3.5vw,32px)">
+      <div class="cd-scan"></div>
+      <div class="field">
+        <span class="lb">FULL NAME *</span>
+        <input type="text" id="obName" placeholder="First and last name" autocomplete="name">
+      </div>
+      <div class="field">
+        <span class="lb">PHONE NUMBER *</span>
+        <div class="phone-wrap" style="margin-bottom:0">
+          <span class="phone-prefix">+1</span>
+          <input type="tel" id="obPhone" class="phone-input" placeholder="(555) 123-4567" maxlength="14" inputmode="tel" autocomplete="tel">
+        </div>
+      </div>
+      <div class="field">
+        <span class="lb">EMAIL</span>
+        <input type="email" id="obEmail" placeholder="you@email.com" autocomplete="email">
+      </div>
+      <div class="field">
+        <span class="lb">AGE</span>
+        <input type="number" id="obAge" placeholder="25" min="13" max="99" inputmode="numeric">
+      </div>
+      <div class="field">
+        <span class="lb">LOCATION</span>
+        <input type="text" id="obLocation" placeholder="City, State" autocomplete="address-level2">
+      </div>
+      <button class="btn" onclick="obNext(1)">CONTINUE</button>
+    </div>
+    <div style="text-align:center;margin-top:14px;font-size:9px;color:var(--dmL);font-family:var(--mono);letter-spacing:.06em">* Required fields</div>
+  </div>
+
+  <!-- STEP 2: Training Background -->
+  <div class="section" id="sec-2">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <button class="btn2" onclick="obBack(2)" style="padding:6px 12px;font-size:9px">&lsaquo; BACK</button>
+      <div class="sl" style="margin:0">Training Background</div>
+      <div style="width:60px"></div>
+    </div>
+    <div class="cd" style="padding:clamp(24px,4vw,36px) clamp(20px,3.5vw,32px)">
+      <div class="cd-scan"></div>
+      <div class="field">
+        <span class="lb">PRIMARY GOAL</span>
+        <div class="chip-grid" id="goalChips">
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'goalChips')">Build Muscle</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'goalChips')">Lose Fat</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'goalChips')">Contest Prep</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'goalChips')">Recomp</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'goalChips')">Strength</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'goalChips')">General Health</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'goalChips')">Posing</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'goalChips')">Other</div>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lb">TRAINING EXPERIENCE</span>
+        <div class="chip-grid" id="expChips">
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'expChips')">Beginner (0-1 yr)</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'expChips')">Intermediate (1-3 yr)</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'expChips')">Advanced (3-7 yr)</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'expChips')">Veteran (7+ yr)</div>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lb">CURRENT TRAINING SPLIT</span>
+        <textarea id="obSplit" rows="3" placeholder="e.g. Push/Pull/Legs 6x per week, Upper/Lower 4x, etc."></textarea>
+      </div>
+      <div class="field">
+        <span class="lb">COMPETITION HISTORY</span>
+        <textarea id="obCompHistory" rows="3" placeholder="Any shows competed in? Division, placement, federation..."></textarea>
+      </div>
+      <button class="btn" onclick="obNext(2)">CONTINUE</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: Health & Protocols -->
+  <div class="section" id="sec-3">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <button class="btn2" onclick="obBack(3)" style="padding:6px 12px;font-size:9px">&lsaquo; BACK</button>
+      <div class="sl" style="margin:0">Health &amp; Protocols</div>
+      <div style="width:60px"></div>
+    </div>
+    <div class="cd" style="padding:clamp(24px,4vw,36px) clamp(20px,3.5vw,32px)">
+      <div class="cd-scan"></div>
+      <div class="field">
+        <span class="lb">INJURIES / LIMITATIONS</span>
+        <textarea id="obInjuries" rows="3" placeholder="Any current or past injuries, joint issues, mobility limitations..."></textarea>
+      </div>
+      <div class="field">
+        <span class="lb">MEDICAL CONDITIONS</span>
+        <textarea id="obMedical" rows="3" placeholder="Anything Coach Mike should know about — allergies, conditions, medications..."></textarea>
+      </div>
+      <div class="field">
+        <span class="lb">CURRENT DIET</span>
+        <textarea id="obDiet" rows="3" placeholder="Describe your current eating approach — meal frequency, macros if known, dietary restrictions..."></textarea>
+      </div>
+      <div class="field">
+        <span class="lb">CURRENT SUPPLEMENTS</span>
+        <textarea id="obSupplements" rows="3" placeholder="Protein, creatine, pre-workout, vitamins, etc."></textarea>
+      </div>
+      <button class="btn" onclick="obNext(3)">CONTINUE</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: Logistics -->
+  <div class="section" id="sec-4">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <button class="btn2" onclick="obBack(4)" style="padding:6px 12px;font-size:9px">&lsaquo; BACK</button>
+      <div class="sl" style="margin:0">Final Details</div>
+      <div style="width:60px"></div>
+    </div>
+    <div class="cd" style="padding:clamp(24px,4vw,36px) clamp(20px,3.5vw,32px)">
+      <div class="cd-scan"></div>
+      <div class="field">
+        <span class="lb">HOW DID YOU HEAR ABOUT COACH MIKE?</span>
+        <div class="chip-grid" id="refChips">
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'refChips')">Instagram</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'refChips')">Friend / Referral</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'refChips')">Gym</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'refChips')">Competition</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'refChips')">Google</div>
+          <div class="chip" role="button" tabindex="0" onkeydown="_chipKey(event)" onclick="obChip(this,'refChips')">Other</div>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lb">PREFERRED TRAINING TIMES</span>
+        <textarea id="obTimes" rows="2" placeholder="e.g. Weekday mornings, evenings after 5pm, weekends..."></textarea>
+      </div>
+      <div class="field">
+        <span class="lb">ANYTHING ELSE?</span>
+        <textarea id="obAnything" rows="3" placeholder="Questions, concerns, anything you want Coach Mike to know..."></textarea>
+      </div>
+      <button class="btn" id="submitBtn" onclick="obSubmit()">SUBMIT ONBOARDING</button>
+    </div>
+  </div>
+
+  <!-- STEP 5: Confirmation -->
+  <div class="section" id="sec-5">
+    <div class="success-wrap">
+      <div class="success-check">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <div class="success-title">Thank you, <span id="confirmName"></span>.</div>
+      <div class="success-sub">Coach Mike has received your information and will be in touch soon.</div>
+      <div class="gw"></div>
+      <div id="confirmSummary" style="text-align:left;margin-bottom:24px"></div>
+      <a href="book.html" class="btn" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;max-width:320px;text-decoration:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        BOOK YOUR FIRST SESSION
+      </a>
+    </div>
+  </div>
+
+  <div class="portal-footer">
+    <a href="https://instagram.com/ifbbprobigmikeely" target="_blank" rel="noopener" style="color:var(--dm);text-decoration:none;display:inline-flex;align-items:center;gap:6px">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+      @IFBBPROBIGMIKEELY
+    </a>
+    <div style="margin-top:10px"><a href="https://vermillionaxis.tech" target="_blank" rel="noopener" style="color:var(--dmL);text-decoration:none;font-size:9px;letter-spacing:.08em">BUILT BY VERMILLION AXIS TECHNOLOGIES</a></div>
+  </div>
+</div>
+<script>
+function esc(s){if(!s)return'';var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+/* ── CONFIG ── */
+var STEPS=5;
+var _step=1;
+var SITE_VERSION='v57';
+try{if(localStorage.getItem('bm_sw_ver')!==SITE_VERSION){localStorage.setItem('bm_sw_ver',SITE_VERSION);}}catch(_swe){}
+var _BM_SB_URL="https://ozgemcvnjzqfumpjxwcq.supabase.co";
+var _BM_SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96Z2VtY3ZuanpxZnVtcGp4d2NxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1MjMxNjEsImV4cCI6MjA5MTA5OTE2MX0.6PGWsz_1dRQNEqm1QvafihRWe_8TRTCoJ_aEA0OnY7k";
+var _sb=null;
+var _submitting=false;
+
+function getSupabase(){
+  if(_sb)return _sb;
+  if(typeof supabase!=="undefined"&&supabase.createClient){
+    _sb=supabase.createClient(_BM_SB_URL,_BM_SB_KEY);
+  }
+  return _sb;
+}
+
+/* ── HELPERS ── */
+function el(id){return document.getElementById(id);}
+function val(id){var e=el(id);return e?e.value.trim():"";}
+
+function toast(msg){
+  var old=document.querySelector(".toast");if(old)old.remove();
+  var t=document.createElement("div");t.className="toast";t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(function(){t.remove();},2800);
+}
+
+function formatPhone(raw){
+  var d=raw.replace(/\D/g,"").slice(0,10);
+  if(d.length<4)return d;
+  if(d.length<7)return"("+d.slice(0,3)+") "+d.slice(3);
+  return"("+d.slice(0,3)+") "+d.slice(3,6)+"-"+d.slice(6);
+}
+
+/* ── STEP DOTS ── */
+function renderDots(){
+  var h="";
+  for(var i=1;i<=STEPS;i++){
+    var cls="step-dot";
+    if(i===_step)cls+=" active";
+    else if(i<_step)cls+=" done";
+    h+='<div class="'+cls+'"></div>';
+  }
+  el("stepDots").innerHTML=h;
+}
+
+/* ── FORM STATE (survives tab switches & refresh) ── */
+var _obState={selectedChips:{},step:1};
+var OB_TEXT_FIELDS=["obName","obPhone","obEmail","obAge","obLocation","obSplit","obCompHistory","obInjuries","obMedical","obDiet","obSupplements","obTimes","obAnything"];
+var OB_CHIP_GROUPS=["goalChips","expChips","refChips"];
+
+function _obSaveState(){
+  try{
+    var s={step:_step,selectedChips:_obState.selectedChips,fields:{}};
+    for(var i=0;i<OB_TEXT_FIELDS.length;i++){s.fields[OB_TEXT_FIELDS[i]]=val(OB_TEXT_FIELDS[i]);}
+    sessionStorage.setItem("bm_onboard_state",JSON.stringify(s));
+  }catch(e){}
+}
+function _obRestoreState(){
+  try{
+    var raw=sessionStorage.getItem("bm_onboard_state");if(!raw)return false;
+    var s=JSON.parse(raw);if(!s)return false;
+    _obState.selectedChips=s.selectedChips||{};
+    if(s.fields){
+      for(var k in s.fields){var e=el(k);if(e&&s.fields[k])e.value=s.fields[k];}
+    }
+    _obApplyChipState();
+    if(s.step&&s.step>=1&&s.step<=STEPS){_step=s.step;}
+    return true;
+  }catch(e){return false;}
+}
+function _obApplyChipState(){
+  for(var i=0;i<OB_CHIP_GROUPS.length;i++){
+    var gid=OB_CHIP_GROUPS[i];
+    var sel=_obState.selectedChips[gid];
+    var group=el(gid);if(!group)continue;
+    var chips=group.querySelectorAll(".chip");
+    for(var c=0;c<chips.length;c++){
+      if(chips[c].textContent===sel)chips[c].classList.add("on");
+      else chips[c].classList.remove("on");
+    }
+  }
+}
+
+/* ── NAVIGATION ── */
+function showStep(n){
+  _step=n;
+  for(var i=1;i<=STEPS;i++){
+    var sec=el("sec-"+i);
+    if(sec){sec.classList.remove("active");sec.style.display="none";}
+  }
+  var cur=el("sec-"+n);
+  if(cur){cur.style.display="block";setTimeout(function(){cur.classList.add("active");},10);}
+  renderDots();
+  _obApplyChipState();
+  _obSaveState();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function obNext(from){
+  if(from===1){
+    if(!val("obName")){toast("Please enter your name");el("obName").focus();return;}
+    if(!val("obPhone")||val("obPhone").replace(/\D/g,"").length<10){toast("Please enter a valid phone number");el("obPhone").focus();return;}
+  }
+  _obSaveState();
+  showStep(from+1);
+}
+
+function obBack(from){
+  _obSaveState();
+  showStep(from-1);
+}
+
+/* ── CHIP SELECTION ── */
+/* Keyboard activation helper for chip divs \u2014 allows Enter/Space to
+   trigger the chip's onclick without inline string-literal escaping
+   headaches inside JS-generated HTML. */
+function _chipKey(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();if(e.currentTarget&&e.currentTarget.click)e.currentTarget.click();}}
+function obChip(chip,groupId){
+  var group=el(groupId);if(!group)return;
+  var chips=group.querySelectorAll(".chip");
+  /* single-select for goal, experience, referral */
+  for(var i=0;i<chips.length;i++){chips[i].classList.remove("on");}
+  chip.classList.add("on");
+  _obState.selectedChips[groupId]=chip.textContent;
+  _obSaveState();
+}
+
+function getChipVal(groupId){
+  /* Prefer persisted state, fall back to DOM */
+  if(_obState.selectedChips[groupId])return _obState.selectedChips[groupId];
+  var group=el(groupId);if(!group)return"";
+  var active=group.querySelector(".chip.on");
+  return active?active.textContent:"";
+}
+
+/* ── PHONE FORMATTING ── */
+(function(){
+  var inp=el("obPhone");if(!inp)return;
+  inp.addEventListener("input",function(){
+    var raw=this.value.replace(/\D/g,"");
+    this.value=formatPhone(raw);
+  });
+})();
+
+/* ── DUST PARTICLES ── */
+(function(){
+  var dust=el("bgDust");if(!dust)return;
+  for(var i=0;i<12;i++){
+    var s=document.createElement("span");
+    s.style.left=Math.random()*100+"%";
+    s.style.bottom=-10+"%";
+    s.style.animationDuration=(15+Math.random()*25)+"s";
+    s.style.animationDelay=(Math.random()*20)+"s";
+    s.style.width=s.style.height=(1+Math.random()*2)+"px";
+    dust.appendChild(s);
+  }
+})();
+
+/* ── SUBMIT ── */
+function obSubmit(){
+  if(_submitting)return;
+  var name=val("obName"),phone=val("obPhone");
+  if(!name){toast("Name is required");return;}
+  if(!phone||phone.replace(/\D/g,"").length<10){toast("Valid phone is required");return;}
+
+  _submitting=true;
+  var btn=el("submitBtn");
+  if(btn){btn.disabled=true;btn.textContent="SUBMITTING...";}
+
+  var fullPhone="+1"+phone.replace(/\D/g,"");
+  var payload={
+    name:name,
+    phone:fullPhone,
+    email:val("obEmail"),
+    age:val("obAge"),
+    location:val("obLocation"),
+    goal:getChipVal("goalChips"),
+    experience:getChipVal("expChips"),
+    trainingSplit:val("obSplit"),
+    competitionHistory:val("obCompHistory"),
+    injuries:val("obInjuries"),
+    medical:val("obMedical"),
+    currentDiet:val("obDiet"),
+    supplements:val("obSupplements"),
+    referralSource:getChipVal("refChips"),
+    preferredTimes:val("obTimes"),
+    anythingElse:val("obAnything")
+  };
+
+  var sb=getSupabase();
+  if(!sb){toast("Connection error");_submitting=false;if(btn){btn.disabled=false;btn.textContent="SUBMIT ONBOARDING";}return;}
+
+  /* Safety timeout: if network hangs, re-enable button after 30s so user isn't stuck. */
+  var _submitTimedOut=false;
+  var _submitTimer=setTimeout(function(){
+    if(!_submitting)return;
+    _submitTimedOut=true;_submitting=false;
+    toast("Taking too long. Check your connection and try again.");
+    if(btn){btn.disabled=false;btn.textContent="SUBMIT ONBOARDING";}
+  },30000);
+
+  sb.functions.invoke("submit-onboarding",{body:payload}).then(function(res){
+    if(_submitTimedOut)return;
+    clearTimeout(_submitTimer);
+    _submitting=false;
+    if(res.error){
+      toast("Error: "+(res.error.message||"Try again"));
+      if(btn){btn.disabled=false;btn.textContent="SUBMIT ONBOARDING";}
+      return;
+    }
+    var data=res.data;
+    if(data&&data.success){
+      el("confirmName").textContent=data.name||name;
+      buildSummary(payload);
+      /* Clear saved state on successful submission */
+      try{sessionStorage.removeItem("bm_onboard_state");}catch(_e){}
+      _obState={selectedChips:{},step:5};
+      showStep(5);
+    }else{
+      toast("Error: "+((data&&data.error)||"Try again"));
+      if(btn){btn.disabled=false;btn.textContent="SUBMIT ONBOARDING";}
+    }
+  }).catch(function(err){
+    if(_submitTimedOut)return;
+    clearTimeout(_submitTimer);
+    _submitting=false;
+    toast("Network error. Please try again.");
+    if(btn){btn.disabled=false;btn.textContent="SUBMIT ONBOARDING";}
+  });
+}
+
+function buildSummary(p){
+  var items=[];
+  if(p.goal)items.push(["Goal",p.goal]);
+  if(p.experience)items.push(["Experience",p.experience]);
+  if(p.trainingSplit)items.push(["Training",p.trainingSplit]);
+  if(p.injuries)items.push(["Injuries",p.injuries]);
+  if(p.referralSource)items.push(["Referral",p.referralSource]);
+  if(!items.length)return;
+  var h='<div class="cd" style="padding:16px"><div class="sl">YOUR SUBMISSION</div>';
+  for(var i=0;i<items.length;i++){
+    h+='<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--borderS);gap:12px">'
+      +'<span style="font-size:10px;color:var(--dm);font-family:var(--mono);min-width:70px">'+esc(items[i][0])+'</span>'
+      +'<span style="font-size:12px;color:var(--ow);text-align:right;flex:1;word-break:break-word">'+esc(items[i][1])+'</span></div>';
+  }
+  h+='</div>';
+  el("confirmSummary").innerHTML=h;
+}
+
+/* ── AUTO-SAVE TEXT INPUTS ── */
+(function(){
+  for(var i=0;i<OB_TEXT_FIELDS.length;i++){
+    (function(fid){
+      var e=el(fid);if(!e)return;
+      e.addEventListener("input",function(){_obSaveState();});
+      e.addEventListener("change",function(){_obSaveState();});
+    })(OB_TEXT_FIELDS[i]);
+  }
+})();
+
+/* ── INIT ── */
+renderDots();
+/* Restore previous session if present — otherwise start at step 1 */
+var _restored=_obRestoreState();
+if(_restored&&_step>1&&_step<5){showStep(_step);}else{_step=1;showStep(1);}
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px;overflow:hidden;background:#030302;font-family:'Cinzel',Georgia,serif}
+
+  .card{position:relative;width:1200px;height:630px;overflow:hidden;
+    background:
+      radial-gradient(ellipse 80% 120% at 28% 50%, rgba(232,197,71,.06) 0%, transparent 60%),
+      radial-gradient(ellipse 100% 100% at 50% 100%, rgba(120,80,20,.14) 0%, transparent 55%),
+      linear-gradient(180deg, #060504 0%, #030302 60%, #020201 100%)}
+
+  /* Mike's photo — left 48% with gradient fade */
+  .photo{position:absolute;top:0;left:0;width:48%;height:100%;
+    background-image:url('file:///home/user/bigmike/img/hero-stage-2025.jpg');
+    background-size:cover;background-position:center 18%;
+    filter:brightness(.82) contrast(1.12) saturate(1.08)}
+  .photo::after{content:'';position:absolute;inset:0;
+    background:linear-gradient(90deg,
+      rgba(0,0,0,.15) 0%,
+      rgba(0,0,0,0) 20%,
+      rgba(0,0,0,0) 55%,
+      rgba(3,3,2,.85) 82%,
+      #030302 100%)}
+  .photo::before{content:'';position:absolute;inset:0;z-index:1;
+    background:radial-gradient(ellipse 55% 90% at 35% 45%, transparent 20%, rgba(0,0,0,.35) 80%)}
+
+  /* Top gold hairline */
+  .rule-top{position:absolute;top:0;left:0;right:0;height:2px;z-index:5;
+    background:linear-gradient(90deg,transparent 2%,rgba(212,168,40,.35) 20%,rgba(255,230,160,.9) 50%,rgba(212,168,40,.35) 80%,transparent 98%);
+    box-shadow:0 0 30px rgba(232,197,71,.35),0 0 60px rgba(232,197,71,.15)}
+  /* Bottom gold hairline */
+  .rule-bot{position:absolute;bottom:0;left:0;right:0;height:1px;z-index:5;
+    background:linear-gradient(90deg,transparent 5%,rgba(212,168,40,.25) 25%,rgba(255,230,160,.6) 50%,rgba(212,168,40,.25) 75%,transparent 95%)}
+
+  /* Right-side text block */
+  .text{position:absolute;top:0;right:0;width:58%;height:100%;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:60px 56px 60px 48px;z-index:10}
+
+  .kicker{font-family:'Inter','Helvetica Neue',sans-serif;
+    font-size:17px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;
+    color:rgba(232,197,71,.85);margin-bottom:28px;line-height:1;
+    display:flex;align-items:center;gap:12px}
+  .kicker::before{content:'';width:34px;height:1px;background:linear-gradient(90deg,rgba(232,197,71,.85),transparent)}
+
+  .name{font-family:'Cinzel',Georgia,serif;
+    font-size:78px;font-weight:900;line-height:.92;letter-spacing:.012em;
+    margin-bottom:22px;white-space:nowrap;
+    background:linear-gradient(135deg,
+      #5A3F0F 0%,
+      #8F6318 18%,
+      #C48E28 35%,
+      #F3D870 50%,
+      #C48E28 65%,
+      #8F6318 82%,
+      #5A3F0F 100%);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+    background-clip:text;
+    filter:drop-shadow(0 4px 18px rgba(0,0,0,.6)) drop-shadow(0 0 40px rgba(228,184,70,.2))}
+
+  .tagline{font-family:'Inter','Helvetica Neue',sans-serif;
+    font-size:22px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(240,232,210,.92);line-height:1.3;
+    text-shadow:0 2px 10px rgba(0,0,0,.8)}
+
+  /* Credentials row */
+  .creds{display:flex;align-items:center;gap:18px;margin-top:34px;
+    padding-top:28px;position:relative}
+  .creds::before{content:'';position:absolute;top:0;left:0;width:72px;height:1px;
+    background:linear-gradient(90deg,rgba(232,197,71,.6),transparent)}
+  .cred-item{font-family:'Inter','Helvetica Neue',sans-serif;
+    font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(220,210,190,.75);line-height:1}
+  .cred-sep{width:4px;height:4px;border-radius:50%;
+    background:rgba(232,197,71,.55);box-shadow:0 0 8px rgba(232,197,71,.5)}
+
+  /* URL pill bottom-right */
+  .url{position:absolute;bottom:52px;right:56px;z-index:10;
+    font-family:'Inter','Helvetica Neue',sans-serif;
+    font-size:15px;font-weight:600;letter-spacing:.12em;text-transform:lowercase;
+    color:rgba(232,197,71,.92);
+    padding:11px 20px;border:1px solid rgba(232,197,71,.45);
+    border-radius:4px;background:rgba(4,3,2,.55);
+    text-shadow:0 0 16px rgba(232,197,71,.35);
+    box-shadow:0 0 0 1px rgba(0,0,0,.4) inset,0 4px 18px rgba(0,0,0,.4),0 0 28px rgba(232,197,71,.1)}
+
+  /* Corner bracket accents */
+  .corner{position:absolute;width:32px;height:32px;z-index:6;opacity:.6}
+  .corner-tl{top:18px;left:18px;border-top:1px solid rgba(232,197,71,.6);border-left:1px solid rgba(232,197,71,.6)}
+  .corner-tr{top:18px;right:18px;border-top:1px solid rgba(232,197,71,.6);border-right:1px solid rgba(232,197,71,.6)}
+  .corner-bl{bottom:18px;left:18px;border-bottom:1px solid rgba(232,197,71,.6);border-left:1px solid rgba(232,197,71,.6)}
+  .corner-br{bottom:18px;right:18px;border-bottom:1px solid rgba(232,197,71,.6);border-right:1px solid rgba(232,197,71,.6)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="photo"></div>
+  <div class="rule-top"></div>
+  <div class="rule-bot"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="text">
+    <div class="kicker">IFBB Pro &middot; 2&times; World Champion</div>
+    <div class="name">BIG MIKE ELY</div>
+    <div class="tagline">Trainer of Champions</div>
+    <div class="creds">
+      <span class="cred-item">50+ Pros</span>
+      <span class="cred-sep"></span>
+      <span class="cred-item">30 Years</span>
+      <span class="cred-sep"></span>
+      <span class="cred-item">NPC Judge</span>
+      <span class="cred-sep"></span>
+      <span class="cred-item">Since 1996</span>
+    </div>
+  </div>
+
+  <div class="url">ifbbprobigmikeely.com</div>
+</div>
+</body>
+</html>

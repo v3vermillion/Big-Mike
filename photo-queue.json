@@ -1,0 +1,153 @@
+{
+  "uploaded_photos": [
+    {
+      "file": "img/about-tom-platz-2.jpg",
+      "description": "Mike and Tom Platz handshake at chiropractic office",
+      "context": "Second Tom Platz photo. Mike in IFBB Pro tank, Tom in striped shirt/pink tie. Chiro office with diplomas visible.",
+      "section": "about",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/about-dave-lieberman.jpg",
+      "description": "Mike backstage with Dave Lieberman",
+      "context": "Mike in competition shape, tanned. Dave in black t-shirt with lanyard. Backstage at competition.",
+      "section": "about",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/about-mike-father.jpg",
+      "description": "Mike with his father flexing together at home",
+      "context": "Personal/family photo. Mike in black tank, dad in dark polo. Both flexing biceps over coffee.",
+      "section": "about",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/gallery-posing-clinic-group.jpg",
+      "description": "Posing clinic group photo",
+      "context": "Large group of athletes at posing clinic. Graffiti wall backdrop. Mike front and center.",
+      "section": "gallery",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/gallery-gym-front-dbl-bicep.jpg",
+      "description": "Mike front double bicep pose in gym",
+      "context": "Full body head to toe. Posing trunks, graffiti wall, dumbbells/equipment behind. No caption needed.",
+      "section": "gallery",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/results-procard-female-2.jpg",
+      "description": "Client earned IFBB Pro Card - red sign outdoors",
+      "context": "Female client holding red IFBB Pro Card sign overhead with medal and crown. Outdoors.",
+      "section": "results",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/results-procard-female-3.jpg",
+      "description": "Client earned IFBB Pro Card - blue sign hotel room",
+      "context": "Female client (tattooed) holding blue IFBB Pro Card sign in hotel room. Sunflowers visible.",
+      "section": "results",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/gallery-masters-world-champ.jpg",
+      "description": "Mike 1st place IFBB Pro Masters World Championship",
+      "context": "Mike on stage with medal and trophy. Axe & Sledge / Supa Power backdrop. Full body shot.",
+      "section": "gallery",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/about-mike-baby.jpg",
+      "description": "Mike holding baby at the gym",
+      "context": "Mike holding a baby, graffiti wall background. Personal/lifestyle photo. No caption needed.",
+      "section": "about",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/event-iwa-best-coach.jpg",
+      "description": "Mike on stage with trophy at IWA/Dave Liberman NPC show",
+      "context": "IWA Championship / Marandi Productions NPC show. Mike with trophy on stage. Award type TBD (possibly best coach/team trophy).",
+      "section": "results",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/gallery-backstage-golds.jpg",
+      "description": "Mike backstage in Gold's Gym tank with fellow competitor",
+      "context": "Mike in Gold's Gym tank with executive badge backstage. Fellow competitor alongside.",
+      "section": "gallery",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/about-pump-co-sponsor.jpg",
+      "description": "Mike in Pump Co sponsorship gear at gym",
+      "context": "Sponsorship photo. Mike in Pump Co hat + tank top at the gym.",
+      "section": "about",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/gallery-gym-back-squats.jpg",
+      "description": "Mike squatting from behind with custom Big Mike Ely belt",
+      "context": "Back view squatting. Custom 'Big Mike Ely' lifting belt visible. Massive back and legs. Instagram screenshot (has 'Add comment' bar).",
+      "section": "gallery",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/results-procard-male.jpg",
+      "description": "Mike with male client holding IFBB Pro Card and trophy backstage",
+      "context": "Male client (tattooed) holding red IFBB Pro Card sign + gold trophy. Mike in black tank. Backstage.",
+      "section": "results",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/gallery-masters-backstage-trio.jpg",
+      "description": "Mike, Vinny Galanti, Ken Jackson backstage at IFBB Masters",
+      "context": "Three IFBB Pro Masters competitors backstage. Mike (left), Vinny Galanti (middle), Ken Jackson (right). All hitting most muscular.",
+      "section": "gallery",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/event-lieberman-team-trophy.jpg",
+      "description": "Team trophy at Dave Liberman NPC show",
+      "context": "Mike on stage with team trophy at IWA/Marandi Productions NPC show. Same event as event-iwa-best-coach.jpg.",
+      "section": "results",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/gallery-olympia-romania-back.jpg",
+      "description": "Mike back double bicep at Masters Olympia Romania 2023",
+      "context": "Joe Weider's Masters Olympia in Romania, 2023. Back double bicep on stage. Blue trunks. Full body.",
+      "section": "gallery",
+      "status": "uploaded"
+    },
+    {
+      "file": "img/results-transformation-male.jpg",
+      "description": "Client before/after transformation",
+      "context": "Side-by-side. Before: soft physique in Nike underwear. After: shredded with abs, cap, at gym with graffiti wall.",
+      "section": "results",
+      "status": "uploaded"
+    }
+  ],
+  "pending_photos": [
+    {
+      "description": "Client IFBB Pro Card - 2017 NPC Nationals",
+      "suggested_name": "results-procard-nationals-2017.jpg",
+      "context": "Two-panel: Left shows client on stage (most muscular, incredible conditioning). Right shows client in red Branch tank with Mike at gym. Client earned pro card at 2017 NPC Nationals.",
+      "section": "results",
+      "status": "needs_upload"
+    },
+    {
+      "description": "USMC client transformation before/after",
+      "suggested_name": "results-transformation-usmc.jpg",
+      "context": "Two-panel before/after. USMC tattoo on chest. Before: overweight in plaid shorts. After: shredded, lean, muscular in black shorts. Same guy confirmed by matching tattoos.",
+      "section": "results",
+      "status": "needs_upload"
+    }
+  ],
+  "notes": "All bodybuilding photos MUST show FULL body head to toe. Never crop the physique. Photos in img/ directory. Naming convention: about-* for personal/lifestyle, gallery-* for competition/gym poses, results-* for client results/pro cards, event-* for event/award photos.",
+  "crop_rules": {
+    "stage_photos": "Full body, head to toe, object-fit:contain preferred over cover",
+    "event_photos": "Can crop tighter, focus on people and trophy",
+    "gym_photos": "Show full pose, head to toe when possible"
+  },
+  "branch": "claude/upload-website-photos-ylxjY"
+}
