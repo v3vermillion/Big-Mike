@@ -1,0 +1,3 @@
+ALTER TABLE IF EXISTS inbox ENABLE ROW LEVEL SECURITY;
+CREATE POLICY IF NOT EXISTS "Coach full access" ON inbox FOR ALL TO authenticated USING (true) WITH CHECK (true);
+CREATE POLICY IF NOT EXISTS "Anon insert inbox" ON inbox FOR INSERT TO anon WITH CHECK (true);
