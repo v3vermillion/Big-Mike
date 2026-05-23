@@ -236,7 +236,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
    instead of collapsing into flat yellow. Dark antique → rich 24K
    center → dark antique. No near-white highlight. */
 .nav-sigil{font-family:var(--display);font-size:32px;font-weight:900;letter-spacing:0;line-height:1;
-  background:linear-gradient(160deg,#5A3F0F 0%,#E8C547 50%,#5A3F0F 100%);
+  background:linear-gradient(160deg,#4A3410 0%,#9A7322 28%,#F2D266 50%,#9A7322 72%,#4A3410 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
   transition:transform .4s var(--ease),filter .4s var(--ease);
   display:inline-block;border:none;padding:0;
@@ -492,14 +492,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
      contrast, reads as polished metal against Mike's body shot
      instead of as yellow gradient blended into skin tones. */
   background:linear-gradient(135deg,
-    #3D2A08 0%,
-    #6B4A14 16%,
-    #B88A2C 32%,
-    #FFE8A0 48%,
-    #F6CE56 55%,
-    #B88A2C 72%,
-    #6B4A14 86%,
-    #3D2A08 100%);
+    #4A3410 0%,
+    #8A6420 14%,
+    #D2A23E 30%,
+    #FFF1C6 45%,
+    #FFFEF8 50%,
+    #FFE08A 56%,
+    #D2A23E 72%,
+    #8A6420 87%,
+    #4A3410 100%);
   background-size:220% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
   opacity:1;animation:shimmer 14s linear infinite;
   position:relative;
@@ -1496,7 +1497,9 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
    the site read like a banner-ad farm (panel review). The close is a
    single hairline rule + small signature line that lets the content
    breathe into the footer without a hard conversion ask. */
-.page-close{position:relative;padding:clamp(48px,7vh,88px) 24px clamp(40px,5vh,64px);text-align:center;pointer-events:none}
+/* Hidden: this decorative monogram duplicated the footer's M directly below it
+   (two stacked M's). Removed so the page blends straight into the footer. */
+.page-close{display:none}
 .page-close-glyph{display:block;width:26px;height:26px;margin:0 auto 18px;
   background:linear-gradient(160deg,#5A3F0F 0%,#8A6418 22%,#E8C547 50%,#8A6418 78%,#5A3F0F 100%);
   -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M4 28 L4 6 L10 6 L16 20 L22 6 L28 6 L28 28 L23 28 L23 13 L17 26 L15 26 L9 13 L9 28 Z' fill='black'/></svg>") center/contain no-repeat;
@@ -1620,15 +1623,20 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
   background:radial-gradient(ellipse 70% 60% at 50% 30%,rgba(240,200,110,.09) 0%,rgba(212,168,40,.05) 25%,rgba(180,130,30,.025) 50%,transparent 75%);
   filter:blur(12px)}
 .footer-sig{font-family:var(--display);font-size:clamp(15px,2.2vw,18px);font-weight:600;color:var(--ow);font-style:italic;opacity:.6;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.65;letter-spacing:.02em}
-/* Footer M — frameless, 3-stop gradient matching .nav-sigil */
-.footer-mark{display:inline-block;font-family:var(--display);font-size:56px;font-weight:900;letter-spacing:0;line-height:1;margin-bottom:28px;
-  background:linear-gradient(160deg,#5A3F0F 0%,#E8C547 50%,#5A3F0F 100%);
+/* Footer M — richer multi-stop metallic with a bright champagne specular for
+   depth, plus a small decorative rule above it to frame the monogram. */
+.footer-mark{display:inline-block;font-family:var(--display);font-size:60px;font-weight:900;letter-spacing:0;line-height:1;margin-top:14px;margin-bottom:30px;
+  background:linear-gradient(160deg,#4A3410 0%,#8A6420 20%,#D8AC44 40%,#FFF3CC 50%,#E8C660 60%,#8A6420 80%,#4A3410 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
   border:none;border-radius:0;padding:0;box-shadow:none;
-  filter:drop-shadow(0 2px 0 rgba(0,0,0,.7)) drop-shadow(0 0 28px rgba(212,168,40,.26));
+  filter:drop-shadow(0 1px 0 rgba(0,0,0,.8)) drop-shadow(0 2px 2px rgba(0,0,0,.5)) drop-shadow(0 0 30px rgba(232,197,71,.3));
   transition:transform .5s var(--ease),filter .5s var(--ease);
   position:relative}
-.footer-mark::before{display:none}
+/* Decorative rule + dot accents above the M (fills the space, frames it) */
+.footer-mark::before{content:'';display:block;position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:108px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(232,197,71,.5) 50%,transparent);box-shadow:0 0 18px rgba(232,197,71,.16)}
+.footer-mark::after{content:'';position:absolute;top:-21px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,235,170,.95),rgba(232,197,71,.5) 60%,transparent);box-shadow:0 0 12px rgba(232,197,71,.5)}
 .footer-mark:hover{transform:scale(1.06);filter:drop-shadow(0 2px 0 rgba(0,0,0,.7)) drop-shadow(0 0 36px rgba(245,215,90,.46))}
 .footer-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:28px}
 .footer-links a{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);transition:color .3s,text-shadow .3s;position:relative}
@@ -1690,9 +1698,11 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
   .section{padding:clamp(32px,5vh,64px) 20px 56px}.s-head{margin-bottom:28px}
   .hero{padding:0;padding-top:env(safe-area-inset-top,0px);min-height:100vh;min-height:100svh;align-items:center;justify-content:center}
   .hero-bg{background-position:center 10%;inset:-2%}
+  /* Subtle centered oval vignette around Mike, with a gradual lower fade that
+     mutes the busy stage backdrop and frames the title + CTAs (no hard blackout). */
   .hero-ov{background:
-    radial-gradient(ellipse 65% 45% at 50% 30%,transparent 0%,transparent 40%,rgba(2,2,2,.35) 65%,rgba(2,2,2,.75) 85%,rgba(2,2,2,.95) 100%),
-    linear-gradient(180deg,transparent 0%,transparent 50%,rgba(2,2,2,.55) 70%,rgba(2,2,2,.9) 85%,rgba(2,2,2,1) 94%)}
+    radial-gradient(ellipse 80% 64% at 50% 40%,transparent 0%,transparent 50%,rgba(2,2,2,.32) 76%,rgba(2,2,2,.62) 100%),
+    linear-gradient(180deg,rgba(2,2,2,.32) 0%,transparent 16%,transparent 54%,rgba(2,2,2,.62) 74%,rgba(2,2,2,.9) 88%,rgba(2,2,2,.99) 100%)}
   .hero-content{max-width:100%;width:100%;padding:0 12px;margin-top:28vh;text-align:center;display:flex;flex-direction:column;align-items:center}
   /* "BIG MIKE ELY" at display font + .025em tracking measures
      ~7.5px text width per 1px font-size. Cap at 11.5vw so text stays
