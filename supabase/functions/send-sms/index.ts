@@ -1,46 +1,21 @@
 import { corsHeaders } from "../_shared/cors.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-async function sendViaTwilio(
+/**
+ * SMS provider hook.
+ *
+ * The Twilio integration was removed during recovery. The endpoint, recipient
+ * validation, and (to, message) contract are intentionally preserved so a new
+ * provider — a different SMS service or a Supabase-native setup — can be wired
+ * in here without touching callers. Keep the return shape the same.
+ */
+async function sendSMS(
   to: string,
   message: string,
 ): Promise<{ success: boolean; sid?: string; error?: string }> {
-  const accountSid = Deno.env.get("TWILIO_ACCOUNT_SID");
-  const authToken = Deno.env.get("TWILIO_AUTH_TOKEN");
-  const fromNumber = Deno.env.get("TWILIO_PHONE_NUMBER");
-
-  if (!accountSid || !authToken || !fromNumber) {
-    return { success: false, error: "Twilio credentials not configured" };
-  }
-
-  const url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
-  const auth = btoa(`${accountSid}:${authToken}`);
-
-  const body = new URLSearchParams({
-    To: to,
-    From: fromNumber,
-    Body: message,
-  });
-
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Basic ${auth}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body,
-  });
-
-  const data = await res.json();
-
-  if (!res.ok) {
-    return {
-      success: false,
-      error: data.message || `Twilio error: ${res.status}`,
-    };
-  }
-
-  return { success: true, sid: data.sid };
+  // TODO: integrate SMS provider here.
+  console.log(`[send-sms] no provider configured — would send to ${to}: ${message}`);
+  return { success: false, error: "SMS provider not configured" };
 }
 
 Deno.serve(async (req) => {
@@ -78,19 +53,13 @@ Deno.serve(async (req) => {
       );
     }
 
-    // First attempt
-    let result = await sendViaTwilio(to, message);
-
-    // Retry once on failure
-    if (!result.success) {
-      console.warn(`SMS send failed, retrying: ${result.error}`);
-      result = await sendViaTwilio(to, message);
-    }
+    const result = await sendSMS(to, message);
 
     if (!result.success) {
+      // 503: endpoint is healthy, but no SMS provider is wired up yet.
       return new Response(
         JSON.stringify({ error: result.error }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
 

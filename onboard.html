@@ -8,15 +8,15 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="theme-color" content="#020202"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ozgemcvnjzqfumpjxwcq.supabase.co; connect-src 'self' https://ozgemcvnjzqfumpjxwcq.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://ozgemcvnjzqfumpjxwcq.supabase.co; connect-src 'self' https://ozgemcvnjzqfumpjxwcq.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(), geolocation=(), payment=()">
 <meta name="description" content="Start your coaching journey with IFBB Pro Big Mike Ely. Fill out your onboarding form."/>
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<script src="assets/vendor/supabase.min.js"></script>
 <style>
 :root{
   --bg:#020202;--bg2:#050505;--card:#0a0a0c;--cardH:#111114;
@@ -418,14 +418,15 @@ var STEPS=5;
 var _step=1;
 var SITE_VERSION='v57';
 try{if(localStorage.getItem('bm_sw_ver')!==SITE_VERSION){localStorage.setItem('bm_sw_ver',SITE_VERSION);}}catch(_swe){}
-var _BM_SB_URL="https://ozgemcvnjzqfumpjxwcq.supabase.co";
+/* RECOVERY MODE: backend offline — blank URL disables remote calls (getSupabase returns null). Restore the URL to re-enable. */
+var _BM_SB_URL="";
 var _BM_SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96Z2VtY3ZuanpxZnVtcGp4d2NxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1MjMxNjEsImV4cCI6MjA5MTA5OTE2MX0.6PGWsz_1dRQNEqm1QvafihRWe_8TRTCoJ_aEA0OnY7k";
 var _sb=null;
 var _submitting=false;
 
 function getSupabase(){
   if(_sb)return _sb;
-  if(typeof supabase!=="undefined"&&supabase.createClient){
+  if(_BM_SB_URL&&typeof supabase!=="undefined"&&supabase.createClient){
     _sb=supabase.createClient(_BM_SB_URL,_BM_SB_KEY);
   }
   return _sb;

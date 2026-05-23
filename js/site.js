@@ -859,8 +859,13 @@ document.querySelectorAll('img[loading="lazy"][decoding="async"]').forEach(funct
   if (t === 'crimson') document.body.classList.add('theme-crimson');
 })();
 
-/* ── SUPABASE: THEME + CONTENT + GALLERY ── */
+/* ── SUPABASE: THEME + CONTENT + GALLERY ──
+   RECOVERY MODE: the remote backend is offline during recovery, so these
+   optional remote-sync fetches are skipped to avoid console errors. The page
+   falls back to its built-in defaults. Set BM_RECOVERY = false to re-enable. */
+var BM_RECOVERY = true;
 window.addEventListener('load', function () {
+  if (BM_RECOVERY) return;
   var SUPA = 'https://ozgemcvnjzqfumpjxwcq.supabase.co';
   var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96Z2VtY3ZuanpxZnVtcGp4d2NxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1MjMxNjEsImV4cCI6MjA5MTA5OTE2MX0.6PGWsz_1dRQNEqm1QvafihRWe_8TRTCoJ_aEA0OnY7k';
   var H = { apikey: KEY, Authorization: 'Bearer ' + KEY };
