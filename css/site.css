@@ -134,7 +134,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
    CSS default is top:60% (overriding the base .br-phase top:46%)
    which is close to where the hero h1 lands on iPhone 14 Pro.
    JS refines the exact pixel position on load + font-ready. */
-.br-name-phase{display:flex;flex-direction:column;align-items:center;justify-content:center;top:60%;transition:top .3s cubic-bezier(.4,0,.2,1)}
+/* No transition on `top`: JS aligns this to the hero wordmark in two passes and
+   must measure the final position immediately (a transition broke the 2nd pass). */
+.br-name-phase{display:flex;flex-direction:column;align-items:center;justify-content:center;top:60%}
 /* Crossed swords */
 .br-swords{position:absolute;top:50%;left:50%;transform:translate(-50%,-105%);z-index:3;pointer-events:none;opacity:0}
 .br-phase.vis .br-swords{animation:brSwordsIn 1.8s cubic-bezier(.2,.8,.3,1) .2s both}
@@ -144,7 +146,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
 .br-swords .blade-fill{fill:rgba(200,175,100,.05);stroke:none;opacity:0}
 .br-phase.vis .br-swords .blade-fill{animation:brBladeFill 1s ease-out 1.8s forwards}
 /* Corner brackets */
-.br-corners{position:absolute;width:clamp(320px,62vw,560px);height:clamp(220px,36vw,340px);top:50%;left:50%;transform:translate(-50%,-48%);pointer-events:none;z-index:2}
+/* Outer corner-bracket box removed per review — the glow carries the premium
+   feel without a literal box framing the wordmark. */
+.br-corners{display:none}
 .br-corners::before,.br-corners::after,.br-corner-tl,.br-corner-br{content:'';position:absolute;width:36px;height:36px;opacity:0}
 .br-corners::before{top:0;left:0;border-top:1px solid rgba(200,175,100,.22);border-left:1px solid rgba(200,175,100,.22)}
 .br-corners::after{bottom:0;right:0;border-bottom:1px solid rgba(200,175,100,.22);border-right:1px solid rgba(200,175,100,.22)}
@@ -183,10 +187,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
   margin-bottom:clamp(16px,2.5vh,28px);position:relative;z-index:4;text-align:center}
 .br-phase.vis .br-kicker{animation:brTextIn 1.4s cubic-bezier(.3,0,.15,1) .4s both}
 /* Main name */
-.br-name{font-family:var(--display);font-size:clamp(56px,14vw,150px);font-weight:900;line-height:.95;letter-spacing:.05em;position:relative;z-index:4;text-align:center;white-space:nowrap;
-  background:linear-gradient(135deg,#5A3F0F 0%,#8A6418 22%,#E8C547 50%,#8A6418 78%,#5A3F0F 100%);
+/* Matches the hero h1 exactly (size, spacing, line-height, metallic gradient)
+   so the reveal name lands seamlessly on the hero wordmark. Glow lives in the
+   text-shadow so it tracks the letters precisely (no separate box/element). */
+.br-name{font-family:var(--display);font-size:clamp(80px,12vw,196px);font-weight:900;line-height:.88;letter-spacing:.035em;position:relative;z-index:4;text-align:center;white-space:nowrap;
+  background:linear-gradient(118deg,#2E2008 0%,#6B4C12 11%,#A67C26 24%,#E6C36A 39%,#FBF1CE 48%,#FFFFFF 50%,#FBF1CE 52%,#E6C36A 61%,#A67C26 76%,#6B4C12 89%,#2E2008 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
-  opacity:0;margin-bottom:16px;text-shadow:0 0 30px rgba(232,197,71,.3),0 0 70px rgba(232,197,71,.12)}
+  opacity:0;margin-bottom:16px;text-shadow:0 0 26px rgba(255,224,140,.55),0 0 64px rgba(255,214,120,.32),0 0 130px rgba(255,208,110,.16)}
 .br-phase.vis .br-name{animation:brNameReveal 2s cubic-bezier(.15,.85,.25,1) .4s both}
 /* Gold rule */
 .br-rule{height:1px;width:0;position:relative;z-index:4;
@@ -1677,7 +1684,7 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
   .br-1st{font-size:clamp(14px,3vw,22px) !important}
   .br-olympian{font-size:clamp(24px,7vw,44px) !important;letter-spacing:.08em}
   .br-kicker{font-size:9px;letter-spacing:.4em;margin-bottom:14px}
-  .br-name{font-size:clamp(38px,11vw,58px);letter-spacing:.03em}
+  .br-name{font-size:clamp(44px,11.5vw,70px);letter-spacing:.025em}
   .br-title{font-size:7.5px;letter-spacing:.25em}
   .br-corners{width:clamp(260px,80vw,360px);height:clamp(170px,38vw,260px)}
   .br-corners::before,.br-corners::after,.br-corner-tl,.br-corner-br{width:24px;height:24px}
