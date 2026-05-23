@@ -236,7 +236,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
   animation:atmosDrift 20s ease-in-out infinite alternate}
 @keyframes atmosDrift{0%{opacity:.6}50%{opacity:1}100%{opacity:.7}}
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 28px;display:flex;justify-content:space-between;align-items:center;background:transparent;transition:all .5s var(--ease)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 28px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(4,3,2,.8),rgba(4,3,2,.2) 65%,transparent);border-bottom:1px solid rgba(212,168,40,.1);backdrop-filter:blur(4px) saturate(1.05);-webkit-backdrop-filter:blur(4px) saturate(1.05);transition:all .5s var(--ease)}
+/* Centered brand tagline fills the header mid-space on mobile (where nav-links
+   are hidden). Shown only at >=384px so it never collides with the M / MENU. */
+.nav::before{content:"TRAINER OF CHAMPIONS";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--mono);font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(212,168,40,.4);white-space:nowrap;pointer-events:none;display:none}
+@media(min-width:384px) and (max-width:900px){.nav::before{display:block}}
 .nav.scrolled{background:linear-gradient(180deg,rgba(3,3,2,.96),rgba(7,6,4,.94));backdrop-filter:blur(20px) saturate(1.1);-webkit-backdrop-filter:blur(20px) saturate(1.1);border-bottom:1px solid rgba(212,168,40,.2);padding:12px 28px;box-shadow:0 10px 50px rgba(0,0,0,.55),0 1px 0 rgba(212,168,40,.1),0 0 40px rgba(212,168,40,.04)}
 .nav.scrolled::after{content:'';position:absolute;bottom:-1px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,40,.35) 30%,rgba(255,230,160,.6) 50%,rgba(212,168,40,.35) 70%,transparent);box-shadow:0 0 16px rgba(212,168,40,.2)}
 .nav-home{display:flex;align-items:center;text-decoration:none;padding:6px 0;position:relative;gap:12px}
@@ -281,10 +285,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
 .hero-corners::before{bottom:56px;left:36px;border-bottom:1px solid rgba(212,168,40,.35);border-left:1px solid rgba(212,168,40,.35);border-bottom-left-radius:4px}
 .hero-corners::after{bottom:56px;right:36px;border-bottom:1px solid rgba(212,168,40,.35);border-right:1px solid rgba(212,168,40,.35);border-bottom-right-radius:4px}
 @media(max-width:768px){.hero-corners{display:none}}
-.nav-burger{display:none;min-height:44px;min-width:44px;align-items:center;justify-content:center;
-  transition:all .3s var(--ease);border:1px solid rgba(200,175,100,.22);border-radius:4px;
-  background:rgba(0,0,0,.25);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:0 16px}
-.nav-burger:hover{border-color:rgba(224,196,80,.4);background:rgba(212,168,40,.06)}
+.nav-burger{display:none;min-height:44px;min-width:44px;align-items:center;justify-content:center;gap:8px;
+  transition:all .3s var(--ease);border:1px solid rgba(212,168,40,.32);border-radius:6px;
+  background:linear-gradient(160deg,rgba(20,16,8,.5),rgba(6,5,2,.5));backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:0 16px;
+  box-shadow:0 2px 14px rgba(0,0,0,.4),inset 0 1px 0 rgba(212,168,40,.12)}
+.nav-burger::before{content:'';width:14px;height:9px;flex-shrink:0;
+  background:linear-gradient(rgba(224,196,80,.85) 0 1.5px,transparent 1.5px) 0 0/100% 3.75px repeat;}
+.nav-burger:hover{border-color:rgba(224,196,80,.6);background:linear-gradient(160deg,rgba(30,24,10,.6),rgba(10,8,3,.6));box-shadow:0 4px 20px rgba(212,168,40,.18),inset 0 1px 0 rgba(212,168,40,.18)}
 .burger-text{font-family:var(--mono);font-size:9px;letter-spacing:.3em;color:rgba(224,196,80,.8);font-weight:600;
   text-shadow:0 0 8px rgba(212,168,40,.2)}
 /* MOBILE MENU */
@@ -1636,6 +1643,13 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
 .footer-mark::before{right:calc(100% + 26px);background:linear-gradient(90deg,transparent,rgba(232,197,71,.18) 55%,rgba(232,197,71,.75))}
 .footer-mark::after{left:calc(100% + 26px);background:linear-gradient(270deg,transparent,rgba(232,197,71,.18) 55%,rgba(232,197,71,.75))}
 .footer-mark:hover{transform:scale(1.06);filter:drop-shadow(0 2px 0 rgba(0,0,0,.7)) drop-shadow(0 0 36px rgba(245,215,90,.46))}
+/* Crossed swords framing the footer monogram — splay up-and-out, crossing below
+   the M so the blades flank it without ever cutting through. M renders above. */
+.footer-mark{z-index:1}
+.footer-swords{position:absolute;left:50%;top:30px;transform:translateX(-50%);width:clamp(116px,38vw,164px);z-index:0;pointer-events:none;opacity:.6}
+.footer-swords svg{width:100%;height:auto;display:block;overflow:visible}
+.footer-swords line,.footer-swords path{stroke:rgba(224,196,90,.5);stroke-width:1.5;fill:none;stroke-linecap:round;filter:drop-shadow(0 0 5px rgba(212,168,40,.18))}
+body.theme-crimson .footer-swords line,body.theme-crimson .footer-swords path{stroke:rgba(208,48,48,.36)}
 .footer-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:28px}
 .footer-links a{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);transition:color .3s,text-shadow .3s;position:relative}
 .footer-links a::after{content:'';position:absolute;bottom:-3px;left:50%;right:50%;height:1px;background:var(--acc);transition:left .3s var(--ease),right .3s var(--ease);opacity:.5}
