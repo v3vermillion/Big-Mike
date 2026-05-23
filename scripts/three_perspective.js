@@ -29,7 +29,7 @@ async function instagramVisitor(browser) {
   await page.addInitScript(() => { try { localStorage.setItem('bm_revealed','1'); } catch(e){} });
   await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
 
-  await page.goto('file:///home/user/bigmike/index.html', { waitUntil: 'load' });
+  await page.goto('file:///home/user/Big-Mike/index.html', { waitUntil: 'load' });
   await page.waitForTimeout(800);
 
   // Above the fold: hero photo, name, credentials, primary CTA visible
@@ -110,7 +110,7 @@ async function mikeMorning(browser) {
   await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
 
   try {
-    await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 20000 });
+    await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 20000 });
     await page.waitForTimeout(1500);
 
     // Verify all 40 clients loaded
@@ -195,7 +195,7 @@ async function premiumClient(browser) {
   await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
 
   try {
-    await page.goto('file:///home/user/bigmike/portal.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/portal.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(800);
 
     const injected = await page.evaluate(c => {

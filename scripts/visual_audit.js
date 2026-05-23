@@ -59,7 +59,7 @@ async function auditPage(browser, page, viewport) {
   await p.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
 
   try {
-    await p.goto(`file:///home/user/bigmike/${page}.html`, { waitUntil: 'load', timeout: 20000 });
+    await p.goto(`file:///home/user/Big-Mike/${page}.html`, { waitUntil: 'load', timeout: 20000 });
   } catch (e) {
     flag('ERROR', page, viewport.name, 'page load failed: ' + e.message);
     await ctx.close();

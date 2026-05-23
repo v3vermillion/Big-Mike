@@ -30,7 +30,7 @@ const HEIGHTS = { 375: 812, 1200: 900 };
         await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
         await page.addInitScript(() => { try { localStorage.setItem('bm_revealed','1'); } catch(e){} });
         try {
-          await page.goto('file:///home/user/bigmike/' + name + '.html', { waitUntil: 'load', timeout: 15000 });
+          await page.goto('file:///home/user/Big-Mike/' + name + '.html', { waitUntil: 'load', timeout: 15000 });
         } catch (e) { console.warn(name, w, 'load err:', e.message); }
         await page.waitForTimeout(500);
         // Force-reveal all animated elements

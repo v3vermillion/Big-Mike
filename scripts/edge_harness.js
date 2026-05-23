@@ -42,7 +42,7 @@ async function testEmptyState(browser) {
     Object.defineProperty(navigator, 'onLine', { value: false, configurable: true });
   });
   await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
-  await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load' });
+  await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load' });
   await page.waitForTimeout(1500);
 
   const state = await page.evaluate(() => ({
@@ -85,7 +85,7 @@ async function testMalformedClient(browser) {
     Object.defineProperty(navigator, 'onLine', { value: false, configurable: true });
   }, { c: malformed });
   await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
-  await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load' });
+  await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load' });
   await page.waitForTimeout(1500);
 
   // Try to navigate to the client detail
@@ -134,7 +134,7 @@ async function testLSCorruption(browser) {
     Object.defineProperty(navigator, 'onLine', { value: false, configurable: true });
   });
   await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
-  await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load' });
+  await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load' });
   await page.waitForTimeout(1500);
 
   const state = await page.evaluate(() => ({

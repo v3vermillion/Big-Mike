@@ -1,28 +1,31 @@
-# AUDIT v2 — Run 1 Dashboard
-_First graded VAS pass. Public marketing surfaces + the two PWAs (recovery mode)._
+# AUDIT v2 — Dashboard (Runs 1 + 2)
 
-## Baseline (instrumented, evidence-backed)
-9 public pages × {390 mobile, 1440 desktop}, reveal forced, decorative layers excluded:
+## Foundation baseline (Wave 1)
+9 public pages × {390, 1440}: **0 overflow · 0 console errors · 0 axe critical/serious.**
 
-| Metric | Result | Confidence |
+## Waves 3 & 5 — deep logic + the two apps (v1 harness backbone, re-pathed + re-run)
+| Harness | Proves | Result |
 |---|---|---|
-| Horizontal overflow | **0** real (decorative full-bleed layers excluded) | T3 ✅ |
-| Console / page errors | **0** | T3 ✅ |
-| axe-core WCAG 2A/2AA critical+serious | **0** | T3 ✅ |
+| handler_audit | every inline `on*` ref resolves | **1106 / 0 orphans** ✅ |
+| lock_audit | every mutation has a rapid-tap guard | **11 / 0 missing** ✅ |
+| coach_wizard_harness | wizard merge writes every field to client + LS | **21 / 0** ✅ |
+| edge_harness | adversarial boot (empty/malformed/corrupt-LS) | **9 / 0** ✅ |
+| portal_render_harness | every client-portal tab renders expected data | **63 / 0** ✅ |
+| what_if_chains | draft-restore, corrupt-LS, rapid-tap, net-fail, cascade-delete, GC, overflow | **15 / 0** ✅ |
+| three_perspective | Instagram visitor · Mike 6am (40 clients @205ms) · client (13 tabs, 0 console err) | **9 / 0** ✅ |
+| functional_walkthrough | public + coach + client end-to-end | **35 / 0** ✅ |
+| security_audit | XSS / auth / secrets / rate-limit / CSP | **P0 = 0** ✅ |
+| **Total** | | **~1,268 assertions, 0 failures** |
 
-## Fixed this run (Assured, C≥95, verified)
-| # | Fix | Evidence |
-|---|---|---|
-| 1 | **Carbon-fiber/gold image fallback** — failed images become a brushed carbon-fiber panel + gold monogram, never a dead box (marketing + client portal). | rendered 6/6 panels with images blocked (`/tmp/fallback.png`) — T3 |
-| 2 | **Theme-leak fixed** — Results stat numbers now follow the crimson theme instead of staying gold. | crimson screenshot verified — T2 |
-| 3 | **onboard color-contrast** — `--dm`/`--dmL` tokens + "* Required" note brightened; axe now CLEAN at 390 + 1440. | axe re-run CLEAN — T3 |
-| 4 | **Distinct per-page backgrounds** — About → most-muscular-stage; Platform → gym-back-squats (were duplicates of Results/Services). | css diff — T2 |
-| 5 | **Audit harness hardened** — `scan.mjs` now forces `.section` opacity (kills mid-animation false-positives) and excludes decorative layers (accurate overflow). | clean re-run — T3 |
+_security P1 = 27 are the known XSS-scanner false-positives (interpolations that do use `esc()`), manually confirmed safe in v1._
 
-## Inherited v1 suite
-`handler_audit` ran but scanned 0 files — its hardcoded path list predates the marketing/app split → **queued** for path update. Other v1 harnesses (`portal_render`, `coach_wizard`, `edge`, `what_if`, `three_perspective`, `security`, `visual_audit`) to be re-pathed and re-run during the deeper waves.
+## Client portal — the highlight (Wave 5 visual, mock-auth render)
+- Interior renders with a full test client: program days/exercises, supplements, water, progress — **0 page errors**.
+- **Mobile:** premium app-quality (tab bar + program cards).
+- **Desktop:** proper sidebar + dashboard + stat-card layout (not a narrow mobile column) — renders properly on PC. ✅
 
-## Coverage note
-This run covered **Wave 1 (foundation) + the highest-confidence Wave 2/4/6 items**. Waves 3 (interaction fuzz/dead-code telemetry) and 5 (deep coach/portal walk) require the login-gated apps to be exercised with a temporary mock-auth (backend is in recovery mode) — that is the next run, on your go.
+## Fixed & shipped (Runs 1–2, all C≥95)
+Carbon-fiber/gold image fallback (marketing + portal) · theme-leak fix (Results stats follow crimson) · onboard color-contrast (axe CLEAN) · distinct per-page backgrounds (About, Platform) · **SEO repointed to github.io** (0 dead-domain refs) · audit harness hardened · v1 harness suite re-pathed (now reusable) · cache v1→v2.
 
-See `HUMAN_QUEUE.md` for everything routed to you.
+## Domain
+Live on `https://v3vermillion.github.io/Big-Mike/`. Namecheap custom domain preserved in `CNAME.disabled` + `DOMAIN.md` (one-step restore). See `HUMAN_QUEUE.md`.

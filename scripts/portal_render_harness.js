@@ -128,7 +128,7 @@ async function runPortalHarness(browser) {
   }, { client: TEST_CLIENT });
 
   await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
-  await page.goto('file:///home/user/bigmike/portal.html', { waitUntil: 'load', timeout: 30000 });
+  await page.goto('file:///home/user/Big-Mike/portal.html', { waitUntil: 'load', timeout: 30000 });
   await page.waitForTimeout(800);
 
   // Inject the client via window scope — portal's top-level vars attach to window

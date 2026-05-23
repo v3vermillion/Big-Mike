@@ -5,10 +5,10 @@
 const fs = require('fs');
 
 const files = [
-  '/home/user/bigmike/app.html',
-  '/home/user/bigmike/portal.html',
-  '/home/user/bigmike/book.html',
-  '/home/user/bigmike/onboard.html',
+  '/home/user/Big-Mike/app.html',
+  '/home/user/Big-Mike/portal.html',
+  '/home/user/Big-Mike/book.html',
+  '/home/user/Big-Mike/onboard.html',
 ];
 
 // Critical functions we KNOW are non-idempotent and user-triggered

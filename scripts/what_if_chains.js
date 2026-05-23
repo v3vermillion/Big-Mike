@@ -52,7 +52,7 @@ async function chain1(browser) {
     wizardStep: 2,
   });
   try {
-    await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(800);
     // Verify wizard state restored from LS
     const state = await page.evaluate(() => ({
@@ -83,7 +83,7 @@ async function chain2(browser) {
     localStorage.setItem('bm_portal_login_ts', String(Date.now()));
   }, { c: client });
   try {
-    await page.goto('file:///home/user/bigmike/portal.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/portal.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(600);
     await page.evaluate(c => { window._clientData = c; window._portalMessages = []; renderProgram(); }, client);
     await page.waitForTimeout(300);
@@ -110,7 +110,7 @@ async function chain6(browser) {
   const { ctx, page } = await openCoach(browser);
   await seedCoach(page);
   try {
-    await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(800);
     // Send a message twice in rapid succession — _msgSendLock should prevent duplicate
     const result = await page.evaluate(() => {
@@ -144,7 +144,7 @@ async function chain7(browser) {
   const { ctx, page } = await openCoach(browser);
   await seedCoach(page);
   try {
-    await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(800);
     const result = await page.evaluate(() => {
       // Simulate a network reject on the upsert chain
@@ -196,7 +196,7 @@ async function chain8(browser) {
   });
   await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
   try {
-    await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(1200);
     const state = await page.evaluate(() => ({
       clientsIsArray: Array.isArray(window.clients),
@@ -220,7 +220,7 @@ async function chain9(browser) {
     messages: [{ id: 'm1', clientId: 'chain_c1', from: 'coach', text: 'Hi', timestamp: '2026-04-10T10:00:00Z' }],
   });
   try {
-    await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(800);
     const result = await page.evaluate(async () => {
       window.showDoubleConfirm = () => Promise.resolve(true);
@@ -248,7 +248,7 @@ async function chain10(browser) {
   const { ctx, page } = await openCoach(browser);
   await seedCoach(page);
   try {
-    await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(800);
     const result = await page.evaluate(() => {
       _wizMergeToClient({
@@ -277,7 +277,7 @@ async function chain11(browser) {
   const { ctx, page } = await openCoach(browser);
   await seedCoach(page);
   try {
-    await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(800);
     const result = await page.evaluate(() => {
       let upsertCalls = 0;
@@ -307,7 +307,7 @@ async function chain12(browser) {
   const { ctx, page } = await openCoach(browser);
   await seedCoach(page);
   try {
-    await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(800);
     const result = await page.evaluate(() => {
       /* Call push() 70 times \u2014 the only legitimate entry path. Each
@@ -343,7 +343,7 @@ async function chain13(browser) {
   }, { oldTs: old, recentTs: recent });
   await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
   try {
-    await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(800);
     const result = await page.evaluate(() => ({
       hasOld: Object.prototype.hasOwnProperty.call(_deletedIds, 'oldItem'),
@@ -365,7 +365,7 @@ async function chain14(browser) {
   const client = { id: 'cardio_test', name: 'Cardio Test', phone: '5550004444', services: ['Training'], cardio: { prescriptions: [{ type: 'Treadmill', duration: '30 min', mode: 'LISS' }], notes: 'Post-workout' }, pinHash: 'x' };
   await page.addInitScript(({c}) => { localStorage.setItem('bm_portal_phone', c.phone); localStorage.setItem('bm_portal_login_ts', String(Date.now())); }, {c: client});
   try {
-    await page.goto('file:///home/user/bigmike/portal.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/portal.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(600);
     const result = await page.evaluate(c => {
       window._clientData = c; window._portalMessages = [];
@@ -390,7 +390,7 @@ async function chain15(browser) {
   const { ctx, page } = await openCoach(browser);
   await seedCoach(page);
   try {
-    await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(800);
     const result = await page.evaluate(() => {
       window._wizardData = { id: 'w1', clientId: 'chain_c1', name: 'Partial', sections: [] };
@@ -419,7 +419,7 @@ async function chain16(browser) {
   const client = { id: 'ci_test', name: 'Check-in Test', phone: '5550005555', services: ['Training'], pinHash: 'x' };
   await page.addInitScript(({c}) => { localStorage.setItem('bm_portal_phone', c.phone); localStorage.setItem('bm_portal_login_ts', String(Date.now())); }, {c: client});
   try {
-    await page.goto('file:///home/user/bigmike/portal.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/portal.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(600);
     const result = await page.evaluate(c => {
       window._clientData = c; window._portalMessages = [];
@@ -453,7 +453,7 @@ async function chain17(browser) {
   await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
   await page.addInitScript(() => { try { localStorage.setItem('bm_revealed','1'); } catch(e){} });
   try {
-    await page.goto('file:///home/user/bigmike/gallery.html', { waitUntil: 'load', timeout: 15000 });
+    await page.goto('file:///home/user/Big-Mike/gallery.html', { waitUntil: 'load', timeout: 15000 });
     await page.waitForTimeout(500);
     const result = await page.evaluate(async () => {
       const getVisibleCount = () => Array.from(document.querySelectorAll('#galGrid .gal-item')).filter(i => getComputedStyle(i).display !== 'none').length;
@@ -487,7 +487,7 @@ async function chain18(browser) {
     await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
     await page.addInitScript(() => { try { localStorage.setItem('bm_revealed','1'); } catch(e){} });
     try {
-      await page.goto('file:///home/user/bigmike/index.html', { waitUntil: 'load', timeout: 15000 });
+      await page.goto('file:///home/user/Big-Mike/index.html', { waitUntil: 'load', timeout: 15000 });
       await page.waitForTimeout(400);
       const m = await page.evaluate(() => {
         const h = document.querySelector('.hero h1');

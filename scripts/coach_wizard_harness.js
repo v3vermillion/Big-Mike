@@ -87,7 +87,7 @@ function assert(cond, msg) {
   }, { client: SEED_CLIENT });
 
   await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
-  await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 30000 });
+  await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 30000 });
   await page.waitForTimeout(1000);
 
   // Call _wizMergeToClient directly and read client back

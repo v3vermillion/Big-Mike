@@ -14,12 +14,12 @@
 const fs = require('fs');
 
 const FILES = {
-  app: '/home/user/bigmike/app.html',
-  portal: '/home/user/bigmike/portal.html',
-  book: '/home/user/bigmike/book.html',
-  onboard: '/home/user/bigmike/onboard.html',
-  site: '/home/user/bigmike/js/site.js',
-  contact: '/home/user/bigmike/contact.html',
+  app: '/home/user/Big-Mike/app.html',
+  portal: '/home/user/Big-Mike/portal.html',
+  book: '/home/user/Big-Mike/book.html',
+  onboard: '/home/user/Big-Mike/onboard.html',
+  site: '/home/user/Big-Mike/js/site.js',
+  contact: '/home/user/Big-Mike/contact.html',
 };
 
 const findings = [];
