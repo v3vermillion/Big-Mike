@@ -99,7 +99,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
 /* Years row */
 .br-years{display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,36px);margin-bottom:clamp(12px,2vh,24px)}
 .br-year{font-family:var(--display);font-size:clamp(48px,12vw,110px);font-weight:900;letter-spacing:.06em;line-height:1;
-  background:linear-gradient(135deg,#5A3F0F 0%,#8A6418 22%,#E8C547 50%,#8A6418 78%,#5A3F0F 100%);
+  background:linear-gradient(118deg,#2E2008 0%,#6B4C12 11%,#A67C26 24%,#E6C36A 39%,#FBF1CE 48%,#FFFFFF 50%,#FBF1CE 52%,#E6C36A 61%,#A67C26 76%,#6B4C12 89%,#2E2008 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
   clip-path:inset(0 100% 0 0);filter:blur(8px);opacity:0;text-shadow:0 0 30px rgba(232,197,71,.3)}
 .br-year.vis{animation:brTextReveal 1.2s cubic-bezier(.16,1,.3,1) both}
@@ -109,7 +109,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
 @keyframes brDotReveal{0%{opacity:0;filter:blur(4px);transform:scale(.5)}100%{opacity:1;filter:blur(0);transform:scale(1)}}
 /* 1st Place */
 .br-1st{font-family:var(--display);font-size:clamp(16px,3.5vw,32px);font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  background:linear-gradient(135deg,#5A3F0F 0%,#8A6418 22%,#E8C547 50%,#8A6418 78%,#5A3F0F 100%);
+  background:linear-gradient(118deg,#2E2008 0%,#6B4C12 11%,#A67C26 24%,#E6C36A 39%,#FBF1CE 48%,#FFFFFF 50%,#FBF1CE 52%,#E6C36A 61%,#A67C26 76%,#6B4C12 89%,#2E2008 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
   clip-path:inset(0 100% 0 0);filter:blur(6px);opacity:0;
   text-shadow:0 0 20px rgba(232,197,71,.28);margin-bottom:clamp(16px,3vh,32px)}
@@ -122,7 +122,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
 @keyframes brDivGrow{0%{width:0;opacity:0}100%{width:clamp(60px,14vw,120px);opacity:1}}
 /* Olympian — bold, prestigious */
 .br-olympian{font-family:var(--display);font-size:clamp(32px,8vw,80px);font-weight:900;letter-spacing:.12em;text-transform:uppercase;
-  background:linear-gradient(135deg,#5A3F0F 0%,#8A6418 22%,#E8C547 50%,#8A6418 78%,#5A3F0F 100%);
+  background:linear-gradient(118deg,#2E2008 0%,#6B4C12 11%,#A67C26 24%,#E6C36A 39%,#FBF1CE 48%,#FFFFFF 50%,#FBF1CE 52%,#E6C36A 61%,#A67C26 76%,#6B4C12 89%,#2E2008 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
   text-shadow:0 0 35px rgba(232,197,71,.45),0 0 70px rgba(232,197,71,.18);
   clip-path:inset(0 100% 0 0);filter:blur(10px);opacity:0;position:relative}
