@@ -1004,6 +1004,22 @@ function submitContactForm(e) {
   e.preventDefault();
   var hp = document.getElementById('cf-honeypot');
   if (hp && hp.value) { return false; }
+  /* RECOVERY MODE: the inquiry inbox backend is offline, so don't fire a
+     doomed POST. Required fields are already validated by the browser, so
+     guide the visitor to the channel Mike actually checks today — DM. */
+  if (BM_RECOVERY) {
+    var rForm = document.getElementById('contactForm');
+    var rName = (rForm && rForm.name && rForm.name.value || '').replace(/<[^>]*>/g, '').trim();
+    var sentBox = document.getElementById('cf-sent');
+    var sentName = document.getElementById('cf-sent-name');
+    if (sentName && rName) { sentName.textContent = ', ' + rName.split(/\s+/)[0]; }
+    if (rForm) { rForm.style.display = 'none'; }
+    if (sentBox) {
+      sentBox.style.display = 'block';
+      sentBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return false;
+  }
   /* Rate limit: 1 submission per 30 seconds */
   if(Date.now()-_contactLastSubmit<30000){alert("Please wait before submitting again.");return false;}
   _contactLastSubmit=Date.now();
@@ -1056,6 +1072,22 @@ function submitContactForm(e) {
 
   return false;
 }
+
+/* ── CONTACT: preselect service from ?service= deeplink (from services.html) ── */
+(function () {
+  var sel = document.getElementById('cf-service');
+  if (!sel) return;
+  try {
+    var svc = new URLSearchParams(location.search).get('service');
+    if (!svc) return;
+    /* Tolerate legacy/aliased tokens */
+    var map = { '1on1-training': 'training', 'contest-prep': 'contestprep', 'online-coaching': 'online', 'full-package': 'fullpackage', 'posing-sessions': 'posing' };
+    svc = map[svc] || svc;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === svc) { sel.selectedIndex = i; break; }
+    }
+  } catch (e) {}
+})();
 
 /* ── STAGGERED GRID REVEALS — cascade items within grids ── */
 (function () {
@@ -1160,7 +1192,7 @@ document.querySelectorAll('.btn-p').forEach(function (btn) {
 
 /* ── SERVICE WORKER — register + force update on version change ── */
 (function () {
-  var SITE_VERSION = 'v8';
+  var SITE_VERSION = 'v9';
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').then(function (reg) {
       /* Force check for new SW on every page load */
