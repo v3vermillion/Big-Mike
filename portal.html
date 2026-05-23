@@ -7,7 +7,9 @@
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="My Program"/>
 <meta name="theme-color" content="#020202"/>
+<link rel="manifest" href="portal-manifest.json"/>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://ozgemcvnjzqfumpjxwcq.supabase.co; media-src 'self' blob: https://ozgemcvnjzqfumpjxwcq.supabase.co; connect-src 'self' https://ozgemcvnjzqfumpjxwcq.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -15,7 +17,7 @@
 <meta name="description" content="View your coaching program from IFBB Pro Big Mike Ely."/>
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
-<link rel="stylesheet" href="assets/fonts/fonts.css?v=v65">
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=v66">
 <script src="assets/vendor/supabase.min.js"></script>
 <script>/* Apply theme before first paint to prevent flash */
 (function(){var t;try{t=new URLSearchParams(window.location.search).get("theme")||localStorage.getItem("bm_portal_theme")||"gold";}catch(e){t="gold";}if(t==="crimson")document.documentElement.className="theme-crimson";})();
@@ -76,7 +78,7 @@ input::placeholder{color:var(--dm);opacity:.6;font-style:italic}
    was completely covered. */
 /* Visual sweep april: portal auth background dimmed and blurred
    so any figure in the stage photo is indistinguishable. */
-.bg-photo{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("img/gallery-olympia-stage.jpg");background-size:cover;background-position:center 22%;opacity:0;transition:opacity .8s ease;filter:brightness(.32) contrast(1.08) saturate(.7) blur(4px)}
+.bg-photo{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("img/gallery-olympia-romania-stage.jpg");background-size:cover;background-position:center 26%;opacity:0;transition:opacity .8s ease;filter:brightness(.32) contrast(1.08) saturate(.7) blur(4px)}
 .bg-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,2,2,.82) 0%,rgba(2,2,2,.88) 35%,rgba(2,2,2,.96) 70%,rgba(2,2,2,.99) 100%)}
 body.auth-bg-on .bg-photo{opacity:.92}
 /* When the photo is visible we dim the glow layer so its black paint
