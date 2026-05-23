@@ -737,7 +737,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
    even at .12 brightness read as figures. Swap to the gym-curls
    shot with heavier dim + blur so the services grid reads clean. */
 #services .section-ambient-img{background-image:url('../img/gallery-gym-curls.jpg');background-position:center 35%;filter:brightness(.1) saturate(.4) contrast(1.15) blur(5px) !important}
-#platform .section-ambient-img{background-image:url('../img/gallery-gym-curls.jpg');background-position:center 35%;filter:brightness(.1) saturate(.4) contrast(1.15) blur(5px) !important}
+#platform .section-ambient-img{background-image:url('../img/gallery-gym-back-squats.jpg');background-position:center 30%;filter:brightness(.1) saturate(.4) contrast(1.15) blur(5px) !important}
 /* Was: gallery-worlds-2025-trophy.jpg — had burned-in event
    poster text ("AUGUST 31, 2025", "MASTERS", "WORLD CHAMPIONSHIPS",
    "#1 IN CUSTOMER SERVICE") which at .20 brightness ghosted through
@@ -757,7 +757,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
    subject pose shot whose silhouette bled through on desktop widths)
    to gallery-back-dbl-bicep \u2014 a back shot where the framing is
    symmetric muscular texture rather than a recognizable figure. */
-#about .section-ambient-img{background-image:url('../img/gallery-back-dbl-bicep.jpg');background-position:center 30%;filter:brightness(.1) saturate(.4) contrast(1.15) blur(5px) !important}
+#about .section-ambient-img{background-image:url('../img/gallery-most-muscular-stage.jpg');background-position:center 25%;filter:brightness(.1) saturate(.4) contrast(1.15) blur(5px) !important}
 #about .section-ambient::after{background:
   radial-gradient(ellipse 110% 95% at 50% 48%,rgba(3,3,2,.38) 0%,rgba(3,3,2,.6) 55%,rgba(3,3,2,.85) 100%),
   linear-gradient(180deg,rgba(3,3,2,.6) 0%,transparent 12%,transparent 88%,rgba(3,3,2,.6) 100%),
@@ -2180,3 +2180,34 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,
      compositor layer even when no animation runs. */
   .hero-orb,.hq-panel-bg{will-change:auto}
 }
+
+/* ── Carbon-fiber + gold fallback (VAS) ───────────────────────────────────────
+   No image failure or blank panel ever renders as a dead black box. JS swaps a
+   failed <img> for a div.bm-fallback: a brushed carbon-fiber twill with a gold
+   sheen and a faint monogram. Theme-aware (gold / crimson). */
+.bm-fallback{
+  background-color:#0b0c0f;
+  background-image:
+    radial-gradient(ellipse 85% 60% at 50% 36%, rgba(212,168,40,.16), transparent 62%),
+    repeating-linear-gradient(45deg, #1b1d23 0 3px, #0e0f13 3px 6px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.035) 0 3px, transparent 3px 6px);
+  border:1px solid rgba(212,168,40,.16); border-radius:inherit; position:relative; overflow:hidden;
+}
+.bm-fallback::after{
+  content:"M"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-family:var(--display); font-weight:900; font-size:clamp(26px,28%,72px); line-height:1; opacity:.55;
+  background:var(--goldGrad); -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.6));
+}
+body.theme-crimson .bm-fallback{
+  background-image:
+    radial-gradient(ellipse 85% 60% at 50% 36%, rgba(208,48,48,.18), transparent 62%),
+    repeating-linear-gradient(45deg, #1b1216 0 3px, #100b0d 3px 6px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.035) 0 3px, transparent 3px 6px);
+  border-color:rgba(208,48,48,.18);
+}
+
+/* Theme-leak fix: Results stat numbers must follow the crimson theme, not stay gold. */
+body.theme-crimson .results-stat-num{background:var(--goldGrad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+

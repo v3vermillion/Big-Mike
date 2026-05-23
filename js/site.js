@@ -1149,7 +1149,7 @@ document.querySelectorAll('.btn-p').forEach(function (btn) {
 
 /* ── SERVICE WORKER — register + force update on version change ── */
 (function () {
-  var SITE_VERSION = 'v1';
+  var SITE_VERSION = 'v2';
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').then(function (reg) {
       /* Force check for new SW on every page load */
@@ -1183,5 +1183,27 @@ document.querySelectorAll('.btn-p').forEach(function (btn) {
   if (localStorage.getItem('bm_sw_ver') !== SITE_VERSION) {
     localStorage.setItem('bm_sw_ver', SITE_VERSION);
   }
+})();
+
+/* ── Carbon-fiber/gold image fallback (VAS) ──────────────────────────────────
+   Any <img> that fails to load is replaced with a premium carbon-fiber panel
+   instead of a broken-image box. Capture-phase so it catches errors on images
+   that fail before listeners attach. */
+(function () {
+  function bmFallback(img) {
+    if (!img || img.dataset.bmFb) return;
+    img.dataset.bmFb = '1';
+    var d = document.createElement('div');
+    d.className = 'bm-fallback ' + (img.className || '');
+    d.setAttribute('role', 'img');
+    d.setAttribute('aria-label', img.alt || 'Image unavailable');
+    var ar = getComputedStyle(img).aspectRatio;
+    d.style.cssText = 'width:100%;height:100%;min-height:120px;' + (ar && ar !== 'auto' ? 'aspect-ratio:' + ar + ';' : '');
+    if (img.parentNode) img.replaceWith(d);
+  }
+  window.addEventListener('error', function (e) {
+    var t = e.target;
+    if (t && t.tagName === 'IMG') bmFallback(t);
+  }, true);
 })();
 

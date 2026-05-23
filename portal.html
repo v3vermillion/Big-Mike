@@ -17,7 +17,7 @@
 <meta name="description" content="View your coaching program from IFBB Pro Big Mike Ely."/>
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
-<link rel="stylesheet" href="assets/fonts/fonts.css?v=v1">
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=v2">
 <script src="assets/vendor/supabase.min.js"></script>
 <script>/* Apply theme before first paint to prevent flash */
 (function(){var t;try{t=new URLSearchParams(window.location.search).get("theme")||localStorage.getItem("bm_portal_theme")||"gold";}catch(e){t="gold";}if(t==="crimson")document.documentElement.className="theme-crimson";})();
@@ -2309,6 +2309,15 @@ if("serviceWorker" in navigator){
   }
   if(localStorage.getItem('bm_sw_ver')!==SITE_VERSION){localStorage.setItem('bm_sw_ver',SITE_VERSION);}
 })();
+</script>
+<!-- Carbon-fiber/gold image fallback (VAS) — no dead image boxes in the portal -->
+<style>
+.bm-fallback{background-color:#0b0c0f;background-image:radial-gradient(ellipse 85% 60% at 50% 36%,rgba(212,168,40,.16),transparent 62%),repeating-linear-gradient(45deg,#1b1d23 0 3px,#0e0f13 3px 6px),repeating-linear-gradient(-45deg,rgba(255,255,255,.035) 0 3px,transparent 3px 6px);border:1px solid rgba(212,168,40,.16);border-radius:inherit;position:relative;overflow:hidden;min-height:100px}
+.bm-fallback::after{content:"M";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-weight:900;font-size:clamp(26px,28%,72px);line-height:1;opacity:.5;background:linear-gradient(135deg,#5A3F0F,#E8C547 50%,#5A3F0F);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 2px 5px rgba(0,0,0,.6))}
+body.theme-crimson .bm-fallback::after{background:linear-gradient(135deg,#881414,#E84040 50%,#881414);-webkit-background-clip:text;background-clip:text}
+</style>
+<script>
+(function(){function fb(img){if(!img||img.dataset.bmFb)return;img.dataset.bmFb='1';var d=document.createElement('div');d.className='bm-fallback '+(img.className||'');d.setAttribute('role','img');d.setAttribute('aria-label',img.alt||'Image unavailable');var ar=getComputedStyle(img).aspectRatio;d.style.cssText='width:100%;height:100%;min-height:100px;'+(ar&&ar!=='auto'?'aspect-ratio:'+ar+';':'');if(img.parentNode)img.replaceWith(d);}window.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')fb(t);},true);})();
 </script>
 </body>
 </html>
