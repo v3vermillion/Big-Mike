@@ -62,7 +62,7 @@ const fs = require('fs');
     }, { c: seedClients, s: seedSessions, sch: seedSchedule });
     await coach.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
     try {
-      await coach.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 20000 });
+      await coach.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 20000 });
     } catch(e) { console.warn('coach load', e.message); }
     await coach.waitForTimeout(1200);
     // Force app visible regardless of auth screen
@@ -104,7 +104,7 @@ const fs = require('fs');
     }, { c: premium });
     await portal.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
     try {
-      await portal.goto('file:///home/user/bigmike/portal.html', { waitUntil: 'load', timeout: 15000 });
+      await portal.goto('file:///home/user/Big-Mike/portal.html', { waitUntil: 'load', timeout: 15000 });
     } catch(e) { console.warn('portal load', e.message); }
     await portal.waitForTimeout(800);
     await portal.evaluate((c) => {

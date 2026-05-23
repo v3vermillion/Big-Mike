@@ -54,7 +54,7 @@ async function seedCoach(page) {
     await seedCoach(page);
     await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
     try {
-      await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 20000 });
+      await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 20000 });
       await page.waitForTimeout(1200);
 
       // Check app booted
@@ -103,7 +103,7 @@ async function seedCoach(page) {
     await seedCoach(page);
     await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
     try {
-      await page.goto('file:///home/user/bigmike/app.html', { waitUntil: 'load', timeout: 20000 });
+      await page.goto('file:///home/user/Big-Mike/app.html', { waitUntil: 'load', timeout: 20000 });
       await page.waitForTimeout(800);
 
       const wizResult = await page.evaluate(() => {
@@ -198,7 +198,7 @@ async function seedCoach(page) {
     }, { c: fullClient });
     await page.route('**/*', r => r.request().url().startsWith('file://') ? r.continue() : r.abort());
     try {
-      await page.goto('file:///home/user/bigmike/portal.html', { waitUntil: 'load', timeout: 20000 });
+      await page.goto('file:///home/user/Big-Mike/portal.html', { waitUntil: 'load', timeout: 20000 });
       await page.waitForTimeout(600);
 
       const injectOk = await page.evaluate((c) => {
@@ -252,7 +252,7 @@ async function seedCoach(page) {
       page.on('pageerror', e => errs.push(e.message));
       page.on('console', m => { if (m.type() === 'error') { const t = m.text(); if (t.indexOf('Failed to load') < 0 && t.indexOf('net::') < 0 && t.indexOf('favicon') < 0) errs.push(t.substring(0, 120)); } });
       try {
-        await page.goto(`file:///home/user/bigmike/${name}.html`, { waitUntil: 'load', timeout: 15000 });
+        await page.goto(`file:///home/user/Big-Mike/${name}.html`, { waitUntil: 'load', timeout: 15000 });
         await page.waitForTimeout(400);
         const rendered = await page.evaluate(() => document.body.innerHTML.length);
         if (rendered > 1000 && errs.length === 0) pass('FLOW4 ' + name + '.html loads clean');

@@ -3,4 +3,4 @@ Allow: /
 Disallow: /app.html
 Disallow: /portal.html
 
-Sitemap: https://ifbbprobigmikeely.com/sitemap.xml
+Sitemap: https://v3vermillion.github.io/Big-Mike/sitemap.xml

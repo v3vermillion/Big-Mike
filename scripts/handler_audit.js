@@ -161,7 +161,7 @@ const report = {
 };
 
 for (const file of FILES) {
-  const full = path.join('/home/user/bigmike', file);
+  const full = path.join('/home/user/Big-Mike', file);
   if (!fs.existsSync(full)) continue;
   const html = fs.readFileSync(full, 'utf8');
   const js = extractScriptBundle(html);
@@ -171,7 +171,7 @@ for (const file of FILES) {
   let allDefined = new Set(defined);
   if (html.indexOf('js/site.js') >= 0) {
     try {
-      const siteJs = fs.readFileSync('/home/user/bigmike/js/site.js', 'utf8');
+      const siteJs = fs.readFileSync('/home/user/Big-Mike/js/site.js', 'utf8');
       const siteDefined = extractDefinedFunctions(siteJs);
       for (const name of siteDefined) allDefined.add(name);
     } catch(e) {}
