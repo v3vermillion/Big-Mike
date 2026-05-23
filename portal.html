@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"/>
+<title>My Program · Big Mike Ely Coaching</title>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#020202"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://ozgemcvnjzqfumpjxwcq.supabase.co; media-src 'self' blob: https://ozgemcvnjzqfumpjxwcq.supabase.co; connect-src 'self' https://ozgemcvnjzqfumpjxwcq.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(), geolocation=(), payment=()">
+<meta name="description" content="View your coaching program from IFBB Pro Big Mike Ely."/>
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<script src="assets/vendor/supabase.min.js"></script>
+<script>/* Apply theme before first paint to prevent flash */
+(function(){var t;try{t=new URLSearchParams(window.location.search).get("theme")||localStorage.getItem("bm_portal_theme")||"gold";}catch(e){t="gold";}if(t==="crimson")document.documentElement.className="theme-crimson";})();
+</script>
+<style>
+:root{
+  --bg:#020202;--bg2:#050505;--card:#0a0a0c;--cardH:#111114;
+  --border:rgba(212,168,48,.28);--borderH:rgba(212,168,48,.35);--borderS:rgba(212,168,48,.15);
+  --acc:#D4AF37;--accD:#A8862B;--accDeep:#7D6420;--accVib:#F5E38C;--accBright:#F7DA5E;
+  --accS:rgba(200,160,40,0.06);--accB:rgba(212,168,48,.45);--accM:rgba(200,160,40,0.30);
+  --accGlow:rgba(200,160,40,0.25);
+  --ice:#f0e8d0;--wh:#f0ece4;--ow:#c8c0b0;--mu:#908878;--dm:#605848;--dmL:#3a3428;
+  --glass:rgba(200,160,40,0.02);--glassB:rgba(200,160,40,0.04);
+  --warn:#e8b878;--danger:#d87878;--success:#78c878;
+  --display:'Cinzel',serif;--body:'Rajdhani',sans-serif;--mono:'IBM Plex Mono',monospace;
+  /* Visual sweep april: 7-stop metallic matching site.css. */
+  --goldGrad:linear-gradient(135deg,#3D2A08 0%,#6B4A14 18%,#B88A2C 36%,#FFE8A0 48%,#F6CE56 55%,#B88A2C 72%,#6B4A14 86%,#3D2A08 100%);
+}
+body.theme-crimson,.theme-crimson{
+  --acc:#D03030;--accD:#A01818;--accDeep:#881818;--accVib:#F04040;--accBright:#F05050;
+  --accS:rgba(210,40,40,0.06);--accB:rgba(210,40,40,.45);--accM:rgba(210,40,40,0.30);
+  --accGlow:rgba(210,40,40,0.25);
+  --border:rgba(210,40,40,.28);--borderH:rgba(210,40,40,.35);--borderS:rgba(210,40,40,.15);
+  /* Visual sweep april: 7-stop rose-crimson metallic. */
+  --goldGrad:linear-gradient(135deg,#4A0606 0%,#7A1212 18%,#B72020 36%,#FF6060 48%,#E84040 55%,#B72020 72%,#7A1212 86%,#4A0606 100%);
+  --ice:#f0e0e0;--wh:#f0e8e8;--ow:#c8b8b8;
+  --glass:rgba(210,40,40,0.02);--glassB:rgba(210,40,40,0.04);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{height:100%;overflow-x:hidden;overscroll-behavior:none}
+body{min-height:100dvh;min-height:100vh;overflow-x:hidden;overscroll-behavior:none;background:var(--bg);color:var(--wh);font-family:var(--body);-webkit-font-smoothing:antialiased;touch-action:manipulation}
+/* iOS zoom guarantee — same rationale as app.html */
+input,textarea,select{font-family:var(--body);color:var(--wh);background:var(--glassB);border:1.5px solid var(--borderH);border-radius:10px;padding:13px 16px;font-size:16px !important;outline:none;width:100%;box-sizing:border-box;-webkit-appearance:none;appearance:none;transition:border-color .2s,box-shadow .2s;min-height:46px}
+input:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--accGlow)}
+input::placeholder{color:var(--dm);opacity:.6;font-style:italic}
+.btn{background:var(--goldGrad);background-size:200% 100%;color:var(--bg);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;padding:16px 20px;border-radius:12px;width:100%;border:none;cursor:pointer;box-shadow:0 4px 24px var(--accM);text-transform:uppercase;animation:shimmer 3s ease-in-out infinite;min-height:50px}
+.btn:disabled{opacity:.4;pointer-events:none;animation:none}
+.btn2{background:var(--accS);color:var(--acc);border:1.5px solid var(--borderH);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;padding:10px 16px;border-radius:10px;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.cd{background:linear-gradient(160deg,rgba(14,14,14,.97),rgba(6,6,6,.99));border:1px solid var(--borderS);border-radius:14px;padding:18px;margin-bottom:12px;position:relative;box-shadow:0 2px 12px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.015),inset 0 1px 0 rgba(255,255,255,.025);transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+/* Subtle warm top-edge accent line on every card — premium pass,
+   matches the public site's frameless-with-gold-line pattern. */
+.cd::before{content:'';position:absolute;top:0;left:16px;right:16px;height:1px;background:linear-gradient(90deg,transparent,var(--accDeep) 30%,var(--acc) 50%,var(--accDeep) 70%,transparent);opacity:.28;pointer-events:none;transition:opacity .3s var(--ease)}
+.cd:hover::before{opacity:.55}
+.lb{font-size:10px;font-weight:700;color:var(--mu);font-family:var(--mono);letter-spacing:.1em;display:block;margin-bottom:8px;text-transform:uppercase}
+.sl{font-size:10px;font-weight:700;color:var(--acc);letter-spacing:.18em;font-family:var(--mono);margin-bottom:12px;text-transform:uppercase;text-shadow:0 0 20px var(--accGlow)}
+.gw{height:1px;background:linear-gradient(90deg,transparent,var(--accDeep),var(--acc),var(--accDeep),transparent);margin:20px 0}
+#app{max-width:520px;margin:0 auto;min-height:100vh;position:relative;z-index:1;padding:0 16px}
+.bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:var(--bg)}
+.bg-glow::before{content:'';position:absolute;top:-10%;left:50%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--accGlow),var(--accS) 40%,transparent 65%);transform:translate(-50%,-50%);filter:blur(60px);opacity:.8}
+/* Premium hero-photo background — only on the login-adjacent screens so it
+   feels like a welcome lobby, not wallpaper for the dashboard. We gate
+   visibility on .auth-bg-on which JS adds to body while one of the
+   login/pin/forgot sections is active. */
+/* z-index must beat .bg-glow which is a solid var(--bg) paint at z-index:0.
+   We sit at z-index:0 too but .bg-photo is AFTER .bg-glow in the DOM so
+   with equal z-index the later element wins. Verified by Playwright
+   screenshot — earlier ordering had .bg-glow in front and the photo
+   was completely covered. */
+/* Visual sweep april: portal auth background dimmed and blurred
+   so any figure in the stage photo is indistinguishable. */
+.bg-photo{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("img/gallery-olympia-stage.jpg");background-size:cover;background-position:center 22%;opacity:0;transition:opacity .8s ease;filter:brightness(.32) contrast(1.08) saturate(.7) blur(4px)}
+.bg-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,2,2,.82) 0%,rgba(2,2,2,.88) 35%,rgba(2,2,2,.96) 70%,rgba(2,2,2,.99) 100%)}
+body.auth-bg-on .bg-photo{opacity:.92}
+/* When the photo is visible we dim the glow layer so its black paint
+   doesn't fight the photo — gradient only, not solid. */
+body.auth-bg-on .bg-glow{background:transparent}
+body.auth-bg-on .bg-glow::before{opacity:.35}
+.portal-hdr{text-align:center;padding:48px 0 14px}
+.logo-mark{width:72px;height:72px;border-radius:20px;background:linear-gradient(145deg,#0c0c0c,#060606);border:1.5px solid var(--accB);display:inline-flex;align-items:center;justify-content:center;font-family:var(--display);font-size:38px;font-weight:900;box-shadow:0 0 12px var(--accM),0 0 30px var(--accGlow),0 0 60px var(--accS);margin-bottom:20px}
+.logo-mark span{background:var(--goldGrad);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.portal-title{font-family:var(--display);font-size:24px;font-weight:700;color:var(--ice);letter-spacing:.06em;margin-bottom:6px}
+.portal-sub{font-size:9px;color:var(--dm);font-family:var(--mono);letter-spacing:.22em;text-transform:uppercase}
+.section{display:none}
+.section.active{display:block}
+#sec-login.active{position:relative;z-index:2}
+.toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,rgba(12,12,18,.99),rgba(8,8,14,.99));color:var(--accBright);border:1px solid var(--accB);font-family:var(--mono);font-size:11px;font-weight:700;padding:11px 28px;border-radius:10px;z-index:1000;box-shadow:0 8px 32px rgba(0,0,0,.5);pointer-events:none}
+.portal-footer{text-align:center;padding:30px 0 40px;font-size:9px;color:var(--dmL);font-family:var(--mono);letter-spacing:.1em}
+.tab-bar{display:flex;gap:4px;margin-bottom:20px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:0;border-bottom:1px solid var(--borderS)}
+.tab-btn{flex-shrink:0;padding:12px 14px 14px;border-radius:0;background:transparent;border:none;border-bottom:2px solid transparent;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--dm);cursor:pointer;text-transform:uppercase;transition:all .2s;white-space:nowrap;min-height:44px}
+.tab-btn:hover{color:var(--ow)}
+.tab-btn.active{border-bottom:2px solid var(--acc);color:var(--accBright);text-shadow:0 0 12px var(--accGlow)}
+@keyframes shimmer{0%{background-position:100% 50%}50%{background-position:0% 50%}100%{background-position:100% 50%}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}}
+@supports(padding-top:env(safe-area-inset-top)){
+  body{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+}
+.pin-box{width:56px;height:64px;text-align:center;font-size:28px;font-weight:700;font-family:var(--mono);background:var(--glassB);border:2px solid var(--borderH);border-radius:12px;color:var(--wh);outline:none;caret-color:var(--acc);transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.pin-box:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--accGlow),0 0 16px var(--accS)}
+.pin-box.shake{animation:pinShake .4s ease}
+@keyframes pinShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.chip{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:8px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--dm);background:var(--glassB);border:1px solid var(--borderS);cursor:pointer;transition:all .2s;text-transform:uppercase;min-height:44px}
+.chip:hover{border-color:var(--borderH);color:var(--ow)}
+.chip.on{background:var(--accS);border-color:var(--accB);color:var(--accBright)}
+.cd-link{cursor:pointer;transition:border-color .2s}
+.cd-link:hover{border-color:var(--borderH)}
+@media(max-width:480px){
+  #app{padding:0 12px}
+  .portal-hdr{padding:28px 0 6px}
+  .portal-title{font-size:20px}
+  .logo-mark{width:60px;height:60px;font-size:32px;border-radius:16px}
+  .pin-box{width:48px;height:56px;font-size:24px}
+}
+/* Gold accent line at top */
+.portal-accent-line{position:fixed;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 10%,var(--accDeep) 30%,var(--acc) 50%,var(--accDeep) 70%,transparent 90%);z-index:50;pointer-events:none;opacity:.6}
+/* Overview responsive grid */
+.portal-ov-grid,.portal-ov-main,.portal-ov-side{display:block}
+/* Messages split layout */
+.portal-msg-split{display:block}
+/* Content fade */
+@keyframes portalFadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+/* ── TABLET 768px+ ── */
+@media(min-width:768px){
+  #app{max-width:900px;padding:0 28px}
+  .portal-hdr{padding:56px 0 20px}
+  .portal-title{font-size:28px}
+  .logo-mark{width:80px;height:80px;font-size:42px;border-radius:22px}
+  .cd{padding:20px;border-radius:16px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .portal-ov-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+}
+/* ── DESKTOP 1024px+ ── */
+@media(min-width:1024px){
+  #app{max-width:1200px;padding:0 40px}
+  #sec-login,#sec-pin-create,#sec-pin-enter,#sec-forgot-pin,#sec-noprogram{max-width:520px;margin:0 auto}
+  .bg-glow{background:radial-gradient(ellipse 120% 60% at 50% 0%,var(--accS),transparent 50%),radial-gradient(ellipse 80% 80% at 80% 100%,var(--glass),transparent 50%),var(--bg)}
+  .bg-glow::before{width:800px;height:800px;opacity:.5}
+  #sec-program{display:grid;grid-template-columns:200px 1fr;gap:0 28px}
+  #sec-program>div:first-child{grid-column:1/-1}
+  #sec-program>.gw{grid-column:1/-1}
+  .tab-bar{flex-direction:column;border-bottom:none;overflow-x:visible;position:sticky;top:20px;align-self:start;gap:2px;padding:12px;margin:0;background:linear-gradient(160deg,rgba(12,12,12,.6),rgba(6,6,6,.4));border:1px solid var(--borderS);border-radius:12px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 4px 20px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.02)}
+  .tab-btn{text-align:left;border-bottom:none;white-space:normal;border-left:3px solid transparent;padding:10px 14px;border-radius:0 8px 8px 0;transition:all .2s}
+  .tab-btn:hover{background:var(--glassB);color:var(--ow)}
+  .tab-btn.active{border-bottom:none;border-left:3px solid var(--acc);background:var(--accS);color:var(--accBright);text-shadow:0 0 12px var(--accGlow)}
+  .cd{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 4px 20px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.03)}
+  #progContent{animation:portalFadeIn .2s ease}
+  .portal-ov-grid{grid-template-columns:3fr 2fr;gap:28px}
+  .portal-msg-split{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
+  .portal-msg-split #portalMsgThread{max-height:70vh!important}
+  .section{transition:opacity .2s ease}
+}
+/* ── LARGE DESKTOP 1440px+ ── */
+@media(min-width:1440px){
+  #app{max-width:1400px;padding:0 56px}
+  .portal-hdr{padding:64px 0 28px}
+  .portal-title{font-size:30px}
+  .cd{padding:24px;border-radius:18px}
+  .tab-btn{padding:12px 18px;font-size:10px}
+  #sec-program{grid-template-columns:220px 1fr;gap:0 36px}
+  .portal-ov-grid{gap:32px}
+}
+</style>
+</head>
+<body class="auth-bg-on">
+<div class="bg-glow"></div>
+<div class="bg-photo" aria-hidden="true"></div>
+<div class="portal-accent-line"></div>
+<div class="film-grain" aria-hidden="true" style="position:fixed;inset:0;z-index:9997;pointer-events:none;opacity:.028;mix-blend-mode:overlay;background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);background-size:256px 256px"></div>
+<div id="app">
+  <div class="portal-hdr">
+    <div class="logo-mark"><span>M</span></div>
+    <div class="portal-title">My Program</div>
+    <div class="portal-sub">BIG MIKE ELY COACHING</div>
+    <div class="portal-creds" aria-hidden="true" style="font-family:var(--mono);font-size:8px;letter-spacing:.2em;color:rgba(220,200,140,.45);margin-top:6px;text-transform:uppercase;white-space:nowrap;max-width:100%">IFBB Pro &middot; 2&times; World Champion &middot; Since 1996</div>
+    <div class="hdr-rule" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;gap:12px;margin:18px auto 0;max-width:220px"><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.38))"></div><div style="width:6px;height:6px;background:var(--acc);transform:rotate(45deg);opacity:.7;box-shadow:0 0 12px rgba(212,175,55,.45)"></div><div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(212,175,55,.38),transparent)"></div></div>
+  </div>
+
+  <!-- LOGIN SECTION -->
+  <div class="section active" id="sec-login">
+    <div class="cd" style="padding:28px 24px 24px;text-align:center;margin-bottom:16px;position:relative;overflow:visible;box-shadow:0 10px 40px rgba(0,0,0,.5),0 0 60px rgba(212,175,55,.04),inset 0 1px 0 rgba(245,227,140,.08)">
+      <div aria-hidden="true" style="position:absolute;top:10px;left:10px;width:22px;height:22px;border-top:1.5px solid var(--acc);border-left:1.5px solid var(--acc);border-top-left-radius:4px;opacity:.62;pointer-events:none"></div>
+      <div aria-hidden="true" style="position:absolute;bottom:10px;right:10px;width:22px;height:22px;border-bottom:1.5px solid var(--acc);border-right:1.5px solid var(--acc);border-bottom-right-radius:4px;opacity:.62;pointer-events:none"></div>
+      <div class="sl" style="margin-bottom:14px">Client Portal</div>
+      <div style="font-size:13px;color:var(--mu);line-height:1.65;margin-bottom:4px">Enter your phone number to view your coaching program, meal plans, and upcoming sessions.</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <label for="portalPhone" class="lb">PHONE NUMBER</label>
+      <div style="position:relative">
+        <span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:14px;color:var(--mu);font-weight:600;pointer-events:none">+1</span>
+        <input type="tel" id="portalPhone" aria-label="Phone number" style="padding-left:44px;font-family:var(--mono);font-size:16px;letter-spacing:.06em" placeholder="(555) 123-4567" maxlength="14" inputmode="tel" autocomplete="tel">
+      </div>
+    </div>
+    <button class="btn" id="loginBtn" onclick="portalLogin()" aria-label="View my program">VIEW MY PROGRAM</button>
+    <div style="text-align:center;margin-top:14px;font-size:10px;color:var(--dmL);font-family:var(--mono);letter-spacing:.08em">Only clients with active programs can access</div>
+  </div>
+
+  <!-- PIN CREATE SECTION (first-time login) -->
+  <div class="section" id="sec-pin-create">
+    <div class="cd" style="padding:24px;text-align:center;margin-bottom:16px">
+      <div class="sl">Secure Your Portal</div>
+      <div style="font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:4px">Create a 4-digit PIN to protect your coaching portal</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <label class="lb" style="text-align:center;display:block;margin-bottom:10px">CREATE PIN</label>
+      <div id="pinCreateBoxes" style="display:flex;justify-content:center;gap:12px;margin-bottom:20px"></div>
+    </div>
+    <div style="margin-bottom:16px">
+      <label class="lb" style="text-align:center;display:block;margin-bottom:10px">CONFIRM PIN</label>
+      <div id="pinConfirmBoxes" style="display:flex;justify-content:center;gap:12px;margin-bottom:12px"></div>
+    </div>
+    <div id="pinCreateErr" style="text-align:center;font-size:11px;color:var(--danger);font-family:var(--mono);min-height:18px;margin-bottom:12px"></div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px">
+      <input type="checkbox" id="pinRemember" checked style="width:16px;height:16px;accent-color:var(--acc)">
+      <label for="pinRemember" style="font-size:11px;color:var(--mu);font-family:var(--mono);cursor:pointer">Remember me on this device</label>
+    </div>
+    <button class="btn" id="pinCreateBtn" onclick="submitPinCreate()" aria-label="Set PIN and continue">SET PIN &amp; CONTINUE</button>
+  </div>
+
+  <!-- PIN ENTRY SECTION (returning login) -->
+  <div class="section" id="sec-pin-enter">
+    <div class="cd" style="padding:24px;text-align:center;margin-bottom:16px">
+      <div class="sl">Enter Your PIN</div>
+      <div style="font-size:13px;color:var(--mu);line-height:1.6" id="pinEnterSub">Enter your 4-digit PIN to access your portal</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div id="pinEnterBoxes" style="display:flex;justify-content:center;gap:12px;margin-bottom:12px"></div>
+    </div>
+    <div id="pinEnterErr" style="text-align:center;font-size:11px;color:var(--danger);font-family:var(--mono);min-height:18px;margin-bottom:12px"></div>
+    <div id="pinLockout" style="display:none;text-align:center;margin-bottom:12px">
+      <div style="font-size:12px;color:var(--danger);font-family:var(--mono);letter-spacing:.06em">Too many attempts</div>
+      <div id="pinLockTimer" style="font-size:20px;font-weight:700;color:var(--danger);font-family:var(--mono);margin-top:4px"></div>
+    </div>
+    <button class="btn" id="pinEnterBtn" onclick="submitPinEnter()" aria-label="Unlock portal with PIN">UNLOCK</button>
+    <div style="text-align:center;margin-top:14px">
+      <span onclick="startForgotPin()" role="button" tabindex="0" aria-label="Reset forgotten PIN" style="font-size:10px;color:var(--dm);font-family:var(--mono);letter-spacing:.06em;cursor:pointer;text-decoration:underline;display:inline-block;padding:12px 16px;min-height:44px;line-height:20px">Forgot PIN?</span>
+    </div>
+  </div>
+
+  <!-- FORGOT PIN SECTION -->
+  <div class="section" id="sec-forgot-pin">
+    <div class="cd" style="padding:24px;text-align:center;margin-bottom:16px">
+      <div class="sl" id="forgotPinTitle">Forgot PIN</div>
+      <div style="font-size:13px;color:var(--mu);line-height:1.6" id="forgotPinSub"></div>
+    </div>
+    <div id="forgotPinContent"></div>
+  </div>
+
+  <!-- PROGRAM VIEW -->
+  <div class="section" id="sec-program">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <div>
+        <div style="font-size:16px;font-weight:700;color:var(--ice)" id="clientName"></div>
+        <div style="font-size:10px;color:var(--dm);font-family:var(--mono)" id="clientServices"></div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button onclick="showPortalSettings()" aria-label="Settings" style="background:none;border:1px solid var(--borderS);border-radius:8px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s" title="Settings"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--dm)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+        <button class="btn2" onclick="portalLogout()" aria-label="Log out" style="padding:10px 14px;font-size:10px;min-height:44px">LOG OUT</button>
+      </div>
+    </div>
+    <div class="gw" style="margin:12px 0 16px"></div>
+
+    <!-- Program Tabs -->
+    <div class="tab-bar" id="progTabs"></div>
+    <div id="progContent"></div>
+  </div>
+
+  <!-- NO PROGRAM / SETUP ERROR -->
+  <div class="section" id="sec-noprogram">
+    <div class="cd" style="padding:24px;text-align:center">
+      <div class="sl">No Program Found</div>
+      <div style="font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:16px" id="noProgramMsg">We couldn't find an active program for this number. Contact Coach Mike to get set up.</div>
+      <a href="https://instagram.com/ifbbprobigmikeely" target="_blank" rel="noopener" aria-label="Follow Big Mike on Instagram" class="btn2" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;text-decoration:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+        @IFBBPROBIGMIKEELY
+      </a>
+      <div style="margin-top:16px"><button class="btn2" onclick="showSection('login')" aria-label="Try another phone number">TRY ANOTHER NUMBER</button></div>
+    </div>
+  </div>
+
+  <div class="portal-footer">
+    <div class="gw" style="max-width:100px;margin:0 auto 14px"></div>
+    IFBB PRO BIG MIKE ELY'S COACHING LAB
+    <div style="margin-top:10px"><a href="https://vermillionaxis.tech" target="_blank" rel="noopener" aria-label="Vermillion Axis Technologies website" style="color:var(--dmL);text-decoration:none;font-size:9px;letter-spacing:.08em">BUILT BY VERMILLION AXIS TECHNOLOGIES</a></div>
+  </div>
+</div>
+
+<script>
+var _sb=null,_clientData=null,_activeTab="overview";
+
+/* Phone formatting */
+var phoneInput=document.getElementById("portalPhone");
+if(phoneInput){
+  phoneInput.addEventListener("input",function(){
+    var v=this.value.replace(/\D/g,"");
+    if(v.length>10)v=v.substring(0,10);
+    if(v.length>=7)this.value="("+v.substring(0,3)+") "+v.substring(3,6)+"-"+v.substring(6);
+    else if(v.length>=4)this.value="("+v.substring(0,3)+") "+v.substring(3);
+    else if(v.length>0)this.value="("+v;
+    else this.value="";
+  });
+  phoneInput.addEventListener("keydown",function(e){if(e.key==="Enter")portalLogin();});
+}
+
+/* Supabase init */
+/* RECOVERY MODE: backend offline — blank URL disables remote calls (getSupabase returns null). Restore the URL to re-enable. */
+var _BM_SB_URL="";
+var _BM_SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96Z2VtY3ZuanpxZnVtcGp4d2NxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1MjMxNjEsImV4cCI6MjA5MTA5OTE2MX0.6PGWsz_1dRQNEqm1QvafihRWe_8TRTCoJ_aEA0OnY7k";
+function getSupabase(){
+  if(_sb)return _sb;
+  var url=_BM_SB_URL,key=_BM_SB_KEY;
+  if(!url||!key)return null;
+  try{_sb=supabase.createClient(url,key);return _sb;}catch(e){return null;}
+}
+
+/* Theme */
+function applyTheme(){
+  var params=new URLSearchParams(window.location.search);
+  var t=params.get("theme")||localStorage.getItem("bm_portal_theme")||"gold";
+  if(t==="crimson")document.body.classList.add("theme-crimson");
+  localStorage.setItem("bm_portal_theme",t);
+}
+applyTheme();
+var sb=getSupabase();
+if(sb){sb.from("app_settings").select("value").eq("key","portal_theme").single().then(function(res){
+  if(res.data&&res.data.value){
+    localStorage.setItem("bm_portal_theme",res.data.value);
+    applyTheme();
+  }
+}).catch(function(){});}
+
+/* ── PIN SYSTEM ── */
+var _pinAttempts=0,_pinLockUntil=0,_pinLockInterval=null;
+var _pendingPhone="",_pendingClient=null,_verifiedResetCode="";
+
+async function hashPIN(pin,clientId){
+  if(!window.crypto||!crypto.subtle){toast("Secure connection required (HTTPS)");return null;}
+  var encoder=new TextEncoder();
+  var data=encoder.encode(pin+'_'+clientId+'_bm_coaching_salt');
+  var hash=await crypto.subtle.digest('SHA-256',data);
+  return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+}
+
+function buildPinBoxes(containerId,count,onComplete){
+  var container=document.getElementById(containerId);if(!container)return;
+  container.innerHTML="";
+  for(var i=0;i<count;i++){
+    var inp=document.createElement("input");
+    inp.type="tel";inp.inputMode="numeric";inp.maxLength=1;inp.className="pin-box";
+    inp.dataset.idx=String(i);inp.dataset.container=containerId;
+    inp.autocomplete="off";
+    inp.addEventListener("input",function(e){
+      var v=this.value.replace(/\D/g,"");
+      this.value=v?v.charAt(0):"";
+      if(this.value){
+        var idx=parseInt(this.dataset.idx);
+        var boxes=document.getElementById(this.dataset.container).querySelectorAll(".pin-box");
+        if(idx<boxes.length-1)boxes[idx+1].focus();
+        else{this.blur();if(onComplete)onComplete();}
+      }
+    });
+    inp.addEventListener("keydown",function(e){
+      if(e.key==="Backspace"&&!this.value){
+        var idx=parseInt(this.dataset.idx);
+        var boxes=document.getElementById(this.dataset.container).querySelectorAll(".pin-box");
+        if(idx>0){boxes[idx-1].focus();boxes[idx-1].value="";}
+      }
+    });
+    inp.addEventListener("paste",function(e){
+      e.preventDefault();
+      var paste=(e.clipboardData||window.clipboardData).getData("text").replace(/\D/g,"").slice(0,count);
+      var boxes=document.getElementById(this.dataset.container).querySelectorAll(".pin-box");
+      for(var j=0;j<paste.length&&j<boxes.length;j++)boxes[j].value=paste.charAt(j);
+      if(paste.length>=count){boxes[count-1].focus();if(onComplete)onComplete();}
+      else if(paste.length>0)boxes[paste.length].focus();
+    });
+    container.appendChild(inp);
+  }
+}
+
+function getPinValue(containerId){
+  var boxes=document.getElementById(containerId).querySelectorAll(".pin-box");
+  var val="";for(var i=0;i<boxes.length;i++)val+=boxes[i].value;
+  return val;
+}
+
+function shakePinBoxes(containerId){
+  var boxes=document.getElementById(containerId).querySelectorAll(".pin-box");
+  for(var i=0;i<boxes.length;i++){boxes[i].classList.remove("shake");void boxes[i].offsetWidth;boxes[i].classList.add("shake");boxes[i].value="";}
+  if(boxes.length)boxes[0].focus();
+}
+
+/* Portal Login — step 1: phone lookup */
+function portalLogin(){
+  var raw=document.getElementById("portalPhone").value.replace(/\D/g,"");
+  if(raw.length<10){toast("Enter a valid phone number");return;}
+  var phone="+1"+raw;
+  var sb=getSupabase();
+  if(!sb){
+    showSection("noprogram");
+    document.getElementById("noProgramMsg").textContent="The client portal is currently being set up. Contact Coach Mike directly for your program.";
+    return;
+  }
+  var btn=document.getElementById("loginBtn");
+  btn.disabled=true;btn.textContent="LOADING...";
+  sb.functions.invoke("find-client",{body:{phone:raw,mode:"full"}}).then(function(res){
+    btn.disabled=false;btn.textContent="VIEW MY PROGRAM";
+    if(res.error){toast("Error loading data — please try again");return;}
+    if(!res.data||!res.data.found||!res.data.client){
+      showSection("noprogram");
+      document.getElementById("noProgramMsg").textContent="No active program found for this number. If you're a new client, contact Coach Mike to get started.";
+      return;
+    }
+    _pendingPhone=phone;_pendingClient=res.data.client;
+    var hasPIN=res.data.hasPIN;
+    if(!hasPIN){
+      showSection("pin-create");
+      buildPinBoxes("pinCreateBoxes",4);
+      buildPinBoxes("pinConfirmBoxes",4);
+      document.getElementById("pinCreateErr").textContent="";
+      setTimeout(function(){var b=document.getElementById("pinCreateBoxes");if(b&&b.querySelector(".pin-box"))b.querySelector(".pin-box").focus();},200);
+    } else {
+      _pinAttempts=0;
+      showSection("pin-enter");
+      buildPinBoxes("pinEnterBoxes",4,function(){submitPinEnter();});
+      document.getElementById("pinEnterErr").textContent="";
+      document.getElementById("pinLockout").style.display="none";
+      document.getElementById("pinEnterBtn").disabled=false;
+      setTimeout(function(){var b=document.getElementById("pinEnterBoxes");if(b&&b.querySelector(".pin-box"))b.querySelector(".pin-box").focus();},200);
+    }
+  }).catch(function(err){console.error(err);toast("Network error — please try again");btn.disabled=false;btn.textContent="VIEW MY PROGRAM";});
+}
+
+/* PIN create submit */
+async function submitPinCreate(){
+  var pin=getPinValue("pinCreateBoxes");
+  var confirm=getPinValue("pinConfirmBoxes");
+  var errEl=document.getElementById("pinCreateErr");
+  if(pin.length<4){errEl.textContent="Enter all 4 digits";shakePinBoxes("pinCreateBoxes");return;}
+  if(confirm.length<4){errEl.textContent="Confirm your PIN";shakePinBoxes("pinConfirmBoxes");return;}
+  if(pin!==confirm){errEl.textContent="PINs don't match — try again";shakePinBoxes("pinConfirmBoxes");return;}
+  errEl.textContent="";
+  var btn=document.getElementById("pinCreateBtn");
+  btn.disabled=true;btn.textContent="SECURING...";
+  var clientId=_pendingClient.id;
+  var pinHash=await hashPIN(pin,clientId);if(!pinHash){btn.disabled=false;btn.textContent="SET PIN & CONTINUE";return;}
+  var sb=getSupabase();if(!sb){toast("Connection error");btn.disabled=false;btn.textContent="SET PIN & CONTINUE";return;}
+  /* Save PIN hash to client record */
+  sb.from("clients").select("id,data").eq("id",clientId).single().then(function(res){
+    if(!res.data){toast("Error saving PIN");btn.disabled=false;btn.textContent="SET PIN & CONTINUE";return;}
+    var d=res.data.data;d.pinHash=pinHash;
+    sb.from("clients").upsert({id:clientId,data:d,updated_at:new Date().toISOString()},{onConflict:"id"}).then(function(r2){
+      if(r2.error){toast("Error saving PIN");btn.disabled=false;btn.textContent="SET PIN & CONTINUE";return;}
+      /* Remember-me token write removed — auto-login bypass deprecated (subagent P0 #1) */
+      _completePinLogin();
+    });
+  }).catch(function(){toast("Error saving PIN");btn.disabled=false;btn.textContent="SET PIN & CONTINUE";});
+}
+
+/* PIN enter submit */
+async function submitPinEnter(){
+  if(Date.now()<_pinLockUntil){return;}
+  var pin=getPinValue("pinEnterBoxes");
+  var errEl=document.getElementById("pinEnterErr");
+  if(pin.length<4){errEl.textContent="Enter all 4 digits";return;}
+  errEl.textContent="";
+  var btn=document.getElementById("pinEnterBtn");
+  btn.disabled=true;btn.textContent="VERIFYING...";
+  var pinHash=await hashPIN(pin,_pendingClient.id);if(!pinHash){btn.disabled=false;btn.textContent="UNLOCK";return;}
+  var sb=getSupabase();if(!sb){toast("Connection error");btn.disabled=false;btn.textContent="UNLOCK";return;}
+  sb.functions.invoke("verify-pin",{body:{phone:_pendingPhone,pinHash:pinHash}}).then(function(res){
+    btn.disabled=false;btn.textContent="UNLOCK";
+    if(res.data&&res.data.valid){
+      _pinAttempts=0;
+      /* Check 2FA */
+      if(_pendingClient.twoFactorEnabled){
+        start2FAVerify();return;
+      }
+      /* Remember-me token write removed — auto-login bypass deprecated (subagent P0 #1) */
+      _completePinLogin();
+    } else if(res.data&&res.data.locked){
+      /* Server-side lockout */
+      _pinAttempts=5;
+      var lockMs=res.data.lockedUntil?Math.max(0,new Date(res.data.lockedUntil).getTime()-Date.now()):5*60*1000;
+      _pinLockUntil=Date.now()+lockMs;
+      _startPinLockout();
+    } else {
+      var remaining=res.data&&typeof res.data.attemptsRemaining==="number"?res.data.attemptsRemaining:null;
+      if(remaining!==null){
+        _pinAttempts=5-remaining;
+      } else {
+        _pinAttempts++;
+      }
+      errEl.textContent="Incorrect PIN ("+_pinAttempts+"/5)";
+      shakePinBoxes("pinEnterBoxes");
+      if(_pinAttempts>=5){_startPinLockout();}
+    }
+  }).catch(function(){
+    btn.disabled=false;btn.textContent="UNLOCK";
+    toast("Connection error — please try again");
+  });
+}
+
+function _startPinLockout(){
+  if(!_pinLockUntil||_pinLockUntil<=Date.now())_pinLockUntil=Date.now()+5*60*1000;
+  document.getElementById("pinEnterBtn").disabled=true;
+  document.getElementById("pinLockout").style.display="block";
+  var boxes=document.getElementById("pinEnterBoxes").querySelectorAll(".pin-box");
+  for(var i=0;i<boxes.length;i++)boxes[i].disabled=true;
+  _pinLockInterval=setInterval(function(){
+    var remaining=Math.max(0,_pinLockUntil-Date.now());
+    if(remaining<=0){
+      clearInterval(_pinLockInterval);_pinLockInterval=null;
+      _pinAttempts=0;
+      document.getElementById("pinLockout").style.display="none";
+      document.getElementById("pinEnterBtn").disabled=false;
+      document.getElementById("pinEnterErr").textContent="";
+      var boxes=document.getElementById("pinEnterBoxes").querySelectorAll(".pin-box");
+      for(var i=0;i<boxes.length;i++){boxes[i].disabled=false;boxes[i].value="";}
+      if(boxes.length)boxes[0].focus();
+      return;
+    }
+    var m=Math.floor(remaining/60000);var s=Math.ceil((remaining%60000)/1000);
+    document.getElementById("pinLockTimer").textContent=m+":"+String(s).padStart(2,"0");
+  },1000);
+}
+
+/* 2FA verify after PIN success.
+   Subagent P0 #2: code generation moved server-side via the
+   request-2fa-code edge function. The previous client-side
+   Math.random() flow leaked the code to anyone who opened
+   devtools \u2014 it was visible in the closure scope and in the
+   Supabase upsert payload. */
+function start2FAVerify(){
+  var sb=getSupabase();if(!sb){toast("Connection error");return;}
+  var last4=_pendingPhone.replace(/\D/g,"").slice(-4);
+  showSection("forgot-pin");
+  document.getElementById("forgotPinTitle").textContent="Verify Identity";
+  document.getElementById("forgotPinSub").textContent="A code was sent to your number ending in ****"+last4;
+  /* Server-side code generation \u2014 the code is never exposed to the client */
+  sb.functions.invoke("request-2fa-code",{body:{phone:_pendingPhone,purpose:"2fa"}}).catch(function(){});
+  var html='<div style="margin-bottom:16px"><label class="lb" style="text-align:center;display:block;margin-bottom:10px">6-DIGIT CODE</label>';
+  html+='<div id="twoFABoxes" style="display:flex;justify-content:center;gap:8px;margin-bottom:12px"></div></div>';
+  html+='<div id="twoFAErr" style="text-align:center;font-size:11px;color:var(--danger);font-family:var(--mono);min-height:18px;margin-bottom:12px"></div>';
+  html+='<button class="btn" aria-label="Verify 2FA code" onclick="submit2FA()">VERIFY</button>';
+  document.getElementById("forgotPinContent").innerHTML=html;
+  setTimeout(function(){buildPinBoxes("twoFABoxes",6,function(){submit2FA();});var b=document.getElementById("twoFABoxes");if(b&&b.querySelector(".pin-box"))b.querySelector(".pin-box").focus();},100);
+}
+
+function submit2FA(){
+  var code=getPinValue("twoFABoxes");
+  if(code.length<6){document.getElementById("twoFAErr").textContent="Enter all 6 digits";return;}
+  var sb=getSupabase();if(!sb){toast("Connection error");return;}
+  sb.from("clients").select("id,data").eq("id",_pendingClient.id).single().then(function(res){
+    if(!res.data||!res.data.data){toast("Error verifying");return;}
+    var d=res.data.data;
+    if(d.resetCode===code&&new Date(d.resetCodeExpiry)>new Date()){
+      d.resetCode=null;d.resetCodeExpiry=null;
+      sb.from("clients").upsert({id:res.data.id,data:d,updated_at:new Date().toISOString()},{onConflict:"id"}).then(function(){}).catch(function(){});
+      /* Remember-me token write removed — auto-login bypass deprecated (subagent P0 #1) */
+      _completePinLogin();
+    } else {
+      document.getElementById("twoFAErr").textContent="Invalid or expired code";
+      shakePinBoxes("twoFABoxes");
+    }
+  }).catch(function(){document.getElementById("twoFAErr").textContent="Connection error \u2014 try again";});
+}
+
+/* ── FORGOT PIN ── */
+function startForgotPin(){
+  if(!_pendingPhone||!_pendingClient){toast("Please start from login");showSection("login");return;}
+  var last4=_pendingPhone.replace(/\D/g,"").slice(-4);
+  showSection("forgot-pin");
+  document.getElementById("forgotPinTitle").textContent="Forgot PIN";
+  document.getElementById("forgotPinSub").textContent="We'll send a code to your phone number ending in ****"+last4;
+  var html='<button class="btn" id="forgotSendBtn" aria-label="Send reset code" onclick="sendForgotCode()">SEND CODE</button>';
+  html+='<div style="text-align:center;margin-top:14px"><span role="button" tabindex="0" aria-label="Return to PIN entry" onclick="showSection(\'pin-enter\');buildPinBoxes(\'pinEnterBoxes\',4,function(){submitPinEnter();});setTimeout(function(){var b=document.getElementById(\'pinEnterBoxes\');if(b&&b.querySelector(\'.pin-box\'))b.querySelector(\'.pin-box\').focus();},200);" style="font-size:10px;color:var(--dm);font-family:var(--mono);cursor:pointer;text-decoration:underline">Back to PIN entry</span></div>';
+  document.getElementById("forgotPinContent").innerHTML=html;
+}
+
+/* Subagent P0 #2: code generation moved server-side via the
+   request-2fa-code edge function. The previous client-side flow
+   exposed the 6-digit code to anyone with devtools open. */
+function sendForgotCode(){
+  var sb=getSupabase();if(!sb){toast("Connection error");return;}
+  var btn=document.getElementById("forgotSendBtn");
+  if(btn){btn.disabled=true;btn.textContent="SENDING...";}
+  sb.functions.invoke("request-2fa-code",{body:{phone:_pendingPhone,purpose:"reset"}}).then(function(){
+    showForgotCodeInput();
+  }).catch(function(){
+    /* Show input regardless \u2014 do not leak failure to attacker */
+    showForgotCodeInput();
+  });
+}
+
+function showForgotCodeInput(){
+  document.getElementById("forgotPinSub").textContent="Enter the 6-digit code sent to your phone";
+  var html='<div style="margin-bottom:16px"><label class="lb" style="text-align:center;display:block;margin-bottom:10px">VERIFICATION CODE</label>';
+  html+='<div id="forgotCodeBoxes" style="display:flex;justify-content:center;gap:8px;margin-bottom:12px"></div></div>';
+  html+='<div id="forgotCodeErr" style="text-align:center;font-size:11px;color:var(--danger);font-family:var(--mono);min-height:18px;margin-bottom:12px"></div>';
+  html+='<button class="btn" aria-label="Verify reset code" onclick="verifyForgotCode()">VERIFY CODE</button>';
+  html+='<div style="text-align:center;margin-top:14px"><span role="button" tabindex="0" aria-label="Resend verification code" onclick="sendForgotCode()" style="font-size:10px;color:var(--dm);font-family:var(--mono);cursor:pointer;text-decoration:underline">Resend code</span></div>';
+  document.getElementById("forgotPinContent").innerHTML=html;
+  setTimeout(function(){buildPinBoxes("forgotCodeBoxes",6,function(){verifyForgotCode();});var b=document.getElementById("forgotCodeBoxes");if(b&&b.querySelector(".pin-box"))b.querySelector(".pin-box").focus();},100);
+}
+
+function verifyForgotCode(){
+  var code=getPinValue("forgotCodeBoxes");
+  var errEl=document.getElementById("forgotCodeErr");
+  if(code.length<6){errEl.textContent="Enter all 6 digits";return;}
+  var sb=getSupabase();if(!sb){toast("Connection error");return;}
+  sb.functions.invoke("reset-pin",{body:{phone:_pendingPhone,code:code,newPinHash:"__verify_only__"}}).then(function(res){
+    if(res.data&&res.data.success){
+      _verifiedResetCode=code;
+      showNewPinAfterReset();
+    } else {
+      errEl.textContent=res.data&&res.data.reason==="expired"?"Code expired — request a new one":"Invalid code";
+      shakePinBoxes("forgotCodeBoxes");
+    }
+  }).catch(function(){
+    /* Fallback: direct verification */
+    sb.from("clients").select("id,data").eq("id",_pendingClient.id).single().then(function(res){
+      if(!res.data||!res.data.data){errEl.textContent="Error verifying";return;}
+      var d=res.data.data;
+      if(d.resetCode===code&&new Date(d.resetCodeExpiry)>new Date()){
+        _verifiedResetCode=code;
+        showNewPinAfterReset();
+      } else {
+        errEl.textContent=new Date(d.resetCodeExpiry)<=new Date()?"Code expired — request a new one":"Invalid code";
+        shakePinBoxes("forgotCodeBoxes");
+      }
+    }).catch(function(){errEl.textContent="Connection error \u2014 try again";});
+  });
+}
+
+function showNewPinAfterReset(){
+  document.getElementById("forgotPinTitle").textContent="Create New PIN";
+  document.getElementById("forgotPinSub").textContent="Set a new 4-digit PIN for your portal";
+  var html='<div style="margin-bottom:16px"><label class="lb" style="text-align:center;display:block;margin-bottom:10px">NEW PIN</label>';
+  html+='<div id="resetPinBoxes" style="display:flex;justify-content:center;gap:12px;margin-bottom:20px"></div></div>';
+  html+='<div style="margin-bottom:16px"><label class="lb" style="text-align:center;display:block;margin-bottom:10px">CONFIRM PIN</label>';
+  html+='<div id="resetPinConfirm" style="display:flex;justify-content:center;gap:12px;margin-bottom:12px"></div></div>';
+  html+='<div id="resetPinErr" style="text-align:center;font-size:11px;color:var(--danger);font-family:var(--mono);min-height:18px;margin-bottom:12px"></div>';
+  html+='<button class="btn" aria-label="Set new PIN" onclick="submitResetPin()">SET NEW PIN</button>';
+  document.getElementById("forgotPinContent").innerHTML=html;
+  setTimeout(function(){
+    buildPinBoxes("resetPinBoxes",4);buildPinBoxes("resetPinConfirm",4);
+    var b=document.getElementById("resetPinBoxes");if(b&&b.querySelector(".pin-box"))b.querySelector(".pin-box").focus();
+  },100);
+}
+
+async function submitResetPin(){
+  var pin=getPinValue("resetPinBoxes");
+  var confirm=getPinValue("resetPinConfirm");
+  var errEl=document.getElementById("resetPinErr");
+  if(pin.length<4){errEl.textContent="Enter all 4 digits";shakePinBoxes("resetPinBoxes");return;}
+  if(confirm.length<4){errEl.textContent="Confirm your PIN";shakePinBoxes("resetPinConfirm");return;}
+  if(pin!==confirm){errEl.textContent="PINs don't match";shakePinBoxes("resetPinConfirm");return;}
+  var pinHash=await hashPIN(pin,_pendingClient.id);if(!pinHash)return;
+  var sb=getSupabase();if(!sb){toast("Connection error");return;}
+  if(!_verifiedResetCode){toast("Reset code expired — please start over");showSection("login");return;}
+  sb.functions.invoke("reset-pin",{body:{phone:_pendingPhone,code:_verifiedResetCode,newPinHash:pinHash}}).then(function(res){
+    _verifiedResetCode="";
+    if(res.data&&res.data.success){
+      toast("\u2713 PIN updated");
+      /* Remember-me token write removed — auto-login bypass deprecated (subagent P0 #1) */
+      _completePinLogin();
+    } else {
+      toast("Error resetting PIN: "+(res.data&&res.data.reason||"try again"));
+    }
+  }).catch(function(){toast("Error saving PIN — please try again");});
+}
+
+function _completePinLogin(){
+  _clientData=_pendingClient;
+  localStorage.setItem("bm_portal_phone",_pendingPhone);
+  localStorage.setItem("bm_portal_login_ts",Date.now().toString());
+  fetchMealPlans(_clientData.id,function(){loadMessages(_clientData.id,function(){renderProgram();showSection("program");initClientPush();});});
+}
+
+/* Auto-login REMOVED (subagent audit P0 #1).
+   Previous implementation read bm_portal_token + bm_portal_token_phone
+   from localStorage and logged the user in as whatever phone the
+   localStorage said. The 'token' was generated client-side as
+   SHA256(phone+timestamp+'token') and never validated server-side.
+   Anyone with devtools could edit bm_portal_token_phone to any
+   client's phone number and become that client \u2014 reading PED
+   protocols, messages, and impersonating them in chat.
+
+   Same attack worked on the 24h session-based auto-login path,
+   which trusted bm_portal_phone in localStorage as proof of identity.
+
+   Fix: every visit requires PIN entry. The phone IS still remembered
+   in localStorage but only to pre-fill the input field; the user
+   must enter their PIN to actually authenticate. This matches the
+   pattern used by Trainerize / TrueCoach / ClubReady. */
+function tryAutoLogin(){
+  /* Pre-fill phone field if we have it remembered, but always
+     require PIN entry. No session bypass, no token bypass. */
+  var phone=localStorage.getItem("bm_portal_phone");
+  if(phone){
+    setTimeout(function(){
+      var inp=document.getElementById("phoneInput");
+      if(inp){inp.value=phone;}
+    },200);
+  }
+  /* Always show the login screen \u2014 no bypass. */
+  showSection("login");
+}
+
+/* Fetch meal plans for client */
+function fetchMealPlans(clientId,cb){
+  var sb=getSupabase();
+  if(!sb||!clientId){if(cb)cb();return;}
+  sb.from("meal_plans").select("data").eq("data->>clientId",clientId).then(function(res){
+    if(!res.error&&res.data&&res.data.length){
+      var plans=res.data.map(function(r){return r.data;}).filter(function(mp){return mp&&mp.clientId===clientId;});
+      if(plans.length)_clientData._mealPlans=plans;
+    }
+    if(cb)cb();
+  }).catch(function(){if(cb)cb();});
+}
+
+/* Fetch coach phone for messaging */
+function fetchCoachPhone(cb){
+  var sb=getSupabase();
+  if(!sb){if(cb)cb(null);return;}
+  sb.from("app_settings").select("value").eq("key","coach_preferences").then(function(r){
+    if(!r.error&&r.data&&r.data.length&&r.data[0].value&&r.data[0].value.coach_phone){cb(r.data[0].value.coach_phone);}
+    else cb(null);
+  }).catch(function(){cb(null);});
+}
+
+/* Render program view */
+function renderProgram(){
+  var c=_clientData;if(!c)return;
+  document.getElementById("clientName").textContent=c.name||"Client";
+  var svc=Array.isArray(c.services)?c.services.join(", "):(c.services||"Training");
+  document.getElementById("clientServices").textContent=svc.toUpperCase();
+
+  /* Build tabs */
+  var tabs=[{k:"overview",l:"Overview"}];
+  if(c.sentPrograms&&c.sentPrograms.length)tabs.push({k:"programs",l:"Programs"});
+  if(c.program&&c.program.days&&c.program.days.length)tabs.push({k:"training",l:"Training"});
+  /* Standalone cardio section (coach wizard writes c.cardio) — was
+     previously orphaned: the wizard built it, the coach-side merge
+     wrote the field, but the portal had no tab to display it.
+     Display if it has at least one prescription. */
+  if(c.cardio&&((Array.isArray(c.cardio)&&c.cardio.length)||(c.cardio.prescriptions&&c.cardio.prescriptions.length)))tabs.push({k:"cardio",l:"Cardio"});
+  if(c.anabolics&&c.anabolics.length)tabs.push({k:"peds",l:"Protocol"});
+  if(c.peptides&&c.peptides.length)tabs.push({k:"peptides",l:"Peptides"});
+  if(c.fatloss&&c.fatloss.length)tabs.push({k:"fatloss",l:"Fat Loss"});
+  if(c.supplements&&c.supplements.length)tabs.push({k:"supps",l:"Supplements"});
+  if(c.organsupport&&c.organsupport.length)tabs.push({k:"organ",l:"Health Support"});
+  if(c.water)tabs.push({k:"water",l:"Water"});
+  if(c._mealPlans&&c._mealPlans.length)tabs.push({k:"nutrition",l:"Nutrition"});
+  tabs.push({k:"checkin",l:"Check-In"});
+  tabs.push({k:"myprogress",l:"My Progress"});
+  tabs.push({k:"messages",l:"Messages"});
+
+  /* Validate _activeTab exists in available tabs */
+  var tabValid=false;
+  for(var t=0;t<tabs.length;t++){if(tabs[t].k===_activeTab){tabValid=true;break;}}
+  if(!tabValid)_activeTab=tabs[0].k;
+
+  var tabHtml="";
+  var _unreadBadge=_portalUnreadCount();
+  for(var i=0;i<tabs.length;i++){
+    var badge="";
+    if(tabs[i].k==="messages"&&_unreadBadge>0){badge='<span style="display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;border-radius:8px;background:var(--acc);color:#fff;font-size:9px;font-weight:800;font-family:var(--mono);padding:0 4px;margin-left:5px;line-height:1">'+_unreadBadge+'</span>';}
+    tabHtml+='<div class="tab-btn'+(_activeTab===tabs[i].k?" active":"")+'" role="tab" aria-selected="'+(_activeTab===tabs[i].k)+'" aria-label="'+tabs[i].l+' tab" tabindex="0" onclick="switchTab(\''+tabs[i].k+'\')" style="position:relative">'+tabs[i].l+badge+'</div>';
+  }
+  document.getElementById("progTabs").innerHTML=tabHtml;
+  renderTabContent();
+}
+
+var _tabLock=false;
+function switchTab(t){
+  if(_tabLock||_activeTab===t)return;
+  _tabLock=true;
+  stopPortalMsgPolling();
+  /* Clear view-local state when leaving a tab */
+  _viewingProgram=null;
+  /* Clear unsaved check-in photos if leaving check-in without submitting */
+  if(_activeTab==="checkin"&&t!=="checkin"&&_checkinPhotos&&_checkinPhotos.length){
+    /* Agent 1 P1 fix: previously dropped photos silently on tab
+       switch. Now confirm before discarding \u2014 photos are unrecoverable
+       File objects from the device picker, so losing them silently
+       meant the user had to re-select + re-capture everything. */
+    var hasUnsubmitted=_checkinPhotos.some(function(p){return p.file;});
+    if(hasUnsubmitted){
+      if(!window.confirm("You have unsubmitted check-in photos.\nLeaving this tab will discard them.\n\nOK to discard, Cancel to stay.")){
+        _tabLock=false;
+        return;
+      }
+    }
+    for(var _ci=0;_ci<_checkinPhotos.length;_ci++){if(_checkinPhotos[_ci].preview)URL.revokeObjectURL(_checkinPhotos[_ci].preview);}
+    _checkinPhotos=[];
+  }
+  _activeTab=t;
+  if(t==="messages")_markPortalMsgsRead();
+  renderProgram();
+  window.scrollTo(0,0);
+  try{history.replaceState({tab:t},"","");}catch(e){}
+  setTimeout(function(){_tabLock=false;},300);
+}
+
+function renderTabContent(){
+  var c=_clientData;if(!c)return;
+  var html="";
+  if(_activeTab==="overview")html=renderOverview(c);
+  else if(_activeTab==="programs")html=renderPrograms(c);
+  else if(_activeTab==="training")html=renderTraining(c);
+  else if(_activeTab==="cardio")html=renderCardio(c);
+  else if(_activeTab==="peds")html=renderPEDs(c);
+  else if(_activeTab==="peptides")html=renderPeptides(c);
+  else if(_activeTab==="fatloss")html=renderFatloss(c);
+  else if(_activeTab==="supps")html=renderSupps(c);
+  else if(_activeTab==="organ")html=renderOrgan(c);
+  else if(_activeTab==="water")html=renderWater(c);
+  else if(_activeTab==="nutrition")html=renderNutrition(c);
+  else if(_activeTab==="checkin")html=renderCheckin(c);
+  else if(_activeTab==="myprogress")html=renderMyProgress(c);
+  else if(_activeTab==="messages")html=renderMessages(c);
+  document.getElementById("progContent").innerHTML=html;
+  if(_activeTab==="overview"){
+    renderOverviewSessions();
+    _loadClientMuteState();
+  }
+}
+
+function renderOverview(c){
+  var firstName=(c.name||"Client").split(" ")[0];
+  var now=new Date();
+  var dateOpts={weekday:'long',year:'numeric',month:'long',day:'numeric'};
+  var dateStr=now.toLocaleDateString('en-US',dateOpts);
+  var html='';
+
+  /* 1. Welcome Header */
+  html+='<div style="margin-bottom:20px"><div style="font-family:var(--display);font-size:22px;font-weight:700;color:var(--ice);letter-spacing:.03em">Welcome back, '+esc(firstName)+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono);letter-spacing:.06em;margin-top:4px">'+esc(dateStr)+'</div></div>';
+
+  html+='<div class="portal-ov-grid"><div class="portal-ov-main">';
+
+  /* 2. Upcoming Sessions — rendered async into a container */
+  html+='<div style="margin-bottom:20px"><div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.15em;margin-bottom:10px">UPCOMING SESSIONS</div><div id="overviewSessions"><div style="text-align:center;padding:16px;color:var(--dm);font-size:11px;font-family:var(--mono)">Loading sessions...</div></div></div>';
+
+  /* 3. Latest Message from Coach */
+  var coachMsgs=_portalMessages.filter(function(m){return m.from==="coach";});
+  if(coachMsgs.length){
+    var latest=coachMsgs[coachMsgs.length-1];
+    var preview=latest.text||"";
+    if(preview.length>120)preview=preview.substring(0,120)+"...";
+    var msgTime=new Date(latest.timestamp);
+    var msgTimeStr=(msgTime.getMonth()+1)+"/"+msgTime.getDate()+" "+(msgTime.getHours()%12||12)+":"+String(msgTime.getMinutes()).padStart(2,"0")+(msgTime.getHours()>=12?" PM":" AM");
+    html+='<div style="margin-bottom:20px"><div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.15em;margin-bottom:10px">LATEST MESSAGE FROM COACH</div>';
+    html+='<div class="cd cd-link" role="button" tabindex="0" aria-label="View latest message from coach" onclick="switchTab(\'messages\')" style="border-left:3px solid var(--acc);padding:14px 16px"><div style="font-size:12px;color:var(--ow);line-height:1.5">'+esc(preview)+'</div><div style="font-size:9px;color:var(--dm);font-family:var(--mono);margin-top:6px">'+msgTimeStr+'</div></div></div>';
+  }
+
+  html+='</div><div class="portal-ov-side">'; /* close main, open side */
+
+  /* 4. Quick Actions Row */
+  html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px">';
+  html+='<a href="book.html" class="btn2" aria-label="Book a session" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;text-decoration:none;text-align:center;min-height:64px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span style="font-size:9px;letter-spacing:.06em">BOOK</span></a>';
+  html+='<button class="btn2" aria-label="Open messages" onclick="switchTab(\'messages\')" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;text-align:center;min-height:64px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span style="font-size:9px;letter-spacing:.06em">MESSAGE</span></button>';
+  html+='<button class="btn2" aria-label="Open check-in" onclick="switchTab(\'checkin\')" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;text-align:center;min-height:64px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg><span style="font-size:9px;letter-spacing:.06em">CHECK-IN</span></button>';
+  html+='</div>';
+
+  /* 5. Program Summary — secondary stats grid */
+  html+='<div style="margin-bottom:20px"><div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.15em;margin-bottom:10px">PROGRAM SUMMARY</div>';
+  html+='<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px">';
+  html+='<div style="text-align:center;padding:10px 4px;background:rgba(255,255,255,.03);border:1px solid var(--borderS);border-radius:8px"><div style="font-size:18px;font-weight:700;color:var(--acc);font-family:var(--mono)">'+(c.program&&c.program.days?c.program.days.length:0)+'</div><div style="font-size:9px;color:var(--dm);font-family:var(--mono);letter-spacing:.06em;margin-top:2px">DAYS</div></div>';
+  html+='<div style="text-align:center;padding:10px 4px;background:rgba(255,255,255,.03);border:1px solid var(--borderS);border-radius:8px"><div style="font-size:18px;font-weight:700;color:var(--ow);font-family:var(--mono)">'+(c.anabolics?c.anabolics.length:0)+'</div><div style="font-size:9px;color:var(--dm);font-family:var(--mono);letter-spacing:.06em;margin-top:2px">PEDS</div></div>';
+  html+='<div style="text-align:center;padding:10px 4px;background:rgba(255,255,255,.03);border:1px solid var(--borderS);border-radius:8px"><div style="font-size:18px;font-weight:700;color:var(--success);font-family:var(--mono)">'+(c.supplements?c.supplements.length:0)+'</div><div style="font-size:9px;color:var(--dm);font-family:var(--mono);letter-spacing:.06em;margin-top:2px">SUPPS</div></div>';
+  html+='<div style="text-align:center;padding:10px 4px;background:rgba(255,255,255,.03);border:1px solid var(--borderS);border-radius:8px"><div style="font-size:18px;font-weight:700;color:var(--warn);font-family:var(--mono)">'+(c.water?c.water.goal||128:128)+'</div><div style="font-size:9px;color:var(--dm);font-family:var(--mono);letter-spacing:.06em;margin-top:2px">OZ H\u2082O</div></div>';
+  html+='</div></div>';
+
+  html+='</div></div>'; /* close portal-ov-side + portal-ov-grid */
+
+  /* 6. Coach Notes */
+  if(c.notes){
+    html+='<div style="margin-bottom:20px"><div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.15em;margin-bottom:10px">COACH NOTES</div>';
+    html+='<div class="cd" style="border-left:3px solid var(--acc);padding:14px 16px"><div style="font-size:12px;color:var(--ow);line-height:1.6;white-space:pre-wrap">'+esc(c.notes)+'</div></div></div>';
+  }
+
+  /* 7. Notification mute toggle */
+  html+='<div id="notifToggleWrap" style="text-align:center;margin-bottom:16px;display:none"><span id="notifToggle" role="button" tabindex="0" aria-label="Toggle notification mute" onclick="toggleClientMute()" style="font-size:10px;color:var(--dm);font-family:var(--mono);letter-spacing:.06em;cursor:pointer"></span></div>';
+
+  /* 8. Cancellation Policy Info Card */
+  html+='<div style="background:rgba(255,255,255,.02);border:1px solid var(--borderS);border-radius:10px;padding:12px 14px;margin-bottom:12px"><div style="font-size:10px;color:var(--dm);font-family:var(--mono);line-height:1.7">Cancellation Policy: Free cancellation 48+ hours before your session. Late cancellations may be subject to a fee. Contact your coach for details.</div></div>';
+
+  /* PDF Note */
+  html+='<div style="text-align:center;margin-top:8px"><div style="font-size:10px;color:var(--dmL);font-family:var(--mono);letter-spacing:.06em">Need your program as a PDF? Ask your coach.</div></div>';
+
+  return html;
+}
+
+/* ── PROGRAMS TAB ── */
+var _viewingProgram=null;
+
+function renderPrograms(c){
+  if(_viewingProgram)return renderProgramDetail(_viewingProgram);
+  var progs=c.sentPrograms;
+  if(!progs||!progs.length)return '<div class="cd" style="padding:24px;text-align:center"><div style="color:var(--dm);margin-bottom:6px">No programs yet</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">Your coach will send your first program soon.</div></div>';
+  var html='<div class="sl">YOUR PROGRAMS</div>';
+  for(var i=0;i<progs.length;i++){
+    var p=progs[i];
+    var isNew=p.dateSent&&(Date.now()-new Date(p.dateSent+"T12:00:00").getTime())<7*86400000;
+    var sectionIcons=_progSectionIcons(p);
+    html+='<div class="cd cd-link" role="button" tabindex="0" aria-label="View program: '+esc(p.title||"Program")+'" onclick="_viewingProgram=_clientData.sentPrograms['+i+'];renderProgram()" style="padding:16px;border-left:3px solid var(--acc);position:relative'+(isNew?';box-shadow:0 0 16px var(--accGlow)':'')+'">';
+    if(isNew)html+='<span style="position:absolute;top:10px;right:12px;font-size:8px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.1em;background:var(--accS);border:1px solid var(--accB);padding:2px 8px;border-radius:4px;text-shadow:0 0 8px var(--accGlow)">NEW</span>';
+    html+='<div style="font-family:var(--display);font-size:16px;font-weight:700;color:var(--ice);letter-spacing:.03em;margin-bottom:4px">'+esc(p.title||"Program")+'</div>';
+    html+='<div style="font-size:10px;color:var(--dm);font-family:var(--mono);letter-spacing:.04em;margin-bottom:8px">Received '+esc(p.dateSent||"")+'</div>';
+    html+='<div style="display:flex;gap:6px;flex-wrap:wrap">';
+    if(p.phase)html+='<span style="font-size:8px;color:var(--accBright);font-family:var(--mono);background:var(--accS);border:1px solid var(--borderS);padding:3px 8px;border-radius:4px;letter-spacing:.06em">'+esc(p.phase).toUpperCase()+'</span>';
+    if(p.duration)html+='<span style="font-size:8px;color:var(--ow);font-family:var(--mono);background:rgba(255,255,255,.03);border:1px solid var(--borderS);padding:3px 8px;border-radius:4px;letter-spacing:.06em">'+esc(p.duration)+'</span>';
+    html+=sectionIcons;
+    html+='</div></div>';
+  }
+  return html;
+}
+
+function _progSectionIcons(p){
+  var icons=[];
+  if(p.training)icons.push('\u{1F3CB}');
+  if(p.nutrition)icons.push('\u{1F372}');
+  if(p.anabolics)icons.push('\u{1F489}');
+  if(p.peptides)icons.push('\u{1F9EA}');
+  if(p.supplements)icons.push('\u{1F48A}');
+  if(p.cardio)icons.push('\u{1F3C3}');
+  if(p.water)icons.push('\u{1F4A7}');
+  if(!icons.length)return '';
+  var html='';
+  for(var i=0;i<icons.length;i++){
+    html+='<span style="font-size:12px;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.03);border:1px solid var(--borderS);border-radius:6px" title="Section">'+icons[i]+'</span>';
+  }
+  return html;
+}
+
+function renderProgramDetail(p){
+  var html='<div style="margin-bottom:16px"><button class="btn2" aria-label="Back to programs list" onclick="_viewingProgram=null;renderProgram()" style="padding:6px 14px;font-size:9px">&lsaquo; BACK TO PROGRAMS</button></div>';
+  html+='<div style="margin-bottom:16px"><div style="font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);letter-spacing:.03em">'+esc(p.title||"Program")+'</div>';
+  html+='<div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">';
+  if(p.phase)html+='<span style="font-size:9px;color:var(--accBright);font-family:var(--mono);background:var(--accS);border:1px solid var(--borderS);padding:3px 10px;border-radius:4px;letter-spacing:.06em">'+esc(p.phase).toUpperCase()+'</span>';
+  if(p.duration)html+='<span style="font-size:9px;color:var(--ow);font-family:var(--mono);background:rgba(255,255,255,.03);border:1px solid var(--borderS);padding:3px 10px;border-radius:4px">'+esc(p.duration)+'</span>';
+  html+='<span style="font-size:9px;color:var(--dm);font-family:var(--mono)">'+esc(p.dateSent||"")+'</span>';
+  html+='</div></div>';
+  html+='<div class="gw" style="margin:12px 0 16px"></div>';
+  /* Render sections in order */
+  var order=p.sectionOrder||[];
+  if(!order.length){
+    var allSections=["training","nutrition","anabolics","peptides","fatloss","supplements","organsupport","cardio","water","notes"];
+    for(var s=0;s<allSections.length;s++){if(p[allSections[s]])order.push(allSections[s]);}
+  }
+  for(var i=0;i<order.length;i++){
+    var sec=order[i];
+    if(sec==="training"&&p.training)html+=_renderProgTraining(p.training);
+    else if(sec==="nutrition"&&p.nutrition)html+=_renderProgNutrition(p.nutrition);
+    else if(sec==="anabolics"&&p.anabolics)html+=_renderProgCompounds("PED PROTOCOL",p.anabolics);
+    else if(sec==="peptides"&&p.peptides)html+=_renderProgCompounds("PEPTIDE PROTOCOL",p.peptides);
+    else if(sec==="fatloss"&&p.fatloss)html+=_renderProgCompounds("CUTTING AGENTS",p.fatloss);
+    else if(sec==="supplements"&&p.supplements)html+=_renderProgSupps(p.supplements);
+    else if(sec==="organsupport"&&p.organsupport)html+=_renderProgSupps(p.organsupport,"ORGAN SUPPORT");
+    else if(sec==="cardio"&&p.cardio)html+=_renderProgCardio(p.cardio);
+    else if(sec==="water"&&p.water)html+=_renderProgWater(p.water);
+    else if(sec==="notes"&&p.notes)html+=_renderProgNotes(p.notes);
+  }
+  /* PDF button */
+  html+='<button class="btn" aria-label="Save program as PDF" onclick="downloadProgramPDF()" style="margin-top:16px">\u{1F4C4} SAVE AS PDF</button>';
+  html+='<div style="text-align:center;margin-top:8px;font-size:9px;color:var(--dm);font-family:var(--mono)">iOS: Tap and hold &rarr; Save to Files if download doesn\'t start</div>';
+  return html;
+}
+
+function _renderProgTraining(t){
+  var days=t.days||t;if(!Array.isArray(days))return '';
+  var html='<div style="margin-bottom:16px"><div class="sl">TRAINING</div>';
+  for(var d=0;d<days.length;d++){
+    var day=days[d];
+    if(_isRestDay(day)){
+      html+='<div class="cd" style="padding:14px;margin-bottom:6px;text-align:center;border-left:3px solid var(--borderS)"><div style="font-size:13px;font-weight:700;color:var(--mu);margin-bottom:3px">'+esc(day.name||"Day "+(d+1))+'</div><div style="font-size:9px;color:var(--dm);font-family:var(--mono);letter-spacing:.1em">REST &middot; RECOVER &middot; REBUILD</div></div>';
+      continue;
+    }
+    html+='<div class="cd" style="padding:14px;margin-bottom:6px"><div style="font-size:13px;font-weight:700;color:var(--ice);margin-bottom:6px">'+esc(day.name||"Day "+(d+1))+'</div>';
+    var exs=day.exercises||[];
+    for(var e=0;e<exs.length;e++){var ex=exs[e];
+      html+='<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:11px;color:var(--ow)">'+esc(ex.name||"Exercise")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(ex.sets||3)+'x'+(ex.reps||"10-12")+'</span></div>';
+    }
+    if(day.cardio){
+      var cardioArr=Array.isArray(day.cardio)?day.cardio:[day.cardio];
+      for(var ci=0;ci<cardioArr.length;ci++){var cc=cardioArr[ci];html+='<div style="margin-top:6px;font-size:10px;color:var(--mu);font-family:var(--mono)">Cardio: '+esc(cc.type||"")+" "+esc(cc.duration||"")+'</div>';}
+    }
+    html+='</div>';
+  }
+  html+='</div>';return html;
+}
+
+function _renderProgNutrition(n){
+  var meals=n.meals||n;if(!Array.isArray(meals))return '';
+  var html='<div style="margin-bottom:16px"><div class="sl">NUTRITION</div>';
+  if(n.targets){
+    html+='<div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">';
+    if(n.targets.cal)html+='<span style="font-size:9px;color:var(--acc);font-family:var(--mono);background:var(--accS);padding:3px 8px;border-radius:4px;border:1px solid var(--borderS)">'+n.targets.cal+' CAL</span>';
+    if(n.targets.p)html+='<span style="font-size:9px;color:var(--success);font-family:var(--mono);background:rgba(120,200,120,.06);padding:3px 8px;border-radius:4px;border:1px solid rgba(120,200,120,.2)">'+n.targets.p+'g P</span>';
+    if(n.targets.c)html+='<span style="font-size:9px;color:var(--warn);font-family:var(--mono);background:rgba(232,184,120,.06);padding:3px 8px;border-radius:4px;border:1px solid rgba(232,184,120,.2)">'+n.targets.c+'g C</span>';
+    if(n.targets.f)html+='<span style="font-size:9px;color:var(--danger);font-family:var(--mono);background:rgba(216,120,120,.06);padding:3px 8px;border-radius:4px;border:1px solid rgba(216,120,120,.2)">'+n.targets.f+'g F</span>';
+    html+='</div>';
+  }
+  for(var m=0;m<meals.length;m++){
+    var meal=meals[m];
+    html+='<div class="cd" style="padding:12px 14px;margin-bottom:6px"><div style="font-size:11px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.06em;margin-bottom:4px">'+esc(meal.name||"Meal "+(m+1)).toUpperCase()+(meal.time?' <span style="color:var(--dm);font-weight:400">'+esc(meal.time)+'</span>':'')+'</div>';
+    var foods=meal.foods||[];
+    for(var f=0;f<foods.length;f++){var fd=foods[f];
+      html+='<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:11px;color:var(--ow)">&bull; '+esc(fd.name||"Food")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(fd.qty||"")+" "+(fd.unit||"")+'</span></div>';
+    }
+    html+='</div>';
+  }
+  html+='</div>';return html;
+}
+
+function _renderProgCompounds(title,items){
+  if(!items||!items.length)return '';
+  var html='<div style="margin-bottom:16px"><div class="sl">'+esc(title)+'</div>';
+  for(var i=0;i<items.length;i++){var a=items[i];
+    html+='<div class="cd" style="padding:10px 14px;margin-bottom:4px"><div style="font-size:12px;font-weight:500;color:var(--wh)">'+esc(a.name)+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+esc(a.dose||"")+' &middot; '+esc(a.freq||"")+' &middot; '+esc(a.route||"")+'</div>'+(a.notes?'<div style="font-size:9px;color:var(--mu);margin-top:2px">'+esc(a.notes)+'</div>':'')+'</div>';
+  }
+  html+='</div>';return html;
+}
+
+function _renderProgSupps(items,title){
+  if(!items||!items.length)return '';
+  var html='<div style="margin-bottom:16px"><div class="sl">'+(title||"SUPPLEMENTS")+'</div>';
+  for(var i=0;i<items.length;i++){var s=items[i];
+    html+='<div class="cd" style="padding:10px 14px;margin-bottom:4px"><div style="font-size:12px;font-weight:500;color:var(--wh)">'+esc(s.name)+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+esc(s.dose||"")+' &middot; '+esc(s.timing||"")+'</div></div>';
+  }
+  html+='</div>';return html;
+}
+
+function _renderProgCardio(c){
+  if(!c)return '';
+  var items=Array.isArray(c)?c:[c];
+  var html='<div style="margin-bottom:16px"><div class="sl">CARDIO</div>';
+  for(var i=0;i<items.length;i++){var ci=items[i];
+    html+='<div class="cd" style="padding:10px 14px;margin-bottom:4px"><div style="font-size:12px;color:var(--wh)">'+esc(ci.type||"Cardio")+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+esc(ci.duration||"")+' &middot; '+esc(ci.mode||ci.intensity||"")+'</div></div>';
+  }
+  html+='</div>';return html;
+}
+
+function _renderProgWater(w){
+  if(!w)return '';
+  var goal=w.goal||128;
+  return '<div style="margin-bottom:16px"><div class="sl">WATER</div><div class="cd" style="padding:16px;text-align:center"><div style="font-size:36px;font-weight:800;color:var(--acc);font-family:var(--mono)">'+goal+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono);letter-spacing:.08em">OUNCES PER DAY</div></div></div>';
+}
+
+function _renderProgNotes(notes){
+  if(!notes)return '';
+  return '<div style="margin-bottom:16px"><div class="sl">NOTES</div><div class="cd" style="padding:14px;border-left:3px solid var(--acc)"><div style="font-size:12px;color:var(--ow);line-height:1.6;white-space:pre-wrap">'+esc(notes)+'</div></div></div>';
+}
+
+function downloadProgramPDF(){
+  if(!_viewingProgram){toast("No program selected");return;}
+  var content=document.getElementById("progContent");
+  if(!content){toast("Error");return;}
+  toast("Generating PDF...");
+  /* Load jsPDF + html2canvas */
+  var s1=document.createElement("script");
+  s1.src="assets/vendor/jspdf.umd.min.js";
+  s1.onload=function(){
+    var s2=document.createElement("script");
+    s2.src="assets/vendor/html2canvas.min.js";
+    s2.onload=function(){_generateProgramPDF();};
+    document.head.appendChild(s2);
+  };
+  document.head.appendChild(s1);
+}
+
+function _generateProgramPDF(){
+  var content=document.getElementById("progContent");
+  if(!content){toast("Error");return;}
+  html2canvas(content,{backgroundColor:"#020202",scale:2,useCORS:true,logging:false}).then(function(canvas){
+    var pdf=new jspdf.jsPDF({orientation:"portrait",unit:"mm",format:"a4"});
+    var pageW=pdf.internal.pageSize.getWidth();
+    var pageH=pdf.internal.pageSize.getHeight();
+    var margin=10;
+    var imgW=pageW-(margin*2);
+    var scale=imgW/canvas.width;
+    var totalImgH=canvas.height*scale;
+
+    if(totalImgH<=pageH-(margin*2)){
+      var imgData=canvas.toDataURL("image/jpeg",0.95);
+      pdf.addImage(imgData,"JPEG",margin,margin,imgW,totalImgH);
+    } else {
+      var usableH=pageH-(margin*2);
+      var canvasSliceH=Math.floor(usableH/scale);
+      var totalPages=Math.ceil(canvas.height/canvasSliceH);
+
+      for(var p=0;p<totalPages;p++){
+        if(p>0)pdf.addPage();
+        var sliceCanvas=document.createElement("canvas");
+        sliceCanvas.width=canvas.width;
+        var thisSliceH=Math.min(canvasSliceH,canvas.height-(p*canvasSliceH));
+        sliceCanvas.height=thisSliceH;
+        var ctx=sliceCanvas.getContext("2d");
+        ctx.drawImage(canvas,0,p*canvasSliceH,canvas.width,thisSliceH,0,0,canvas.width,thisSliceH);
+        var sliceData=sliceCanvas.toDataURL("image/jpeg",0.95);
+        var sliceImgH=thisSliceH*scale;
+        pdf.addImage(sliceData,"JPEG",margin,margin,imgW,sliceImgH);
+      }
+    }
+
+    var title=(_viewingProgram&&_viewingProgram.title?_viewingProgram.title:"Program").replace(/[^a-zA-Z0-9 ]/g,"_").replace(/\s+/g,"_").substring(0,60);
+    pdf.save(title+".pdf");
+    toast("\u2713 PDF saved");
+  }).catch(function(e){console.error("PDF error:",e);toast("PDF generation failed \u2014 try asking your coach");});
+}
+
+function _isRestDay(day){
+  if(!day)return false;
+  var name=(day.name||"").toUpperCase();
+  if(name.indexOf("REST")>=0||name==="OFF")return true;
+  if(!day.exercises||!day.exercises.length)return !day.cardio;
+  return false;
+}
+function renderTraining(c){
+  if(!c.program||!c.program.days||!c.program.days.length)return '<div class="cd" style="padding:20px;text-align:center;color:var(--dm)">No training program assigned yet</div>';
+  var html="";
+  for(var d=0;d<c.program.days.length;d++){
+    var day=c.program.days[d];
+    if(_isRestDay(day)){
+      html+='<div class="cd" style="padding:16px;margin-bottom:8px;border-left:3px solid var(--borderS);text-align:center"><div style="font-size:14px;font-weight:700;color:var(--mu);margin-bottom:4px">'+esc(day.name||"Day "+(d+1))+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono);letter-spacing:.1em">REST &middot; RECOVER &middot; REBUILD</div></div>';
+      continue;
+    }
+    html+='<div class="cd" style="padding:16px;margin-bottom:8px"><div style="font-size:14px;font-weight:700;color:var(--ice);margin-bottom:8px">'+esc(day.name||"Day "+(d+1))+'</div>';
+    if(day.exercises&&day.exercises.length){
+      for(var e=0;e<day.exercises.length;e++){
+        var ex=day.exercises[e];
+        html+='<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:12px;color:var(--ow)">'+esc(ex.name||"Exercise")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(ex.sets||3)+'x'+(ex.reps||"10-12")+'</span></div>';
+      }
+    }
+    if(day.cardio){
+      if(Array.isArray(day.cardio)){
+        for(var ci=0;ci<day.cardio.length;ci++){var cc=day.cardio[ci];html+='<div style="margin-top:8px;font-size:10px;color:var(--mu);font-family:var(--mono)">Cardio: '+esc(cc.type||"")+" "+esc(cc.duration||"")+'</div>';}
+      }else{html+='<div style="margin-top:8px;font-size:10px;color:var(--mu);font-family:var(--mono)">Cardio: '+esc(day.cardio.type||"")+" "+esc(day.cardio.duration||"")+'</div>';}
+    }
+    html+='</div>';
+  }
+  return html;
+}
+
+function renderPEDs(c){
+  if(!c.anabolics||!c.anabolics.length)return '';
+  var html='<div class="sl">PED PROTOCOL</div>';
+  for(var i=0;i<c.anabolics.length;i++){var a=c.anabolics[i];
+    html+='<div class="cd" style="padding:12px 14px"><div style="font-size:13px;font-weight:500;color:var(--wh)">'+esc(a.name)+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+esc(a.dose||"")+' &middot; '+esc(a.freq||"")+' &middot; '+esc(a.route||"")+'</div>'+(a.notes?'<div style="font-size:9px;color:var(--mu);margin-top:2px">'+esc(a.notes)+'</div>':'')+'</div>';}
+  return html;
+}
+
+function renderPeptides(c){
+  if(!c.peptides||!c.peptides.length)return '';
+  var html='<div class="sl">PEPTIDE PROTOCOL</div>';
+  for(var i=0;i<c.peptides.length;i++){var p=c.peptides[i];
+    html+='<div class="cd" style="padding:12px 14px"><div style="font-size:13px;font-weight:500;color:var(--wh)">'+esc(p.name)+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+esc(p.dose||"")+' &middot; '+esc(p.freq||"")+' &middot; '+esc(p.route||"")+'</div></div>';}
+  return html;
+}
+
+function renderFatloss(c){
+  if(!c.fatloss||!c.fatloss.length)return '';
+  var html='<div class="sl">CUTTING AGENTS</div>';
+  for(var i=0;i<c.fatloss.length;i++){var f=c.fatloss[i];
+    html+='<div class="cd" style="padding:12px 14px"><div style="font-size:13px;font-weight:500;color:var(--wh)">'+esc(f.name)+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+esc(f.dose||"")+' &middot; '+esc(f.freq||"")+' &middot; '+esc(f.route||"")+'</div></div>';}
+  return html;
+}
+
+function renderSupps(c){
+  if(!c.supplements||!c.supplements.length)return '';
+  var html='<div class="sl">SUPPLEMENT STACK</div>';
+  for(var i=0;i<c.supplements.length;i++){var s=c.supplements[i];
+    html+='<div class="cd" style="padding:12px 14px"><div style="font-size:13px;font-weight:500;color:var(--wh)">'+esc(s.name)+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+esc(s.dose||"")+' &middot; '+esc(s.timing||"")+'</div></div>';}
+  return html;
+}
+
+function renderOrgan(c){
+  if(!c.organsupport||!c.organsupport.length)return '';
+  var html='<div class="sl">ORGAN SUPPORT</div>';
+  var grouped={};
+  for(var i=0;i<c.organsupport.length;i++){var o=c.organsupport[i];var cat=o.cat||"General";if(!grouped[cat])grouped[cat]=[];grouped[cat].push(o);}
+  var cats=Object.keys(grouped);
+  for(var g=0;g<cats.length;g++){
+    html+='<div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.1em;margin:12px 0 6px">'+esc(cats[g]).toUpperCase()+'</div>';
+    for(var j=0;j<grouped[cats[g]].length;j++){var item=grouped[cats[g]][j];
+      html+='<div class="cd" style="padding:10px 14px"><div style="font-size:12px;color:var(--wh)">'+esc(item.name)+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+esc(item.dose||"")+' &middot; '+esc(item.timing||"")+'</div></div>';}
+  }
+  return html;
+}
+
+function renderCardio(c){
+  /* Standalone cardio section — the coach wizard produces either
+     {prescriptions:[{type,duration,mode,frequency,hrZone,timing,notes}],notes}
+     (new shape) or an array of prescription objects (legacy).
+     Normalize both shapes before rendering. */
+  if(!c.cardio)return '';
+  var items=Array.isArray(c.cardio)?c.cardio:(c.cardio.prescriptions||[]);
+  if(!items.length)return '';
+  var html='<div class="sl">CARDIO PROTOCOL</div>';
+  for(var i=0;i<items.length;i++){
+    var cv=items[i];
+    var meta=[];
+    if(cv.duration)meta.push(esc(cv.duration));
+    if(cv.frequency)meta.push(esc(cv.frequency));
+    if(cv.mode)meta.push(esc(cv.mode));
+    if(cv.hrZone)meta.push('HR '+esc(cv.hrZone));
+    if(cv.timing)meta.push(esc(cv.timing));
+    html+='<div class="cd" style="padding:12px 14px;margin-bottom:8px"><div style="font-size:13px;font-weight:500;color:var(--wh)">'+esc(cv.type||"Cardio")+'</div>';
+    if(meta.length)html+='<div style="font-size:10px;color:var(--dm);font-family:var(--mono);margin-top:3px">'+meta.join(' &middot; ')+'</div>';
+    if(cv.notes)html+='<div style="font-size:11px;color:var(--mu);margin-top:6px;line-height:1.5">'+esc(cv.notes)+'</div>';
+    html+='</div>';
+  }
+  if(!Array.isArray(c.cardio)&&c.cardio.notes){
+    html+='<div class="cd" style="padding:12px 14px;margin-top:8px;border-left:3px solid var(--acc)"><div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.15em;margin-bottom:6px">COACH NOTE</div><div style="font-size:11px;color:var(--ow);line-height:1.5">'+esc(c.cardio.notes)+'</div></div>';
+  }
+  return html;
+}
+
+function renderWater(c){
+  if(!c.water)return '';
+  var goal=c.water.goal||128;
+  return '<div class="cd" style="padding:20px;text-align:center"><div class="sl">DAILY WATER GOAL</div><div style="font-size:48px;font-weight:800;color:var(--acc);font-family:var(--mono)">'+goal+'</div><div style="font-size:11px;color:var(--dm);font-family:var(--mono);letter-spacing:.08em">OUNCES PER DAY</div><div style="margin-top:12px;font-size:11px;color:var(--mu)">Track your intake throughout the day. Hydration is critical for performance and recovery.</div></div>';
+}
+
+function renderNutrition(c){
+  var plans=c._mealPlans;if(!plans||!plans.length)return '<div class="cd" style="padding:20px;text-align:center;color:var(--dm)">No meal plans assigned yet</div>';
+  var html='';
+  for(var p=0;p<plans.length;p++){
+    var mp=plans[p];
+    html+='<div class="cd" style="padding:16px;margin-bottom:8px"><div style="font-size:14px;font-weight:700;color:var(--ice);margin-bottom:4px">'+esc(mp.name||"Meal Plan")+'</div>';
+    if(mp.targets){
+      html+='<div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">';
+      if(mp.targets.cal)html+='<span style="font-size:9px;color:var(--acc);font-family:var(--mono);background:var(--accS);padding:3px 8px;border-radius:4px;border:1px solid var(--borderS)">'+mp.targets.cal+' CAL</span>';
+      if(mp.targets.p)html+='<span style="font-size:9px;color:var(--success);font-family:var(--mono);background:rgba(120,200,120,.06);padding:3px 8px;border-radius:4px;border:1px solid rgba(120,200,120,.2)">'+mp.targets.p+'g P</span>';
+      if(mp.targets.c)html+='<span style="font-size:9px;color:var(--warn);font-family:var(--mono);background:rgba(232,184,120,.06);padding:3px 8px;border-radius:4px;border:1px solid rgba(232,184,120,.2)">'+mp.targets.c+'g C</span>';
+      if(mp.targets.f)html+='<span style="font-size:9px;color:var(--danger);font-family:var(--mono);background:rgba(216,120,120,.06);padding:3px 8px;border-radius:4px;border:1px solid rgba(216,120,120,.2)">'+mp.targets.f+'g F</span>';
+      html+='</div>';
+    }
+    if(mp.meals&&mp.meals.length){
+      for(var m=0;m<mp.meals.length;m++){
+        var meal=mp.meals[m];
+        html+='<div style="margin-bottom:10px"><div style="font-size:11px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.08em;margin-bottom:4px">'+esc(meal.name||"Meal "+(m+1)).toUpperCase()+(meal.time?' <span style="color:var(--dm);font-weight:400">'+esc(meal.time)+'</span>':'')+'</div>';
+        if(meal.foods&&meal.foods.length){
+          var mP=0,mC=0,mF=0,mCal=0,hasMacros=false;
+          for(var f=0;f<meal.foods.length;f++){var fd=meal.foods[f];
+            html+='<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:11px;color:var(--ow)">&bull; '+esc(fd.name||"Food")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(fd.qty||"")+" "+(fd.unit||"")+'</span></div>';
+            if(fd.cal!==undefined||fd.p!==undefined){hasMacros=true;var per=fd.per||1;var mult=(fd.qty||0)/per;mP+=Math.round((fd.p||0)*mult);mC+=Math.round((fd.c||0)*mult);mF+=Math.round((fd.f||0)*mult);mCal+=Math.round((fd.cal||0)*mult);}
+          }
+          if(hasMacros)html+='<div style="display:flex;gap:8px;padding:5px 0;margin-top:4px;flex-wrap:wrap"><span style="font-size:9px;font-family:var(--mono);color:var(--success);background:rgba(120,200,120,.06);padding:2px 6px;border-radius:3px">P '+mP+'g</span><span style="font-size:9px;font-family:var(--mono);color:var(--warn);background:rgba(232,184,120,.06);padding:2px 6px;border-radius:3px">C '+mC+'g</span><span style="font-size:9px;font-family:var(--mono);color:var(--danger);background:rgba(216,120,120,.06);padding:2px 6px;border-radius:3px">F '+mF+'g</span><span style="font-size:9px;font-family:var(--mono);color:var(--acc);background:var(--accS);padding:2px 6px;border-radius:3px">'+mCal+' cal</span></div>';
+        }
+        html+='</div>';
+      }
+    }
+    html+='</div>';
+  }
+  return html;
+}
+
+/* ── CLIENT CHECK-IN ── */
+var _checkinPhotos=[];
+var _SIMPLE_POSES=["Front","Back","Left Side","Right Side","Progress Photo"];
+var _COMP_POSES=["Front Double Bicep","Back Double Bicep","Side Chest","Side Tricep","Rear Lat Spread","Abs & Thigh","Most Muscular","Front Lat Spread","Vacuum"];
+
+function renderCheckin(c){
+  var html='<div class="sl">WEEKLY CHECK-IN</div>';
+  /* Weight + Body Fat */
+  html+='<div class="cd" style="padding:16px">';
+  html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">';
+  html+='<div><label class="lb">WEIGHT (LBS)</label><input id="ciWeight" aria-label="Weight in pounds" type="number" step="0.1" inputmode="decimal" placeholder="e.g. 215"></div>';
+  html+='<div><label class="lb">BODY FAT % (OPTIONAL)</label><input id="ciBf" aria-label="Body fat percentage" type="number" step="0.1" inputmode="decimal" placeholder="e.g. 12.5"></div>';
+  html+='</div>';
+  /* Notes */
+  html+='<label class="lb">NOTES</label>';
+  html+='<textarea id="ciNotes" aria-label="Check-in notes" rows="3" placeholder="Training notes, how the week went, any issues" style="width:100%;font-size:16px;resize:none;min-height:60px;font-family:var(--body);background:var(--glassB);border:1.5px solid var(--borderH);border-radius:10px;padding:10px 12px;color:var(--wh);outline:none;box-sizing:border-box"></textarea>';
+  html+='</div>';
+  /* Pose quick-add buttons */
+  html+='<div class="cd" style="padding:16px">';
+  html+='<label class="lb">PROGRESS PHOTOS</label>';
+  var _showCompPoses=localStorage.getItem("bm_comp_poses")==="1";
+  var _poses=_showCompPoses?_COMP_POSES:_SIMPLE_POSES;
+  html+='<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">';
+  for(var p=0;p<_poses.length;p++){
+    html+='<button class="btn2" aria-label="Add '+esc(_poses[p])+' photo" onclick="addCheckinPhoto(\''+esc(_poses[p])+'\')" style="padding:10px 12px;font-size:9px;min-height:40px">'+esc(_poses[p])+'</button>';
+  }
+  html+='<button class="btn2" aria-label="Add custom pose photo" onclick="addCheckinPhoto(\'Custom\')" style="padding:10px 12px;font-size:9px;min-height:40px;border-color:var(--accB);color:var(--accBright)">+ CUSTOM</button>';
+  html+='</div>';
+  html+='<div style="margin-bottom:12px"><a href="#" role="button" onclick="localStorage.setItem(\'bm_comp_poses\',localStorage.getItem(\'bm_comp_poses\')===\'1\'?\'0\':\'1\');renderProgram();return false" style="font-size:10px;color:var(--acc);font-family:var(--mono);text-decoration:none;letter-spacing:.04em;display:inline-block;padding:8px 4px;min-height:32px;line-height:16px">'+(_showCompPoses?'\u25B2 Hide Competition Poses':'\u25BC Show Competition Poses')+'</a></div>';
+  /* Photo slots */
+  html+='<div id="ciPhotoSlots">';
+  html+=renderCheckinPhotoSlots();
+  html+='</div>';
+  html+='</div>';
+  /* Submit button */
+  html+='<button class="btn" id="ciSubmitBtn" aria-label="Submit weekly check-in" onclick="submitCheckin()" style="margin-top:12px">SUBMIT CHECK-IN</button>';
+  /* Last check-in */
+  if(c.checkins&&c.checkins.length){
+    var last=c.checkins[c.checkins.length-1];
+    var photoCount=last.photos?last.photos.length:0;
+    html+='<div class="cd" style="padding:14px;margin-top:12px"><div style="font-size:9px;font-weight:700;color:var(--dm);font-family:var(--mono);letter-spacing:.1em;margin-bottom:6px">LAST CHECK-IN</div>';
+    html+='<div style="font-size:11px;color:var(--ow);font-family:var(--mono)">'+fmtDatePortal(last.date||last.submittedAt);
+    if(last.weight)html+=' &middot; '+esc(last.weight)+' lbs';
+    html+=' &middot; '+photoCount+' photo'+(photoCount!==1?'s':'');
+    html+='</div></div>';
+  }
+  return html;
+}
+
+function renderCheckinPhotoSlots(){
+  if(!_checkinPhotos.length)return '<div style="text-align:center;padding:16px;color:var(--dm);font-size:11px">Tap a pose above to add photos</div>';
+  var html='';
+  for(var i=0;i<_checkinPhotos.length;i++){
+    var p=_checkinPhotos[i];
+    html+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;padding:8px;background:var(--glassB);border:1px solid var(--borderS);border-radius:10px">';
+    /* Thumbnail or placeholder */
+    if(p.preview){
+      html+='<div style="width:60px;height:76px;border-radius:6px;overflow:hidden;flex-shrink:0;background:var(--card);border:1px solid var(--borderS)"><img src="'+esc(p.preview)+'" alt="'+esc(p.label||"Progress photo")+'" style="width:100%;height:100%;object-fit:cover;display:block"></div>';
+    } else {
+      html+='<div role="button" tabindex="0" aria-label="Upload photo for '+esc(p.label)+'" onclick="triggerPhotoUpload('+i+')" style="width:60px;height:76px;border-radius:6px;flex-shrink:0;background:var(--card);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--dm)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>';
+    }
+    /* Label + actions */
+    html+='<div style="flex:1;min-width:0"><input value="'+esc(p.label)+'" aria-label="Pose label" onchange="_checkinPhotos['+i+'].label=this.value" placeholder="Pose label" style="font-size:16px;padding:8px 10px;margin-bottom:4px"></div>';
+    html+='<div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0">';
+    html+='<button class="btn2" aria-label="'+(p.file?'Change':'Upload')+' photo for '+esc(p.label)+'" onclick="triggerPhotoUpload('+i+')" style="padding:8px 10px;font-size:9px;min-height:34px">'+(p.file?'CHANGE':'UPLOAD')+'</button>';
+    html+='<button aria-label="Remove '+esc(p.label)+' photo" onclick="removeCheckinPhoto('+i+')" style="background:none;border:1px solid rgba(216,120,120,.3);color:var(--danger);width:36px;height:36px;min-height:36px;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg></button>';
+    html+='</div></div>';
+  }
+  return html;
+}
+
+function addCheckinPhoto(label){
+  _checkinPhotos.push({label:label,file:null,preview:null});
+  refreshCheckinSlots();
+  /* Auto-trigger file picker for the new slot */
+  setTimeout(function(){triggerPhotoUpload(_checkinPhotos.length-1);},150);
+}
+
+function removeCheckinPhoto(idx){
+  if(_checkinPhotos[idx]&&_checkinPhotos[idx].preview)URL.revokeObjectURL(_checkinPhotos[idx].preview);
+  _checkinPhotos.splice(idx,1);
+  refreshCheckinSlots();
+}
+
+function triggerPhotoUpload(idx){
+  var inp=document.createElement("input");
+  inp.type="file";inp.accept="image/*";inp.capture="environment";
+  inp.onchange=function(){
+    var file=inp.files[0];if(!file)return;
+    if(file.size>10*1024*1024){toast("Photo must be under 10MB");return;}
+    if(_checkinPhotos[idx].preview)URL.revokeObjectURL(_checkinPhotos[idx].preview);
+    _checkinPhotos[idx].file=file;
+    _checkinPhotos[idx].preview=URL.createObjectURL(file);
+    refreshCheckinSlots();
+  };
+  inp.click();
+}
+
+function refreshCheckinSlots(){
+  var el=document.getElementById("ciPhotoSlots");
+  if(el)el.innerHTML=renderCheckinPhotoSlots();
+}
+
+function submitCheckin(){
+  var weight=document.getElementById("ciWeight")?document.getElementById("ciWeight").value.trim():"";
+  var bf=document.getElementById("ciBf")?document.getElementById("ciBf").value.trim():"";
+  var notes=document.getElementById("ciNotes")?document.getElementById("ciNotes").value.trim():"";
+  if(!weight&&!notes&&!_checkinPhotos.length){toast("Add at least weight, notes, or photos");return;}
+  var phone=localStorage.getItem("bm_portal_phone");
+  if(!phone){toast("Session expired — please log in again");showSection("login");return;}
+  var sb=getSupabase();if(!sb){toast("Connection error");return;}
+  var btn=document.getElementById("ciSubmitBtn");
+  if(btn){btn.disabled=true;btn.textContent="UPLOADING...";}
+  var fd=new FormData();
+  fd.append("phone",phone);
+  fd.append("weight",weight);
+  fd.append("bodyFat",bf);
+  fd.append("notes",notes);
+  /* Attach only photos that have a file */
+  var realPhotos=_checkinPhotos.filter(function(p){return p.file;});
+  fd.append("photoCount",String(realPhotos.length));
+  for(var i=0;i<realPhotos.length;i++){
+    fd.append("photo_"+i,realPhotos[i].file);
+    fd.append("photoLabel_"+i,realPhotos[i].label||"Photo "+(i+1));
+  }
+  fetch(_BM_SB_URL+"/functions/v1/submit-checkin",{
+    method:"POST",
+    headers:{"Authorization":"Bearer "+_BM_SB_KEY},
+    body:fd
+  }).then(function(r){return r.json();}).then(function(data){
+    if(btn){btn.disabled=false;btn.textContent="SUBMIT CHECK-IN";}
+    if(data.success){
+      toast("\u2713 Check-in submitted");
+      /* Clean up previews */
+      for(var j=0;j<_checkinPhotos.length;j++){if(_checkinPhotos[j].preview)URL.revokeObjectURL(_checkinPhotos[j].preview);}
+      _checkinPhotos=[];
+      /* Re-fetch client data to show updated last check-in */
+      var myDigits=phone.replace(/\D/g,"").slice(-10);
+      sb.functions.invoke("find-client",{body:{phone:myDigits,mode:"full"}}).then(function(res){
+        if(res.data&&res.data.found&&res.data.client){_clientData=res.data.client;renderProgram();}
+      }).catch(function(){renderProgram();});
+    } else {
+      toast(data.error||"Failed to submit");
+    }
+  }).catch(function(){
+    if(btn){btn.disabled=false;btn.textContent="SUBMIT CHECK-IN";}
+    toast("Network error — please try again");
+  });
+}
+
+function fmtDatePortal(d){
+  if(!d)return"";
+  var dt=new Date(d.indexOf("T")>=0?d:d+"T12:00:00");
+  return(dt.getMonth()+1)+"/"+dt.getDate()+"/"+dt.getFullYear();
+}
+
+function renderOverviewSessions(){
+  var sb=getSupabase();
+  var container=document.getElementById("overviewSessions");
+  if(!container)return;
+  if(!sb||!_clientData){container.innerHTML=_emptySessionsHtml();return;}
+  var today=new Date().toISOString().split("T")[0];
+  sb.from("schedule").select("id,data").eq("data->>clientId",_clientData.id).then(function(res){
+    if(!res.data||!res.data.length){container.innerHTML=_emptySessionsHtml();return;}
+    var upcoming=res.data.filter(function(r){
+      var s=r.data;if(!s)return false;
+      return s.date>=today&&s.status!=="cancelled"&&s.status!=="complete";
+    }).sort(function(a,b){return(a.data.date+a.data.time).localeCompare(b.data.date+b.data.time);}).slice(0,3);
+    if(!upcoming.length){container.innerHTML=_emptySessionsHtml();return;}
+    var html="";
+    for(var i=0;i<upcoming.length;i++){var r=upcoming[i],s=r.data;
+      var dt=new Date(s.date+"T12:00:00");
+      var sessDate=new Date(s.date+"T"+(s.time||"12:00")+":00");
+      var hoursUntil=(sessDate-new Date())/(1e3*3600);
+      var cancelLabel=hoursUntil<48?"CANCEL (FEE)":"CANCEL";
+      html+='<div class="cd" style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-left:3px solid var(--acc)"><div style="text-align:center;min-width:44px"><div style="font-size:18px;font-weight:800;color:var(--acc);font-family:var(--mono)">'+dt.getDate()+'</div><div style="font-size:8px;color:var(--dm);font-family:var(--mono)">'+["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"][dt.getMonth()]+'</div></div><div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--wh)">'+(s.type||"Session")+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(s.time?formatTime12(s.time)+" ET":"TBD")+'</div></div><button aria-label="Cancel '+esc(s.type||"session")+' on '+esc(s.date||"")+'" onclick="cancelSession(\''+esc(r.id)+'\',\''+esc(s.clientName||"")+'\',\''+esc(s.date||"")+'\',\''+esc(s.time||"")+'\',\''+esc(s.type||"Session")+'\')" style="background:none;border:1px solid rgba(216,120,120,.3);color:var(--danger);font-family:var(--mono);font-size:8px;padding:5px 10px;border-radius:6px;cursor:pointer;letter-spacing:.06em">'+cancelLabel+'</button></div>';}
+    container.innerHTML=html;
+  }).catch(function(){container.innerHTML='<div style="text-align:center;padding:16px;color:var(--dm);font-size:11px;font-family:var(--mono)">Could not load sessions</div>';});
+}
+function _emptySessionsHtml(){
+  return '<div style="text-align:center;padding:24px 16px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--dm)" stroke-width="1.2" style="margin-bottom:8px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><div style="font-size:11px;color:var(--dm);font-family:var(--mono);margin-bottom:12px">No sessions scheduled</div><a href="book.html" aria-label="Book a session" class="btn" style="display:inline-block;padding:12px 28px;width:auto;text-decoration:none;font-size:10px">BOOK A SESSION</a></div>';
+}
+function formatTime12(t){if(!t)return"TBD";var p=t.split(":");var h=parseInt(p[0]);var ap=h>=12?"PM":"AM";var h12=h===0?12:h>12?h-12:h;return h12+":"+p[1]+" "+ap;}
+var _cancelLock=false;
+function cancelSession(id,name,date,time,type){
+  if(_cancelLock)return;_cancelLock=true;setTimeout(function(){_cancelLock=false;},2000);
+  var sessDate=new Date(date+"T"+(time||"12:00")+":00");
+  var hoursUntil=(sessDate-new Date())/(1e3*3600);
+  if(hoursUntil<0){toast("This session has already passed.");return;}
+  /* Determine fee tier */
+  var feeText,confirmBtnText;
+  var nightBefore=new Date(sessDate);nightBefore.setDate(nightBefore.getDate()-1);nightBefore.setHours(20,0,0,0);
+  var isAfterNightBefore=new Date()>=nightBefore;
+  if(hoursUntil>=48){
+    feeText="No cancellation fee applies. Cancel this session?";
+    confirmBtnText="CANCEL SESSION";
+  } else if(!isAfterNightBefore){
+    feeText="A late cancellation fee may apply per your coaching agreement.";
+    confirmBtnText="CANCEL SESSION";
+  } else {
+    feeText="Same-day cancellations are subject to a fee per your coaching agreement.";
+    confirmBtnText="CANCEL SESSION";
+  }
+  _showCancelModal(type,date,time,feeText,confirmBtnText,function(){_doCancel(id,name,date,time,type);});
+}
+function _showCancelModal(type,date,time,feeText,confirmBtnText,onConfirm){
+  var overlay=document.createElement("div");
+  overlay.style.cssText="position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s ease";
+  var box=document.createElement("div");
+  box.style.cssText="background:linear-gradient(160deg,rgba(12,12,12,.99),rgba(6,6,6,.99));border:1.5px solid var(--borderH);border-radius:16px;padding:24px;max-width:360px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,.6)";
+  box.innerHTML='<div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.15em;margin-bottom:12px">CANCEL SESSION</div>'
+    +'<div style="font-size:12px;color:var(--ow);margin-bottom:12px;font-weight:600">'+esc(type)+' on '+esc(date)+' at '+formatTime12(time)+'</div>'
+    +'<div style="font-size:12px;color:var(--wh);line-height:1.6;margin-bottom:20px">'+esc(feeText)+'</div>'
+    +'<div style="display:flex;gap:8px"><button id="_cancelKeep" aria-label="Keep this session" class="btn2" style="flex:1;padding:12px">KEEP SESSION</button><button id="_cancelConfirm" aria-label="Confirm cancellation" style="flex:1;padding:12px;background:rgba(216,120,120,.08);border:1.5px solid rgba(216,120,120,.3);color:var(--danger);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.06em;border-radius:10px;cursor:pointer">'+esc(confirmBtnText)+'</button></div>';
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  overlay.addEventListener("click",function(e){if(e.target===overlay){overlay.remove();}});
+  box.querySelector("#_cancelKeep").onclick=function(){overlay.remove();};
+  box.querySelector("#_cancelConfirm").onclick=function(){overlay.remove();onConfirm();};
+}
+function _doCancel(id,name,date,time,type){
+  var sb=getSupabase();if(!sb){toast("Connection error");return;}
+  /* Try edge function first, fall back to direct status update */
+  sb.functions.invoke("cancel-booking",{body:{scheduleId:id,clientName:name,clientPhone:(_clientData&&_clientData.phone)||"",date:date,time:time,type:type,cancelledBy:"client"}}).then(function(res){
+    toast("Session cancelled");renderOverviewSessions();
+  }).catch(function(){
+    /* Fallback: directly update schedule status if edge function not deployed yet */
+    sb.from("schedule").select("id,data").eq("id",id).single().then(function(r){
+      if(r.data&&r.data.data){
+        var d=r.data.data;
+        var myPhone=localStorage.getItem("bm_portal_phone")||"";
+        function _pd(p){if(!p)return"";var dg=p.replace(/\D/g,"");return dg.length>10?dg.slice(-10):dg;}
+        if(_pd(d.clientPhone)!==_pd(myPhone)){toast("Unauthorized");return;}
+        d.status="cancelled";d.cancelledAt=new Date().toISOString();
+        sb.from("schedule").upsert({id:id,data:d,updated_at:new Date().toISOString()},{onConflict:"id"}).then(function(){
+          toast("Session cancelled");renderOverviewSessions();
+        }).catch(function(){toast("Failed to cancel \u2014 contact coach directly");});
+      }else{toast("Failed to cancel \u2014 contact coach directly");}
+    }).catch(function(){toast("Failed to cancel \u2014 contact coach directly");});
+  });
+}
+
+/* ── CLIENT MESSAGES ── */
+var _portalMessages=[];
+var _portalAttachment=null; /* {file,url,type,name} pending attachment */
+var _portalMsgPoll=null;
+var _portalMsgDraft="";
+
+function loadMessages(clientId,cb){
+  var sb=getSupabase();if(!sb){if(cb)cb();return;}
+  sb.from("messages").select("id,data").eq("data->>clientId",clientId).then(function(res){
+    if(!res.error&&res.data){
+      var _msgRows=res.data;
+      _portalMessages=_msgRows.map(function(r){var d=r.data;d._rowId=r.id;return d;}).sort(function(a,b){return new Date(a.timestamp)-new Date(b.timestamp);});
+      /* Only mark as read when user is viewing messages tab */
+      if(_activeTab==="messages"){_markPortalMsgsRead();}
+    }
+    if(cb)cb();
+  }).catch(function(){if(cb)cb();});
+}
+function _markPortalMsgsRead(){
+  var sb=getSupabase();if(!sb)return;
+  var unread=_portalMessages.filter(function(m){return m.from==="coach"&&!m.read;});
+  if(unread.length){unread.forEach(function(m){m.read=true;sb.from("messages").upsert({id:m._rowId,data:m,updated_at:new Date().toISOString()},{onConflict:"id"});});}
+}
+function _portalUnreadCount(){
+  return _portalMessages.filter(function(m){return m.from==="coach"&&!m.read;}).length;
+}
+
+function renderMyProgress(c){
+  /* Build chronological timeline from coach messages with image attachments + client's own check-ins */
+  var items=[];
+  /* Branded comparisons & coach-sent photos */
+  _portalMessages.forEach(function(m){
+    if(m.from!=="coach"||!m.attachment)return;
+    var a=m.attachment;
+    if(!a.type||!a.type.indexOf)return;
+    if(a.type.indexOf("image/")!==0&&a.type.indexOf("video/")!==0)return;
+    items.push({
+      kind:(m.meta&&m.meta.kind==="progress_compare")?"compare":"photo",
+      date:m.timestamp,
+      url:a.url,
+      name:a.name||"progress.jpg",
+      type:a.type,
+      text:m.text||"",
+      pose:(m.meta&&m.meta.pose)||"",
+      meta:m.meta||null
+    });
+  });
+  /* Client's own check-ins */
+  if(c.checkins&&c.checkins.length){
+    c.checkins.forEach(function(ci){
+      if(ci.photos&&ci.photos.length){
+        var photoUrls=ci.photos.map(function(p){return typeof p==="string"?p:(p&&p.url)||"";}).filter(function(u){return u;});
+        if(photoUrls.length){
+          items.push({
+            kind:"checkin",
+            date:ci.date||ci.created_at||new Date().toISOString(),
+            photos:photoUrls,
+            weight:ci.weight||"",
+            notes:ci.notes||"",
+            weekLabel:ci.weekLabel||"Check-In"
+          });
+        }
+      }
+    });
+  }
+  items.sort(function(a,b){return new Date(b.date)-new Date(a.date);});
+
+  var html='<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">'
+    +'<div style="font-family:var(--display);font-size:22px;font-weight:700;color:var(--ice);letter-spacing:.03em">My Progress</div></div>'
+    +'<div style="height:1px;background:linear-gradient(90deg,transparent,var(--accDeep),var(--acc),var(--accDeep),transparent);margin-bottom:20px;opacity:.5"></div>';
+
+  if(!items.length){
+    html+='<div class="cd" style="padding:40px 20px;text-align:center;border:1px dashed var(--borderH)">'
+      +'<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--dm)" stroke-width="1.2" style="margin-bottom:14px;opacity:.6"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>'
+      +'<div style="font-size:13px;color:var(--mu);margin-bottom:8px;font-family:var(--display)">Your transformation starts here</div>'
+      +'<div style="font-size:11px;color:var(--dm);font-family:var(--mono);line-height:1.6;max-width:300px;margin:0 auto">Your progress timeline will appear here as Coach Mike tracks your transformation.</div></div>';
+    return html;
+  }
+
+  html+='<div style="font-size:9px;color:var(--dm);font-family:var(--mono);letter-spacing:.1em;margin-bottom:14px">'+items.length+' MILESTONE'+(items.length!==1?"S":"")+' \u00b7 TAP ANY IMAGE TO SAVE</div>';
+
+  items.forEach(function(it,idx){
+    var d=new Date(it.date);
+    var dateStr=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"][d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
+    html+='<div class="cd" style="padding:0;margin-bottom:16px;overflow:hidden;border-left:3px solid '+(it.kind==="compare"?"var(--acc)":"var(--borderH)")+'">';
+    html+='<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(200,160,40,.03);border-bottom:1px solid var(--borderS)">'
+      +'<div style="font-size:10px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.12em">'+esc(dateStr.toUpperCase())+'</div>'
+      +'<div style="font-size:8px;color:var(--dm);font-family:var(--mono);letter-spacing:.08em">'+(it.kind==="compare"?"FROM COACH":it.kind==="photo"?"FROM COACH":"CHECK-IN")+'</div>'
+      +'</div>';
+
+    if(it.kind==="compare"||it.kind==="photo"){
+      html+='<div style="position:relative;background:#000">';
+      if(it.type&&it.type.indexOf("video/")===0){
+        html+='<video src="'+esc(it.url)+'" controls playsinline preload="metadata" style="display:block;width:100%;max-height:520px;object-fit:contain;background:#000"></video>';
+      } else {
+        html+='<img src="'+esc(it.url)+'" alt="Progress" loading="lazy" onclick="_portalLightbox(\''+esc(it.url).replace(/'/g,"\\'")+'\')" style="display:block;width:100%;max-height:580px;object-fit:contain;background:#000;cursor:zoom-in">';
+      }
+      html+='<button onclick="event.stopPropagation();_portalDownload(\''+esc(it.url).replace(/'/g,"\\'")+'\',\''+esc(it.name||"progress.jpg").replace(/'/g,"\\'")+'\')" aria-label="Download" style="position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>';
+      html+='</div>';
+      if(it.kind==="compare"&&it.pose){
+        html+='<div style="padding:10px 16px 4px;font-size:11px;color:var(--acc);font-family:var(--mono);letter-spacing:.06em">'+esc(it.pose.replace(/_/g," ").replace(/\b\w/g,function(c){return c.toUpperCase();}))+'</div>';
+      }
+      if(it.text){
+        html+='<div style="padding:12px 16px 14px;font-size:12px;color:var(--ow);line-height:1.55;font-style:italic">\u201C'+esc(it.text)+'\u201D</div>'
+          +'<div style="padding:0 16px 14px;font-size:9px;color:var(--dm);font-family:var(--mono);letter-spacing:.08em;text-align:right">\u2014 COACH MIKE</div>';
+      }
+    } else if(it.kind==="checkin"){
+      html+='<div style="padding:14px 16px">';
+      html+='<div style="font-size:12px;color:var(--wh);font-weight:600;margin-bottom:6px">'+esc(it.weekLabel)+(it.weight?' \u00b7 '+esc(it.weight)+' lbs':'')+'</div>';
+      if(it.notes)html+='<div style="font-size:11px;color:var(--mu);line-height:1.5;margin-bottom:10px">'+esc(it.notes)+'</div>';
+      var n=it.photos.length;
+      var cols=n>=3?3:n;
+      html+='<div style="display:grid;grid-template-columns:repeat('+cols+',1fr);gap:6px">';
+      it.photos.forEach(function(purl){
+        html+='<div style="position:relative;aspect-ratio:3/4;border-radius:6px;overflow:hidden;background:var(--card);border:1px solid var(--borderS)">'
+          +'<img src="'+esc(purl)+'" alt="Check-in photo" loading="lazy" onclick="_portalLightbox(\''+esc(purl).replace(/'/g,"\\'")+'\')" style="width:100%;height:100%;object-fit:cover;cursor:zoom-in;display:block">'
+          +'<button onclick="event.stopPropagation();_portalDownload(\''+esc(purl).replace(/'/g,"\\'")+'\',\'checkin.jpg\')" aria-label="Download" style="position:absolute;top:4px;right:4px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.72);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5 a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button></div>';
+      });
+      html+='</div></div>';
+    }
+    html+='</div>';
+  });
+  return html;
+}
+
+function renderMessages(c){
+  var html='<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">'
+    +'<div style="width:36px;height:36px;border-radius:10px;background:var(--goldGrad);background-size:200% 100%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:18px;font-weight:900;color:var(--bg);flex-shrink:0;box-shadow:0 2px 10px var(--accM);animation:shimmer 3s ease-in-out infinite">M</div>'
+    +'<div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--ice)">Coach Mike</div>'
+    +'<div style="font-size:9px;color:var(--dm);font-family:var(--mono)">'+_portalMessages.length+' message'+(_portalMessages.length!==1?'s':'')+'</div></div></div>'
+    +'<div style="height:1px;background:linear-gradient(90deg,transparent,var(--accDeep),var(--acc),var(--accDeep),transparent);margin-bottom:14px;opacity:.5"></div>';
+
+  /* Thread area */
+  html+='<div id="portalMsgThread" style="padding:4px 0;margin-bottom:14px">';
+  if(!_portalMessages.length){
+    html+='<div style="text-align:center;padding:40px 20px"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--dm)" stroke-width="1.5" style="margin-bottom:12px;opacity:.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>'
+      +'<div style="color:var(--dm);font-size:13px;margin-bottom:6px">No messages yet</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">Send your coach a message below</div></div>';
+  } else {
+    var lastDate="",lastFrom="";
+    for(var i=0;i<_portalMessages.length;i++){
+      var m=_portalMessages[i];var isCoach=m.from==="coach";
+      var time=new Date(m.timestamp);
+      var dateStr=(time.getMonth()+1)+"/"+time.getDate()+"/"+time.getFullYear();
+      if(dateStr!==lastDate){
+        html+='<div style="display:flex;align-items:center;gap:10px;margin:16px 0 10px">'
+          +'<div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--accDeep) 80%,var(--acc))"></div>'
+          +'<div style="font-size:9px;color:var(--dm);font-family:var(--mono);letter-spacing:.06em;flex-shrink:0">'+dateStr+'</div>'
+          +'<div style="flex:1;height:1px;background:linear-gradient(90deg,var(--acc),var(--accDeep) 20%,transparent)"></div></div>';
+        lastDate=dateStr;lastFrom="";
+      }
+      var gap=(lastFrom===m.from)?"3px":"8px";lastFrom=m.from;
+      var timeStr=((time.getHours()%12)||12)+":"+String(time.getMinutes()).padStart(2,"0")+(time.getHours()>=12?" PM":" AM");
+      html+='<div style="display:flex;justify-content:'+(isCoach?'flex-start':'flex-end')+';margin-bottom:'+gap+'">'
+        +'<div style="max-width:80%;padding:10px 14px;border-radius:'+(isCoach?'14px 14px 14px 4px':'14px 14px 4px 14px')+';background:'+(isCoach?'var(--glassB)':'var(--accGlow)')+';border:1px solid '+(isCoach?'var(--borderS)':'var(--accB)')+';box-shadow:'+(isCoach?'0 2px 8px rgba(0,0,0,.2)':'0 2px 8px rgba(200,160,40,.12)')+'">';
+      if(m.attachment){html+=_renderPortalAttachment(m.attachment);}
+      if(m.text){html+='<div style="font-size:12px;color:var(--wh);line-height:1.5;word-break:break-word">'+esc(m.text)+'</div>';}
+      html+='<div style="font-size:8px;color:var(--dm);font-family:var(--mono);margin-top:4px;text-align:'+(isCoach?'left':'right')+'">'+timeStr+'</div></div></div>';
+    }
+  }
+  html+='</div>';
+
+  /* Attachment preview */
+  if(_portalAttachment){
+    html+='<div id="portalAttachPreview" style="padding:8px 0;display:flex;align-items:center;gap:8px">';
+    if(_portalAttachment.type&&_portalAttachment.type.startsWith("image/")){html+='<img src="'+esc(_portalAttachment.url)+'" alt="'+esc(_portalAttachment.name||"attachment")+'" style="height:48px;width:auto;border-radius:8px;border:1px solid var(--borderS)">';}
+    else if(_portalAttachment.type&&_portalAttachment.type.startsWith("video/")){html+='<div style="width:48px;height:48px;border-radius:8px;background:var(--glassB);border:1px solid var(--borderS);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--acc)" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>';}
+    else{html+='<div style="width:48px;height:48px;border-radius:8px;background:var(--glassB);border:1px solid var(--borderS);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>';}
+    html+='<div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--wh);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(_portalAttachment.name)+'</div>'
+      +'<div style="font-size:9px;color:var(--dm);font-family:var(--mono)">'+_portalFmtSize(_portalAttachment.file.size)+'</div></div>'
+      +'<button onclick="_portalClearAttach()" aria-label="Remove attachment" style="width:28px;height:28px;border-radius:8px;background:rgba(216,120,120,.15);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">'
+      +'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>';
+  }
+
+  /* Sticky compose bar */
+  html+='<div style="position:sticky;bottom:0;background:var(--bg);padding:12px 0 max(12px,env(safe-area-inset-bottom)) 0;border-top:1px solid var(--borderS)">'
+    +'<input type="file" id="portalFileInput" accept="image/*,video/*,.pdf" style="display:none" onchange="_portalFileSelected(this)">'
+    +'<div style="display:flex;gap:8px;align-items:flex-end">'
+    +'<button onclick="document.getElementById(\'portalFileInput\').click()" aria-label="Attach file" style="width:44px;height:44px;border-radius:12px;background:var(--glassB);border:1.5px solid var(--borderH);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:border-color .2s">'
+    +'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg></button>'
+    +'<textarea id="portalMsgInput" aria-label="Message your coach" placeholder="Message your coach..." onkeydown="portalMsgKeydown(event)" oninput="_portalMsgDraft=this.value;this.style.height=\'auto\';this.style.height=Math.min(this.scrollHeight,120)+\'px\'" style="flex:1;min-height:44px;max-height:120px;resize:none;padding:12px 14px;font-size:13px;font-family:var(--body);background:var(--glassB);border:1.5px solid var(--borderH);border-radius:10px;color:var(--wh);outline:none;box-sizing:border-box;transition:border-color .2s" rows="1" maxlength="2000">'+esc(_portalMsgDraft)+'</textarea>'
+    +'<button id="portalSendBtn" onclick="sendPortalMessage()" aria-label="Send message" style="width:44px;height:44px;border-radius:12px;background:var(--goldGrad);background-size:200% 100%;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;animation:shimmer 3s ease-in-out infinite;box-shadow:0 2px 12px var(--accM)">'
+    +'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--bg)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div></div>';
+
+  startPortalMsgPolling();
+  setTimeout(function(){var t=document.getElementById("portalMsgThread");if(t)t.scrollTop=t.scrollHeight;},100);
+  return html;
+}
+
+function portalMsgKeydown(e){
+  if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendPortalMessage();}
+}
+
+var _portalSending=false;
+function sendPortalMessage(){
+  if(_portalSending)return;
+  var inp=document.getElementById("portalMsgInput");if(!inp)return;
+  var text=inp.value.trim();
+  var hasAttach=!!_portalAttachment;
+  if(!text&&!hasAttach){toast("Type a message first");return;}
+  if(text.length>2000){toast("Message too long");return;}
+  var phone=localStorage.getItem("bm_portal_phone");
+  if(!phone){toast("Session expired — please log in again");showSection("login");return;}
+  var sb=getSupabase();if(!sb){toast("Connection error");return;}
+  _portalSending=true;
+  inp.disabled=true;
+  var _sendBtn=document.getElementById("portalSendBtn");
+  if(_sendBtn){_sendBtn.disabled=true;_sendBtn.style.opacity="0.55";_sendBtn.style.cursor="default";}
+  function _portalUnlock(){_portalSending=false;inp.disabled=false;if(_sendBtn){_sendBtn.disabled=false;_sendBtn.style.opacity="";_sendBtn.style.cursor="pointer";}}
+
+  function _doPortalSend(attachData){
+    var body={phone:phone,text:text};
+    if(attachData)body.attachment=attachData;
+    sb.functions.invoke("send-client-message",{body:body}).then(function(res){
+      _portalUnlock();
+      if(res.error){toast("Failed to send");return;}
+      var data=res.data;
+      if(data&&data.success){
+        inp.value="";inp.style.height="auto";_portalAttachment=null;_portalMsgDraft="";
+        toast("Sent");
+        loadMessages(_clientData.id,function(){
+          renderProgram();
+          setTimeout(function(){var t=document.getElementById("portalMsgThread");if(t)t.scrollTop=t.scrollHeight;},100);
+        });
+      } else {
+        toast(data&&data.error?data.error:"Failed to send");
+      }
+    }).catch(function(){_portalUnlock();toast("Failed to send");});
+  }
+
+  if(hasAttach){
+    _portalUploadAttachment(_portalAttachment.file,function(attachData){
+      if(!attachData){_portalUnlock();toast("Upload failed");return;}
+      _doPortalSend(attachData);
+    });
+  } else {
+    _doPortalSend(null);
+  }
+}
+/* Portal attachment helpers */
+function _portalFmtSize(b){if(b<1024)return b+" B";if(b<1048576)return(b/1024).toFixed(1)+" KB";return(b/1048576).toFixed(1)+" MB";}
+function _portalFileSelected(input){
+  var f=input.files&&input.files[0];if(!f)return;
+  var maxSize=f.type.startsWith("video/")?52428800:10485760;
+  if(f.size>maxSize){toast("File too large ("+(f.type.startsWith("video/")?"50":"10")+"MB max)");input.value="";return;}
+  _portalAttachment={file:f,url:URL.createObjectURL(f),type:f.type,name:f.name};
+  renderProgram();
+  input.value="";
+}
+function _portalClearAttach(){if(_portalAttachment&&_portalAttachment.url)URL.revokeObjectURL(_portalAttachment.url);_portalAttachment=null;renderProgram();}
+function _portalUploadAttachment(file,cb){
+  var sb=getSupabase();if(!sb){cb(null);return;}
+  var ext=file.name.split(".").pop().toLowerCase();
+  var path="msg/"+Date.now()+"_"+Math.random().toString(36).slice(2,8)+"."+ext;
+  sb.storage.from("message-attachments").upload(path,file,{cacheControl:"3600",upsert:false}).then(function(res){
+    if(res.error){console.error("Upload error:",res.error);cb(null);return;}
+    var publicUrl=sb.storage.from("message-attachments").getPublicUrl(path).data.publicUrl;
+    cb({url:publicUrl,type:file.type,name:file.name,size:file.size});
+  }).catch(function(e){console.error("Upload error:",e);cb(null);});
+}
+function _renderPortalAttachment(a){
+  var h="";
+  var wrap="position:relative;margin-bottom:6px;display:inline-block;max-width:100%";
+  if(a.type&&a.type.startsWith("image/")){
+    h+='<div style="'+wrap+'"><img src="'+esc(a.url)+'" alt="'+esc(a.name)+'" style="max-width:100%;max-height:320px;border-radius:8px;display:block;cursor:pointer" onclick="_portalLightbox(\''+esc(a.url).replace(/'/g,"\\'")+'\')">'
+      +'<button onclick="event.stopPropagation();_portalDownload(\''+esc(a.url).replace(/'/g,"\\'")+'\',\''+esc(a.name||"image").replace(/'/g,"\\'")+'\')" aria-label="Download image" style="position:absolute;top:6px;right:6px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button></div>';
+  } else if(a.type&&a.type.startsWith("video/")){
+    h+='<div style="'+wrap+'"><video src="'+esc(a.url)+'" controls playsinline preload="metadata" style="max-width:100%;max-height:320px;border-radius:8px;display:block"></video>'
+      +'<button onclick="event.stopPropagation();_portalDownload(\''+esc(a.url).replace(/'/g,"\\'")+'\',\''+esc(a.name||"video").replace(/'/g,"\\'")+'\')" aria-label="Download video" style="position:absolute;top:6px;right:6px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button></div>';
+  } else {
+    h+='<a href="'+esc(a.url)+'" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,.05);border-radius:8px;border:1px solid var(--borderS);text-decoration:none;margin-bottom:6px">'
+      +'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'
+      +'<div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--acc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(a.name)+'</div>'
+      +'<div style="font-size:8px;color:var(--dm);font-family:var(--mono)">'+_portalFmtSize(a.size)+'</div></div></a>';
+  }
+  return h;
+}
+function _portalDownload(url,name){
+  try{
+    var a=document.createElement("a");
+    a.href=url;a.download=name||"download";
+    a.target="_blank";a.rel="noopener";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){a.remove();},100);
+    try{toast("\u2713 Saving...");}catch(e){}
+  }catch(e){window.open(url,"_blank");}
+}
+function _portalLightbox(url){
+  var existing=document.getElementById("_portalLightbox");if(existing)existing.remove();
+  var ov=document.createElement("div");
+  ov.id="_portalLightbox";
+  ov.style.cssText="position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.97);display:flex;align-items:center;justify-content:center;cursor:zoom-out;animation:fadeIn .2s ease;touch-action:none";
+  ov.onclick=function(e){if(e.target===ov)ov.remove();};
+  ov.innerHTML='<img src="'+esc(url)+'" style="max-width:96vw;max-height:96vh;object-fit:contain;display:block"><button onclick="this.parentElement.remove()" aria-label="Close" style="position:fixed;top:max(20px,env(safe-area-inset-top));right:20px;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center">&times;</button><button onclick="event.stopPropagation();_portalDownload(\''+esc(url).replace(/'/g,"\\'")+'\',\'photo.jpg\')" aria-label="Download" style="position:fixed;bottom:max(24px,env(safe-area-inset-bottom));right:20px;width:48px;height:48px;border-radius:50%;background:var(--goldGrad);background-size:200% 100%;animation:shimmer 3s ease-in-out infinite;border:none;color:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px var(--accM)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>';
+  document.body.appendChild(ov);
+}
+
+function _portalCaptureDraft(){
+  var inp=document.getElementById("portalMsgInput");
+  if(inp)_portalMsgDraft=inp.value;
+}
+function _portalRestoreDraft(){
+  var inp=document.getElementById("portalMsgInput");
+  if(inp&&_portalMsgDraft){inp.value=_portalMsgDraft;inp.style.height="auto";inp.style.height=Math.min(inp.scrollHeight,120)+"px";}
+}
+function startPortalMsgPolling(){
+  stopPortalMsgPolling();
+  if(!_clientData)return;
+  _portalMsgPoll=setInterval(function(){
+    var prevCount=_portalMessages.length;
+    /* Capture draft BEFORE any async work so we never lose it */
+    _portalCaptureDraft();
+    loadMessages(_clientData.id,function(){
+      if(_activeTab==="messages"&&_portalMessages.length!==prevCount){
+        renderProgram();
+        _portalRestoreDraft();
+        setTimeout(function(){var t=document.getElementById("portalMsgThread");if(t)t.scrollTop=t.scrollHeight;},100);
+      } else if(_activeTab!=="messages"){
+        /* Update tab badge without re-rendering chat */
+        renderProgram();
+      }
+    });
+  },15000);
+}
+function stopPortalMsgPolling(){if(_portalMsgPoll){clearInterval(_portalMsgPoll);_portalMsgPoll=null;}}
+
+/* Helpers */
+function showSection(name){
+  document.querySelectorAll(".section").forEach(function(s){s.classList.remove("active");});
+  var sec=document.getElementById("sec-"+name);
+  if(sec)sec.classList.add("active");
+  /* Toggle the premium hero-photo background only on pre-auth screens.
+     login / pin-create / pin-enter / forgot-pin / noprogram all qualify —
+     the dashboard (program) does not. Keeps text legibility strong on
+     content-dense screens and gives the login a premium "welcome lobby"
+     feel. */
+  var authScreens=["login","pin-create","pin-enter","forgot-pin","noprogram"];
+  if(authScreens.indexOf(name)>=0){document.body.classList.add("auth-bg-on");}
+  else{document.body.classList.remove("auth-bg-on");}
+  window.scrollTo(0,0);
+}
+
+function portalLogout(){
+  var ov=document.createElement("div");
+  ov.style.cssText="position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s ease";
+  var box=document.createElement("div");
+  box.style.cssText="background:linear-gradient(160deg,rgba(12,12,12,.99),rgba(6,6,6,.99));border:1.5px solid var(--borderH);border-radius:16px;padding:24px;max-width:360px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.6)";
+  box.innerHTML='<div class="sl" style="margin-bottom:12px">LOG OUT</div><div style="font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:20px">You will need your PIN to sign back in.</div><div style="display:flex;gap:8px"><button class="btn2" style="flex:1" id="_logoutCancel">CANCEL</button><button class="btn" style="flex:1;font-size:10px" id="_logoutConfirm">LOG OUT</button></div>';
+  ov.appendChild(box);
+  document.body.appendChild(ov);
+  ov.addEventListener("click",function(e){if(e.target===ov)ov.remove();});
+  document.getElementById("_logoutCancel").onclick=function(){ov.remove();};
+  document.getElementById("_logoutConfirm").onclick=function(){
+    ov.remove();
+    stopPortalMsgPolling();
+    /* Revoke any blob URLs to prevent memory leaks */
+    if(_checkinPhotos&&_checkinPhotos.length){
+      for(var _li=0;_li<_checkinPhotos.length;_li++){if(_checkinPhotos[_li].preview)URL.revokeObjectURL(_checkinPhotos[_li].preview);}
+    }
+    if(_portalAttachment&&_portalAttachment.url)URL.revokeObjectURL(_portalAttachment.url);
+    _clientData=null;_pendingClient=null;_activeTab="overview";_portalMessages=[];
+    _checkinPhotos=[];_portalAttachment=null;_viewingProgram=null;_pendingPhone="";_verifiedResetCode="";
+    _clientMuted=false;_portalPushSub=null;_portalMsgDraft="";
+    localStorage.removeItem("bm_portal_phone");
+    localStorage.removeItem("bm_portal_login_ts");
+    localStorage.removeItem("bm_portal_token");
+    localStorage.removeItem("bm_portal_token_phone");
+    /* Clear per-session prompt state so a different user doesn't inherit it */
+    localStorage.removeItem("bm_portal_notif_prompted");
+    /* Clear phone input on login screen */
+    var pEl=document.getElementById("portalPhone");if(pEl)pEl.value="";
+    showSection("login");
+  };
+}
+
+/* ── PORTAL SETTINGS ── */
+function showPortalSettings(){
+  var overlay=document.createElement("div");
+  overlay.id="portalSettingsOverlay";
+  overlay.style.cssText="position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:999;overflow-y:auto;-webkit-overflow-scrolling:touch;animation:fadeIn .2s ease";
+  overlay.addEventListener("click",function(e){if(e.target===overlay)closePortalSettings();});
+  var wrap=document.createElement("div");
+  wrap.style.cssText="max-width:480px;margin:0 auto;padding:20px 16px 40px;min-height:100%";
+
+  var textSize=localStorage.getItem("bm_portal_textsize")||"medium";
+  var theme=localStorage.getItem("bm_portal_theme")||"gold";
+
+  var html='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px"><div style="font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice)">Settings</div><button aria-label="Close settings" onclick="closePortalSettings()" style="background:none;border:1px solid var(--borderS);border-radius:8px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dm)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg></button></div>';
+
+  /* Text Size */
+  html+='<div style="margin-bottom:20px"><div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.15em;margin-bottom:10px">TEXT SIZE</div>';
+  html+='<div class="cd" style="padding:14px"><div style="display:flex;gap:6px">';
+  html+='<div class="chip'+(textSize==="small"?" on":"")+'" role="button" tabindex="0" aria-label="Set text size to small" onclick="setPortalTextSize(\'small\')">SMALL</div>';
+  html+='<div class="chip'+(textSize==="medium"?" on":"")+'" role="button" tabindex="0" aria-label="Set text size to medium" onclick="setPortalTextSize(\'medium\')">MEDIUM</div>';
+  html+='<div class="chip'+(textSize==="large"?" on":"")+'" role="button" tabindex="0" aria-label="Set text size to large" onclick="setPortalTextSize(\'large\')">LARGE</div>';
+  html+='</div></div></div>';
+
+  /* App Theme */
+  html+='<div style="margin-bottom:20px"><div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.15em;margin-bottom:10px">APP THEME</div>';
+  html+='<div class="cd" style="padding:14px"><div style="display:flex;gap:6px">';
+  html+='<div class="chip'+(theme==="gold"?" on":"")+'" role="button" tabindex="0" aria-label="Set theme to gold" onclick="setPortalThemeLocal(\'gold\')">GOLD</div>';
+  html+='<div class="chip'+(theme==="crimson"?" on":"")+'" role="button" tabindex="0" aria-label="Set theme to crimson" onclick="setPortalThemeLocal(\'crimson\')">CRIMSON</div>';
+  html+='</div></div></div>';
+
+  /* Notifications */
+  html+='<div style="margin-bottom:20px"><div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.15em;margin-bottom:10px">NOTIFICATIONS</div>';
+  html+='<div class="cd" style="padding:14px"><div style="display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:500;color:var(--wh)">Push Notifications</div><div style="font-size:10px;color:var(--dm)">Session reminders &amp; coach messages</div></div><div class="chip'+(!_clientMuted?" on":"")+'" role="button" tabindex="0" aria-label="Toggle push notifications" onclick="toggleClientMute();setTimeout(showPortalSettings,200)" style="min-width:40px;text-align:center">'+(!_clientMuted?"ON":"OFF")+'</div></div></div></div>';
+
+  /* Change PIN */
+  var hasPIN=_clientData&&_clientData.pinHash;
+  html+='<div style="margin-bottom:20px"><div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.15em;margin-bottom:10px">SECURITY</div>';
+  html+='<div class="cd" style="padding:14px;margin-bottom:8px"><div role="button" tabindex="0" aria-label="Change PIN" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="closePortalSettings();showChangePinModal()"><div><div style="font-size:13px;font-weight:500;color:var(--wh)">Change PIN</div><div style="font-size:10px;color:var(--dm)">'+(hasPIN?'Update your 4-digit PIN':'Set a personal PIN for quick login')+'</div></div><span style="font-size:14px;color:var(--dm)">&rsaquo;</span></div></div>';
+  /* 2FA Toggle */
+  var twoFA=_clientData&&_clientData.twoFactorEnabled;
+  html+='<div class="cd" style="padding:14px"><div style="display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:500;color:var(--wh)">Two-Factor Authentication</div><div style="font-size:10px;color:var(--dm)">Require SMS code on every login</div></div><div class="chip'+(twoFA?" on":"")+'" role="button" tabindex="0" aria-label="Toggle two-factor authentication" onclick="toggle2FA();setTimeout(showPortalSettings,300)" style="min-width:40px;text-align:center">'+(twoFA?"ON":"OFF")+'</div></div></div></div>';
+
+  /* Cancellation Policy */
+  html+='<div style="margin-bottom:20px"><div style="font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.15em;margin-bottom:10px">CANCELLATION POLICY</div>';
+  html+='<div class="cd" style="padding:14px"><div style="font-size:11px;color:var(--ow);line-height:1.7">';
+  html+='<div style="margin-bottom:8px"><strong style="color:var(--wh)">48+ hours before session:</strong> Free cancellation, no fee.</div>';
+  html+='<div style="margin-bottom:8px"><strong style="color:var(--wh)">Under 48 hours:</strong> Late cancellation fee may apply.</div>';
+  html+='<div><strong style="color:var(--wh)">Same day:</strong> Subject to fee per your coaching agreement.</div>';
+  html+='</div></div></div>';
+
+  wrap.innerHTML=html;
+  overlay.appendChild(wrap);
+  document.body.appendChild(overlay);
+}
+function closePortalSettings(){
+  var o=document.getElementById("portalSettingsOverlay");
+  if(o)o.remove();
+}
+function setPortalTextSize(size){
+  localStorage.setItem("bm_portal_textsize",size);
+  _applyPortalTextSize();
+  closePortalSettings();
+  showPortalSettings();
+}
+function _applyPortalTextSize(){
+  var size=localStorage.getItem("bm_portal_textsize")||"medium";
+  var scale={small:"14px",medium:"16px",large:"18px"}[size]||"16px";
+  document.getElementById("app").style.fontSize=scale;
+}
+function setPortalThemeLocal(t){
+  localStorage.setItem("bm_portal_theme",t);
+  if(t==="crimson")document.body.classList.add("theme-crimson");
+  else document.body.classList.remove("theme-crimson");
+  closePortalSettings();
+  showPortalSettings();
+}
+_applyPortalTextSize();
+
+/* ── CHANGE PIN MODAL ── */
+function showChangePinModal(){
+  var hasPIN=_clientData&&_clientData.pinHash;
+  var overlay=document.createElement("div");
+  overlay.id="changePinOverlay";
+  overlay.style.cssText="position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s ease";
+  var box=document.createElement("div");
+  box.style.cssText="background:linear-gradient(160deg,rgba(12,12,12,.99),rgba(6,6,6,.99));border:1.5px solid var(--borderH);border-radius:16px;padding:24px;max-width:380px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,.6)";
+  var html='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div class="sl" style="margin:0">CHANGE PIN</div><button aria-label="Close change PIN" onclick="document.getElementById(\'changePinOverlay\').remove()" style="background:none;border:1px solid var(--borderS);border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dm);font-size:16px">&times;</button></div>';
+  if(hasPIN){
+    html+='<label class="lb" style="text-align:center;display:block;margin-bottom:8px">CURRENT PIN</label>';
+    html+='<div id="chgPinCurrent" style="display:flex;justify-content:center;gap:10px;margin-bottom:16px"></div>';
+  }
+  html+='<label class="lb" style="text-align:center;display:block;margin-bottom:8px">NEW PIN</label>';
+  html+='<div id="chgPinNew" style="display:flex;justify-content:center;gap:10px;margin-bottom:16px"></div>';
+  html+='<label class="lb" style="text-align:center;display:block;margin-bottom:8px">CONFIRM NEW PIN</label>';
+  html+='<div id="chgPinConfirm" style="display:flex;justify-content:center;gap:10px;margin-bottom:12px"></div>';
+  html+='<div id="chgPinErr" style="text-align:center;font-size:11px;color:var(--danger);font-family:var(--mono);min-height:18px;margin-bottom:12px"></div>';
+  html+='<button class="btn" id="chgPinBtn" aria-label="Update PIN" onclick="submitChangePIN()">UPDATE PIN</button>';
+  box.innerHTML=html;
+  overlay.appendChild(box);
+  overlay.addEventListener("click",function(e){if(e.target===overlay)overlay.remove();});
+  document.body.appendChild(overlay);
+  setTimeout(function(){
+    if(hasPIN)buildPinBoxes("chgPinCurrent",4);
+    buildPinBoxes("chgPinNew",4);buildPinBoxes("chgPinConfirm",4);
+    var first=hasPIN?"chgPinCurrent":"chgPinNew";
+    var b=document.getElementById(first);if(b&&b.querySelector(".pin-box"))b.querySelector(".pin-box").focus();
+  },100);
+}
+
+async function submitChangePIN(){
+  var hasCurrent=_clientData&&_clientData.pinHash;
+  var errEl=document.getElementById("chgPinErr");
+  var btn=document.getElementById("chgPinBtn");
+  if(hasCurrent){
+    var current=getPinValue("chgPinCurrent");
+    if(current.length<4){errEl.textContent="Enter current PIN";shakePinBoxes("chgPinCurrent");return;}
+    var currentHash=await hashPIN(current,_clientData.id);if(!currentHash){if(btn){btn.disabled=false;btn.textContent="UPDATE PIN";}return;}
+    if(currentHash!==_clientData.pinHash){errEl.textContent="Current PIN incorrect";shakePinBoxes("chgPinCurrent");return;}
+  }
+  var newPin=getPinValue("chgPinNew");
+  var confirm=getPinValue("chgPinConfirm");
+  if(newPin.length<4){errEl.textContent="Enter new PIN";shakePinBoxes("chgPinNew");return;}
+  if(confirm.length<4){errEl.textContent="Confirm new PIN";shakePinBoxes("chgPinConfirm");return;}
+  if(newPin!==confirm){errEl.textContent="PINs don't match";shakePinBoxes("chgPinConfirm");return;}
+  if(btn){btn.disabled=true;btn.textContent="UPDATING...";}
+  var newHash=await hashPIN(newPin,_clientData.id);if(!newHash){btn.disabled=false;btn.textContent="UPDATE PIN";return;}
+  var sb=getSupabase();if(!sb){toast("Connection error");btn.disabled=false;btn.textContent="UPDATE PIN";return;}
+  sb.from("clients").select("id,data").eq("id",_clientData.id).single().then(function(res){
+    if(!res.data){toast("Error");btn.disabled=false;btn.textContent="UPDATE PIN";return;}
+    var d=res.data.data;d.pinHash=newHash;
+    sb.from("clients").upsert({id:res.data.id,data:d,updated_at:new Date().toISOString()},{onConflict:"id"}).then(function(){
+      _clientData.pinHash=newHash;
+      /* Remember-me token write removed — auto-login bypass deprecated (subagent P0 #1) */
+      toast("\u2713 PIN updated");
+      var o=document.getElementById("changePinOverlay");if(o)o.remove();
+    });
+  }).catch(function(){toast("Error updating PIN");btn.disabled=false;btn.textContent="UPDATE PIN";});
+}
+
+/* ── 2FA TOGGLE ── */
+function toggle2FA(){
+  if(!_clientData)return;
+  var newState=!_clientData.twoFactorEnabled;
+  var sb=getSupabase();if(!sb){toast("Connection error");return;}
+  sb.from("clients").select("id,data").eq("id",_clientData.id).single().then(function(res){
+    if(!res.data)return;
+    var d=res.data.data;d.twoFactorEnabled=newState;
+    sb.from("clients").upsert({id:res.data.id,data:d,updated_at:new Date().toISOString()},{onConflict:"id"}).then(function(){
+      _clientData.twoFactorEnabled=newState;
+      toast(newState?"\u2713 2FA enabled":"\u2713 2FA disabled");
+    }).catch(function(){toast("\u2717 Save failed");});
+  }).catch(function(){toast("\u2717 Connection error");});
+}
+
+function esc(s){if(!s)return"";return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+function toast(msg){
+  var existing=document.querySelector(".toast");if(existing)existing.remove();
+  var t=document.createElement("div");t.className="toast";t.setAttribute("role","status");t.setAttribute("aria-live","polite");t.textContent=msg;
+  document.body.appendChild(t);setTimeout(function(){t.remove();},3000);
+}
+
+/* Auto-refresh sessions when tab becomes visible again (prevents stale data) */
+document.addEventListener("visibilitychange",function(){
+  if(!document.hidden&&_clientData&&_activeTab==="overview"){renderOverviewSessions();}
+});
+/* Periodic refresh every 60 seconds while logged in */
+setInterval(function(){if(_clientData&&_activeTab==="overview")renderOverviewSessions();},60000);
+
+/* Ensure page starts at top */
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+window.scrollTo(0,0);
+
+/* Browser back button — if inside portal, go to overview instead of exiting; on login, allow default */
+window.addEventListener("popstate",function(e){
+  if(_clientData&&_activeTab!=="overview"){
+    e.preventDefault&&e.preventDefault();
+    switchTab("overview");
+    try{history.pushState({tab:"overview"},"","");}catch(_e){}
+  }
+});
+
+/* beforeunload guard: unsubmitted check-in photos are File objects
+   from the native picker that can't be serialized or resumed after
+   a page unload. Warn the user before they navigate away or close
+   the tab so they don't lose a full photo session. */
+window.addEventListener("beforeunload",function(e){
+  if(_activeTab==="checkin"&&_checkinPhotos&&_checkinPhotos.some(function(p){return p.file;})){
+    e.preventDefault();
+    e.returnValue="";
+    return "";
+  }
+});
+
+/* Init */
+tryAutoLogin();
+
+/* Escape key closes modals/overlays */
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"){
+    var o=document.getElementById("changePinOverlay");if(o){o.remove();return;}
+    var s=document.getElementById("portalSettingsOverlay");if(s){s.remove();return;}
+  }
+});
+
+/* iOS keyboard dismiss — only reset after keyboard closes, not on first load */
+document.addEventListener("focusout",function(e){
+  if(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"){setTimeout(function(){window.scrollTo(0,window.scrollY);},100);}
+});
+/* ── CLIENT PUSH NOTIFICATIONS ── */
+function _urlBase64ToUint8Array(base64String){
+  var padding="=".repeat((4-base64String.length%4)%4);
+  var base64=(base64String+padding).replace(/-/g,"+").replace(/_/g,"/");
+  var raw=atob(base64);var arr=new Uint8Array(raw.length);
+  for(var i=0;i<raw.length;i++)arr[i]=raw.charCodeAt(i);
+  return arr;
+}
+var _portalPushSub=null;
+function _detectPortalPlatform(){
+  var ua=navigator.userAgent||"";
+  var isIOS=/iPad|iPhone|iPod/.test(ua)||(/Macintosh/.test(ua)&&"ontouchend" in document);
+  var isAndroid=/Android/.test(ua);var isSamsung=/SamsungBrowser/.test(ua);
+  var isChrome=/Chrome/.test(ua)&&!isSamsung;var isSafari=/Safari/.test(ua)&&!/Chrome/.test(ua);
+  var isPWA=window.matchMedia("(display-mode:standalone)").matches||window.navigator.standalone===true;
+  /* Each step is {html} — can embed SVG icons inline so no unicode arrows
+     or emoji ever show to the user. */
+  var iconShare='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin:0 2px"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>';
+  var iconLock='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin:0 2px"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>';
+  var iconSettings='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin:0 2px"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33h0a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51h0a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82v0a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>';
+  if(isIOS&&!isPWA)return["Tap the "+iconShare+" <strong>Share</strong> icon in Safari","Select <strong>Add to Home Screen</strong>","Open the app from your home screen to enable messages"];
+  if(isIOS)return["Open <strong>Settings</strong> "+iconSettings+" on your device","Find <strong>Big Mike</strong> in the app list","Tap <strong>Notifications</strong> and turn them on"];
+  if(isSamsung)return["Tap the menu then <strong>Settings "+iconSettings+"</strong>","Go to <strong>Notifications</strong>","Allow notifications for this site"];
+  if(isAndroid)return["Tap the "+iconLock+" <strong>lock</strong> icon next to the address","Tap <strong>Site settings</strong> then <strong>Notifications</strong>","Set to <strong>Allow</strong>"];
+  return["Open your browser <strong>Settings "+iconSettings+"</strong>","Go to <strong>Notifications</strong>","Allow notifications for this site"];
+}
+function _showPortalNotifNudge(){
+  var steps=_detectPortalPlatform();
+  var html='<div class="cd" style="padding:18px 18px 16px;margin-bottom:14px;border-left:3px solid var(--acc);border-radius:12px">'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">'
+    +'<div style="display:flex;align-items:center;gap:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>'
+    +'<div style="font-size:11px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.1em">TURN ON MESSAGES</div></div>'
+    +'<button aria-label="Dismiss" onclick="this.closest(\'.cd\').remove()" style="background:none;border:1px solid var(--borderS);color:var(--dm);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg></button>'
+    +'</div>'
+    +'<div style="font-size:12.5px;color:var(--ow);line-height:1.6;margin-bottom:10px">Get session reminders and coach messages directly on your home screen:</div>';
+  for(var i=0;i<steps.length;i++){
+    html+='<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mu);line-height:1.55;margin-bottom:6px">'
+      +'<span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:var(--accS);border:1px solid var(--accB);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--acc);font-family:var(--mono);margin-top:1px">'+(i+1)+'</span>'
+      +'<span style="flex:1">'+steps[i]+'</span></div>';
+  }
+  html+='</div>';
+  var container=document.getElementById("progContent");
+  if(container)container.insertAdjacentHTML("afterbegin",html);
+}
+/* ── BULLETPROOF PUSH FAILSAFE ──
+   Every failure mode leaves the client with a visible, persistent warning
+   card so they can never silently miss messages from Mike. The states are:
+     OK         — subscription exists + permission granted → no warning
+     UNSUPPORTED — no SW / no PushManager / iOS not PWA → show "install" guide
+     DEFAULT    — permission never asked → trigger native prompt
+     DENIED     — user/system blocked → show device-specific settings guide
+     FAILED     — subscribe() crashed → show retry guide
+
+   We re-check on every tab focus so if the user goes to settings and
+   enables notifications, the warning disappears automatically on return. */
+var _pushStatus="unknown";
+function _setPushStatus(s){
+  _pushStatus=s;
+  var card=document.getElementById("pushWarnCard");
+  if(s==="ok"){if(card)card.remove();return;}
+  _showPortalNotifNudge();
+}
+function initClientPush(){
+  if(!_clientData||!_clientData.id)return;
+  _loadClientMuteState();
+
+  /* Platform simply can't do web push at all — show the install/settings
+     guide immediately. Covers iOS Safari (not PWA), older browsers, and
+     any embedded webview that strips PushManager. */
+  if(!("serviceWorker" in navigator)||!("PushManager" in window)||!("Notification" in window)){
+    setTimeout(function(){_setPushStatus("unsupported");},1200);
+    return;
+  }
+
+  navigator.serviceWorker.ready.then(function(reg){
+    reg.pushManager.getSubscription().then(function(existing){
+      if(existing&&Notification.permission==="granted"){
+        _portalPushSub=existing;
+        _storeClientPushSub(existing);
+        _setPushStatus("ok");
+        return;
+      }
+      if(Notification.permission==="granted"){
+        /* Permission granted but no subscription — try to create one. */
+        _subscribeClientPush(reg,function(okSub){
+          _setPushStatus(okSub?"ok":"failed");
+        });
+        return;
+      }
+      if(Notification.permission==="denied"){
+        /* Blocked. Show the persistent nudge every time until resolved. */
+        _setPushStatus("denied");
+        return;
+      }
+      /* Permission === "default". Trigger the native OS prompt. */
+      localStorage.setItem("bm_portal_notif_prompted","1");
+      Notification.requestPermission().then(function(perm){
+        if(perm==="granted"){
+          _subscribeClientPush(reg,function(okSub){
+            _setPushStatus(okSub?"ok":"failed");
+          });
+        }else{
+          /* User said no (or system silently dismissed). Keep the card
+             visible so they can reconsider without losing access. */
+          _setPushStatus("denied");
+        }
+      }).catch(function(){_setPushStatus("denied");});
+    }).catch(function(){_setPushStatus("failed");});
+  }).catch(function(){_setPushStatus("unsupported");});
+}
+/* Re-check on focus return — if the user went to Settings, enabled
+   notifications, and came back, the warning card disappears without
+   them having to reload. */
+document.addEventListener("visibilitychange",function(){
+  if(document.visibilityState==="visible"&&_clientData&&_clientData.id&&_pushStatus!=="ok"&&_pushStatus!=="unsupported"){
+    /* Only re-check if we were in a fixable state — unsupported platforms
+       don't benefit from re-check and it wastes cycles. */
+    if(Notification&&Notification.permission==="granted"){
+      navigator.serviceWorker.ready.then(function(reg){
+        reg.pushManager.getSubscription().then(function(sub){
+          if(sub){_portalPushSub=sub;_storeClientPushSub(sub);_setPushStatus("ok");}
+          else _subscribeClientPush(reg,function(okSub){_setPushStatus(okSub?"ok":"failed");});
+        });
+      });
+    }
+  }
+});
+function _subscribeClientPush(reg,cb){
+  cb=cb||function(){};
+  var sb=getSupabase();if(!sb){cb(false);return;}
+  var cached=localStorage.getItem("bm_portal_vapid");
+  if(cached){_doClientSubscribe(reg,cached,cb);return;}
+  sb.from("app_settings").select("value").eq("key","vapid_public_key").single().then(function(res){
+    if(res.data&&res.data.value){
+      localStorage.setItem("bm_portal_vapid",res.data.value);
+      _doClientSubscribe(reg,res.data.value,cb);
+    }else{cb(false);}
+  }).catch(function(){cb(false);});
+}
+function _doClientSubscribe(reg,vapidKey,cb){
+  cb=cb||function(){};
+  try{
+    var keyBytes=_urlBase64ToUint8Array(vapidKey);
+    reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:keyBytes}).then(function(sub){
+      _portalPushSub=sub;_storeClientPushSub(sub);cb(true);
+    }).catch(function(err){console.warn("Portal push subscribe error:",err);cb(false);});
+  }catch(e){console.warn("Portal push subscribe exception:",e);cb(false);}
+}
+var _clientMuted=false;
+function _storeClientPushSub(sub){
+  var sb=getSupabase();if(!sb||!_clientData||!_clientData.id)return;
+  var subJSON=sub.toJSON();
+  sb.from("client_push_subs").upsert({
+    id:_clientData.id,
+    data:{clientId:_clientData.id,clientName:_clientData.name||"",subscription:{endpoint:subJSON.endpoint,keys:subJSON.keys},subscribedAt:new Date().toISOString(),muted:_clientMuted},
+    updated_at:new Date().toISOString()
+  },{onConflict:"id"}).then(function(res){
+    if(res.error)console.warn("Failed to store portal push subscription:",res.error.message);
+    else _renderNotifToggle();
+  }).catch(function(e){console.warn("Push sub upsert failed:",e);});
+}
+function _loadClientMuteState(){
+  var sb=getSupabase();if(!sb||!_clientData||!_clientData.id)return;
+  sb.from("client_push_subs").select("data").eq("id",_clientData.id).single().then(function(res){
+    if(res.data&&res.data.data){_clientMuted=!!res.data.data.muted;_renderNotifToggle();}
+  }).catch(function(){/* silent */});
+}
+function _renderNotifToggle(){
+  var wrap=document.getElementById("notifToggleWrap");
+  var tog=document.getElementById("notifToggle");
+  if(!wrap||!tog)return;
+  wrap.style.display="block";
+  tog.textContent="Notifications: "+(_clientMuted?"OFF":"ON");
+  tog.style.color=_clientMuted?"var(--dm)":"var(--acc)";
+}
+function toggleClientMute(){
+  _clientMuted=!_clientMuted;
+  var sb=getSupabase();if(!sb||!_clientData||!_clientData.id){_renderNotifToggle();return;}
+  sb.from("client_push_subs").select("data").eq("id",_clientData.id).single().then(function(res){
+    if(!res.data||!res.data.data)return;
+    var d=res.data.data;d.muted=_clientMuted;
+    sb.from("client_push_subs").upsert({id:_clientData.id,data:d,updated_at:new Date().toISOString()},{onConflict:"id"}).then(function(r2){
+      if(!r2.error){toast(_clientMuted?"Notifications paused":"Notifications resumed");_renderNotifToggle();}
+    }).catch(function(){toast("\u2717 Save failed");_clientMuted=!_clientMuted;_renderNotifToggle();});
+  }).catch(function(){_clientMuted=!_clientMuted;_renderNotifToggle();});
+}
+/* Listen for SW messages (resubscription) */
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.addEventListener("message",function(event){
+    var msg=event.data;if(!msg)return;
+    if(msg.type==="push_resubscribed"&&msg.subscription){_storeClientPushSub(msg.subscription);}
+  });
+}
+/* ── SERVICE WORKER ── */
+(function(){
+  var SITE_VERSION='v57';
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('portal-sw.js').then(function(reg){
+      reg.update();
+      if(reg.waiting){reg.waiting.postMessage({type:'SKIP_WAITING'});}
+      reg.addEventListener('updatefound',function(){
+        var newSW=reg.installing;
+        if(newSW){newSW.addEventListener('statechange',function(){
+          if(newSW.state==='activated'&&localStorage.getItem('bm_sw_ver')!==SITE_VERSION){
+            localStorage.setItem('bm_sw_ver',SITE_VERSION);window.location.reload();
+          }
+        });}
+      });
+    }).catch(function(){});
+    navigator.serviceWorker.addEventListener('controllerchange',function(){
+      if(localStorage.getItem('bm_sw_ver')!==SITE_VERSION){
+        localStorage.setItem('bm_sw_ver',SITE_VERSION);window.location.reload();
+      }
+    });
+  }
+  if(localStorage.getItem('bm_sw_ver')!==SITE_VERSION){localStorage.setItem('bm_sw_ver',SITE_VERSION);}
+})();
+</script>
+</body>
+</html>

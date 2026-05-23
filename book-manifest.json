@@ -1,0 +1,47 @@
+{
+  "name": "Book Big Mike Ely",
+  "short_name": "Book Mike",
+  "description": "Book your coaching session with IFBB Pro Big Mike Ely",
+  "id": "/book.html",
+  "start_url": "/book.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#020202",
+  "theme_color": "#020202",
+  "categories": ["fitness", "health"],
+  "icons": [
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-120.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

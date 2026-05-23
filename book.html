@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Book a Session · Big Mike Ely Coaching</title>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#020202"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://ozgemcvnjzqfumpjxwcq.supabase.co; connect-src 'self' https://ozgemcvnjzqfumpjxwcq.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(), geolocation=(), payment=()">
+<meta name="description" content="Book your coaching session with IFBB Pro Big Mike Ely. Training, Nutrition, Contest Prep, and Posing."/>
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
+<link rel="manifest" href="book-manifest.json"/>
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<script src="assets/vendor/supabase.min.js"></script>
+<style>
+:root{
+  --bg:#020202;--bg2:#050505;--card:#0a0a0c;--cardH:#111114;
+  --border:rgba(212,175,55,.28);--borderH:rgba(212,175,55,.35);--borderS:rgba(212,175,55,.15);
+  /* Premium 24k gold palette — matches index.html landing page */
+  --acc:#D4AF37;--accD:#A8862B;--accDeep:#7D6420;--accVib:#F5E38C;--accBright:#F7DA5E;
+  --accS:rgba(212,175,55,.06);--accB:rgba(212,175,55,.45);--accM:rgba(212,175,55,.30);
+  --accGlow:rgba(212,175,55,.25);
+  --ice:#f4ecd4;--wh:#f4eee4;--ow:#d0c8b4;--mu:#9a907e;--dm:#6a6050;--dmL:#3a342a;
+  --glass:rgba(212,175,55,.02);--glassB:rgba(212,175,55,.04);
+  --warn:#e8b878;--danger:#d87878;--success:#78c878;
+  --display:'Cinzel',serif;--body:'Rajdhani',sans-serif;--mono:'IBM Plex Mono',monospace;
+  --goldGrad:linear-gradient(135deg,#5A3F0F 0%,#8A6418 22%,#E8C547 50%,#8A6418 78%,#5A3F0F 100%);
+}
+/* Crimson theme variant */
+body.theme-crimson{
+  --acc:#D03030;--accD:#A01818;--accDeep:#881818;--accVib:#F04040;--accBright:#F05050;
+  --accS:rgba(210,40,40,0.06);--accB:rgba(210,40,40,.45);--accM:rgba(210,40,40,0.30);
+  --accGlow:rgba(210,40,40,0.25);
+  --border:rgba(210,40,40,.28);--borderH:rgba(210,40,40,.35);--borderS:rgba(210,40,40,.15);
+  --goldGrad:linear-gradient(135deg,#8B1414,#C42828,#E84040,#C42828,#8B1414);
+  --ice:#f0e0e0;--wh:#f0e8e8;--ow:#c8b8b8;
+  --glass:rgba(210,40,40,0.02);--glassB:rgba(210,40,40,0.04);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{height:100%;overflow-x:hidden;overscroll-behavior:none}
+body{min-height:100dvh;min-height:100vh;overflow-x:hidden;overscroll-behavior:none;background:var(--bg);color:var(--wh);font-family:var(--body);-webkit-font-smoothing:antialiased;touch-action:manipulation;position:relative}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}}
+input,select{font-family:var(--body);color:var(--wh);background:rgba(255,255,255,.02);border:1.5px solid var(--borderH);border-radius:10px;padding:13px 16px;font-size:16px;outline:none;width:100%;box-sizing:border-box;-webkit-appearance:none;appearance:none;transition:border-color .3s,box-shadow .3s,background .3s;min-height:46px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+input:focus,select:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--accGlow),0 0 20px var(--accS),0 4px 16px rgba(200,160,40,.06);background:rgba(200,160,40,.03)}
+input::placeholder{color:var(--dm);opacity:.5;font-style:italic;font-size:13px}
+select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23605848' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+select option{background:var(--card);color:var(--wh)}
+button{font-family:var(--body);cursor:pointer;border:none;outline:none;transition:all .18s ease}
+.btn{background:var(--goldGrad);background-size:200% 100%;color:var(--bg);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.15em;padding:18px 20px;border-radius:12px;width:100%;box-shadow:0 4px 24px var(--accM),0 0 40px var(--accS);text-transform:uppercase;animation:shimmer 3s ease-in-out infinite,btnBreathe 4s ease-in-out infinite;min-height:50px;position:relative}
+.btn:hover{box-shadow:0 6px 32px var(--accB),0 0 60px var(--accS);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn:disabled{opacity:.4;pointer-events:none;animation:none}
+@keyframes btnBreathe{0%,100%{box-shadow:0 4px 24px var(--accM),0 0 30px var(--accS)}50%{box-shadow:0 4px 28px var(--accB),0 0 50px var(--accGlow)}}
+.btn2{background:var(--accS);color:var(--acc);border:1.5px solid var(--borderH);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;padding:10px 16px;border-radius:10px;text-transform:uppercase;transition:all .18s}
+.btn2:hover{background:var(--accGlow);border-color:var(--acc);color:var(--accBright)}
+.cd{background:linear-gradient(160deg,rgba(14,14,16,.94),rgba(6,6,8,.97));border:1px solid transparent;border-radius:clamp(14px,2vw,20px);padding:16px;margin-bottom:10px;transition:box-shadow .3s;box-shadow:0 4px 30px rgba(0,0,0,.6),0 0 80px rgba(0,0,0,.3),0 0 2px var(--accS),inset 0 1px 0 rgba(200,160,40,.06),inset 0 -1px 0 rgba(200,160,40,.02);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);position:relative;animation:cardBreathe 5s ease-in-out infinite;overflow:hidden}
+/* Animated border — conic gradient sweep */
+.cd::before{content:'';position:absolute;inset:-1px;border-radius:inherit;background:conic-gradient(from var(--card-angle,0deg),transparent 0%,transparent 30%,var(--accD) 45%,var(--acc) 50%,var(--accD) 55%,transparent 70%,transparent 100%);z-index:-1;animation:cardBorderSweep 6s linear infinite;opacity:.45}
+.cd::after{content:'';position:absolute;inset:1px;border-radius:inherit;background:linear-gradient(160deg,rgba(14,14,16,.97),rgba(6,6,8,.99));z-index:-1}
+@property --card-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes cardBorderSweep{from{--card-angle:0deg}to{--card-angle:360deg}}
+@keyframes cardBreathe{0%,100%{box-shadow:0 4px 30px rgba(0,0,0,.6),0 0 60px rgba(0,0,0,.2),0 0 2px var(--accS)}50%{box-shadow:0 6px 40px rgba(0,0,0,.6),0 0 80px rgba(0,0,0,.25),0 0 8px var(--accGlow),0 0 40px var(--accS)}}
+/* Card scan line — horizontal light pass */
+@keyframes cardScan{0%{top:-10%;opacity:0}10%{opacity:.6}90%{opacity:.6}100%{top:110%;opacity:0}}
+.cd>.cd-scan{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,160,40,.12),rgba(200,160,40,.25),rgba(200,160,40,.12),transparent);z-index:2;pointer-events:none;animation:cardScan 8s ease-in-out infinite;box-shadow:0 0 20px rgba(200,160,40,.08),0 0 40px rgba(200,160,40,.04)}
+.lb{font-size:10px;font-weight:700;color:var(--mu);font-family:var(--mono);letter-spacing:.12em;display:block;margin-bottom:8px;text-transform:uppercase;transition:color .3s}
+.sl{font-size:10px;font-weight:700;color:var(--acc);letter-spacing:.18em;font-family:var(--mono);margin-bottom:12px;text-transform:uppercase;line-height:1.4;text-shadow:0 0 20px var(--accGlow),0 0 40px var(--accS)}
+.gw{height:1px;background:linear-gradient(90deg,transparent,var(--accDeep),var(--acc),var(--accDeep),transparent);margin:28px 0}
+
+/* App container */
+#app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative;z-index:1;padding:0 16px}
+
+/* ── ATMOSPHERIC VOID ── */
+/* Ghost image — faded bodybuilding photo barely visible in the darkness */
+.bg-ghost{position:fixed;inset:-10%;z-index:0;pointer-events:none;background:url('img/hero-stage-2025.jpg') center 10%/cover no-repeat;filter:brightness(.14) contrast(1.1) saturate(.35) blur(4px);opacity:.85;animation:ghostDrift 50s ease-in-out infinite alternate}
+.bg-ghost-ov{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(ellipse 65% 55% at 50% 25%,rgba(2,2,2,.35),rgba(2,2,2,.25) 40%,transparent 80%),
+  radial-gradient(ellipse at 50% 50%,rgba(2,2,2,.1),rgba(2,2,2,.45) 45%,rgba(2,2,2,.88) 100%),
+  linear-gradient(180deg,rgba(2,2,2,.15) 0%,rgba(2,2,2,.25) 100%)}
+/* Film grain overlay */
+.bg-grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.03;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:200px 200px}
+@keyframes ghostDrift{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.06) translate(-1%,-1.5%)}}
+
+.bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+/* Primary orb — large, top-center, slow breathe */
+.bg-glow::before{content:'';position:absolute;top:-15%;left:50%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(200,160,40,.2),rgba(200,160,40,.07) 35%,transparent 65%);transform:translate(-50%,-50%);animation:orbFloat 12s ease-in-out infinite;filter:blur(80px)}
+/* Secondary orb — mid-left, offset drift */
+.bg-glow::after{content:'';position:absolute;top:35%;left:25%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(200,160,40,.07),transparent 55%);transform:translate(-50%,-50%);animation:orbFloat2 9s ease-in-out infinite 2s;filter:blur(60px)}
+/* Third orb layer */
+.bg-orb3{position:fixed;top:60%;right:-5%;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(200,160,40,.06),transparent 55%);z-index:0;pointer-events:none;filter:blur(50px);animation:orbFloat 14s ease-in-out infinite 4s}
+/* Warmth — bottom gradient wash */
+.bg-warmth{position:fixed;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,rgba(224,176,48,.035),rgba(224,176,48,.01) 50%,transparent);z-index:0;pointer-events:none}
+/* Vignette — dramatic theater spotlight */
+.bg-vignette{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(ellipse 75% 65% at 50% 40%,transparent 25%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.55) 100%);
+  animation:vigBreathe 8s ease-in-out infinite}
+@keyframes vigBreathe{0%,100%{opacity:.8}50%{opacity:.95}}
+/* Horizontal flare — gold line with glow */
+.bg-flare{position:fixed;top:0;left:0;right:0;height:1px;z-index:0;pointer-events:none;background:linear-gradient(90deg,transparent 5%,var(--accD) 30%,var(--acc) 50%,var(--accD) 70%,transparent 95%);opacity:.35}
+.bg-flare::after{content:'';position:absolute;top:-4px;left:10%;right:10%;height:10px;background:linear-gradient(90deg,transparent,rgba(200,160,40,.08),rgba(200,160,40,.15),rgba(200,160,40,.08),transparent);filter:blur(4px)}
+/* Dust particles via CSS */
+.bg-dust{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-dust span{position:absolute;width:2px;height:2px;background:var(--acc);border-radius:50%;opacity:0;animation:dustFloat linear infinite;box-shadow:0 0 4px rgba(224,176,48,.3)}
+@keyframes dustFloat{0%{opacity:0;transform:translateY(0) scale(.5)}10%{opacity:.5}90%{opacity:.4}100%{opacity:0;transform:translateY(-100vh) scale(.8)}}
+
+/* ── HEADER ── */
+.portal-hdr{text-align:center;padding:clamp(40px,8vh,80px) 0 8px;position:relative;animation:hdrReveal 1.4s cubic-bezier(.22,1,.36,1) both}
+@keyframes hdrReveal{from{opacity:0;transform:translateY(-16px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.logo-mark{width:clamp(56px,8vw,84px);height:clamp(56px,8vw,84px);border-radius:clamp(16px,2.2vw,22px);background:linear-gradient(145deg,#0c0c0c,#060606);border:1.5px solid var(--accB);display:inline-flex;align-items:center;justify-content:center;font-family:var(--display);font-size:clamp(30px,4.3vw,44px);font-weight:900;box-shadow:0 0 12px var(--accM),0 0 30px var(--accGlow),0 0 60px var(--accS),inset 0 0 14px var(--accS);animation:neonBreathe 4s ease-in-out infinite;margin-bottom:clamp(14px,2.2vh,24px);position:relative}
+/* Logo outer ring pulse — a single subtle ring. Second ring removed on
+   mobile so the hero photo reads clearly behind the mark. */
+.logo-mark::before{content:'';position:absolute;inset:-7px;border-radius:clamp(20px,2.8vw,26px);border:1px solid var(--accS);animation:ringPulse 4s ease-in-out infinite;pointer-events:none}
+@keyframes ringPulse{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:.7;transform:scale(1.03)}}
+.logo-mark span{background:var(--goldGrad);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldShimmer 4s ease-in-out infinite}
+.portal-title{font-family:var(--display);font-size:clamp(24px,4vw,42px);font-weight:800;letter-spacing:.08em;margin-bottom:6px;background:linear-gradient(180deg,#faf3e0 0%,var(--ice) 30%,rgba(200,180,140,.7) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 12px rgba(200,160,40,.15))}
+.portal-sub{font-size:clamp(8px,1.1vw,11px);color:var(--mu);font-family:var(--mono);letter-spacing:.35em;text-transform:uppercase;margin-bottom:clamp(14px,2.5vh,24px);text-shadow:0 0 20px rgba(0,0,0,.9)}
+/* Decorative divider under header */
+.portal-hdr .hdr-rule{display:flex;align-items:center;justify-content:center;gap:14px}
+.portal-hdr .hdr-rule::before,.portal-hdr .hdr-rule::after{content:'';width:clamp(50px,8vw,120px);height:1px}
+.portal-hdr .hdr-rule::before{background:linear-gradient(90deg,transparent,var(--accD))}
+.portal-hdr .hdr-rule::after{background:linear-gradient(90deg,var(--accD),transparent)}
+.portal-hdr .hdr-diamond{width:7px;height:7px;border:1.5px solid var(--acc);transform:rotate(45deg);box-shadow:0 0 10px var(--accGlow);animation:diamondPulse 3s ease-in-out infinite}
+@keyframes diamondPulse{0%,100%{box-shadow:0 0 6px var(--accGlow);opacity:.6}50%{box-shadow:0 0 18px var(--accM);opacity:1}}
+/* Corner accents on viewport */
+.portal-corners{position:fixed;inset:0;z-index:0;pointer-events:none}
+.portal-corners::before,.portal-corners::after{content:'';position:absolute;width:clamp(30px,4vw,50px);height:clamp(30px,4vw,50px)}
+.portal-corners::before{top:20px;left:16px;border-top:1px solid rgba(200,160,40,.15);border-left:1px solid rgba(200,160,40,.15)}
+.portal-corners::after{top:20px;right:16px;border-top:1px solid rgba(200,160,40,.15);border-right:1px solid rgba(200,160,40,.15)}
+/* Bottom corners */
+.portal-corners-btm{position:fixed;inset:0;z-index:0;pointer-events:none}
+.portal-corners-btm::before,.portal-corners-btm::after{content:'';position:absolute;width:clamp(30px,4vw,50px);height:clamp(30px,4vw,50px)}
+.portal-corners-btm::before{bottom:20px;left:16px;border-bottom:1px solid rgba(200,160,40,.07);border-left:1px solid rgba(200,160,40,.07)}
+.portal-corners-btm::after{bottom:20px;right:16px;border-bottom:1px solid rgba(200,160,40,.07);border-right:1px solid rgba(200,160,40,.07)}
+
+/* Entrance animations for content */
+.section.active{animation:sectionIn .6s ease-out .3s both}
+@keyframes sectionIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* Steps indicator */
+.steps{display:flex;align-items:center;justify-content:center;gap:6px;margin:20px 0 22px}
+.step-dot{width:8px;height:8px;border-radius:50%;background:var(--borderS);transition:all .3s}
+.step-dot.active{background:var(--acc);box-shadow:0 0 12px var(--accGlow);width:24px;border-radius:4px}
+.step-dot.done{background:var(--accD)}
+
+/* Sections */
+.section{display:none;animation:slideUp .35s ease}
+.section.active{display:block}
+
+/* Phone input styling */
+.phone-wrap{position:relative;margin-bottom:20px}
+.phone-prefix{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:14px;color:var(--mu);font-weight:600;pointer-events:none}
+.phone-input{padding-left:44px;font-family:var(--mono);font-size:16px;letter-spacing:.06em;font-weight:500}
+
+/* Calendar */
+.cal-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.cal-nav-btn{width:44px;height:44px;border-radius:10px;background:var(--accS);border:1.5px solid var(--borderH);color:var(--acc);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700}
+.cal-month{font-family:var(--display);font-size:16px;color:var(--ice);letter-spacing:.04em}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:20px}
+.cal-hdr{font-size:9px;font-family:var(--mono);color:var(--dm);text-align:center;padding:6px 0;font-weight:700;letter-spacing:.08em}
+.cal-day{aspect-ratio:1;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid transparent;transition:all .2s;position:relative;color:var(--ow)}
+.cal-day:hover{border-color:var(--borderH);background:var(--glassB)}
+.cal-day.today{color:var(--accBright);font-weight:700}
+.cal-day.today::after{content:'';position:absolute;bottom:4px;width:4px;height:4px;border-radius:50%;background:var(--acc)}
+.cal-day.selected{background:var(--accGlow);border-color:var(--accB);color:var(--accBright);box-shadow:0 0 12px var(--accS)}
+.cal-day.disabled{color:var(--dmL);cursor:default;pointer-events:none}
+.cal-day.has-slots::before{content:'';position:absolute;top:4px;right:4px;width:5px;height:5px;border-radius:50%;background:var(--success);box-shadow:0 0 6px rgba(120,200,120,.4)}
+.cal-day.no-slots{color:var(--dmL);opacity:.5}
+
+/* Time slots */
+.slots-wrap{margin-top:16px}
+.slot-group-title{font-size:9px;font-family:var(--mono);color:var(--dm);letter-spacing:.14em;text-transform:uppercase;margin:14px 0 8px;display:flex;align-items:center;gap:8px}
+.slot-group-title::after{content:'';flex:1;height:1px;background:var(--borderS)}
+.time-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.time-slot{padding:14px 8px;border-radius:10px;text-align:center;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ow);background:var(--glassB);border:1.5px solid var(--borderS);cursor:pointer;transition:all .2s;min-height:44px;display:flex;align-items:center;justify-content:center}
+.time-slot:hover{border-color:var(--borderH);color:var(--wh);background:var(--accS)}
+.time-slot.selected{background:var(--accGlow);border-color:var(--accB);color:var(--accBright);box-shadow:0 0 12px var(--accS)}
+.time-slot.booked{opacity:.3;pointer-events:none;text-decoration:line-through}
+
+/* Session type chips */
+.type-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+.type-chip{padding:18px 14px;border-radius:12px;text-align:center;border:1.5px solid var(--borderS);background:var(--glassB);cursor:pointer;transition:all .2s}
+.type-chip:hover{border-color:var(--borderH);background:var(--accS)}
+.type-chip.selected{border-color:var(--accB);background:var(--accGlow);box-shadow:0 0 16px var(--accS)}
+.type-chip .type-icon{font-size:24px;margin-bottom:6px}
+.type-chip .type-name{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--ow);text-transform:uppercase}
+.type-chip .type-dur{font-size:9px;color:var(--dm);font-family:var(--mono);margin-top:2px}
+.type-chip.selected .type-name{color:var(--accBright)}
+.type-chip.selected .type-dur{color:var(--mu)}
+
+/* Confirm card */
+.confirm-card{background:linear-gradient(160deg,rgba(14,14,16,.99),rgba(6,6,8,.99));border:1.5px solid var(--borderH);border-radius:16px;padding:24px 20px;margin-bottom:20px;position:relative;overflow:hidden}
+.confirm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--acc),transparent);opacity:.6}
+.confirm-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--borderS)}
+.confirm-row:last-child{border-bottom:none}
+.confirm-label{font-size:11px;color:var(--dm);font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.confirm-value{font-size:14px;font-weight:600;color:var(--ice);font-family:var(--body)}
+
+/* Success */
+.success-wrap{text-align:center;padding:40px 0}
+.success-check{width:80px;height:80px;border-radius:50%;background:rgba(120,200,120,.08);border:2px solid rgba(120,200,120,.3);display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;animation:breatheGreen 3s ease-in-out infinite}
+.success-title{font-family:var(--display);font-size:22px;color:var(--ice);margin-bottom:8px}
+.success-sub{font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:24px}
+
+/* Toast */
+.toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,rgba(12,12,18,.99),rgba(8,8,14,.99));color:var(--accBright);border:1px solid var(--accB);font-family:var(--mono);font-size:11px;font-weight:700;padding:11px 28px;border-radius:10px;z-index:1000;animation:toastIn .3s ease;box-shadow:0 8px 32px rgba(0,0,0,.5);letter-spacing:.08em;pointer-events:none;white-space:nowrap}
+
+/* Loading */
+.loading-dots{display:inline-flex;gap:4px;align-items:center}
+.loading-dots span{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:dotPulse 1.2s ease-in-out infinite}
+.loading-dots span:nth-child(2){animation-delay:.15s}
+.loading-dots span:nth-child(3){animation-delay:.3s}
+
+/* Powered by footer */
+.portal-footer{text-align:center;padding:30px 0 40px;font-size:9px;color:var(--dmL);font-family:var(--mono);letter-spacing:.1em}
+.portal-footer a{color:var(--dm);text-decoration:none}
+
+/* Error state */
+.setup-msg{text-align:center;padding:60px 20px}
+.setup-msg .sl{font-size:11px;margin-bottom:16px}
+
+/* Animations */
+@keyframes shimmer{0%{background-position:100% 50%}50%{background-position:0% 50%}100%{background-position:100% 50%}}
+@keyframes goldShimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes neonBreathe{0%,100%{box-shadow:0 0 10px var(--accGlow),0 0 28px var(--accS),0 0 55px var(--accS),inset 0 0 15px var(--accS);border-color:var(--accB)}50%{box-shadow:0 0 18px var(--accM),0 0 40px var(--accGlow),0 0 70px var(--accS),inset 0 0 25px var(--accS);border-color:var(--accB)}}
+@keyframes orbFloat{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.7}50%{transform:translate(-50%,-50%) scale(1.15);opacity:1}}
+@keyframes orbFloat2{0%,100%{transform:translate(-50%,-50%) scale(1.1);opacity:.4}50%{transform:translate(-50%,-50%) scale(.9);opacity:.7}}
+@keyframes breatheGreen{0%,100%{box-shadow:0 0 20px rgba(120,200,120,.1)}50%{box-shadow:0 0 40px rgba(120,200,120,.2)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes dotPulse{0%,80%,100%{transform:scale(.4);opacity:.3}40%{transform:scale(1);opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes countUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:rgba(255,255,255,.02)}
+::-webkit-scrollbar-thumb{background:var(--borderH);border-radius:2px}
+
+/* Safe area for notched phones */
+@supports(padding-top:env(safe-area-inset-top)){
+  body{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+  #app{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+  .portal-footer{padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+}
+/* Mobile */
+@media(max-width:480px){
+  #app{padding:0 12px}
+  .time-slots{grid-template-columns:repeat(3,1fr);gap:5px}
+  .type-grid{gap:6px}
+  .type-chip{padding:14px 10px}
+  .btn{padding:14px 16px;min-height:46px;font-size:10px}
+  .cal-day{font-size:12px}
+  /* Boost ghost visibility on small screens */
+  .bg-ghost{filter:brightness(.16) contrast(1.08) saturate(.38) blur(4px)}
+  .bg-ghost-ov{background:
+    radial-gradient(ellipse 70% 60% at 50% 30%,rgba(2,2,2,.25),rgba(2,2,2,.15) 40%,transparent 80%),
+    radial-gradient(ellipse at 50% 50%,rgba(2,2,2,.08),rgba(2,2,2,.35) 45%,rgba(2,2,2,.85) 100%),
+    linear-gradient(180deg,rgba(2,2,2,.1) 0%,rgba(2,2,2,.2) 100%)}
+}
+@media(min-width:768px){
+  .time-slots{grid-template-columns:repeat(4,1fr)}
+  .type-grid{grid-template-columns:repeat(4,1fr)}
+}
+/* Tablet / small desktop */
+@media(min-width:900px){
+  #app{max-width:580px;padding:0 28px}
+  .sl{font-size:11px;letter-spacing:.22em}
+  .lb{font-size:11px}
+  .btn{padding:20px 28px;min-height:56px;font-size:12px;border-radius:14px;letter-spacing:.18em}
+  .btn2{padding:12px 20px;font-size:11px}
+  .cd{padding:24px;border-radius:18px}
+  .cal-grid{gap:6px}
+  .cal-day{font-size:14px;border-radius:12px}
+  .cal-nav-btn{width:40px;height:40px}
+  .cal-month{font-size:18px}
+  .cal-hdr{font-size:10px}
+  input,select{padding:16px 18px;font-size:15px;border-radius:12px}
+  .phone-input{font-size:17px}
+  .type-chip{padding:22px 16px;border-radius:14px}
+  .type-chip .type-name{font-size:11px}
+  .type-chip .type-dur{font-size:10px}
+  .type-chip .type-icon{font-size:28px}
+  .confirm-card{padding:28px 24px;border-radius:18px}
+  .confirm-label{font-size:12px}
+  .confirm-value{font-size:15px}
+  .confirm-row{padding:12px 0}
+  .success-wrap{padding:52px 0}
+  .success-title{font-size:26px}
+  .success-check{width:90px;height:90px}
+  .portal-footer{font-size:10px;padding:36px 0 48px}
+  .toast{font-size:12px;padding:13px 32px}
+  .time-slot{padding:14px 10px;font-size:13px;border-radius:12px}
+  /* Desktop corners are wider */
+  .portal-corners::before{top:28px;left:28px}
+  .portal-corners::after{top:28px;right:28px}
+  .portal-corners-btm::before{bottom:28px;left:28px}
+  .portal-corners-btm::after{bottom:28px;right:28px}
+  /* Ghost image is more visible on large screens */
+  .bg-ghost{filter:brightness(.12) contrast(1.12) saturate(.35) blur(4px)}
+}
+/* Large desktop */
+@media(min-width:1200px){
+  #app{max-width:620px;padding:0 36px}
+  .btn{padding:22px 32px;min-height:60px;font-size:13px;max-width:480px;margin-left:auto;margin-right:auto;display:block}
+  .cd{padding:28px;border-radius:20px}
+  input,select{padding:18px 20px;font-size:16px;border-radius:14px;min-height:52px}
+  .phone-input{font-size:18px}
+  .cal-grid{gap:8px}
+  .cal-day{font-size:15px}
+  .time-slots{grid-template-columns:repeat(5,1fr);gap:8px}
+  .time-slot{padding:16px 10px;font-size:14px}
+  .type-chip{padding:24px 18px}
+  .type-chip .type-icon{font-size:30px;margin-bottom:8px}
+  .type-chip .type-name{font-size:12px}
+  .confirm-card{padding:32px 28px;border-radius:20px}
+  .success-title{font-size:28px}
+  .success-sub{font-size:14px}
+  .bg-ghost{filter:brightness(.14) contrast(1.1) saturate(.35) blur(4px)}
+  .portal-corners::before,.portal-corners::after{width:60px;height:60px}
+  .portal-corners-btm::before,.portal-corners-btm::after{width:60px;height:60px}
+}
+/* Ultra-wide */
+@media(min-width:1600px){
+  #app{max-width:680px;padding:0 44px}
+  .portal-title{font-size:36px}
+  .cal-grid{gap:10px}
+  .time-slots{grid-template-columns:repeat(6,1fr)}
+}
+
+/* Install banner */
+.install-banner{position:fixed;bottom:0;left:0;right:0;z-index:900;background:linear-gradient(160deg,rgba(12,12,14,.98),rgba(6,6,8,.98));border-top:1px solid var(--borderH);padding:16px 20px;display:flex;align-items:center;gap:14px;animation:slideUpBanner .35s ease;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.install-banner-text{flex:1;font-size:12px;color:var(--ow);font-family:var(--body);line-height:1.4}
+.install-banner-text strong{color:var(--ice);font-weight:600}
+.install-banner .btn-install{background:var(--goldGrad);background-size:200% 100%;color:var(--bg);font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;padding:10px 18px;border-radius:10px;text-transform:uppercase;white-space:nowrap;animation:shimmer 3s ease-in-out infinite;min-height:40px;border:none;cursor:pointer}
+.install-banner .btn-dismiss{background:none;border:1px solid var(--borderS);color:var(--dm);cursor:pointer;padding:0;width:36px;height:36px;min-width:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:color .2s,border-color .2s;flex-shrink:0}
+.install-banner .btn-dismiss:hover{color:var(--ow);border-color:var(--borderH)}
+@keyframes slideUpBanner{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+@supports(padding-bottom:env(safe-area-inset-bottom)){
+  .install-banner{padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+}
+/* Existing-client bounce link — small, muted, sits above the flow.
+   Low-weight on purpose: the primary action is still booking. */
+.existing-client-hint{text-align:center;margin:0 auto 18px;padding:0 16px}
+.existing-client-hint a{display:inline-block;padding:8px 14px;
+  font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(200,175,120,.55);text-decoration:none;line-height:1.4;
+  border-radius:4px;transition:color .25s ease,background .25s ease}
+.existing-client-hint a span{color:rgba(232,197,71,.9);font-weight:700;margin-left:2px}
+.existing-client-hint a:hover,.existing-client-hint a:focus-visible{color:rgba(232,197,71,.95);background:rgba(232,197,71,.05)}
+.existing-client-hint a:focus-visible{outline:1px solid rgba(232,197,71,.55);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="bg-ghost"></div>
+<div class="bg-ghost-ov"></div>
+<div class="bg-glow"></div>
+<div class="bg-orb3"></div>
+<div class="bg-warmth"></div>
+<div class="bg-vignette"></div>
+<div class="bg-flare"></div>
+<div class="bg-dust" id="bgDust"></div>
+<div class="bg-grain"></div>
+<div class="portal-corners"></div>
+<div class="portal-corners-btm"></div>
+
+<div id="app">
+
+  <!-- HEADER -->
+  <div class="portal-hdr">
+    <div class="logo-mark"><span>M</span></div>
+    <div class="portal-title">Big Mike Ely</div>
+    <div class="portal-sub">IFBB PRO &middot; COACHING</div>
+    <div class="hdr-rule"><div class="hdr-diamond"></div></div>
+  </div>
+
+  <!-- Existing client shortcut — returning clients can land directly on
+       their portal without walking the booking flow. Low-weight link so
+       it doesn't compete with the primary action. -->
+  <div class="existing-client-hint">
+    <a href="portal.html" aria-label="Already a client? Sign in to your portal">Already a client? <span>Sign in &rarr;</span></a>
+  </div>
+
+  <!-- STEP INDICATOR -->
+  <div class="steps" id="stepDots"></div>
+
+  <!-- STEP 0: SETUP ERROR (shown if no Supabase config) -->
+  <div class="section" id="sec-setup">
+    <div style="text-align:center;padding:40px 16px">
+      <div class="sl" style="font-size:11px;margin-bottom:20px;letter-spacing:.22em">Direct Booking</div>
+      <div class="cd" style="padding:clamp(24px,4vw,36px) clamp(20px,3.5vw,32px);text-align:center;overflow:hidden">
+        <div class="cd-scan"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 5%,var(--accD) 30%,var(--acc) 50%,var(--accD) 70%,transparent 95%);opacity:.5"></div>
+        <div style="font-size:clamp(13px,1.8vw,16px);color:var(--ow);line-height:1.7;margin-bottom:8px;font-weight:500;letter-spacing:.01em">Sessions are scheduled directly with Mike.</div>
+        <div style="font-size:clamp(11px,1.3vw,13px);color:var(--mu);line-height:1.6;margin-bottom:clamp(20px,3vh,32px);font-family:var(--mono);letter-spacing:.03em">Reach out via DM and you'll hear back the same day.</div>
+        <a href="https://instagram.com/ifbbprobigmikeely" target="_blank" rel="noopener" class="btn" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 32px;font-size:clamp(10px,1.2vw,12px);max-width:320px;margin:0 auto">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+          @IFBBPROBIGMIKEELY
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 1: PHONE NUMBER -->
+  <div class="section" id="sec-phone">
+    <div style="text-align:center;margin-bottom:clamp(16px,2.5vh,24px);font-size:clamp(9px,1.05vw,11px);font-family:var(--mono);letter-spacing:.18em;color:var(--dm)">OLD SCHOOL IRON GYM &middot; CLEVELAND, OH &middot; EASTERN TIME</div>
+    <div class="cd" style="padding:clamp(24px,4vw,36px) clamp(20px,3.5vw,32px)">
+      <div class="cd-scan"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 5%,var(--accD) 30%,var(--acc) 50%,var(--accD) 70%,transparent 95%);opacity:.4"></div>
+      <div style="text-align:center;margin-bottom:clamp(20px,3vh,32px)">
+        <div style="font-size:clamp(14px,1.8vw,17px);color:var(--ow);line-height:1.6;font-weight:500">Enter your number to get started.</div>
+        <div style="font-size:clamp(9px,1.1vw,11px);color:var(--dm);margin-top:6px;font-family:var(--mono);letter-spacing:.05em">New or returning &mdash; just your number.</div>
+      </div>
+      <div class="phone-wrap">
+        <label for="phoneInput" class="lb">PHONE NUMBER</label>
+        <span class="phone-prefix">+1</span>
+        <input type="tel" id="phoneInput" name="phone" class="phone-input" placeholder="(555) 123-4567" maxlength="14" inputmode="tel" autocomplete="tel">
+      </div>
+      <div style="margin-bottom:18px">
+        <label for="nameInput" class="lb">FULL NAME</label>
+        <input type="text" id="nameInput" name="name" placeholder="First and last name" autocomplete="name" autocapitalize="words">
+      </div>
+      <button class="btn" id="phoneBtn" onclick="submitPhone()">CONTINUE</button>
+    </div>
+    <div style="text-align:center;margin-top:14px;font-size:9px;color:var(--dmL);font-family:var(--mono);letter-spacing:.06em">
+      Your info is only used for scheduling
+    </div>
+  </div>
+
+  <!-- STEP 2: CALENDAR + TIME -->
+  <div class="section" id="sec-calendar">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <button class="btn2" onclick="goStep(2)" style="padding:6px 12px;font-size:9px">&lsaquo; BACK</button>
+      <div class="sl" style="margin:0">Pick a Date &amp; Time <span style="color:var(--dm);font-weight:400">(Eastern Time)</span></div>
+      <div style="width:60px"></div>
+    </div>
+
+    <!-- Calendar -->
+    <div class="cd" style="padding:16px" id="calendarCard">
+      <div class="cal-nav">
+        <button class="cal-nav-btn" onclick="calNav(-1)" aria-label="Previous month">&lsaquo;</button>
+        <div class="cal-month" id="calMonth" aria-live="polite"></div>
+        <button class="cal-nav-btn" onclick="calNav(1)" aria-label="Next month">&rsaquo;</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+
+    <!-- Time slots -->
+    <div id="slotsContainer" style="display:none">
+      <div class="cd" style="padding:16px">
+        <div class="sl" id="slotsDate" style="margin-bottom:12px"></div>
+        <div id="slotsGrid"></div>
+        <div id="noSlots" style="display:none;text-align:center;padding:16px;color:var(--dm);font-size:12px">
+          No available times on this date
+        </div>
+      </div>
+    </div>
+
+    <button class="btn" id="calNextBtn" onclick="goStep(4)" disabled style="margin-top:14px">SELECT A TIME TO CONTINUE</button>
+  </div>
+
+  <!-- STEP 2: SESSION TYPE (now before calendar) -->
+  <div class="section" id="sec-type">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <button class="btn2" onclick="goStep(1)" style="padding:6px 12px;font-size:9px">&lsaquo; BACK</button>
+      <div class="sl" style="margin:0">Session Type</div>
+      <div style="width:60px"></div>
+    </div>
+
+    <div class="type-grid" id="typeGrid"></div>
+
+    <div class="cd" style="padding:14px;display:none" id="notesWrap">
+      <span class="lb">NOTES FOR MIKE (optional)</span>
+      <input type="text" id="bookingNotes" name="notes" placeholder="Goals, questions, anything..." oninput="_notes=this.value;_bkSaveState();">
+    </div>
+
+    <button class="btn" id="typeNextBtn" onclick="typeNext()" disabled style="margin-top:10px">CONTINUE</button>
+  </div>
+
+  <!-- STEP 4: CONFIRM -->
+  <div class="section" id="sec-confirm">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <button class="btn2" onclick="goStep(isInquiryType()?2:3)" style="padding:6px 12px;font-size:9px">&lsaquo; BACK</button>
+      <div class="sl" style="margin:0">Confirm Booking</div>
+      <div style="width:60px"></div>
+    </div>
+
+    <div class="confirm-card" id="confirmCard"></div>
+
+    <button class="btn" id="bookBtn" onclick="confirmBooking()">BOOK SESSION</button>
+  </div>
+
+  <!-- STEP 5: SUCCESS -->
+  <div class="section" id="sec-success">
+    <div class="success-wrap">
+      <div class="success-check">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <div class="success-title">You're Booked</div>
+      <div class="success-sub" id="successMsg"></div>
+      <div class="gw"></div>
+      <button class="btn2" onclick="bookAnother()" style="padding:12px 28px;display:inline-flex;align-items:center;gap:6px">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        BOOK ANOTHER SESSION
+      </button>
+    </div>
+  </div>
+
+  <div class="portal-footer">
+    <a href="https://instagram.com/ifbbprobigmikeely" target="_blank" rel="noopener" style="color:var(--dm);text-decoration:none;display:inline-flex;align-items:center;gap:6px">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+      @IFBBPROBIGMIKEELY
+    </a>
+    <div style="margin-top:10px"><a href="https://vermillionaxis.tech" target="_blank" rel="noopener" style="color:var(--dmL);text-decoration:none;font-size:9px;letter-spacing:.08em">BUILT BY VERMILLION AXIS TECHNOLOGIES</a></div>
+  </div>
+</div>
+
+<!-- Install banner (injected by JS) -->
+<div id="installBanner" style="display:none"></div>
+
+<script>
+/* ── CONFIG ── */
+var STEPS=["phone","type","calendar","confirm","success"];
+var SESSION_TYPES=[
+  {id:"training",     name:"Training",             svg:"training",     duration:"60 min"},
+  {id:"team",         name:"Team Workout",         svg:"team",         duration:"60 min"},
+  {id:"posing",       name:"Posing Lesson",        svg:"posing",       duration:"60 min"},
+  {id:"spraytan",     name:"Spray Tan",            svg:"spraytan",     duration:"30 min"},
+  {id:"contestprep",  name:"Contest Prep",         svg:"contestprep",  duration:"Consultation"},
+  {id:"nutrition",    name:"Nutrition Check-In",   svg:"nutrition",    duration:"30 min"},
+  {id:"online",       name:"Online Coaching",      svg:"online",       duration:"Consultation"},
+  {id:"consultation", name:"Consultation",         svg:"consultation", duration:"30 min"},
+  {id:"fullpackage",  name:"Full Coaching Package",svg:"fullpackage",  duration:"Consultation",inquiry:true},
+  {id:"guestposing",  name:"Guest Posing",         svg:"guestposing",  duration:"Contact for details",inquiry:true},
+  {id:"other",        name:"Other Inquiry",        svg:"other",        duration:"",inquiry:true}
+];
+
+var BK_ICONS={training:'<path d="M2 16 L30 16"/><path d="M6 10 L6 22"/><path d="M9 7 L9 25"/><path d="M23 10 L23 22"/><path d="M26 7 L26 25"/>',contestprep:'<path d="M16 3 L11 11 L21 11 Z" stroke-width="1" opacity=".6"/><rect x="12" y="14" width="8" height="15" rx="1"/><rect x="3" y="19" width="7" height="10" rx="1"/><rect x="22" y="19" width="7" height="10" rx="1"/><path d="M1 29 L31 29"/>',posing:'<circle cx="16" cy="6" r="2.3"/><path d="M13 10 L19 10 L18 24 L14 24 Z"/><path d="M13 11 L7 8 L5 15 L10 17"/><path d="M19 11 L25 8 L27 15 L22 17"/>',spraytan:'<path d="M16 9 C 10 15 10 22 10 24 C 10 28 13 29 16 29 C 19 29 22 28 22 24 C 22 22 22 15 16 9 Z"/><path d="M8 5 L10 8 L12 5 L14 8 L16 5 L18 8 L20 5 L22 8 L24 5" stroke-width="1"/>',nutrition:'<circle cx="16" cy="16" r="11"/><path d="M16 5 L16 16"/><path d="M16 16 L26 11"/><path d="M16 16 L6 22"/><circle cx="16" cy="16" r="1" fill="currentColor" stroke="none"/>',online:'<rect x="3" y="6" width="26" height="16" rx="2"/><path d="M11 26 L21 26"/><path d="M16 22 L16 26"/><path d="M9 14 L23 14" stroke-width="1"/><path d="M11 12 L11 16" stroke-width="1"/><path d="M21 12 L21 16" stroke-width="1"/>',fullpackage:'<path d="M16 2 L28 9 L28 23 L16 30 L4 23 L4 9 Z"/><path d="M9 22 L12 11 L16 17 L20 11 L23 22" stroke-width="1.2"/>',consultation:'<path d="M6 8 L26 8 A3 3 0 0 1 29 11 L29 18 A3 3 0 0 1 26 21 L20 21 L15 26 L15 21 L6 21 A3 3 0 0 1 3 18 L3 11 A3 3 0 0 1 6 8 Z"/><circle cx="11" cy="14.5" r=".9" fill="currentColor" stroke="none"/><circle cx="16" cy="14.5" r=".9" fill="currentColor" stroke="none"/><circle cx="21" cy="14.5" r=".9" fill="currentColor" stroke="none"/>',team:'<circle cx="11" cy="9" r="2.8"/><circle cx="21" cy="9" r="2.8"/><path d="M6 23 L8 14 L11 12 L14 14 L15 18"/><path d="M17 18 L18 14 L21 12 L24 14 L26 23"/>',guestposing:'<path d="M9 13 L11 6 L16 10 L21 6 L23 13 Z"/><circle cx="11" cy="5" r=".9" fill="currentColor" stroke="none"/><circle cx="16" cy="3" r="1" fill="currentColor" stroke="none"/><circle cx="21" cy="5" r=".9" fill="currentColor" stroke="none"/><path d="M5 18 Q3 22 6 25"/><path d="M27 18 Q29 22 26 25"/><path d="M16 16 L16 26"/>',other:'<rect x="3" y="8" width="26" height="17" rx="2"/><path d="M3 10 L16 19 L29 10"/><circle cx="16" cy="21" r="2.5" fill="currentColor" stroke="none" opacity=".55"/>'};
+var BK_ICON_SVG_OPEN='<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+var BK_ICON_SVG_CLOSE='</svg>';
+function bkIcon(id){return BK_ICON_SVG_OPEN+(BK_ICONS[id]||"")+BK_ICON_SVG_CLOSE;}
+
+var DN=["S","M","T","W","T","F","S"];
+var MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+var MONTHS_SHORT=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+/* ── STATE ── */
+var _step=1;
+var _phone="";
+var _name="";
+var _calMonth=new Date().getMonth();
+var _calYear=new Date().getFullYear();
+var _selectedDate=null;
+var _selectedTime=null;
+var _selectedType=null;
+var _notes="";
+var _bookedSlots=[];
+var _availability={};
+var _blockedTimeRanges=[];
+var _sb=null;
+var _configReady=false;
+var _submitting=false;
+var _bookingId=null;
+var _dataReady=false;
+var _availLoaded=false;
+var _slotsLoaded=false;
+var _slotRefreshTimer=null;
+var MIN_NOTICE_HOURS=2;
+
+/* ── SUPABASE ── */
+/* RECOVERY MODE: backend offline — blank URL disables remote calls (getSupabase returns null). Restore the URL to re-enable. */
+var _BM_SB_URL="";
+var _BM_SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96Z2VtY3ZuanpxZnVtcGp4d2NxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1MjMxNjEsImV4cCI6MjA5MTA5OTE2MX0.6PGWsz_1dRQNEqm1QvafihRWe_8TRTCoJ_aEA0OnY7k";
+function getSupabase(){
+  if(_sb)return _sb;
+  var url=_BM_SB_URL,key=_BM_SB_KEY;
+  if(!url||!key)return null;
+  try{_sb=supabase.createClient(url,key);return _sb;}catch(e){return null;}
+}
+
+/* ── THEME ── */
+function applyPortalTheme(){
+  var params=new URLSearchParams(window.location.search);
+  var t=params.get("theme")||localStorage.getItem("bm_portal_theme")||"gold";
+  if(t==="crimson")document.body.classList.add("theme-crimson");
+  else document.body.classList.remove("theme-crimson");
+  localStorage.setItem("bm_portal_theme",t);
+}
+function loadPortalThemeFromSupabase(){
+  var sb=getSupabase();if(!sb)return;
+  sb.from("app_settings").select("value").eq("key","portal_theme").single().then(function(res){
+    if(res.data&&res.data.value){
+      var t=res.data.value;
+      localStorage.setItem("bm_portal_theme",t);
+      if(t==="crimson")document.body.classList.add("theme-crimson");
+      else document.body.classList.remove("theme-crimson");
+    }
+  }).catch(function(){/* silent — theme stays default */});
+}
+
+/* ── INIT ── */
+function init(){
+  /* URL param handoff from services.html must run BEFORE the getSupabase
+     gate — even if the config is missing, we still want to remember which
+     service the visitor clicked so we can apply it once init() actually
+     completes on a retry. Stored in sessionStorage so it survives the
+     inevitable page reload that happens when the service worker updates. */
+  try{
+    var params=new URLSearchParams(location.search);
+    var svc=params.get("service");
+    if(svc){
+      var found=SESSION_TYPES.find(function(t){return t.id===svc;});
+      if(found){
+        _selectedType=svc;
+        try{sessionStorage.setItem("bm_bk_deeplink_svc",svc);}catch(_sErr){}
+      }
+    }
+    /* Pick up deeplink from sessionStorage on soft reload */
+    if(!_selectedType){
+      try{
+        var cached=sessionStorage.getItem("bm_bk_deeplink_svc");
+        if(cached && SESSION_TYPES.find(function(t){return t.id===cached;})){
+          _selectedType=cached;
+        }
+      }catch(_sErr2){}
+    }
+  }catch(_urlE){}
+
+  var sb=getSupabase();
+  if(!sb){
+    showSection("setup");
+    return;
+  }
+  _configReady=true;
+  loadAvailability();
+  loadBookedSlots();
+  loadPortalThemeFromSupabase();
+  startSlotRefresh();
+  /* Resume any in-progress booking from sessionStorage */
+  var resumeStep=_bkRestoreState();
+  if(resumeStep>=1&&resumeStep<=4){goStep(resumeStep);}
+  else{goStep(1);}
+}
+
+function _checkDataReady(){
+  if(_availLoaded&&_slotsLoaded){
+    _dataReady=true;
+    var btn=document.getElementById("phoneBtn");
+    if(btn){btn.disabled=false;btn.textContent="CONTINUE";}
+  }
+}
+
+/* Load coach availability settings from Supabase */
+function loadAvailability(){
+  var sb=getSupabase();if(!sb){_checkDataReady();return;}
+  /* Default availability: Mon-Sat 6am-8pm, 1hr slots */
+  var defaultAvail={days:{0:false,1:true,2:true,3:true,4:true,5:true,6:true},startHour:6,endHour:20,slotMinutes:60,blockedDates:[],maxAdvanceDays:30};
+  sb.from("app_settings").select("value").eq("key","coach_availability").single().then(function(res){
+    if(res.error||!res.data||!res.data.value){_availability=defaultAvail;}
+    else{_availability=res.data.value;}
+    /* Also load blocked time ranges from coach app */
+    _blockedTimeRanges=_availability.blockedRanges||[];
+    sb.from("app_settings").select("value").eq("key","blocked_times").single().then(function(bt){
+      if(bt.data&&bt.data.value)_blockedTimeRanges=_blockedTimeRanges.concat(bt.data.value);
+      _availLoaded=true;_checkDataReady();
+      if(_selectedDate)renderCalendar();
+    }).catch(function(){_availLoaded=true;_checkDataReady();if(_selectedDate)renderCalendar();});
+  }).catch(function(){_availability=defaultAvail;_availLoaded=true;_checkDataReady();if(_selectedDate)renderCalendar();});
+}
+
+/* Load existing bookings to show which slots are taken */
+function loadBookedSlots(){
+  var sb=getSupabase();if(!sb){_slotsLoaded=true;_checkDataReady();return;}
+  var n=new Date();var today=n.getFullYear()+"-"+pad2(n.getMonth()+1)+"-"+pad2(n.getDate());
+  sb.from("schedule").select("data").then(function(res){
+    if(res.error){console.warn("Failed to load booked slots:",res.error);}
+    if(res.data){
+      _bookedSlots=res.data.map(function(r){return r.data;}).filter(function(s){
+        return s&&s.date>=today&&s.status!=="cancelled";
+      });
+    }
+    _slotsLoaded=true;_checkDataReady();
+    if(_selectedDate)renderCalendar();
+  }).catch(function(e){console.warn("Failed to load booked slots:",e);_slotsLoaded=true;_checkDataReady();});
+}
+
+/* Refresh booked slots periodically to prevent stale data (every 30s) */
+function startSlotRefresh(){
+  if(_slotRefreshTimer)clearInterval(_slotRefreshTimer);
+  _slotRefreshTimer=setInterval(function(){loadBookedSlots();loadAvailability();},30000);
+}
+
+/* Check if a slot passes minimum notice period */
+function passesMinNotice(dateIso,timeStr){
+  var parts=dateIso.split("-");
+  var timeParts=timeStr.split(":");
+  var slotDate=new Date(parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2]),parseInt(timeParts[0]),parseInt(timeParts[1]));
+  var now=new Date();
+  var hoursUntil=(slotDate-now)/(1e3*3600);
+  return hoursUntil>=MIN_NOTICE_HOURS;
+}
+
+/* ── NAVIGATION ── */
+var _stepLock=false;
+/* ── FORM STATE PERSISTENCE ── */
+function _bkSaveState(){
+  try{
+    /* Capture notes from DOM if present */
+    var notesEl=document.getElementById("bookingNotes");
+    if(notesEl)_notes=notesEl.value||_notes;
+    var s={step:_step,phone:_phone,name:_name,selectedDate:_selectedDate,selectedTime:_selectedTime,selectedType:_selectedType,notes:_notes};
+    sessionStorage.setItem("bm_booking_state",JSON.stringify(s));
+  }catch(e){}
+}
+function _bkRestoreState(){
+  try{
+    var raw=sessionStorage.getItem("bm_booking_state");if(!raw)return false;
+    var s=JSON.parse(raw);if(!s)return false;
+    if(s.phone)_phone=s.phone;
+    if(s.name)_name=s.name;
+    _selectedDate=s.selectedDate||null;
+    _selectedTime=s.selectedTime||null;
+    _selectedType=s.selectedType||null;
+    _notes=s.notes||"";
+    return s.step&&s.step>=1&&s.step<=STEPS.length?s.step:0;
+  }catch(e){return 0;}
+}
+function _bkClearState(){try{sessionStorage.removeItem("bm_booking_state");}catch(e){}}
+
+function goStep(n){
+  if(_stepLock)return;_stepLock=true;setTimeout(function(){_stepLock=false;},300);
+  if(!_configReady&&n!==0){init();return;}
+  /* Guard: validate prerequisites before allowing step advancement */
+  if(n>=2&&(!_phone||!_name)){n=1;}
+  if(n===3&&!_selectedType){n=2;}
+  if(n>=4&&!isInquiryType()&&(!_selectedDate||!_selectedTime)){n=3;}
+  _step=n;
+  /* Hide setup section when entering the booking flow */
+  var setup=document.getElementById("sec-setup");
+  if(setup)setup.classList.remove("active");
+  STEPS.forEach(function(s,i){
+    var sec=document.getElementById("sec-"+s);
+    if(sec){
+      sec.classList.remove("active");
+      if(i+1===n)sec.classList.add("active");
+    }
+  });
+  renderStepDots();
+  if(n===1&&!_dataReady){var pb=document.getElementById("phoneBtn");if(pb){pb.disabled=true;pb.textContent="LOADING\u2026";}}
+  if(n===2)renderTypes();
+  if(n===3)renderCalendar();
+  if(n===4)renderConfirm();
+  /* Restore phone/name inputs when returning to step 1 */
+  if(n===1){
+    var pi=document.getElementById("phoneInput");if(pi&&_phone){pi.value=formatPhoneDisplay(_phone)||_phone;}
+    var ni=document.getElementById("nameInput");if(ni&&_name){ni.value=_name;}
+  }
+  window.scrollTo({top:0,behavior:"smooth"});
+  try{history.replaceState({step:n},"","");}catch(e){}
+  _bkSaveState();
+}
+
+function showSection(name){
+  document.querySelectorAll(".section").forEach(function(s){s.classList.remove("active");});
+  var sec=document.getElementById("sec-"+name);
+  if(sec)sec.classList.add("active");
+}
+
+function renderStepDots(){
+  var html="";
+  for(var i=1;i<=STEPS.length;i++){
+    var cls="step-dot";
+    if(i===_step)cls+=" active";
+    else if(i<_step)cls+=" done";
+    html+='<div class="'+cls+'"></div>';
+  }
+  document.getElementById("stepDots").innerHTML=html;
+}
+
+/* ── PHONE INPUT ── */
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+window.scrollTo(0,0);
+document.addEventListener("DOMContentLoaded",function(){
+  applyPortalTheme();
+  /* ── SPAWN DUST PARTICLES ── */
+  (function(){
+    var dust=document.getElementById("bgDust");if(!dust)return;
+    for(var i=0;i<18;i++){
+      var s=document.createElement("span");
+      var size=1+Math.random()*1.5;
+      s.style.cssText="left:"+Math.random()*100+"%;top:"+(100+Math.random()*20)+
+        "%;width:"+size+"px;height:"+size+"px;animation-duration:"+(12+Math.random()*20)+
+        "s;animation-delay:"+(-Math.random()*25)+"s;opacity:0";
+      dust.appendChild(s);
+    }
+  })();
+  var inp=document.getElementById("phoneInput");
+  if(inp){
+    inp.addEventListener("input",function(e){
+      var v=e.target.value.replace(/\D/g,"");
+      if(v.length>10)v=v.substring(0,10);
+      if(v.length>=7)e.target.value="("+v.substring(0,3)+") "+v.substring(3,6)+"-"+v.substring(6);
+      else if(v.length>=4)e.target.value="("+v.substring(0,3)+") "+v.substring(3);
+      else if(v.length>0)e.target.value="("+v;
+      else e.target.value="";
+    });
+    inp.addEventListener("keydown",function(e){
+      if(e.key==="Enter")submitPhone();
+    });
+  }
+  var nameInp=document.getElementById("nameInput");
+  if(nameInp){
+    nameInp.addEventListener("keydown",function(e){
+      if(e.key==="Enter")submitPhone();
+    });
+  }
+  init();
+
+  /* ── VERSION ── */
+  (function(){
+    var SITE_VERSION='v57';
+    if(localStorage.getItem('bm_sw_ver')!==SITE_VERSION){localStorage.setItem('bm_sw_ver',SITE_VERSION);}
+  })();
+
+  /* ── INSTALL PROMPT ──
+     We capture the beforeinstallprompt event so the install UI is ready,
+     but we DO NOT render the banner until the user reaches the success
+     step. Same rationale as the iOS hint: an overlay at bottom:0 covers
+     the CONTINUE CTA on iPhone viewports and destroys conversion. */
+  var _deferredPrompt=null;
+  window.addEventListener('beforeinstallprompt',function(e){
+    e.preventDefault();
+    _deferredPrompt=e;
+    /* Intentionally NOT showing the banner here. Call window._showInstallBanner()
+       from the success step instead. */
+  });
+
+  window._showInstallBanner=function(){
+    if(!_deferredPrompt)return;
+    if(localStorage.getItem('bm_install_dismissed'))return;
+    var banner=document.getElementById('installBanner');
+    if(!banner)return;
+    banner.className='install-banner';
+    banner.style.display='flex';
+    banner.innerHTML='<div class="install-banner-text" style="line-height:1.55">'
+      +'<strong style="display:block;color:var(--ice);font-size:13px;letter-spacing:.02em;margin-bottom:3px">Install the Big Mike app</strong>'
+      +'<span style="font-size:12px;color:var(--ow)">One tap to install. Get reminders and messages on your home screen.</span></div>'
+      +'<button class="btn-install" onclick="doInstall()">INSTALL</button>'
+      +'<button class="btn-dismiss" aria-label="Dismiss install" onclick="dismissInstall()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg></button>';
+  };
+
+  window.doInstall=function(){
+    if(!_deferredPrompt)return;
+    _deferredPrompt.prompt();
+    _deferredPrompt.userChoice.then(function(choice){
+      _deferredPrompt=null;
+      var banner=document.getElementById('installBanner');
+      if(banner)banner.style.display='none';
+      if(choice.outcome==='accepted')toast('App installed!');
+    });
+  };
+  window.dismissInstall=function(){
+    localStorage.setItem('bm_install_dismissed','1');
+    var banner=document.getElementById('installBanner');
+    if(banner)banner.style.display='none';
+  };
+
+  /* ── iOS INSTALL HINT ──
+     Only shown AFTER a successful booking (step 5), never during the
+     input flow. Previously it was unconditional + position:fixed;bottom:0
+     which sat on top of the CONTINUE button on iPhone and blocked the
+     primary CTA — a real conversion killer. We now expose the helper
+     on window so the success step can trigger it. */
+  window._showIOSInstallHint=function(){
+    var ua=navigator.userAgent||'';
+    var isIOS=/iPad|iPhone|iPod/.test(ua)&&!window.MSStream;
+    var isStandalone=window.navigator.standalone===true;
+    if(!isIOS||isStandalone||localStorage.getItem('bm_ios_hint_dismissed'))return;
+    var hint=document.getElementById('installBanner');
+    if(!hint)return;
+    hint.className='install-banner';
+    hint.style.display='flex';
+    /* Premium iOS Share icon (SVG, not emoji). The iOS system Share glyph
+       is a square with an upward arrow piercing it. We render it inline so
+       it inherits --acc color and scales cleanly at any density. No unicode
+       arrow characters — they render inconsistently across fonts and read
+       as corny emoji on every phone we tested. */
+    hint.innerHTML='<div class="install-banner-text" style="line-height:1.55"><strong style="display:block;color:var(--ice);font-size:13px;letter-spacing:.02em;margin-bottom:3px">Install this app</strong>'
+      +'<span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ow)">Tap<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>Share, then <em style="font-style:normal;color:var(--accVib)">Add to Home Screen</em></span></div>'
+      +'<button class="btn-dismiss" aria-label="Dismiss install hint" onclick="this.parentElement.style.display=\'none\';localStorage.setItem(\'bm_ios_hint_dismissed\',\'1\')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg></button>';
+  };
+});
+
+function submitPhone(){
+  var raw=document.getElementById("phoneInput").value.replace(/\D/g,"");
+  var name=(document.getElementById("nameInput").value||"").trim();
+  if(raw.length<10){toast("Please enter a valid phone number");shake("phoneInput");return;}
+  /* Reject all same digit (e.g. 0000000000) and invalid US area codes (first digit 0 or 1) */
+  if(/^(\d)\1{9}$/.test(raw)||raw[0]==="0"||raw[0]==="1"){toast("Please enter a valid phone number");shake("phoneInput");return;}
+  if(!name){toast("Please enter your name");shake("nameInput");return;}
+  _phone="+1"+raw;
+  _name=name;
+  _bkSaveState();
+  goStep(2);
+}
+
+/* ── CALENDAR ── */
+function calNav(dir){
+  var now=new Date();
+  if(dir<0&&_calYear===now.getFullYear()&&_calMonth<=now.getMonth())return;
+  _calMonth+=dir;
+  if(_calMonth>11){_calMonth=0;_calYear++;}
+  if(_calMonth<0){_calMonth=11;_calYear--;}
+  renderCalendar();
+}
+
+function renderCalendar(){
+  document.getElementById("calMonth").textContent=MONTHS[_calMonth]+" "+_calYear;
+
+  var today=new Date();today.setHours(0,0,0,0);
+  var maxDate=new Date(today);
+  maxDate.setDate(maxDate.getDate()+(_availability.maxAdvanceDays||30));
+
+  var first=new Date(_calYear,_calMonth,1);
+  var startDow=first.getDay();
+  var daysInMonth=new Date(_calYear,_calMonth+1,0).getDate();
+
+  var html="";
+  DN.forEach(function(d){html+='<div class="cal-hdr">'+d+'</div>';});
+
+  for(var i=0;i<startDow;i++)html+='<div class="cal-day disabled"></div>';
+
+  for(var d=1;d<=daysInMonth;d++){
+    var dt=new Date(_calYear,_calMonth,d);
+    var iso=_calYear+"-"+pad2(_calMonth+1)+"-"+pad2(d);
+    var isPast=dt<today;
+    var isBeyond=dt>maxDate;
+    var dow=dt.getDay();
+    var isAvailDay=_availability.days?_availability.days[dow]:dow>=1&&dow<=6;
+    var isBlocked=(_availability.blockedDates||[]).indexOf(iso)>=0;
+    var available=!isPast&&!isBeyond&&isAvailDay&&!isBlocked;
+    var hasSlots=available&&getSlotsForDate(iso).available>0;
+
+    var cls="cal-day";
+    if(dt.toDateString()===today.toDateString())cls+=" today";
+    if(_selectedDate===iso)cls+=" selected";
+    if(!available)cls+=" disabled";
+    else if(hasSlots)cls+=" has-slots";
+    else cls+=" no-slots disabled";
+
+    html+='<div class="'+cls+'" role="button" tabindex="'+(available&&hasSlots?'0':'-1')+'" aria-label="'+MONTHS[_calMonth]+' '+d+'" onclick="selectDate(\''+iso+'\')">'+d+'</div>';
+  }
+
+  /* Fill remaining cells */
+  var totalCells=startDow+daysInMonth;
+  var remaining=totalCells%7===0?0:7-(totalCells%7);
+  for(var r=0;r<remaining;r++)html+='<div class="cal-day disabled"></div>';
+
+  document.getElementById("calGrid").innerHTML=html;
+
+  /* Render time slots if date selected */
+  if(_selectedDate)renderTimeSlots(_selectedDate);
+}
+
+function isTimeBlocked(dateIso,timeStr){
+  var tMin=parseInt(timeStr.split(":")[0])*60+parseInt(timeStr.split(":")[1]);
+  for(var i=0;i<_blockedTimeRanges.length;i++){
+    var bt=_blockedTimeRanges[i];if(bt.date!==dateIso)continue;
+    var bStart=parseInt(bt.start.split(":")[0])*60+parseInt(bt.start.split(":")[1]);
+    var bEnd=parseInt(bt.end.split(":")[0])*60+parseInt(bt.end.split(":")[1]);
+    if(tMin>=bStart&&tMin<bEnd)return true;
+  }
+  return false;
+}
+function getSlotsForDate(dateIso){
+  var startH=_availability.startHour||6;
+  var endH=_availability.endHour||20;
+  var slotMin=_availability.slotMinutes||60;
+  var booked=_bookedSlots.filter(function(s){return s.date===dateIso;});
+  var total=0,avail=0;
+  var startMin=startH*60,endMin=endH*60;
+  for(var t=startMin;t+slotMin<=endMin;t+=slotMin){
+    total++;
+    var timeStr=pad2(Math.floor(t/60))+":"+pad2(t%60);
+    var isBooked=booked.some(function(s){return s.time===timeStr;})||isTimeBlocked(dateIso,timeStr);
+    if(!isBooked&&passesMinNotice(dateIso,timeStr))avail++;
+  }
+  return{total:total,available:avail};
+}
+
+function selectDate(iso){
+  /* Guard: reject past dates and dates with no available slots */
+  var parts=iso.split("-");
+  var dt=new Date(parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2]));
+  var today=new Date();today.setHours(0,0,0,0);
+  if(dt<today)return;
+  var dow=dt.getDay();
+  var isAvailDay=_availability.days?_availability.days[dow]:dow>=1&&dow<=6;
+  if(!isAvailDay)return;
+  if((_availability.blockedDates||[]).indexOf(iso)>=0)return;
+  if(getSlotsForDate(iso).available<=0)return;
+  _selectedDate=iso;
+  _selectedTime=null;
+  _bkSaveState();
+  updateCalNextBtn();
+  renderCalendar();
+}
+
+function renderTimeSlots(dateIso){
+  var container=document.getElementById("slotsContainer");
+  var grid=document.getElementById("slotsGrid");
+  var noSlots=document.getElementById("noSlots");
+  container.style.display="block";
+
+  var dt=new Date(dateIso+"T12:00:00");
+  var dayName=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][dt.getDay()];
+  document.getElementById("slotsDate").textContent=dayName+", "+MONTHS_SHORT[dt.getMonth()]+" "+dt.getDate();
+
+  var startH=_availability.startHour||6;
+  var endH=_availability.endHour||20;
+  var slotMin=_availability.slotMinutes||60;
+  var booked=_bookedSlots.filter(function(s){return s.date===dateIso;});
+
+  var morning=[],afternoon=[],evening=[];
+  var startMin=startH*60,endMin=endH*60;
+
+  for(var t=startMin;t+slotMin<=endMin;t+=slotMin){
+    var h=Math.floor(t/60),m=t%60;
+    var timeStr=pad2(h)+":"+pad2(m);
+    var isBooked=booked.some(function(s){return s.time===timeStr;})||isTimeBlocked(dateIso,timeStr)||!passesMinNotice(dateIso,timeStr);
+    var slot={time:timeStr,display:fmtTime(timeStr),booked:isBooked};
+    if(h<12)morning.push(slot);
+    else if(h<17)afternoon.push(slot);
+    else evening.push(slot);
+  }
+
+  var html="";
+  if(morning.length)html+=renderSlotGroup("Morning",morning);
+  if(afternoon.length)html+=renderSlotGroup("Afternoon",afternoon);
+  if(evening.length)html+=renderSlotGroup("Evening",evening);
+
+  if(!morning.length&&!afternoon.length&&!evening.length){
+    grid.innerHTML="";
+    noSlots.style.display="block";
+  }else{
+    noSlots.style.display="none";
+    grid.innerHTML=html+'<div style="font-size:9px;color:var(--dm);text-align:center;margin-top:8px;font-family:var(--mono)">All times Eastern (ET) &middot; Cleveland, OH</div>';
+  }
+}
+
+function renderSlotGroup(label,slots){
+  var html='<div class="slot-group-title">'+label+'</div><div class="time-slots">';
+  slots.forEach(function(s){
+    var cls="time-slot";
+    if(s.booked)cls+=" booked";
+    if(_selectedTime===s.time)cls+=" selected";
+    html+='<div class="'+cls+'" role="button" tabindex="'+(s.booked?'-1':'0')+'" aria-label="'+s.display+(s.booked?' booked':'')+'" onclick="selectTime(\''+s.time+'\')">'+s.display+'</div>';
+  });
+  html+='</div>';
+  return html;
+}
+
+function selectTime(t){
+  _selectedTime=t;
+  _bkSaveState();
+  updateCalNextBtn();
+  renderTimeSlots(_selectedDate);
+}
+
+function updateCalNextBtn(){
+  var btn=document.getElementById("calNextBtn");
+  if(_selectedDate&&_selectedTime){
+    btn.disabled=false;
+    btn.textContent="CONTINUE";
+  }else{
+    btn.disabled=true;
+    btn.textContent="SELECT A TIME TO CONTINUE";
+  }
+}
+
+/* ── SESSION TYPE ── */
+function renderTypes(){
+  var html="";
+  var enabledTypes=_availability.sessionTypes||null;
+  SESSION_TYPES.forEach(function(t){
+    if(enabledTypes&&enabledTypes.indexOf(t.id)<0)return;
+    var cls="type-chip"+(_selectedType===t.id?" selected":"");
+    html+='<div class="'+cls+'" role="button" tabindex="0" aria-label="'+t.name+' '+t.duration+'" onclick="selectType(\''+t.id+'\')">'
+      +'<div class="type-icon">'+t.icon+'</div>'
+      +'<div class="type-name">'+t.name+'</div>'
+      +'<div class="type-dur">'+t.duration+'</div></div>';
+  });
+  document.getElementById("typeGrid").innerHTML=html;
+  document.getElementById("notesWrap").style.display=_selectedType?"block":"none";
+  updateTypeBtn();
+}
+
+function selectType(id){
+  _selectedType=id;
+  _bkSaveState();
+  renderTypes();
+  /* For inquiry types, show a larger notes area with different prompt */
+  var sel=SESSION_TYPES.find(function(t){return t.id===id;});
+  var wrap=document.getElementById("notesWrap");
+  var input=document.getElementById("bookingNotes");
+  if(sel&&sel.inquiry){
+    wrap.style.display="block";
+    input.placeholder=sel.id==="guestposing"?"Event name, date, location, and details...":"Describe what you need...";
+    input.setAttribute("required","true");
+  } else {
+    wrap.style.display=_selectedType?"block":"none";
+    input.placeholder="Goals, questions, anything...";
+    input.removeAttribute("required");
+  }
+}
+
+function isInquiryType(){
+  var sel=SESSION_TYPES.find(function(t){return t.id===_selectedType;});
+  return sel&&sel.inquiry;
+}
+
+function typeNext(){
+  if(isInquiryType()){
+    /* Inquiry types require notes/details */
+    var notesVal=(document.getElementById("bookingNotes")||{}).value||"";
+    if(!notesVal.trim()){toast("Please add details for your inquiry");shake("bookingNotes");return;}
+    /* Inquiry types skip calendar — go straight to confirm */
+    goStep(4);
+  } else {
+    /* Regular sessions go to calendar to pick date/time */
+    goStep(3);
+  }
+}
+
+function updateTypeBtn(){
+  var btn=document.getElementById("typeNextBtn");
+  btn.disabled=!_selectedType;
+  /* Update button text based on type */
+  if(_selectedType&&isInquiryType()){
+    btn.textContent="SEND INQUIRY";
+  } else {
+    btn.textContent="CONTINUE";
+  }
+}
+
+/* ── CONFIRM ── */
+function renderConfirm(){
+  _notes=(document.getElementById("bookingNotes")||{}).value||"";
+  var typeName=SESSION_TYPES.find(function(t){return t.id===_selectedType;})||{name:"Session"};
+  var inquiry=isInquiryType();
+
+  var html='<div class="confirm-row"><div class="confirm-label">Name</div><div class="confirm-value">'+esc(_name)+'</div></div>'
+    +'<div class="confirm-row"><div class="confirm-label">Phone</div><div class="confirm-value">'+formatPhoneDisplay(_phone)+'</div></div>';
+
+  if(!inquiry&&_selectedDate){
+    var dt=new Date(_selectedDate+"T12:00:00");
+    var dayName=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][dt.getDay()];
+    html+='<div class="confirm-row"><div class="confirm-label">Date</div><div class="confirm-value">'+dayName+', '+MONTHS_SHORT[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear()+'</div></div>'
+      +'<div class="confirm-row"><div class="confirm-label">Time</div><div class="confirm-value">'+fmtTime(_selectedTime)+' ET</div></div>';
+  }
+
+  html+='<div class="confirm-row"><div class="confirm-label">'+(inquiry?"Inquiry":"Session")+'</div><div class="confirm-value">'+esc(typeName.name)+'</div></div>';
+  if(_notes)html+='<div class="confirm-row"><div class="confirm-label">'+(inquiry?"Details":"Notes")+'</div><div class="confirm-value" style="font-size:12px;color:var(--ow)">'+esc(_notes)+'</div></div>';
+
+  document.getElementById("confirmCard").innerHTML=html;
+  /* Update book button text for inquiries */
+  var bookBtn=document.getElementById("bookBtn");
+  if(bookBtn)bookBtn.textContent=inquiry?"SEND INQUIRY":"BOOK SESSION";
+}
+
+/* ── BOOK ── */
+function confirmBooking(){
+  if(_submitting)return;
+  _submitting=true;
+  var btn=document.getElementById("bookBtn");
+  btn.disabled=true;
+  btn.innerHTML='BOOKING <span class="loading-dots"><span></span><span></span><span></span></span>';
+
+  /* Safety timeout: if anything hangs, always re-enable the button after 45s so the user isn't stuck. */
+  var _bookInquiryLabel=isInquiryType()?"SEND INQUIRY":"BOOK SESSION";
+  if(window._bookSafetyTimer)clearTimeout(window._bookSafetyTimer);
+  window._bookSafetyTimer=setTimeout(function(){
+    if(!_submitting)return;
+    _submitting=false;
+    if(btn){btn.disabled=false;btn.textContent=_bookInquiryLabel;}
+    toast("Taking too long. Check your connection and try again.");
+  },45000);
+
+  var sb=getSupabase();
+  if(!sb){toast("Connection error");btn.disabled=false;btn.textContent="BOOK SESSION";_submitting=false;if(window._bookSafetyTimer){clearTimeout(window._bookSafetyTimer);window._bookSafetyTimer=null;}return;}
+
+  /* Idempotency: reuse same booking ID if retrying */
+  if(!_bookingId)_bookingId="bk_"+Date.now()+"_"+Math.random().toString(36).substring(2,8);
+  var id=_bookingId;
+
+  var typeName=(SESSION_TYPES.find(function(t){return t.id===_selectedType;})||{name:"Training"}).name;
+
+  function phoneDigits(p){if(!p)return"";var d=p.replace(/\D/g,"");return d.length>10?d.slice(-10):d;}
+  var myDigits=phoneDigits(_phone);
+  var inquiry=isInquiryType();
+
+  function _clearSafety(){if(window._bookSafetyTimer){clearTimeout(window._bookSafetyTimer);window._bookSafetyTimer=null;}}
+  function _resetBtn(){btn.disabled=false;btn.textContent=inquiry?"SEND INQUIRY":"BOOK SESSION";_submitting=false;_clearSafety();}
+  function _fail(msg){toast(msg);_resetBtn();}
+
+  /* Step 0: For scheduled sessions, verify slot is STILL available in real-time */
+  var verifySlot;
+  if(!inquiry&&_selectedDate&&_selectedTime){
+    verifySlot=sb.from("schedule").select("data").then(function(res){
+      if(!res.data)return true;
+      var conflict=res.data.some(function(r){
+        var s=r.data;
+        return s&&s.date===_selectedDate&&s.time===_selectedTime&&s.status!=="cancelled";
+      });
+      if(conflict){_fail("This time slot was just booked. Please pick another.");_selectedTime=null;updateCalNextBtn();loadBookedSlots();return false;}
+      /* Also verify minimum notice still valid */
+      if(!passesMinNotice(_selectedDate,_selectedTime)){_fail("This time is too soon. Please pick a later slot.");return false;}
+      return true;
+    }).catch(function(){
+      /* Network failure during slot verification — fail safe: block the
+         booking rather than silently proceeding and risking a double-book. */
+      _fail("Connection error \u2014 please try again.");
+      return false;
+    });
+  }else{
+    verifySlot=Promise.resolve(true);
+  }
+
+  verifySlot.then(function(ok){
+    if(!ok)return;
+
+    /* Step 1: Find or create client (via secure edge function) */
+    sb.functions.invoke("find-client",{body:{phone:_phone,mode:"basic"}}).then(function(fcRes){
+      var existingClient=null;
+      if(fcRes.data&&fcRes.data.found&&fcRes.data.client){existingClient=fcRes.data.client;}
+
+      var clientId;
+      var clientUpsert;
+      if(existingClient){
+        clientId=existingClient.id;
+        clientUpsert=Promise.resolve({error:null});
+      }else{
+        clientId="portal_"+Date.now()+"_"+Math.random().toString(36).substring(2,8);
+        var isRemote=_selectedType==="online"||_selectedType==="consultation";
+        var newClient={
+          id:clientId,name:_name,phone:_phone,email:"",
+          clientType:inquiry?"Prospect":isRemote?"Online":"In-Person",
+          services:typeName,rate:"",
+          age:"",weight:"",height:"",level:"",duration:"",
+          billing:"",billingAmt:"",billingMonths:"",
+          prepWeeks:"",prepStart:"",showName:"",showDivision:"",
+          showDate:"",showLocation:"",
+          isCompetitor:false,compClasses:[],federation:"",compStatus:"",
+          goals:"",injuries:"",medical:"",
+          notes:inquiry?("["+typeName+" inquiry] "+(_notes||"")).trim():"",
+          source:"client_portal",created_at:new Date().toISOString()
+        };
+        clientUpsert=sb.from("clients").upsert({id:clientId,data:newClient,updated_at:new Date().toISOString()},{onConflict:"id"});
+      }
+
+      /* Step 2: Upsert client first, THEN schedule + booking sequentially */
+      clientUpsert.then(function(clientRes){
+        if(clientRes&&clientRes.error){_fail("Failed to save client data. Please try again.");return;}
+
+        var scheduleUpsert;
+        if(!inquiry){
+          /* Final conflict check right before insert to minimize race window */
+          scheduleUpsert=sb.from("schedule").select("id").then(function(checkRes){
+            if(checkRes.data){var slotTaken=checkRes.data.some(function(r){var s=r.data||r;return s&&((s.data&&s.data.date===_selectedDate&&s.data.time===_selectedTime&&s.data.status!=="cancelled"&&s.data.id!==id)||(s.date===_selectedDate&&s.time===_selectedTime&&s.status!=="cancelled"&&s.id!==id));});if(slotTaken){_fail("This slot was just booked by someone else. Please pick another.");loadBookedSlots();return{error:true};}}
+            var entry={
+              id:id,clientId:clientId,
+              clientName:existingClient?existingClient.name:_name,
+              clientPhone:_phone,date:_selectedDate,time:_selectedTime,
+              timezone:"America/New_York",type:typeName,rate:"",
+              status:"pending",notes:_notes,source:"client_portal",
+              created_at:new Date().toISOString()
+            };
+            return sb.from("schedule").upsert({id:id,data:entry,updated_at:new Date().toISOString()},{onConflict:"id"});
+          });
+        }else{
+          scheduleUpsert=Promise.resolve({error:null});
+        }
+
+        scheduleUpsert.then(function(schedRes){
+          if(schedRes&&schedRes.error){
+            /* Subagent P0 #6: detect Postgres unique-violation (23505) on
+               idx_schedule_unique_slot \u2014 means another client booked
+               this slot in the gap between our select() and upsert(). */
+            var errCode=schedRes.error.code||"";
+            var errMsg=String(schedRes.error.message||"");
+            if(errCode==="23505"||/duplicate key|unique constraint/i.test(errMsg)){
+              _fail("This slot was just booked by someone else. Please pick another.");
+              loadBookedSlots();
+            }else{
+              _fail("Booking failed \u2014 please try again.");
+            }
+            return;
+          }
+
+          /* Step 3: Create booking record */
+          var booking={
+            id:id,phone:_phone,name:_name,
+            date:inquiry?null:_selectedDate,time:inquiry?null:_selectedTime,
+            timezone:"America/New_York",type:typeName,notes:_notes,
+            status:inquiry?"inquiry":"confirmed",
+            source:"client_portal",created_at:new Date().toISOString()
+          };
+          sb.from("bookings").upsert({id:id,data:booking,updated_at:new Date().toISOString()},{onConflict:"id"}).then(function(bookRes){
+            if(bookRes&&bookRes.error){console.warn("Booking record failed:",bookRes.error);}
+
+            /* Step 4: Send SMS with retry (best-effort, don't block success) */
+            function sendSMS(attempt){
+              sb.functions.invoke("confirm-booking",{body:{
+                phone:_phone,name:_name,
+                date:inquiry?null:_selectedDate,
+                time:inquiry?null:fmtTime(_selectedTime),
+                type:typeName,inquiry:inquiry,notes:_notes
+              }}).catch(function(){
+                if(attempt<2){setTimeout(function(){sendSMS(attempt+1);},2000);}
+              });
+            }
+            sendSMS(0);
+
+            /* Show success */
+            if(!inquiry){
+              _bookedSlots.push({date:_selectedDate,time:_selectedTime});
+              var dt=new Date(_selectedDate+"T12:00:00");
+              var dayName=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][dt.getDay()];
+              document.getElementById("successMsg").innerHTML=
+                '<strong>'+esc(typeName)+'</strong> with Big Mike<br>'
+                +dayName+', '+MONTHS_SHORT[dt.getMonth()]+' '+dt.getDate()+' at '+fmtTime(_selectedTime)
+                +'<br><br><span style="font-size:11px;color:var(--dm)">Confirmation sent to '+formatPhoneDisplay(_phone)+'</span>';
+            }else{
+              document.getElementById("successMsg").innerHTML=
+                '<strong>'+esc(typeName)+' Inquiry</strong> sent<br>'
+                +'<span style="font-size:13px;color:var(--ow)">Big Mike will be in touch soon.</span>'
+                +'<br><br><span style="font-size:11px;color:var(--dm)">Sent from '+formatPhoneDisplay(_phone)+'</span>';
+            }
+            _submitting=false;
+            _clearSafety();
+            _bookingId=null;
+            /* Clear booking state after successful submission */
+            _bkClearState();
+            goStep(5);
+            /* Now — and only now — offer the install prompts. They will not
+               collide with any active CTA because the success screen has no
+               primary action on the bottom edge. */
+            setTimeout(function(){
+              try{
+                if(typeof window._showInstallBanner==="function")window._showInstallBanner();
+                if(typeof window._showIOSInstallHint==="function")window._showIOSInstallHint();
+              }catch(_e){}
+            },900);
+          }).catch(function(){_fail("Network error \u2014 please try again.");});
+        }).catch(function(){_fail("Network error \u2014 please try again.");});
+      }).catch(function(){_fail("Network error \u2014 please try again.");});
+    }).catch(function(){_fail("Network error \u2014 please try again.");});
+  }).catch(function(){_fail("Network error \u2014 please try again.");});
+}
+
+function bookAnother(){
+  _selectedDate=null;
+  _selectedTime=null;
+  _selectedType=null;
+  _notes="";
+  _bookingId=null;
+  var notesEl=document.getElementById("bookingNotes");
+  if(notesEl)notesEl.value="";
+  _bkClearState();
+  loadBookedSlots();
+  goStep(2);
+}
+
+/* ── UTILITIES ── */
+function pad2(n){return n<10?"0"+n:""+n;}
+
+function fmtTime(t){
+  if(!t)return"";
+  var parts=t.split(":");
+  var h=parseInt(parts[0]),m=parts[1];
+  var ap=h>=12?"PM":"AM";
+  var h12=h===0?12:h>12?h-12:h;
+  return h12+":"+m+" "+ap;
+}
+
+function formatPhoneDisplay(p){
+  var d=p.replace(/\D/g,"");
+  if(d.length===11&&d[0]==="1")d=d.substring(1);
+  if(d.length===10)return"("+d.substring(0,3)+") "+d.substring(3,6)+"-"+d.substring(6);
+  return p;
+}
+
+function esc(s){
+  if(!s)return"";
+  var d=document.createElement("div");
+  d.textContent=s;
+  return d.innerHTML;
+}
+
+function toast(msg){
+  var existing=document.querySelector(".toast");
+  if(existing)existing.remove();
+  var t=document.createElement("div");
+  t.className="toast";
+  t.setAttribute("role","status");
+  t.setAttribute("aria-live","polite");
+  t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(function(){t.remove();},3000);
+}
+
+function shake(id){
+  var el=document.getElementById(id);
+  if(!el)return;
+  el.classList.add("shake");
+  setTimeout(function(){el.classList.remove("shake");},400);
+}
+
+/* Shake animation */
+var shakeStyle=document.createElement("style");
+shakeStyle.textContent="@keyframes shake{0%,100%{transform:translateX(0)}10%,30%,50%,70%,90%{transform:translateX(-4px)}20%,40%,60%,80%{transform:translateX(4px)}}.shake{animation:shake .4s ease}";
+document.head.appendChild(shakeStyle);
+
+/* Android back button — navigate steps instead of leaving app */
+history.pushState({step:1},"","");
+window.addEventListener("popstate",function(e){
+  if(_step>1){goStep(_step-1);}
+  else{history.pushState({step:1},"","");}
+});
+
+/* iOS keyboard dismiss — prevent scroll jump */
+document.addEventListener("focusout",function(e){
+  if(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"||e.target.tagName==="SELECT"){
+    setTimeout(function(){window.scrollTo(0,window.scrollY);},100);
+  }
+});
+</script>
+</body>
+</html>
