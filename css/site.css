@@ -491,18 +491,20 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
      with true champagne specular at 48% and 55%. Brighter, more
      contrast, reads as polished metal against Mike's body shot
      instead of as yellow gradient blended into skin tones. */
-  background:linear-gradient(135deg,
-    #4A3410 0%,
-    #8A6420 14%,
-    #D2A23E 30%,
-    #FFF1C6 45%,
-    #FFFEF8 50%,
-    #FFE08A 56%,
-    #D2A23E 72%,
-    #8A6420 87%,
-    #4A3410 100%);
-  background-size:220% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
-  opacity:1;animation:shimmer 14s linear infinite;
+  background:linear-gradient(118deg,
+    #2E2008 0%,
+    #6B4C12 11%,
+    #A67C26 24%,
+    #E6C36A 39%,
+    #FBF1CE 48%,
+    #FFFFFF 50%,
+    #FBF1CE 52%,
+    #E6C36A 61%,
+    #A67C26 76%,
+    #6B4C12 89%,
+    #2E2008 100%);
+  background-size:100% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
+  opacity:1;
   position:relative;
   /* Assertive drop shadow so the letterforms separate from the
      warm body photo behind them. Previously 0 4px 14px + 0 0 44px
@@ -1632,11 +1634,13 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
   filter:drop-shadow(0 1px 0 rgba(0,0,0,.8)) drop-shadow(0 2px 2px rgba(0,0,0,.5)) drop-shadow(0 0 30px rgba(232,197,71,.3));
   transition:transform .5s var(--ease),filter .5s var(--ease);
   position:relative}
-/* Decorative rule + dot accents above the M (fills the space, frames it) */
-.footer-mark::before{content:'';display:block;position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:108px;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(232,197,71,.5) 50%,transparent);box-shadow:0 0 18px rgba(232,197,71,.16)}
-.footer-mark::after{content:'';position:absolute;top:-21px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,235,170,.95),rgba(232,197,71,.5) 60%,transparent);box-shadow:0 0 12px rgba(232,197,71,.5)}
+/* Symmetric gold rules flanking the monogram — fills the horizontal dead zone
+   beside the M and frames it. Light reads as emanating from the mark (brightest
+   nearest the M, fading outward). Replaces the generic centered line-and-dot. */
+.footer-mark::before,.footer-mark::after{content:'';position:absolute;top:50%;transform:translateY(-50%);width:clamp(46px,20vw,140px);height:1px;
+  box-shadow:0 0 14px rgba(232,197,71,.12)}
+.footer-mark::before{right:calc(100% + 26px);background:linear-gradient(90deg,transparent,rgba(232,197,71,.18) 55%,rgba(232,197,71,.75))}
+.footer-mark::after{left:calc(100% + 26px);background:linear-gradient(270deg,transparent,rgba(232,197,71,.18) 55%,rgba(232,197,71,.75))}
 .footer-mark:hover{transform:scale(1.06);filter:drop-shadow(0 2px 0 rgba(0,0,0,.7)) drop-shadow(0 0 36px rgba(245,215,90,.46))}
 .footer-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:28px}
 .footer-links a{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);transition:color .3s,text-shadow .3s;position:relative}
@@ -1696,7 +1700,10 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
      Math: iPhone 14 Pro 852 total. Nav 64 + padding 43 + half-
      heading 35 = 142px heading center = 16.7% from top. */
   .section{padding:clamp(32px,5vh,64px) 20px 56px}.s-head{margin-bottom:28px}
-  .hero{padding:0;padding-top:env(safe-area-inset-top,0px);min-height:100vh;min-height:100svh;align-items:center;justify-content:center}
+  /* Pin to the STABLE small-viewport unit so the cover background does not
+     rescale ("zoom") when the iOS browser chrome collapses on scroll. svh
+     never changes with chrome; height (not min-height) keeps the box fixed. */
+  .hero{padding:0;padding-top:env(safe-area-inset-top,0px);height:100svh;min-height:100svh;max-height:100svh;align-items:center;justify-content:center}
   .hero-bg{background-position:center 10%;inset:-2%}
   /* Subtle centered oval vignette around Mike, with a gradual lower fade that
      mutes the busy stage backdrop and frames the title + CTAs (no hard blackout). */
