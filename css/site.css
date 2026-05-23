@@ -367,7 +367,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
    hero now uses only a single subtle vignette (.hero-ov). */
 .hero::before{display:none}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--goldGrad);opacity:.4;z-index:3;box-shadow:0 0 50px var(--accGlow),0 0 100px rgba(212,168,40,.15),0 -4px 40px rgba(212,168,40,.08)}
-.hero-bg{position:absolute;inset:-4%;background-size:cover;background-repeat:no-repeat;background-position:center 10%;z-index:0;filter:contrast(1.15) brightness(.88) saturate(1.18) blur(.3px)}
+.hero-bg{position:absolute;inset:-4%;background-size:cover;background-repeat:no-repeat;background-position:center 10%;z-index:0;filter:contrast(1.22) brightness(1.02) saturate(1.34)}
 /* Progressive cinematic polish on desktop. The source image is 1200×1667
    so on anything above a phone viewport we are upscaling. We mask the
    upscaling with aggressive contrast (deeper blacks bring focus to Mike),
@@ -452,7 +452,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
    decision deliberately and it is correct: the name covers the one
    part of the frame that would otherwise draw the eye away from
    the peak physique. DO NOT re-center vertically. */
-.hero-content{position:relative;z-index:2;text-align:center;width:100%;padding:0 24px;margin-top:28vh;display:flex;flex-direction:column;align-items:center}
+.hero-content{position:relative;z-index:2;text-align:center;width:100%;padding:0 24px;margin-top:28svh;display:flex;flex-direction:column;align-items:center}
 /* Visual sweep april: previously the soft dark vignette behind the
    "BIG MIKE ELY" wordmark was desktop-only. At phone width the gold
    text fell directly onto Mike's chest/skin and lost material read.
@@ -1372,8 +1372,8 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
 .gal-tab.active .gal-tab-count{opacity:.8}
 /* GALLERY */
 .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.gal-item{border-radius:12px;overflow:hidden;position:relative;border:1px solid rgba(212,168,40,.18);aspect-ratio:3/4;cursor:pointer;transition:all .5s var(--ease);background:var(--card);
-  box-shadow:0 4px 20px rgba(0,0,0,.35),0 0 0 1px rgba(212,168,40,.03),inset 0 1px 0 rgba(212,168,40,.06)}
+.gal-item{border-radius:12px;overflow:hidden;position:relative;border:1px solid rgba(212,168,40,.3);aspect-ratio:3/4;cursor:pointer;transition:all .5s var(--ease);background:radial-gradient(ellipse 120% 100% at 50% 40%,#101015,#070708);
+  box-shadow:0 6px 24px rgba(0,0,0,.45),inset 0 0 0 1px rgba(212,168,40,.14),inset 0 0 0 4px rgba(8,8,10,.9),inset 0 0 0 5px rgba(212,168,40,.10)}
 .gal-item:has(img.loaded){animation:none;background:var(--card)}
 .gal-item.gal-landscape{aspect-ratio:4/3;grid-column:span 2}
 .gal-item.featured{grid-column:span 2;aspect-ratio:1/1;box-shadow:0 0 40px rgba(212,168,40,.04),0 0 80px rgba(212,168,40,.02)}
@@ -1381,7 +1381,7 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
 .gal-item.featured:hover::after{opacity:1}
 .gal-item.featured img{filter:contrast(1.1) brightness(.96) saturate(1.08)}
 .gal-item.featured:hover img{filter:contrast(1.14) brightness(1.04) saturate(1.12)}
-.gal-item img{width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:transform .7s var(--ease),filter .7s var(--ease);filter:contrast(1.08) brightness(.94) saturate(1.05)}
+.gal-item img{width:100%;height:100%;object-fit:contain;object-position:center;padding:6px;transition:transform .7s var(--ease),filter .7s var(--ease);filter:contrast(1.06) saturate(1.05)}
 .gal-item:hover img{transform:scale(1.06);filter:contrast(1.12) brightness(1.04) saturate(1.1)}
 .gal-item:hover{box-shadow:0 22px 70px rgba(0,0,0,.55),0 0 70px rgba(212,168,40,.12),0 0 0 1px rgba(212,168,40,.15);border-color:rgba(212,168,40,.45);transform:translateY(-5px) scale(1.01)}
 /* Inner light sweep on gallery hover */
@@ -1704,7 +1704,7 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
   .hero-ov{background:
     radial-gradient(ellipse 96% 80% at 50% 42%,transparent 0%,transparent 58%,rgba(0,0,0,.34) 100%),
     linear-gradient(180deg,transparent 0%,transparent 64%,rgba(0,0,0,.5) 100%)}
-  .hero-content{max-width:100%;width:100%;padding:0 12px;margin-top:28vh;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .hero-content{max-width:100%;width:100%;padding:0 12px;margin-top:28svh;text-align:center;display:flex;flex-direction:column;align-items:center}
   /* "BIG MIKE ELY" at display font + .025em tracking measures
      ~7.5px text width per 1px font-size. Cap at 11.5vw so text stays
      inside 88% of viewport on every mobile size. Measured across
