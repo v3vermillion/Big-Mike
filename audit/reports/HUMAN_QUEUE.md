@@ -11,6 +11,9 @@ _Per the VAS prime directive: anything uncertain, engine/hardware-bound, or a br
 
 ## Decisions
 5. **Domain.** Now repointed to `https://v3vermillion.github.io/Big-Mike/`; Namecheap preserved in `CNAME.disabled` + `DOMAIN.md`. When DNS resolves: `git mv CNAME.disabled CNAME` and run the sed in `DOMAIN.md` to switch SEO back. ✅ (done per your instruction; flagged so you know how to flip it.)
+9. **Instagram handle split (NEW).** Marketing pages use `@ifbbpromikeely` (×12); the app/PWA pages — book/portal/onboard + the share-card template — use `@ifbbprobigmikeely` (×4). One is wrong. Tell me the canonical handle and I'll unify site-wide. (I did not guess — a wrong social link could send prospects to a stranger's account.)
+10. **Gallery photo curation (NEW, taste call on Mike's own photos).** Objective issues are already resolved (lightbox shows full uncropped photos; per-page backgrounds set). Remaining is subjective: (a) 4 near-duplicate back-double-bicep shots could be thinned; (b) unused-but-good media you may want in — notably `bg-mike-with-roelly-winklaar-backstage.jpg` (Mike + pro Roelly Winklaar) for "In Good Company" or the gallery, plus `gallery-gym-side-tricep.jpg`, `gallery-muscular-dev-2013.jpg`, `gallery-posing-clinic.jpg`, `gallery-wings-stage.jpg`. I won't add/remove personal photos without your say-so.
+11. **iOS hero scroll-zoom (NEW).** Pinned `.hero-bg` to `100lvh` so the cover image can't rescale when the Safari toolbar collapses — the standard fix. Can't reproduce the iOS dynamic-toolbar in the headless harness, so please confirm on a real iPhone.
 
 ## Minor polish (queued, low risk)
 6. **Form-label association** — `onboard.html` (13 fields) + `book.html` (1) use `<span class="lb">` instead of `<label for>`. Sighted users fine; screen-readers miss the field name. Needs careful for=id mapping.

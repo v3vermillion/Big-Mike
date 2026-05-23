@@ -1,4 +1,21 @@
-# AUDIT v2 — Dashboard (Runs 1 + 2)
+# AUDIT v2 — Dashboard (Runs 1 + 2 + 3)
+
+## Run 3 — Waves 2–5 (autonomous), re-verified top to bottom
+Re-ran the full suite against the current build after the Wave 2/4 changes — **all green**:
+| Check | Result |
+|---|---|
+| Visual scan — 9 pages × {390, 1440} | **0 overflow · 0 console · 0 axe crit/serious** ✅ |
+| handler_audit (inline `on*` refs resolve) | **1104 / 0 orphans** ✅ |
+| functional_walkthrough (public+coach+client) | **35 / 0** ✅ |
+| lock_audit (rapid-tap guards) | **11 / 0 missing** ✅ |
+| coach_wizard_harness | **21 / 0** ✅ |
+| edge_harness (corrupt/empty/malformed LS) | **9 / 0** ✅ |
+| portal_render_harness | **0 failed** ✅ (2 warns = CSP correctly blocking test's fake external imgs) |
+| what_if_chains | **15 / 0** ✅ |
+| three_perspective (client portal 13/13 tabs) | **9 / 0** ✅ |
+| security_audit | **P0 = 0** ✅ (P1 = 27 confirmed `esc()`-escaped false positives) |
+
+**Shipped Run 3:** Wave 2 service→contact funnel + recovery-aware inquiry · Wave 4 hero bg pinned to `lvh` (kills iOS scroll-zoom) + 404 security headers · cache v8→v9. Open items routed to `HUMAN_QUEUE.md` (photo curation, IG-handle unification, on-device iOS confirm).
 
 ## Foundation baseline (Wave 1)
 9 public pages × {390, 1440}: **0 overflow · 0 console errors · 0 axe critical/serious.**
