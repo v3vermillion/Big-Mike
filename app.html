@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" sizes="120x120" href="icons/icon-120.png"/>
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
 <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png"/>
-<link rel="stylesheet" href="assets/fonts/fonts.css?v=v65">
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=v1">
 <script src="assets/vendor/supabase.min.js"></script>
 <script src="assets/vendor/jspdf.umd.min.js"></script>
 <script src="assets/vendor/html2canvas.min.js"></script>
@@ -7808,14 +7808,12 @@ function _updateManifestIcons(){
         icons.push({src:window._themeIcons[s],sizes:s+"x"+s,type:"image/png",purpose:"maskable"});
       }
     }
-    if(icons.length){
-      var isCrimson=LS.get("theme","crimson")==="crimson";
-      var manifest={name:"Big Mike Ely Coaching Lab",short_name:"Coaching Lab",description:"IFBB Pro Big Mike Ely's coaching management platform",id:"/app.html",start_url:"/app.html",display:"standalone",orientation:"portrait",background_color:"#020202",theme_color:isCrimson?"#1a0808":"#1a1408",categories:["fitness","health","productivity"],icons:icons};
-      var blob=new Blob([JSON.stringify(manifest)],{type:"application/json"});
-      var url=URL.createObjectURL(blob);
-      var link=document.querySelector('link[rel="manifest"]');
-      if(link)link.href=url;
-    }
+    // Previously this swapped the manifest <link> to a blob: URL carrying
+    // canvas-generated theme icons. A blob: manifest's start_url is not
+    // same-origin with the document, so Chrome/Android rejected the manifest
+    // and the install prompt / home-screen icon would not fire. We now keep
+    // the static, subpath-relative manifest.json; theme-color is set in
+    // applyTheme(), and the static icon set (icons/*.png) is used for install.
   }catch(e){}
 }
 applyTheme();
@@ -8511,7 +8509,7 @@ window.addEventListener("offline",function(){updateSyncBadge("offline");toast("\
 window.addEventListener("online",function(){updateSyncBadge("synced");toast("\u2713 Back online",2500);cloudSync();});
 // ── SERVICE WORKER ──
 (function(){
-var SITE_VERSION="v57";
+var SITE_VERSION="v1";
 if("serviceWorker" in navigator){
   navigator.serviceWorker.register("./sw.js").then(function(reg){
     reg.update();

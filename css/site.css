@@ -1813,7 +1813,7 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
      atmosphere \u2014 you feel a gym/stage presence without seeing
      a figure. Mobile rules (the base .section-ambient-img at .20)
      are unchanged because phone-width crops hide the face. */
-  .section-ambient-img{filter:brightness(.12) saturate(.45) contrast(1.1) blur(4px)}
+  .section-ambient-img{filter:brightness(.12) saturate(.45) contrast(1.1) blur(4px) !important}
   #results .section-ambient::before{background:
     radial-gradient(ellipse 55% 65% at 18% 15%,rgba(245,227,140,.11),transparent 60%),
     radial-gradient(ellipse 42% 48% at 85% 75%,rgba(212,175,55,.075),transparent 60%),

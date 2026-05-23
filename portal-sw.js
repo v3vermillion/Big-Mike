@@ -15,7 +15,7 @@ self.addEventListener('activate', function(event) {
 /* ── FETCH — scope guard ── */
 self.addEventListener('fetch', function(event) {
   var url = new URL(event.request.url);
-  if (url.pathname !== '/portal.html') return;
+  if (url.pathname.indexOf('portal.html') < 0) return;
 });
 
 /* ── PUSH — receive server-sent notification ── */
