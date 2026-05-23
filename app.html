@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" sizes="120x120" href="icons/icon-120.png"/>
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png"/>
 <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png"/>
-<link rel="stylesheet" href="assets/fonts/fonts.css?v=v4">
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=v5">
 <script src="assets/vendor/supabase.min.js"></script>
 <script src="assets/vendor/jspdf.umd.min.js"></script>
 <script src="assets/vendor/html2canvas.min.js"></script>
@@ -8509,7 +8509,7 @@ window.addEventListener("offline",function(){updateSyncBadge("offline");toast("\
 window.addEventListener("online",function(){updateSyncBadge("synced");toast("\u2713 Back online",2500);cloudSync();});
 // ── SERVICE WORKER ──
 (function(){
-var SITE_VERSION="v4";
+var SITE_VERSION="v5";
 if("serviceWorker" in navigator){
   navigator.serviceWorker.register("./sw.js").then(function(reg){
     reg.update();
