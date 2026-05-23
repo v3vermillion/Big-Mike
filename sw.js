@@ -1,4 +1,4 @@
-var CACHE_NAME = 'bigmike-v7';
+var CACHE_NAME = 'bigmike-v8';
 /* Pre-cache the app shell so the full site works offline after one
    visit. Marketing pages + shared CSS/JS included so the complete
    funnel survives a flaky connection during onboarding. */
@@ -16,8 +16,8 @@ var APP_SHELL = [
   './gallery.html',
   './contact.html',
   './404.html',
-  './css/site.css?v=v7',
-  './js/site.js?v=v7',
+  './css/site.css?v=v8',
+  './js/site.js?v=v8',
   './book-manifest.json'
 ];
 
