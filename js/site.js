@@ -239,16 +239,25 @@ function _activatePostReveal() {
   function alignBrandRevealToHero() {
     var hero = document.querySelector('.hero h1');
     var rev = document.querySelector('.br-name-phase');
-    if (!hero || !rev) return;
-    var r = hero.getBoundingClientRect();
+    var name = document.getElementById('brName');
+    if (!hero || !rev || !name) return;
     var vh = window.innerHeight;
+    var r = hero.getBoundingClientRect();
     if (vh <= 0 || r.height <= 0) return;
-    var centerY = r.top + r.height / 2;
-    var pct = (centerY / vh * 100);
-    /* Clamp so we never place the reveal off-screen on weird viewports. */
+    var heroCenter = r.top + r.height / 2;
+    /* Pass 1: put the phase center on the hero wordmark center. */
+    var pct = (heroCenter / vh * 100);
     if (pct < 20) pct = 20;
     if (pct > 80) pct = 80;
-    rev.style.top = pct.toFixed(2) + '%';
+    rev.style.top = pct.toFixed(3) + '%';
+    /* Pass 2: the phase is a flex column (kicker above the name), so the NAME
+       is not at the phase center. Measure the name and correct so the reveal
+       "Big Mike Ely" lands exactly on the hero "BIG MIKE ELY". */
+    var nr = name.getBoundingClientRect();
+    if (nr.height > 0) {
+      var corr = (heroCenter - (nr.top + nr.height / 2)) / vh * 100;
+      rev.style.top = (pct + corr).toFixed(3) + '%';
+    }
   }
   /* Run at DOMContentLoaded + load so font metrics are final, and
      once more after fonts resolve to catch Cinzel width change. */
@@ -332,9 +341,11 @@ function _activatePostReveal() {
   /* Timings — mobile runs ~3.8s total, desktop runs ~6.4s.
      Compressing mobile by dropping each beat to ~60% duration while
      keeping the same 2-phase structure (credentials → name reveal). */
+  /* Smoother, evenly-paced cadence (~500-600ms/beat) — the previous ~250-350ms
+     spacing read as choppy/rushed at the start. */
   var T = _isMobile
-    ? { p1: 80,  y1: 340, y2: 640, first: 860, ol: 1080, p1out: 1900, p2in: 2200, exit: 3400, done: 4000 }
-    : { p1: 100, y1: 450, y2: 850, first: 1150, ol: 1450, p1out: 2600, p2in: 3000, exit: 5400, done: 6400 };
+    ? { p1: 150, y1: 650, y2: 1150, first: 1650, ol: 2150, p1out: 3200, p2in: 3700, exit: 5300, done: 6200 }
+    : { p1: 200, y1: 800, y2: 1400, first: 2000, ol: 2600, p1out: 4000, p2in: 4600, exit: 6500, done: 7500 };
 
   /* ── Phase 1: Combined credentials ── */
   setTimeout(function () { if (!_dismissed && p1) p1.classList.add('vis'); }, T.p1);
@@ -386,7 +397,7 @@ function _activatePostReveal() {
   setTimeout(function () {
     if (_dismissed) return;
     _dismiss();
-  }, 8000);
+  }, 9000);
 })();
 
 /* ── VIDEO FACADE — lazy-load YouTube on click ── */
@@ -1149,7 +1160,7 @@ document.querySelectorAll('.btn-p').forEach(function (btn) {
 
 /* ── SERVICE WORKER — register + force update on version change ── */
 (function () {
-  var SITE_VERSION = 'v2';
+  var SITE_VERSION = 'v3';
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').then(function (reg) {
       /* Force check for new SW on every page load */
