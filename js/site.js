@@ -1160,7 +1160,7 @@ document.querySelectorAll('.btn-p').forEach(function (btn) {
 
 /* ── SERVICE WORKER — register + force update on version change ── */
 (function () {
-  var SITE_VERSION = 'v4';
+  var SITE_VERSION = 'v5';
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').then(function (reg) {
       /* Force check for new SW on every page load */

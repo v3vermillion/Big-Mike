@@ -940,7 +940,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
    monument is the one currently centered in the viewport. Creates
    a scroll-driven "each championship lights up as you read it"
    effect. Subtle — just a warm wash and slight scale. */
-.monument{text-align:center;padding:40px 32px;position:relative;overflow:hidden;transition:transform .8s var(--ease)}
+.monument{text-align:center;padding:24px 32px;position:relative;overflow:hidden;transition:transform .8s var(--ease)}
 .monument::before{content:'';position:absolute;top:50%;left:50%;width:min(400px,80vw);height:min(240px,42vw);
   transform:translate(-50%,-50%) scale(.85);
   background:radial-gradient(ellipse 55% 50% at 50% 50%,rgba(232,197,71,.06),rgba(212,168,40,.025) 40%,transparent 72%);
@@ -948,7 +948,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
 .monument.in-focus::before{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .monument>*{position:relative;z-index:1}
 .monument.in-focus{transform:translateY(-2px)}
-@media(min-width:900px){.monument{padding:44px 32px}}
+@media(min-width:900px){.monument{padding:30px 32px}}
 /* Timeline connector dot on each monument */
 .monument>.monument-node{position:absolute;top:50%;left:50%;width:12px;height:12px;
   background:radial-gradient(circle,#FFF8E0 0%,#F2D080 25%,#D4A828 55%,#8E651C 100%);
@@ -2010,7 +2010,8 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
   background-size:28px 49px}
 
 /* Section corner accents — premium framing */
-.section-corners{position:absolute;inset:24px;pointer-events:none;z-index:3}
+/* Removed: the TL+BR corner pair read as an incomplete one-sided bracket. */
+.section-corners{display:none}
 .section-corners::before,.section-corners::after{content:'';position:absolute;width:clamp(40px,4vw,64px);height:clamp(40px,4vw,64px);opacity:.35;
   filter:drop-shadow(0 0 8px rgba(212,168,40,.15))}
 .section-corners::before{top:0;left:0;border-top:1px solid rgba(212,168,40,.55);border-left:1px solid rgba(212,168,40,.55);border-top-left-radius:4px}
