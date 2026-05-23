@@ -1496,7 +1496,9 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
    the site read like a banner-ad farm (panel review). The close is a
    single hairline rule + small signature line that lets the content
    breathe into the footer without a hard conversion ask. */
-.page-close{position:relative;padding:clamp(48px,7vh,88px) 24px clamp(40px,5vh,64px);text-align:center;pointer-events:none}
+/* Hidden: this decorative monogram duplicated the footer's M directly below it
+   (two stacked M's). Removed so the page blends straight into the footer. */
+.page-close{display:none}
 .page-close-glyph{display:block;width:26px;height:26px;margin:0 auto 18px;
   background:linear-gradient(160deg,#5A3F0F 0%,#8A6418 22%,#E8C547 50%,#8A6418 78%,#5A3F0F 100%);
   -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M4 28 L4 6 L10 6 L16 20 L22 6 L28 6 L28 28 L23 28 L23 13 L17 26 L15 26 L9 13 L9 28 Z' fill='black'/></svg>") center/contain no-repeat;
