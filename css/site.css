@@ -1264,6 +1264,8 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
 .results-photo-wide{grid-column:1/-1;aspect-ratio:16/10}
 .results-photo-wide img{object-position:center center}
 /* SERVICES */
+.svc-lede{text-align:center;max-width:60ch;margin:-40px auto 56px;font-family:var(--body);font-size:clamp(14px,1.55vw,17px);line-height:1.75;color:rgba(220,210,190,.74);text-wrap:pretty;opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.svc-lede.vis{opacity:1;transform:none}
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
 /* Service cards — PREMIUM AT REST, not only on hover. The resting state
    now has a layered inner gradient (dark gold wash), a sharper border,
@@ -1712,7 +1714,12 @@ body.theme-crimson .footer-swords line,body.theme-crimson .footer-swords path{st
      rescale ("zoom") when the iOS browser chrome collapses on scroll. svh
      never changes with chrome; height (not min-height) keeps the box fixed. */
   .hero{padding:0;padding-top:env(safe-area-inset-top,0px);height:100svh;min-height:100svh;max-height:100svh;align-items:center;justify-content:center}
-  .hero-bg{background-position:center 10%;inset:-2%}
+  /* Decouple the background box from the svh hero so the cover image is
+     sized against the LARGE viewport (toolbar-collapsed max). When the iOS
+     chrome collapses and the visual viewport grows toward lvh, the image is
+     already that size — so it never rescales ("zooms") on scroll. The hero
+     content stays positioned via svh above. */
+  .hero-bg{background-position:center 10%;inset:auto;top:0;left:-2%;right:-2%;width:104%;height:100vh;height:100lvh}
   /* Subtle vignette only — gentle edge falloff + soft bottom fade for the
      stacked CTAs. No heavy shadowing over the physique. */
   .hero-ov{background:

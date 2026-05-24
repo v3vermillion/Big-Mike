@@ -37,9 +37,9 @@
 <!-- Fonts -->
 
 
-<link rel="stylesheet" href="assets/fonts/fonts.css?v=v8">
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=v9">
 <!-- Shared site styles — single source of truth, cached across pages -->
-<link rel="stylesheet" href="css/site.css?v=v8">
+<link rel="stylesheet" href="css/site.css?v=v9">
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -92,7 +92,7 @@
   <div class="section-corners" aria-hidden="true"></div>
   <div class="inner contact-inner" style="max-width:640px;text-align:center;position:relative;z-index:2">
     <h2 class="s-head reveal">Message Mike</h2>
-    <p class="reveal" style="font-size:16px;color:var(--ow);line-height:1.8;margin-bottom:32px">All inquiries reviewed personally. Include your competition history, current standing, and goals.</p>
+    <p class="reveal" style="font-size:16px;color:var(--ow);line-height:1.8;margin-bottom:32px">Every inquiry is read by Mike personally &mdash; replies the same day. Include your competition history, current standing, and goals.</p>
     <form class="reveal" id="contactForm" style="text-align:left;max-width:480px;margin:0 auto 24px" onsubmit="return submitContactForm(event)">
       <div style="position:absolute;left:-9999px" aria-hidden="true">
         <input type="text" name="website" id="cf-honeypot" tabindex="-1" autocomplete="off">
@@ -109,12 +109,14 @@
         <label class="form-label" for="cf-service">What are you looking for?</label>
         <select id="cf-service" name="service" class="form-select">
           <option value="" disabled selected>Select a service...</option>
-          <option value="contest-prep">Contest Prep</option>
-          <option value="online-coaching">Online Coaching</option>
-          <option value="1on1-training">1-on-1 Training</option>
+          <option value="training">1-on-1 Training</option>
+          <option value="contestprep">Contest Prep</option>
+          <option value="posing">Posing Lessons</option>
+          <option value="spraytan">Spray Tan</option>
           <option value="nutrition">Nutrition Planning</option>
-          <option value="posing">Posing Sessions</option>
-          <option value="full-package">Full Coaching Package</option>
+          <option value="online">Online Coaching</option>
+          <option value="fullpackage">Full Coaching Package</option>
+          <option value="consultation">Consultation</option>
         </select>
       </div>
       <div class="form-group">
@@ -123,7 +125,14 @@
       </div>
       <button type="submit" class="btn-p form-submit">Send Inquiry</button>
     </form>
-    <div class="reveal" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;margin-top:28px">
+    <!-- Shown after submit while the inquiry inbox is offline (recovery mode) -->
+    <div id="cf-sent" style="display:none;text-align:center;margin:8px auto 28px;max-width:440px">
+      <div style="font-family:var(--display);font-size:clamp(20px,3vw,26px);color:var(--ice);margin-bottom:10px">Got it<span id="cf-sent-name"></span>.</div>
+      <div style="font-size:14px;color:var(--ow);line-height:1.7;margin-bottom:22px">Mike reviews every inquiry personally. The fastest way to reach him right now is a direct message &mdash; replies the same day.</div>
+      <a href="https://instagram.com/ifbbpromikeely" target="_blank" rel="noopener" class="btn-p" style="display:inline-flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg> DM @ifbbpromikeely</a>
+    </div>
+    <div class="reveal" style="font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin:4px 0 14px">Or reach out directly</div>
+    <div class="reveal" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
       <a href="https://instagram.com/ifbbpromikeely" target="_blank" rel="noopener" class="btn-s" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg> @ifbbpromikeely</a>
       <a href="https://instagram.com/center_stage_aesthetics" target="_blank" rel="noopener" class="btn-s" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg> @center_stage_aesthetics</a>
     </div>
@@ -170,6 +179,6 @@
   </div>
 </div>
 
-<script src="js/site.js?v=v8"></script>
+<script src="js/site.js?v=v9"></script>
 </body>
 </html>
