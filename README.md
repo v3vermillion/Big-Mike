@@ -1,59 +1,107 @@
-# bigmike
+# Big Mike Ely — IFBB Pro Coaching Platform
+
+A production web platform for an IFBB Pro bodybuilding coach: a fast, SEO-optimized
+marketing site paired with a full offline-first coaching application and a private
+client portal. Designed, built, and shipped end to end — front end, data layer,
+cloud sync, PWA, and deployment.
+
+**Live:** https://v3vermillion.github.io/Big-Mike/
 
 ---
 
-## Notice to GitHub Support — Account Recovery in Progress
+## What it is
 
-**Date written:** 2026-05-03
-**Repository:** github.com/dkfitcoaching-lab/bigmike
-**Custom domain (deployed via GitHub Pages):** ifbbprobigmikeely.com
-**GitHub username:** dkfitcoaching-lab
+The project has three connected parts:
 
-This notice is added to the README in support of an account recovery
-request. It is committed via a Claude Code session that has push access to
-this repository and is authenticated against the active branch.
+1. **Marketing site** — A polished, mobile-first landing experience (home, about,
+   services, results, gallery, contact) built for conversion and search visibility.
+   Custom typography, branded transformation galleries, and rich social/Open Graph
+   share cards.
 
-### Owner
+2. **Coaching application** — A single-file vanilla-JS SPA where the coach manages
+   clients, training programs, meal plans, supplement and compound protocols,
+   session logs, and scheduling. Works fully offline and installs to the home screen
+   as a Progressive Web App.
 
-- Name: **David Kelly**
-- Original GitHub account email (currently inaccessible): **dkfitcoaching@gmail.com**
-- Active contact email: **david34kelly@outlook.com** (this is the email tied to the Anthropic Claude Max subscription used to commit this notice)
-- Backup contact email: **forgetraining@proton.me**
-- Phone: **(234) 343-9124**
-
-### What happened
-
-My Apple ID was compromised in an identity-theft incident. The iCloud Keychain
-on that Apple ID held the credentials for `dkfitcoaching@gmail.com` and the
-GitHub 2FA recovery codes. The loss cascaded:
-
-> **Apple ID → iCloud Keychain → Gmail (`dkfitcoaching@gmail.com`) → GitHub (`dkfitcoaching-lab`)**
-
-Standard recovery flows are blocked because every recovery vector lived in the
-same compromised Keychain. Google account recovery on the original Gmail has
-not succeeded. I am now on a new device (iPhone 16e), a new Apple ID, and a
-new ProtonMail address (`forgetraining@proton.me`).
-
-### Why this notice is meaningful
-
-The text you are reading was committed to the `dkfitcoaching-lab/bigmike`
-repository through an authenticated session. Whoever wrote this had push
-access to a branch on the repository at the time of commit. That is not
-identity proof on its own, but it is one signal among the others below.
-
-### Verification artifacts available on request
-
-1. **Domain registrar records** for `ifbbprobigmikeely.com` — the custom domain this repository is deployed to via GitHub Pages. I can supply registrar billing details. A related project domain (`vermillionaxis.tech`) is also under my control.
-2. **Anthropic billing records** on `david34kelly@outlook.com` — Claude Max subscription, with development history on this codebase visible in the commit log via the `Claude <noreply@anthropic.com>` author.
-3. **Commit-level context**: the commit history shows merges authored by `dkfitcoaching-lab <dkfitcoaching@gmail.com>` and code commits authored by `Claude <noreply@anthropic.com>` from my Claude Code sessions. I can explain the reasoning behind any specific commit — internal architectural decisions, the meaning of internal constants such as `_bdayExpiry`, the render-chain structure of the program builder, why specific bugs were fixed. None of this is reconstructable from the public Pages deployment alone.
-4. **Government-issued ID**, video verification, or any other challenge GitHub Support specifies — including pushing a Support-supplied string to this repository at a Support-specified time.
-
-### Request
-
-Please escalate this to GitHub's account recovery / Trust & Safety team.
-The most helpful next step on your side is a contact email so I can supply
-the verification artifacts above directly.
-
-Reach me at: **david34kelly@outlook.com** or **forgetraining@proton.me**.
+3. **Client portal** — A separate branded surface where athletes view their assigned
+   programs, plans, and progress.
 
 ---
+
+## Highlights
+
+- **Offline-first architecture.** All business logic runs client-side with
+  `localStorage` as the source of truth, so the app stays usable with no connection.
+- **Optional cloud sync.** When configured, data is mirrored to Supabase (Postgres +
+  JSONB) with a debounced push/pull merge strategy for multi-device use.
+- **Branded PDF export.** Training programs, meal plans, and full prep packets are
+  rendered to print-ready, branded PDFs entirely in the browser (jsPDF +
+  html2canvas).
+- **Automated SMS reminders.** Scheduled sessions trigger reminder texts through a
+  Supabase Edge Function backed by the Twilio API.
+- **Installable PWA.** Manifest, service worker, and dynamically generated theme
+  icons for a native-feeling home-screen install.
+- **Performance & SEO.** LCP image preloading, a strict Content-Security-Policy,
+  structured data, canonical URLs, sitemap, and tuned link-preview share cards.
+- **Theming.** Theme-aware CSS variables drive a cohesive, switchable visual identity
+  across every screen.
+
+---
+
+## Tech stack
+
+| Area | Technology |
+|------|------------|
+| Front end | Vanilla JavaScript (no framework), semantic HTML, modern CSS |
+| Persistence | `localStorage` (primary) + Supabase Postgres/JSONB (cloud sync) |
+| Backend functions | Supabase Edge Functions (Deno) |
+| Messaging | Twilio SMS API |
+| Documents | jsPDF, html2canvas |
+| Platform | Progressive Web App (manifest + service worker) |
+| Hosting | GitHub Pages |
+
+---
+
+## Architecture notes
+
+- **No framework, by design.** The application is built from pure functions that
+  return HTML strings, swapped into the DOM via `innerHTML`. An in-memory navigation
+  stack handles back/forward without a router. This keeps the bundle tiny and the app
+  instantly responsive.
+- **Single source of truth.** A small `LS` utility wraps `localStorage`. Cloud sync is
+  strictly additive — the app never depends on the network to function.
+- **Defense in depth on a static host.** Even as a client-side app served from GitHub
+  Pages, it ships a strict CSP, `X-Content-Type-Options`, a restrictive
+  Permissions-Policy, and a PIN-gated UI appropriate to its single-user threat model.
+
+A deeper engineering write-up lives in
+[`TECHNICAL_ARCHITECTURE.md`](TECHNICAL_ARCHITECTURE.md).
+
+---
+
+## Project layout
+
+```
+index.html          Marketing landing page
+about / services /  Marketing site pages
+results / gallery /
+contact
+app.html            Coaching application (SPA)
+portal.html         Client portal
+onboard.html        Client onboarding flow
+book.html           Programmatic book/content build
+sw.js               Service worker
+manifest.json       PWA manifest
+assets/ css/ js/    Shared styles, scripts, fonts
+supabase/           Database migrations and Edge Functions
+img/ icons/         Imagery and generated app icons
+```
+
+---
+
+## About this build
+
+This is original work I designed and built — product direction, UX, front-end
+engineering, data modeling, cloud integration, and deployment. I enjoy shipping
+small, fast, dependency-light web apps that feel premium and just work, and I'm
+available for freelance and contract work in that space.
