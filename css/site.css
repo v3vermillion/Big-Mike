@@ -92,22 +92,22 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
 .br-phase.out{opacity:0;transition:opacity .7s cubic-bezier(.4,0,1,1)}
 /* ── PHASE 1: Combined credentials ── */
 .br-show-name{font-family:var(--mono);font-size:clamp(13px,2.8vw,24px);letter-spacing:.45em;text-transform:uppercase;color:rgba(240,235,220,.92);font-weight:700;margin-bottom:clamp(18px,3.5vh,36px);opacity:0}
-.br-show-name.vis{animation:brRise 1.8s cubic-bezier(.22,.6,.2,1) both}
+.br-show-name.vis{animation:brRise 2.2s cubic-bezier(.3,.5,.2,1) both}
 /* Years row */
 .br-years{display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,36px);margin-bottom:clamp(12px,2vh,24px)}
 .br-year{font-family:var(--display);font-size:clamp(48px,12vw,110px);font-weight:900;letter-spacing:.06em;line-height:1;
   background:linear-gradient(118deg,#2E2008 0%,#6B4C12 11%,#A67C26 24%,#E6C36A 39%,#FBF1CE 48%,#FFFFFF 50%,#FBF1CE 52%,#E6C36A 61%,#A67C26 76%,#6B4C12 89%,#2E2008 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
   opacity:0}
-.br-year.vis{animation:brRise 1.8s cubic-bezier(.22,.6,.2,1) both}
+.br-year.vis{animation:brRise 2.2s cubic-bezier(.3,.5,.2,1) both}
 .br-year-dot{font-size:clamp(24px,5vw,48px);color:rgba(255,230,140,.55);opacity:0}
-.br-year-dot.vis{animation:brRise 1.8s cubic-bezier(.22,.6,.2,1) both}
+.br-year-dot.vis{animation:brRise 2.2s cubic-bezier(.3,.5,.2,1) both}
 /* 1st Place */
 .br-1st{font-family:var(--display);font-size:clamp(16px,3.5vw,32px);font-weight:700;letter-spacing:.2em;text-transform:uppercase;
   background:linear-gradient(118deg,#2E2008 0%,#6B4C12 11%,#A67C26 24%,#E6C36A 39%,#FBF1CE 48%,#FFFFFF 50%,#FBF1CE 52%,#E6C36A 61%,#A67C26 76%,#6B4C12 89%,#2E2008 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
   opacity:0;margin-bottom:clamp(16px,3vh,32px)}
-.br-1st.vis{animation:brRise 1.8s cubic-bezier(.22,.6,.2,1) both}
+.br-1st.vis{animation:brRise 2.2s cubic-bezier(.3,.5,.2,1) both}
 /* Gold divider between achievements */
 .br-divider{height:1px;width:0;margin:0 auto clamp(16px,3vh,32px);
   background:linear-gradient(90deg,transparent,rgba(200,175,100,.2) 20%,rgba(230,205,130,.5) 50%,rgba(200,175,100,.2) 80%,transparent);
@@ -119,15 +119,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
   background:linear-gradient(118deg,#2E2008 0%,#6B4C12 11%,#A67C26 24%,#E6C36A 39%,#FBF1CE 48%,#FFFFFF 50%,#FBF1CE 52%,#E6C36A 61%,#A67C26 76%,#6B4C12 89%,#2E2008 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-clip:text;
   opacity:0;position:relative}
-.br-olympian.vis{animation:brRise 1.9s cubic-bezier(.22,.6,.2,1) both}
+.br-olympian.vis{animation:brRise 2.3s cubic-bezier(.3,.5,.2,1) both}
 .br-olympian::after{content:'';position:absolute;top:50%;left:50%;width:0;height:0;transform:translate(-50%,-50%);border-radius:50%;
   background:radial-gradient(circle,rgba(255,230,160,.1),rgba(255,230,160,.03) 40%,transparent 70%);pointer-events:none;opacity:0}
 .br-olympian.vis::after{display:none}
 /* Slow cinematic fade-rise — pure opacity/transform only. Any shadow, filter,
    blur, or clip-path combined with background-clip:text renders as a BOX on
    WebKit/OLED, so the gold text stays bare (matching the print proposal). */
-@keyframes brRise{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:translateY(0)}}
-.br-phase.vis .br-name{animation:brNameRise 2.2s cubic-bezier(.22,.6,.2,1) .4s both}
+@keyframes brRise{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
+.br-phase.vis .br-name{animation:brNameRise 2.6s cubic-bezier(.3,.5,.2,1) .4s both}
 @keyframes brNameRise{0%{opacity:0;transform:translateY(14px) scale(.985)}100%{opacity:1;transform:translateY(0) scale(1)}}
 /* ── PHASE 2: Name reveal with swords ── */
 /* Name phase — position updated by JS to match hero h1 Y position.

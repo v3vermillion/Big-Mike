@@ -351,8 +351,8 @@ function _activatePostReveal() {
   /* Smoother, evenly-paced cadence (~500-600ms/beat) — the previous ~250-350ms
      spacing read as choppy/rushed at the start. */
   var T = _isMobile
-    ? { p1: 150, first: 350, name: 1500, years: 2650, div: 3900, ol: 4150, p1out: 6300, p2in: 6800, exit: 8800, done: 9800 }
-    : { p1: 200, first: 450, name: 1700, years: 2950, div: 4300, ol: 4550, p1out: 6900, p2in: 7400, exit: 9500, done: 10500 };
+    ? { p1: 150, first: 350, name: 1650, years: 2950, div: 4350, ol: 4650, p1out: 7100, p2in: 7600, exit: 9700, done: 10700 }
+    : { p1: 200, first: 450, name: 1850, years: 3250, div: 4750, ol: 5050, p1out: 7700, p2in: 8200, exit: 10400, done: 11400 };
 
   function _show(id) { var e = document.getElementById(id); if (e) e.classList.add('vis'); }
 
