@@ -241,6 +241,11 @@ function _activatePostReveal() {
     var rev = document.querySelector('.br-name-phase');
     var name = document.getElementById('brName');
     if (!hero || !rev || !name) return;
+    /* Neutralize the hero's entrance animation/transform while measuring —
+       an entrance keyframe's initial translate otherwise reports the h1
+       lower than where it finally renders, landing the reveal name low. */
+    var _pa = hero.style.animation, _pt = hero.style.transform, _pr = hero.style.transition;
+    hero.style.animation = 'none'; hero.style.transform = 'none'; hero.style.transition = 'none';
     var vh = window.innerHeight;
     var r = hero.getBoundingClientRect();
     if (vh <= 0 || r.height <= 0) return;
@@ -258,7 +263,9 @@ function _activatePostReveal() {
       var corr = (heroCenter - (nr.top + nr.height / 2)) / vh * 100;
       rev.style.top = (pct + corr).toFixed(3) + '%';
     }
+    hero.style.animation = _pa; hero.style.transform = _pt; hero.style.transition = _pr;
   }
+  window._alignBR = alignBrandRevealToHero;
   /* Run at DOMContentLoaded + load so font metrics are final, and
      once more after fonts resolve to catch Cinzel width change. */
   if (document.readyState === 'loading') {
@@ -344,35 +351,21 @@ function _activatePostReveal() {
   /* Smoother, evenly-paced cadence (~500-600ms/beat) — the previous ~250-350ms
      spacing read as choppy/rushed at the start. */
   var T = _isMobile
-    ? { p1: 150, y1: 650, y2: 1150, first: 1650, ol: 2150, p1out: 3200, p2in: 3700, exit: 5300, done: 6200 }
-    : { p1: 200, y1: 800, y2: 1400, first: 2000, ol: 2600, p1out: 4000, p2in: 4600, exit: 6500, done: 7500 };
+    ? { p1: 150, first: 350, name: 1500, years: 2650, div: 3900, ol: 4150, p1out: 6300, p2in: 6800, exit: 8800, done: 9800 }
+    : { p1: 200, first: 450, name: 1700, years: 2950, div: 4300, ol: 4550, p1out: 6900, p2in: 7400, exit: 9500, done: 10500 };
 
-  /* ── Phase 1: Combined credentials ── */
+  function _show(id) { var e = document.getElementById(id); if (e) e.classList.add('vis'); }
+
+  /* ── Phase 1: slow cinematic build — 1st Place → World Champion → 2024·2025 (together) → 2× Olympian ── */
   setTimeout(function () { if (!_dismissed && p1) p1.classList.add('vis'); }, T.p1);
-  setTimeout(function () {
-    if (_dismissed) return;
-    var y1 = document.getElementById('brYear1');
-    if (y1) y1.classList.add('vis');
-  }, T.y1);
-  setTimeout(function () {
-    if (_dismissed) return;
-    var dot = document.getElementById('brYearDot');
-    var y2 = document.getElementById('brYear2');
-    if (dot) dot.classList.add('vis');
-    if (y2) y2.classList.add('vis');
-  }, T.y2);
-  setTimeout(function () {
-    if (_dismissed) return;
-    var first = document.getElementById('br1st');
-    if (first) first.classList.add('vis');
-  }, T.first);
-  setTimeout(function () {
-    if (_dismissed) return;
-    var div = document.getElementById('brDivider');
-    var oly = document.getElementById('brOlympian');
-    if (div) div.classList.add('vis');
-    if (oly) oly.classList.add('vis');
-  }, T.ol);
+  setTimeout(function () { if (!_dismissed) _show('br1st'); }, T.first);
+  setTimeout(function () { if (!_dismissed) _show('brShowName'); }, T.name);
+  setTimeout(function () { if (!_dismissed) { _show('brYear1'); _show('brYearDot'); _show('brYear2'); } }, T.years);
+  setTimeout(function () { if (!_dismissed) _show('brDivider'); }, T.div);
+  setTimeout(function () { if (!_dismissed) _show('brOlympian'); }, T.ol);
+  /* Re-align the name phase to the hero right before the handoff, so any
+     late layout shift (images, toolbar) can't leave it landing low. */
+  setTimeout(function () { if (!_dismissed && typeof window._alignBR === 'function') window._alignBR(); }, T.p2in - 250);
 
   /* Phase 1 fades out, Phase 2 fades in */
   setTimeout(function () { if (!_dismissed && p1) { p1.classList.remove('vis'); p1.classList.add('out'); } }, T.p1out);
@@ -397,7 +390,7 @@ function _activatePostReveal() {
   setTimeout(function () {
     if (_dismissed) return;
     _dismiss();
-  }, 9000);
+  }, 13000);
 })();
 
 /* ── VIDEO FACADE — lazy-load YouTube on click ── */
