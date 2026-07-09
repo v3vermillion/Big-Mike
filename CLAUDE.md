@@ -46,7 +46,6 @@ This is a birthday gift coaching platform app for IFBB Pro Big Mike Ely. It is d
 5. **Cloud sync**: `save()` persists all data stores including programs/workouts. `savePrograms()` and `saveWorkouts()` are for local-only saves.
 6. **iOS keyboard**: focusout listener resets scroll position after keyboard dismiss.
 7. **All picker modals** (exercises, anabolics, peptides, supplements, foods) should allow custom entry with fully customizable dose/timing/frequency fields - not just preset options.
-8. **Scroll performance (marketing site)**: NEVER use `background-attachment:fixed` — it defeats GPU-composited scrolling (full-viewport main-thread repaint per wheel tick) and on iOS Safari sizes the background against the whole document, which reads as the page being "zoomed in" and glitching on scroll. Also: never transition `backdrop-filter` (the `.nav` transitions an explicit property list for this reason), and never stack more than one full-viewport `mix-blend-mode` overlay (`.grain-ov` is the single grain layer; `.film-grain` was a duplicate and was removed).
 
 ## Databases (in-code constants)
 - `FOOD_DB[]` - foods with macros, `ck` flag (1=cooked, 0=dry/raw), categories P/C/F/V
