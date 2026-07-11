@@ -48,7 +48,14 @@ body{background:#040302;color:var(--ow);font-family:var(--body);font-weight:400;
   /* Warm dark radial base — every page gets the same base temperature
      so transitions between textured and flat sections don't read as
      an abrupt color shift. */
-  background-image:radial-gradient(ellipse 120% 80% at 50% 35%,rgba(14,10,4,1) 0%,rgba(6,4,2,1) 55%,#040302 100%);background-attachment:fixed}
+  background:#040302}
+/* Body atmosphere moved off the body onto a composited fixed layer: identical
+   viewport-anchored pixels, but paints once instead of re-rastering the full
+   viewport on every scroll frame, and renders correctly on iOS (where
+   background-attachment:fixed is sized against the whole document — the
+   “zoomed-in” glitch). Measured: −44% raster tasks during wheel scroll. */
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(ellipse 120% 80% at 50% 35%,rgba(14,10,4,1) 0%,rgba(6,4,2,1) 55%,#040302 100%)}
 /* Global atmospheric ambient \u2014 subtle warm glow that drifts */
 /* CONTINUOUS ATMOSPHERIC LAYER — single full-viewport warm wash,
    always present on every section of every page. Panel flagged:
@@ -231,7 +238,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}a,button{t
   animation:atmosDrift 20s ease-in-out infinite alternate}
 @keyframes atmosDrift{0%{opacity:.6}50%{opacity:1}100%{opacity:.7}}
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 28px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(4,3,2,.8),rgba(4,3,2,.2) 65%,transparent);border-bottom:1px solid rgba(212,168,40,.1);backdrop-filter:blur(4px) saturate(1.05);-webkit-backdrop-filter:blur(4px) saturate(1.05);transition:all .5s var(--ease)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 28px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(4,3,2,.8),rgba(4,3,2,.2) 65%,transparent);border-bottom:1px solid rgba(212,168,40,.1);backdrop-filter:blur(4px) saturate(1.05);-webkit-backdrop-filter:blur(4px) saturate(1.05);transition:background .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease),padding .45s var(--ease)}
 /* Centered brand tagline fills the header mid-space on mobile (where nav-links
    are hidden). Shown only at >=384px so it never collides with the M / MENU. */
 .nav::before{content:"TRAINER OF CHAMPIONS";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--mono);font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(212,168,40,.4);white-space:nowrap;pointer-events:none;display:none}
@@ -1645,8 +1652,8 @@ img[loading="lazy"][decoding="async"]{opacity:0;transition:opacity .6s var(--eas
 .footer-mark{z-index:1}
 .footer-swords{position:absolute;left:50%;top:30px;transform:translateX(-50%);width:clamp(116px,38vw,164px);z-index:0;pointer-events:none;opacity:.6}
 .footer-swords svg{width:100%;height:auto;display:block;overflow:visible}
-.footer-swords line,.footer-swords path{stroke:rgba(224,196,90,.5);stroke-width:1.5;fill:none;stroke-linecap:round;filter:drop-shadow(0 0 5px rgba(212,168,40,.18))}
-body.theme-crimson .footer-swords line,body.theme-crimson .footer-swords path{stroke:rgba(208,48,48,.36)}
+.footer-swords line,.footer-swords path{stroke:rgba(224,196,90,.5);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(212,168,40,.18))}
+.footer-swords circle{fill:rgba(224,196,90,.45);stroke:none;filter:drop-shadow(0 0 5px rgba(212,168,40,.18))}
 .footer-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:28px}
 .footer-links a{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);transition:color .3s,text-shadow .3s;position:relative}
 .footer-links a::after{content:'';position:absolute;bottom:-3px;left:50%;right:50%;height:1px;background:var(--acc);transition:left .3s var(--ease),right .3s var(--ease);opacity:.5}
@@ -2235,3 +2242,21 @@ body.theme-crimson .results-stat-num{background:var(--goldGrad);-webkit-backgrou
 @media(min-width:769px) and (max-width:1023px){.br-name{font-size:clamp(64px,10vw,92px)}}
 @media(max-width:380px){.br-name{font-size:clamp(38px,11vw,54px);letter-spacing:.02em}}
 @media(max-height:500px){.br-name{font-size:clamp(40px,9vw,64px);line-height:.9}}
+
+/* ── HERO: FRAMED MONOGRAPH (approved 2026-07-11) ─────────────────────────
+   The stage photo is presented as a deliberately framed plate — gold
+   hairline, dark matte — instead of a full-bleed image whose crop edges
+   read as accidents. Asset itself was re-cut (1200x1667 → 1192x1583) to
+   remove baked-in phone-screenshot chrome (84px top band, 8px left border).
+   Later-in-sheet plain selectors intentionally override the earlier
+   full-bleed geometry in the desktop media queries. Mobile box is sized by
+   insets inside the fixed-height (100svh) hero — no viewport-height
+   coupling, so iOS toolbar collapse cannot resize/enlarge the photo. */
+.hero-bg{inset:100px 6vw 46px;background-position:center 5%;border:1px solid rgba(212,168,40,.4);border-radius:2px;
+  box-shadow:0 0 0 1px rgba(0,0,0,.9),0 30px 90px rgba(0,0,0,.65),0 0 80px rgba(212,168,40,.05)}
+.hero-ov{inset:100px 6vw 46px}
+.hero-desktop-layer{display:none!important}
+@media(max-width:768px){
+  .hero-bg{inset:86px 14px 104px;top:86px;left:14px;right:14px;bottom:104px;width:auto;height:auto;background-position:center 10%}
+  .hero-ov{inset:86px 14px 104px}
+}
