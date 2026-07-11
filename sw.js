@@ -1,4 +1,4 @@
-var CACHE_NAME = 'bigmike-v9';
+var CACHE_NAME = 'bigmike-v11';
 /* Pre-cache the app shell so the full site works offline after one
    visit. Marketing pages + shared CSS/JS included so the complete
    funnel survives a flaky connection during onboarding. */
