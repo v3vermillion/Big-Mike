@@ -338,10 +338,51 @@ function _sampleClient(){
     id:"sample-preview",name:"Marcus Vega",phone:"5551234567",
     _isSample:true,
     services:["Training","Nutrition","Full Package"],
-    program:{name:"Off-Season Mass — Phase 2",days:[
-      {name:"Push",exercises:[{name:"Incline Barbell Press",sets:"4",reps:"8-10",rest:"90s"},{name:"Standing Military Press",sets:"3",reps:"10-12",rest:"75s"},{name:"Weighted Dip",sets:"3",reps:"12",rest:"60s"},{name:"Cable Lateral Raise",sets:"4",reps:"15",rest:"45s"}],cardio:"15 min LISS"},
-      {name:"Pull",exercises:[{name:"Deadlift",sets:"4",reps:"5",rest:"3 min"},{name:"Weighted Pull-Up",sets:"4",reps:"AMRAP",rest:"90s"},{name:"Barbell Row",sets:"3",reps:"10",rest:"90s"},{name:"Hammer Curl",sets:"3",reps:"12",rest:"45s"}],cardio:""},
-      {name:"Legs",exercises:[{name:"Back Squat",sets:"5",reps:"5",rest:"3 min"},{name:"Romanian Deadlift",sets:"3",reps:"8-10",rest:"90s"},{name:"Leg Press",sets:"3",reps:"15",rest:"75s"},{name:"Seated Calf Raise",sets:"4",reps:"20",rest:"45s"}],cardio:"20 min stepper"}
+    /* Real FST-7 workouts, copied verbatim from FST7_PRESETS in
+       app.html and stored in the same shape wizLoadFST7 writes
+       (integer sets/rest, an intensifier flag on the 7-set finisher,
+       per-exercise cues). A five-day split so each preset covers its
+       own muscle group. */
+    program:{name:"FST-7 Off-Season — Phase 2",days:[
+      {name:"FST-7 Chest",notes:"FST-7. Heavy compounds first, finish with 7 sets cable flyes 30-45s rest for fascia stretch.",cardio:"15 min LISS",exercises:[
+        {name:"Incline Barbell Press",sets:4,reps:"8-12",rest:90,intensifier:"normal",notes:"Control the negative, full stretch at bottom"},
+        {name:"Flat Dumbbell Press",sets:4,reps:"8-12",rest:90,intensifier:"normal",notes:"Deep stretch, squeeze at top"},
+        {name:"Incline Dumbbell Flye",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Wide arc, feel the stretch"},
+        {name:"Weighted Dip",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Lean forward, chest emphasis"},
+        {name:"Cable Crossover (FST-7)",sets:7,reps:"10-12",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, squeeze & hold peak contraction 1 sec"}
+      ]},
+      {name:"FST-7 Back Width",notes:"FST-7. Vertical pulling emphasis for width. Finish with 7 sets machine pullover.",cardio:"",exercises:[
+        {name:"Wide-Grip Lat Pulldown",sets:4,reps:"10-12",rest:90,intensifier:"normal",notes:"Full stretch at top, squeeze lats at bottom"},
+        {name:"Barbell Row",sets:4,reps:"8-12",rest:90,intensifier:"normal",notes:"Overhand grip, pull to lower chest"},
+        {name:"One-Arm Dumbbell Row",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Full ROM, squeeze at top"},
+        {name:"Seated Cable Row (Close Grip)",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Lean forward for stretch, pull to navel"},
+        {name:"Machine Pullover (FST-7)",sets:7,reps:"10-12",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, deep stretch, hold contraction"}
+      ]},
+      {name:"FST-7 Shoulders",notes:"FST-7. All three heads, finish with 7 sets lateral raises for capped delts.",cardio:"15 min incline walk",exercises:[
+        {name:"Seated Dumbbell Press",sets:4,reps:"8-12",rest:90,intensifier:"normal",notes:"Full ROM, don't lock out at top"},
+        {name:"Barbell Upright Row",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Wide grip, pull to chin level"},
+        {name:"Bent-Over Rear Delt Flye",sets:4,reps:"12-15",rest:60,intensifier:"normal",notes:"Chest on incline bench, squeeze rear delts"},
+        {name:"Cable Front Raise",sets:3,reps:"12-15",rest:45,intensifier:"normal",notes:"Alternating arms, control the negative"},
+        {name:"Dumbbell Lateral Raise (FST-7)",sets:7,reps:"10-12",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, slight lean forward, pinky up"}
+      ]},
+      {name:"FST-7 Quads",notes:"FST-7. Heavy compound quad work, finish with 7 sets leg extension for the pump of your life.",cardio:"20 min stepper",exercises:[
+        {name:"Leg Extension (Warm-Up)",sets:3,reps:"15-20",rest:45,intensifier:"normal",notes:"Pre-exhaust, light weight, feel the quads"},
+        {name:"Barbell Squat",sets:4,reps:"8-12",rest:120,intensifier:"normal",notes:"Shoulder-width stance, below parallel"},
+        {name:"Hack Squat",sets:4,reps:"10-12",rest:90,intensifier:"normal",notes:"Feet low & close for quad sweep"},
+        {name:"Walking Lunges",sets:3,reps:"12-14 steps",rest:60,intensifier:"normal",notes:"Long stride, upright torso"},
+        {name:"Leg Press",sets:4,reps:"10-15",rest:90,intensifier:"normal",notes:"Feet low & narrow, deep ROM"},
+        {name:"Leg Extension (FST-7)",sets:7,reps:"10-15",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, squeeze & hold at top 1 sec, controlled negative"}
+      ]},
+      {name:"FST-7 Arms (Bi + Tri)",notes:"FST-7 arm day. Superset style, finish each with 7 sets.",cardio:"",exercises:[
+        {name:"EZ Bar Curl",sets:4,reps:"8-12",rest:60,intensifier:"normal",notes:"Strict form, squeeze at top"},
+        {name:"Close-Grip Bench Press",sets:4,reps:"8-12",rest:60,intensifier:"normal",notes:"Elbows in, full lockout"},
+        {name:"Incline Dumbbell Curl",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Arms behind torso for long head stretch"},
+        {name:"Overhead Dumbbell Extension",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Deep stretch, both hands one dumbbell"},
+        {name:"Concentration Curl",sets:3,reps:"10-12",rest:45,intensifier:"normal",notes:"Peak contraction, no momentum"},
+        {name:"Rope Pushdown",sets:3,reps:"12-15",rest:45,intensifier:"normal",notes:"Spread rope at bottom, squeeze"},
+        {name:"Cable Curl (FST-7)",sets:7,reps:"10-12",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, constant tension"},
+        {name:"Overhead Cable Extension (FST-7)",sets:7,reps:"10-12",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, deep stretch, full extension"}
+      ]}
     ]},
     cardio:[{type:"Incline Treadmill",duration:"30 min",mode:"LISS"},{type:"Stairmill",duration:"15 min",mode:"Post-workout"}],
     anabolics:[{name:"Testosterone Cypionate / Test C",dose:"500mg",freq:"Weekly",route:"IM"},{name:"Nandrolone Decanoate / Deca",dose:"300mg",freq:"Weekly",route:"IM"},{name:"Anastrozole / Arimidex",dose:"0.5mg",freq:"E3D",route:"Oral"}],
@@ -1103,10 +1144,9 @@ function _renderProgTraining(t){
       continue;
     }
     html+='<div class="cd" style="padding:14px;margin-bottom:6px"><div style="font-size:13px;font-weight:700;color:var(--ice);margin-bottom:6px">'+esc(day.name||"Day "+(d+1))+'</div>';
+    html+=_dayNotes(day);
     var exs=day.exercises||[];
-    for(var e=0;e<exs.length;e++){var ex=exs[e];
-      html+='<div class="row-kv" style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:11px;color:var(--ow)">'+esc(ex.name||"Exercise")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(ex.sets||3)+'x'+(ex.reps||"10-12")+'</span></div>';
-    }
+    for(var e=0;e<exs.length;e++){html+=_exerciseRow(exs[e],true);}
     var _cl=_cardioLines(day.cardio);
     for(var ci=0;ci<_cl.length;ci++){html+='<div style="margin-top:6px;font-size:10px;color:var(--mu);font-family:var(--mono)">Cardio: '+esc(_cl[ci])+'</div>';}
     html+='</div>';
@@ -1252,6 +1292,42 @@ function _generateProgramPDF(){
   }).catch(function(e){console.error("PDF error:",e);toast("PDF generation failed \u2014 try asking your coach");});
 }
 
+/* Rest is stored as an integer of seconds by the program builder and
+   as a numeric string by the FST-7 presets; a coach typing "3 min"
+   by hand should survive untouched. */
+function _restText(r){
+  var s=String(r==null?"":r).trim();
+  if(!s)return"";
+  if(!/^\d+$/.test(s))return s;
+  var n=parseInt(s,10);
+  /* Whole minutes read better than a three-digit second count. */
+  return(n>=120&&n%60===0)?(n/60)+" min":n+"s";
+}
+
+/* One exercise line. The builder stores a rest interval, an
+   intensifier (FST-7, drop set, rest-pause …) and a per-exercise
+   coaching cue next to the sets and reps, but only sets and reps ever
+   reached the client — so an FST-7 finisher read as an ordinary
+   straight set and every cue Mike wrote was dropped on the way out. */
+function _exerciseRow(ex,compact){
+  var tech=ex.intensifier&&String(ex.intensifier).toLowerCase()!=="normal"?String(ex.intensifier):"";
+  var badge=tech?'<span style="font-size:8px;font-family:var(--mono);font-weight:700;letter-spacing:.08em;color:var(--acc);background:var(--accS);border:1px solid var(--borderS);border-radius:4px;padding:1px 5px;margin-left:6px;white-space:nowrap;text-transform:uppercase">'+esc(tech)+'</span>':'';
+  var rest=_restText(ex.rest);
+  var meta=(ex.sets||3)+'x'+(ex.reps||"10-12")+(rest?' · '+esc(rest):'');
+  var h='<div style="padding:'+(compact?'5px':'7px')+' 0;border-bottom:1px solid var(--borderS)">';
+  h+='<div class="row-kv" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:'+(compact?11:12)+'px;color:var(--ow)">'+esc(ex.name||"Exercise")+badge+'</span>';
+  h+='<span style="font-size:10px;color:var(--dm);font-family:var(--mono);white-space:nowrap;flex-shrink:0">'+meta+'</span></div>';
+  if(ex.notes)h+='<div class="row-kv" style="font-size:10px;color:var(--dm);line-height:1.5;margin-top:3px">'+esc(ex.notes)+'</div>';
+  return h+'</div>';
+}
+
+/* The protocol line a day carries ("FST-7. Heavy compounds first,
+   finish with 7 sets cable flyes…") — the how behind the day. */
+function _dayNotes(day){
+  if(!day.notes)return'';
+  return '<div class="row-kv" style="font-size:11px;color:var(--mu);line-height:1.55;margin-bottom:10px">'+esc(day.notes)+'</div>';
+}
+
 function _isRestDay(day){
   if(!day)return false;
   var name=(day.name||"").toUpperCase();
@@ -1268,12 +1344,9 @@ function renderTraining(c){
       html+='<div class="cd" style="padding:16px;margin-bottom:8px;border-left:3px solid var(--borderS);text-align:center"><div style="font-size:14px;font-weight:700;color:var(--mu);margin-bottom:4px">'+esc(day.name||"Day "+(d+1))+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono);letter-spacing:.1em">REST &middot; RECOVER &middot; REBUILD</div></div>';
       continue;
     }
-    html+='<div class="cd" style="padding:16px;margin-bottom:8px"><div style="font-size:14px;font-weight:700;color:var(--ice);margin-bottom:8px">'+esc(day.name||"Day "+(d+1))+'</div>';
+    html+='<div class="cd" style="padding:16px;margin-bottom:8px"><div style="font-size:14px;font-weight:700;color:var(--ice);margin-bottom:'+(day.notes?'6px':'8px')+'">'+esc(day.name||"Day "+(d+1))+'</div>'+_dayNotes(day);
     if(day.exercises&&day.exercises.length){
-      for(var e=0;e<day.exercises.length;e++){
-        var ex=day.exercises[e];
-        html+='<div class="row-kv" style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:12px;color:var(--ow)">'+esc(ex.name||"Exercise")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(ex.sets||3)+'x'+(ex.reps||"10-12")+'</span></div>';
-      }
+      for(var e=0;e<day.exercises.length;e++){html+=_exerciseRow(day.exercises[e],false);}
     }
     var _dcl=_cardioLines(day.cardio);
     for(var ci=0;ci<_dcl.length;ci++){html+='<div style="margin-top:8px;font-size:10px;color:var(--mu);font-family:var(--mono)">Cardio: '+esc(_dcl[ci])+'</div>';}
