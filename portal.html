@@ -145,13 +145,24 @@ body.auth-bg-on .bg-glow::before{opacity:.35}
   .bg-glow{background:radial-gradient(ellipse 120% 60% at 50% 0%,var(--accS),transparent 50%),radial-gradient(ellipse 80% 80% at 80% 100%,var(--glass),transparent 50%),var(--bg)}
   .bg-glow::before{width:800px;height:800px;opacity:.5}
   #sec-program{display:grid;grid-template-columns:200px 1fr;gap:0 28px}
-  #sec-program>div:first-child{grid-column:1/-1}
+  /* Full-width rows above the tab rail / content split. Targeted by
+     class rather than :first-child — a positional selector silently
+     hands the span to whatever element is added first (the preview
+     banner did exactly that, squeezing the header into the 200px
+     rail column). */
+  #sec-program>.prog-hdr{grid-column:1/-1}
+  #sec-program>.prog-banner{grid-column:1/-1}
   #sec-program>.gw{grid-column:1/-1}
   .tab-bar{flex-direction:column;border-bottom:none;overflow-x:visible;position:sticky;top:20px;align-self:start;gap:2px;padding:12px;margin:0;background:linear-gradient(160deg,rgba(12,12,12,.6),rgba(6,6,6,.4));border:1px solid var(--borderS);border-radius:12px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 4px 20px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.02)}
   .tab-btn{text-align:left;border-bottom:none;white-space:normal;border-left:3px solid transparent;padding:10px 14px;border-radius:0 8px 8px 0;transition:all .2s}
   .tab-btn:hover{background:var(--glassB);color:var(--ow)}
   .tab-btn.active{border-bottom:none;border-left:3px solid var(--acc);background:var(--accS);color:var(--accBright);text-shadow:0 0 12px var(--accGlow)}
   .cd{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 4px 20px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.03)}
+  /* Name-left / value-right rows (exercises, foods) are justified to
+     the card edges. In the wide desktop content column that put the
+     sets/reps and quantities ~700px from the item they belong to.
+     Cap the reading measure so the pair stays scannable. */
+  .row-kv{max-width:640px}
   #progContent{animation:portalFadeIn .2s ease}
   .portal-ov-grid{grid-template-columns:3fr 2fr;gap:28px}
   .portal-msg-split{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
@@ -190,7 +201,7 @@ body.auth-bg-on .bg-glow::before{opacity:.35}
       <div aria-hidden="true" style="position:absolute;top:10px;left:10px;width:22px;height:22px;border-top:1.5px solid var(--acc);border-left:1.5px solid var(--acc);border-top-left-radius:4px;opacity:.62;pointer-events:none"></div>
       <div aria-hidden="true" style="position:absolute;bottom:10px;right:10px;width:22px;height:22px;border-bottom:1.5px solid var(--acc);border-right:1.5px solid var(--acc);border-bottom-right-radius:4px;opacity:.62;pointer-events:none"></div>
       <div class="sl" style="margin-bottom:14px">Client Portal</div>
-      <div style="font-size:13px;color:var(--mu);line-height:1.65;margin-bottom:4px">Enter your phone number to view your coaching program, meal plans, and upcoming sessions.</div>
+      <div id="loginIntro" style="font-size:13px;color:var(--mu);line-height:1.65;margin-bottom:4px">Enter your phone number to view your coaching program, meal plans, and upcoming sessions.</div>
     </div>
     <div style="margin-bottom:16px">
       <label for="portalPhone" class="lb">PHONE NUMBER</label>
@@ -200,7 +211,7 @@ body.auth-bg-on .bg-glow::before{opacity:.35}
       </div>
     </div>
     <button class="btn" id="loginBtn" onclick="portalLogin()" aria-label="View my program">VIEW MY PROGRAM</button>
-    <div style="text-align:center;margin-top:14px;font-size:10px;color:var(--dmL);font-family:var(--mono);letter-spacing:.08em">Only clients with active programs can access</div>
+    <div id="loginGateNote" style="text-align:center;margin-top:14px;font-size:10px;color:var(--dmL);font-family:var(--mono);letter-spacing:.08em">Only clients with active programs can access</div>
   </div>
 
   <!-- PIN CREATE SECTION (first-time login) -->
@@ -256,7 +267,12 @@ body.auth-bg-on .bg-glow::before{opacity:.35}
 
   <!-- PROGRAM VIEW -->
   <div class="section" id="sec-program">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+    <!-- Shown only when the portal opened on the sample program, so
+         nobody mistakes demo numbers for their own prescription. -->
+    <div id="sampleBanner" class="prog-banner" style="display:none;margin-bottom:14px;padding:10px 14px;border:1px solid var(--borderH);border-left:3px solid var(--acc);border-radius:8px;background:var(--glassB);font-size:11px;line-height:1.6;color:var(--mu);font-family:var(--mono);letter-spacing:.04em">
+      <strong style="color:var(--acc);letter-spacing:.1em">PREVIEW</strong> &mdash; sample program shown for demonstration. Not medical or coaching advice.
+    </div>
+    <div class="prog-hdr" style="display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px">
       <div>
         <div style="font-size:16px;font-weight:700;color:var(--ice)" id="clientName"></div>
         <div style="font-size:10px;color:var(--dm);font-family:var(--mono)" id="clientServices"></div>
@@ -289,12 +305,112 @@ body.auth-bg-on .bg-glow::before{opacity:.35}
   <div class="portal-footer">
     <div class="gw" style="max-width:100px;margin:0 auto 14px"></div>
     IFBB PRO BIG MIKE ELY'S COACHING LAB
-    <div style="margin-top:10px"><a href="https://vermillionaxis.tech" target="_blank" rel="noopener" aria-label="Vermillion Axis Technologies website" style="color:var(--dmL);text-decoration:none;font-size:9px;letter-spacing:.08em">BUILT BY VERMILLION AXIS TECHNOLOGIES</a></div>
+    <div style="margin-top:10px"><a href="https://vermillionaxis.tech" target="_blank" rel="noopener" aria-label="Vermillion Axis Technologies website" style="color:var(--dmL);text-decoration:none;font-size:9px;letter-spacing:.08em;display:inline-block;padding:12px 8px;min-height:44px;line-height:20px">BUILT BY VERMILLION AXIS TECHNOLOGIES</a></div>
   </div>
 </div>
 
 <script>
 var _sb=null,_clientData=null,_activeTab="overview";
+
+/* ── OPEN ACCESS MODE ──────────────────────────────────────────────
+   Mirrors the flag of the same name in app.html. The gate on the
+   client portal is lifted at the owner's request: any phone number
+   opens the portal and the PIN step is skipped entirely.
+
+   If a Supabase backend is configured, a real number still resolves
+   to that client's real program — open access only removes the PIN
+   challenge in front of it. When the backend is offline (it is
+   today: _BM_SB_URL is blank for recovery) or the number matches no
+   client, the portal opens on a clearly-labelled sample program so
+   the interface is still walkable.
+
+   Set OPEN_ACCESS to false to restore the full gate. All of it is
+   still here: the find-client lookup, PIN create/enter with its
+   server-side verify and 5-attempt lockout, 2FA, and PIN reset. */
+var OPEN_ACCESS=true;
+
+/* Sample program used when open access can't resolve a real client.
+   Every section is populated on purpose so each portal tab has
+   something to render — this doubles as the fixture the visual
+   audit walks through. */
+function _sampleClient(){
+  return {
+    id:"sample-preview",name:"Marcus Vega",phone:"5551234567",
+    _isSample:true,
+    services:["Training","Nutrition","Full Package"],
+    /* Real FST-7 workouts, copied verbatim from FST7_PRESETS in
+       app.html and stored in the same shape wizLoadFST7 writes
+       (integer sets/rest, an intensifier flag on the 7-set finisher,
+       per-exercise cues). A five-day split so each preset covers its
+       own muscle group. */
+    program:{name:"FST-7 Off-Season — Phase 2",days:[
+      {name:"FST-7 Chest",notes:"FST-7. Heavy compounds first, finish with 7 sets cable flyes 30-45s rest for fascia stretch.",cardio:"15 min LISS",exercises:[
+        {name:"Incline Barbell Press",sets:4,reps:"8-12",rest:90,intensifier:"normal",notes:"Control the negative, full stretch at bottom"},
+        {name:"Flat Dumbbell Press",sets:4,reps:"8-12",rest:90,intensifier:"normal",notes:"Deep stretch, squeeze at top"},
+        {name:"Incline Dumbbell Flye",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Wide arc, feel the stretch"},
+        {name:"Weighted Dip",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Lean forward, chest emphasis"},
+        {name:"Cable Crossover (FST-7)",sets:7,reps:"10-12",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, squeeze & hold peak contraction 1 sec"}
+      ]},
+      {name:"FST-7 Back Width",notes:"FST-7. Vertical pulling emphasis for width. Finish with 7 sets machine pullover.",cardio:"",exercises:[
+        {name:"Wide-Grip Lat Pulldown",sets:4,reps:"10-12",rest:90,intensifier:"normal",notes:"Full stretch at top, squeeze lats at bottom"},
+        {name:"Barbell Row",sets:4,reps:"8-12",rest:90,intensifier:"normal",notes:"Overhand grip, pull to lower chest"},
+        {name:"One-Arm Dumbbell Row",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Full ROM, squeeze at top"},
+        {name:"Seated Cable Row (Close Grip)",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Lean forward for stretch, pull to navel"},
+        {name:"Machine Pullover (FST-7)",sets:7,reps:"10-12",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, deep stretch, hold contraction"}
+      ]},
+      {name:"FST-7 Shoulders",notes:"FST-7. All three heads, finish with 7 sets lateral raises for capped delts.",cardio:"15 min incline walk",exercises:[
+        {name:"Seated Dumbbell Press",sets:4,reps:"8-12",rest:90,intensifier:"normal",notes:"Full ROM, don't lock out at top"},
+        {name:"Barbell Upright Row",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Wide grip, pull to chin level"},
+        {name:"Bent-Over Rear Delt Flye",sets:4,reps:"12-15",rest:60,intensifier:"normal",notes:"Chest on incline bench, squeeze rear delts"},
+        {name:"Cable Front Raise",sets:3,reps:"12-15",rest:45,intensifier:"normal",notes:"Alternating arms, control the negative"},
+        {name:"Dumbbell Lateral Raise (FST-7)",sets:7,reps:"10-12",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, slight lean forward, pinky up"}
+      ]},
+      {name:"FST-7 Quads",notes:"FST-7. Heavy compound quad work, finish with 7 sets leg extension for the pump of your life.",cardio:"20 min stepper",exercises:[
+        {name:"Leg Extension (Warm-Up)",sets:3,reps:"15-20",rest:45,intensifier:"normal",notes:"Pre-exhaust, light weight, feel the quads"},
+        {name:"Barbell Squat",sets:4,reps:"8-12",rest:120,intensifier:"normal",notes:"Shoulder-width stance, below parallel"},
+        {name:"Hack Squat",sets:4,reps:"10-12",rest:90,intensifier:"normal",notes:"Feet low & close for quad sweep"},
+        {name:"Walking Lunges",sets:3,reps:"12-14 steps",rest:60,intensifier:"normal",notes:"Long stride, upright torso"},
+        {name:"Leg Press",sets:4,reps:"10-15",rest:90,intensifier:"normal",notes:"Feet low & narrow, deep ROM"},
+        {name:"Leg Extension (FST-7)",sets:7,reps:"10-15",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, squeeze & hold at top 1 sec, controlled negative"}
+      ]},
+      {name:"FST-7 Arms (Bi + Tri)",notes:"FST-7 arm day. Superset style, finish each with 7 sets.",cardio:"",exercises:[
+        {name:"EZ Bar Curl",sets:4,reps:"8-12",rest:60,intensifier:"normal",notes:"Strict form, squeeze at top"},
+        {name:"Close-Grip Bench Press",sets:4,reps:"8-12",rest:60,intensifier:"normal",notes:"Elbows in, full lockout"},
+        {name:"Incline Dumbbell Curl",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Arms behind torso for long head stretch"},
+        {name:"Overhead Dumbbell Extension",sets:3,reps:"10-12",rest:60,intensifier:"normal",notes:"Deep stretch, both hands one dumbbell"},
+        {name:"Concentration Curl",sets:3,reps:"10-12",rest:45,intensifier:"normal",notes:"Peak contraction, no momentum"},
+        {name:"Rope Pushdown",sets:3,reps:"12-15",rest:45,intensifier:"normal",notes:"Spread rope at bottom, squeeze"},
+        {name:"Cable Curl (FST-7)",sets:7,reps:"10-12",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, constant tension"},
+        {name:"Overhead Cable Extension (FST-7)",sets:7,reps:"10-12",rest:30,intensifier:"FST-7",notes:"FST-7 — 30s rest, deep stretch, full extension"}
+      ]}
+    ]},
+    cardio:[{type:"Incline Treadmill",duration:"30 min",mode:"LISS"},{type:"Stairmill",duration:"15 min",mode:"Post-workout"}],
+    anabolics:[{name:"Testosterone Cypionate / Test C",dose:"500mg",freq:"Weekly",route:"IM"},{name:"Nandrolone Decanoate / Deca",dose:"300mg",freq:"Weekly",route:"IM"},{name:"Anastrozole / Arimidex",dose:"0.5mg",freq:"E3D",route:"Oral"}],
+    peptides:[{name:"BPC-157",dose:"500mcg",freq:"Daily",route:"SubQ"},{name:"CJC-1295 / Ipamorelin",dose:"300mcg",freq:"Nightly",route:"SubQ"}],
+    fatloss:[{name:"Semaglutide / Ozempic / Wegovy",dose:"0.5mg",freq:"Weekly",route:"SubQ"}],
+    supplements:[{name:"Whey Isolate",dose:"40g",timing:"Post-workout"},{name:"Creatine Monohydrate",dose:"5g",timing:"Daily"},{name:"Magnesium Glycinate",dose:"400mg",timing:"Pre-bed"},{name:"Vitamin D3 + K2",dose:"5000 IU",timing:"AM with food"}],
+    organsupport:[{name:"NAC",dose:"1200mg",timing:"AM"},{name:"TUDCA",dose:"500mg",timing:"AM"},{name:"CoQ10",dose:"200mg",timing:"AM with food"}],
+    water:{goal:180,logs:{}},
+    weightLog:[{date:"2026-07-06",lbs:212},{date:"2026-07-20",lbs:214},{date:"2026-08-03",lbs:215},{date:"2026-08-17",lbs:216.5}],
+    checkins:[],
+    _mealPlans:[{name:"Training Day — 4,200 cal",clientId:"sample-preview",targets:{cal:4200,p:320,c:480,f:110},meals:[
+      {name:"Meal 1",time:"7:00 AM",foods:[{name:"Egg Whites",qty:12,unit:"oz",per:1,cal:16,p:3.6,c:0.2,f:0},{name:"Oats (dry)",qty:120,unit:"g",per:100,cal:389,p:16.9,c:66,f:6.9}]},
+      {name:"Meal 2",time:"11:00 AM",foods:[{name:"Chicken Breast (cooked)",qty:8,unit:"oz",per:1,cal:47,p:8.8,c:0,f:1}, {name:"Jasmine Rice (cooked)",qty:300,unit:"g",per:100,cal:130,p:2.7,c:28,f:0.3}]},
+      {name:"Post-Workout",time:"4:30 PM",foods:[{name:"Whey Isolate",qty:2,unit:"scoop",per:1,cal:120,p:27,c:2,f:1},{name:"Cream of Rice (dry)",qty:80,unit:"g",per:100,cal:370,p:6,c:82,f:1}]},
+      {name:"Meal 4",time:"8:00 PM",foods:[{name:"Ground Beef 93/7 (cooked)",qty:8,unit:"oz",per:1,cal:50,p:7,c:0,f:2.3},{name:"White Potato (cooked)",qty:400,unit:"g",per:100,cal:87,p:1.9,c:20,f:0.1},{name:"Olive Oil",qty:15,unit:"g",per:100,cal:884,p:0,c:0,f:100}]}
+    ]}],
+    pinHash:"",twoFactorEnabled:false
+  };
+}
+
+/* Open the portal on the sample program (no backend round trip). */
+function _openAccessSampleLogin(){
+  _pendingClient=_sampleClient();
+  _clientData=_pendingClient;
+  _portalMessages=[];
+  renderProgram();
+  showSection("program");
+}
 
 /* Phone formatting */
 var phoneInput=document.getElementById("portalPhone");
@@ -398,9 +514,30 @@ function shakePinBoxes(containerId){
   if(boxes.length)boxes[0].focus();
 }
 
+/* Open-access login. A full 10-digit number is still looked up when
+   a backend is configured, so real clients land on their own program;
+   anything else (short entry, blank, unknown number, offline backend)
+   opens the sample program instead. The PIN step is skipped either
+   way — that is the gate being lifted. */
+function _openAccessLogin(raw){
+  var sb=getSupabase();
+  if(!sb||raw.length<10){_openAccessSampleLogin();return;}
+  var btn=document.getElementById("loginBtn");
+  btn.disabled=true;btn.textContent="LOADING...";
+  function done(){btn.disabled=false;btn.textContent="VIEW MY PROGRAM";}
+  sb.functions.invoke("find-client",{body:{phone:raw,mode:"full"}}).then(function(res){
+    done();
+    if(res&&!res.error&&res.data&&res.data.found&&res.data.client){
+      _pendingPhone="+1"+raw;_pendingClient=res.data.client;
+      _completePinLogin();
+    }else{_openAccessSampleLogin();}
+  }).catch(function(){done();_openAccessSampleLogin();});
+}
+
 /* Portal Login — step 1: phone lookup */
 function portalLogin(){
   var raw=document.getElementById("portalPhone").value.replace(/\D/g,"");
+  if(OPEN_ACCESS){_openAccessLogin(raw);return;}
   if(raw.length<10){toast("Enter a valid phone number");return;}
   var phone="+1"+raw;
   var sb=getSupabase();
@@ -704,13 +841,30 @@ function _completePinLogin(){
    pattern used by Trainerize / TrueCoach / ClubReady. */
 function tryAutoLogin(){
   /* Pre-fill phone field if we have it remembered, but always
-     require PIN entry. No session bypass, no token bypass. */
+     require PIN entry. No session bypass, no token bypass.
+     (The input's id is portalPhone \u2014 this previously looked up
+     "phoneInput", which does not exist, so the remembered number
+     was never actually pre-filled.) */
   var phone=localStorage.getItem("bm_portal_phone");
   if(phone){
     setTimeout(function(){
-      var inp=document.getElementById("phoneInput");
-      if(inp){inp.value=phone;}
+      var inp=document.getElementById("portalPhone");
+      /* Stored as +1XXXXXXXXXX; the field's input handler formats
+         the 10 national digits into (XXX) XXX-XXXX. */
+      if(inp){
+        var d=String(phone).replace(/\D/g,"").slice(-10);
+        if(d.length===10){inp.value=d;inp.dispatchEvent(new Event("input"));}
+      }
     },200);
+  }
+  /* Under open access the gate copy would otherwise promise a
+     check that no longer happens. Keep the markup as the source of
+     truth for the gated build and adjust it here instead. */
+  if(OPEN_ACCESS){
+    var intro=document.getElementById("loginIntro");
+    if(intro)intro.textContent="Enter your phone number to view your coaching program, meal plans, and upcoming sessions.";
+    var note=document.getElementById("loginGateNote");
+    if(note)note.textContent="Open preview \u2014 no PIN required";
   }
   /* Always show the login screen \u2014 no bypass. */
   showSection("login");
@@ -742,6 +896,8 @@ function fetchCoachPhone(cb){
 /* Render program view */
 function renderProgram(){
   var c=_clientData;if(!c)return;
+  var banner=document.getElementById("sampleBanner");
+  if(banner)banner.style.display=c._isSample?"block":"none";
   document.getElementById("clientName").textContent=c.name||"Client";
   var svc=Array.isArray(c.services)?c.services.join(", "):(c.services||"Training");
   document.getElementById("clientServices").textContent=svc.toUpperCase();
@@ -988,17 +1144,33 @@ function _renderProgTraining(t){
       continue;
     }
     html+='<div class="cd" style="padding:14px;margin-bottom:6px"><div style="font-size:13px;font-weight:700;color:var(--ice);margin-bottom:6px">'+esc(day.name||"Day "+(d+1))+'</div>';
+    html+=_dayNotes(day);
     var exs=day.exercises||[];
-    for(var e=0;e<exs.length;e++){var ex=exs[e];
-      html+='<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:11px;color:var(--ow)">'+esc(ex.name||"Exercise")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(ex.sets||3)+'x'+(ex.reps||"10-12")+'</span></div>';
-    }
-    if(day.cardio){
-      var cardioArr=Array.isArray(day.cardio)?day.cardio:[day.cardio];
-      for(var ci=0;ci<cardioArr.length;ci++){var cc=cardioArr[ci];html+='<div style="margin-top:6px;font-size:10px;color:var(--mu);font-family:var(--mono)">Cardio: '+esc(cc.type||"")+" "+esc(cc.duration||"")+'</div>';}
-    }
+    for(var e=0;e<exs.length;e++){html+=_exerciseRow(exs[e],true);}
+    var _cl=_cardioLines(day.cardio);
+    for(var ci=0;ci<_cl.length;ci++){html+='<div style="margin-top:6px;font-size:10px;color:var(--mu);font-family:var(--mono)">Cardio: '+esc(_cl[ci])+'</div>';}
     html+='</div>';
   }
   html+='</div>';return html;
+}
+
+/* A day's cardio arrives in four shapes depending on which builder
+   wrote it: null, a plain string ("15 min LISS"), an object
+   ({type,duration,mode}), or an array of either. Reading .type off a
+   string yields undefined, which is how a bare "Cardio:" label with
+   no value ended up rendering. Returns "" when there is nothing worth
+   printing so the caller can skip the label entirely. */
+function _cardioText(v){
+  if(!v)return "";
+  if(typeof v==="string")return v.trim();
+  if(typeof v!=="object")return String(v).trim();
+  return [v.type||"",v.duration||"",v.mode||""].filter(function(p){return String(p).trim();}).join(" · ").trim();
+}
+function _cardioLines(v){
+  var arr=Array.isArray(v)?v:[v];
+  var out=[];
+  for(var i=0;i<arr.length;i++){var s=_cardioText(arr[i]);if(s)out.push(s);}
+  return out;
 }
 
 function _renderProgNutrition(n){
@@ -1017,7 +1189,7 @@ function _renderProgNutrition(n){
     html+='<div class="cd" style="padding:12px 14px;margin-bottom:6px"><div style="font-size:11px;font-weight:700;color:var(--acc);font-family:var(--mono);letter-spacing:.06em;margin-bottom:4px">'+esc(meal.name||"Meal "+(m+1)).toUpperCase()+(meal.time?' <span style="color:var(--dm);font-weight:400">'+esc(meal.time)+'</span>':'')+'</div>';
     var foods=meal.foods||[];
     for(var f=0;f<foods.length;f++){var fd=foods[f];
-      html+='<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:11px;color:var(--ow)">&bull; '+esc(fd.name||"Food")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(fd.qty||"")+" "+(fd.unit||"")+'</span></div>';
+      html+='<div class="row-kv" style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:11px;color:var(--ow)">&bull; '+esc(fd.name||"Food")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(fd.qty||"")+" "+(fd.unit||"")+'</span></div>';
     }
     html+='</div>';
   }
@@ -1120,6 +1292,42 @@ function _generateProgramPDF(){
   }).catch(function(e){console.error("PDF error:",e);toast("PDF generation failed \u2014 try asking your coach");});
 }
 
+/* Rest is stored as an integer of seconds by the program builder and
+   as a numeric string by the FST-7 presets; a coach typing "3 min"
+   by hand should survive untouched. */
+function _restText(r){
+  var s=String(r==null?"":r).trim();
+  if(!s)return"";
+  if(!/^\d+$/.test(s))return s;
+  var n=parseInt(s,10);
+  /* Whole minutes read better than a three-digit second count. */
+  return(n>=120&&n%60===0)?(n/60)+" min":n+"s";
+}
+
+/* One exercise line. The builder stores a rest interval, an
+   intensifier (FST-7, drop set, rest-pause …) and a per-exercise
+   coaching cue next to the sets and reps, but only sets and reps ever
+   reached the client — so an FST-7 finisher read as an ordinary
+   straight set and every cue Mike wrote was dropped on the way out. */
+function _exerciseRow(ex,compact){
+  var tech=ex.intensifier&&String(ex.intensifier).toLowerCase()!=="normal"?String(ex.intensifier):"";
+  var badge=tech?'<span style="font-size:8px;font-family:var(--mono);font-weight:700;letter-spacing:.08em;color:var(--acc);background:var(--accS);border:1px solid var(--borderS);border-radius:4px;padding:1px 5px;margin-left:6px;white-space:nowrap;text-transform:uppercase">'+esc(tech)+'</span>':'';
+  var rest=_restText(ex.rest);
+  var meta=(ex.sets||3)+'x'+(ex.reps||"10-12")+(rest?' · '+esc(rest):'');
+  var h='<div style="padding:'+(compact?'5px':'7px')+' 0;border-bottom:1px solid var(--borderS)">';
+  h+='<div class="row-kv" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:'+(compact?11:12)+'px;color:var(--ow)">'+esc(ex.name||"Exercise")+badge+'</span>';
+  h+='<span style="font-size:10px;color:var(--dm);font-family:var(--mono);white-space:nowrap;flex-shrink:0">'+meta+'</span></div>';
+  if(ex.notes)h+='<div class="row-kv" style="font-size:10px;color:var(--dm);line-height:1.5;margin-top:3px">'+esc(ex.notes)+'</div>';
+  return h+'</div>';
+}
+
+/* The protocol line a day carries ("FST-7. Heavy compounds first,
+   finish with 7 sets cable flyes…") — the how behind the day. */
+function _dayNotes(day){
+  if(!day.notes)return'';
+  return '<div class="row-kv" style="font-size:11px;color:var(--mu);line-height:1.55;margin-bottom:10px">'+esc(day.notes)+'</div>';
+}
+
 function _isRestDay(day){
   if(!day)return false;
   var name=(day.name||"").toUpperCase();
@@ -1136,18 +1344,12 @@ function renderTraining(c){
       html+='<div class="cd" style="padding:16px;margin-bottom:8px;border-left:3px solid var(--borderS);text-align:center"><div style="font-size:14px;font-weight:700;color:var(--mu);margin-bottom:4px">'+esc(day.name||"Day "+(d+1))+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono);letter-spacing:.1em">REST &middot; RECOVER &middot; REBUILD</div></div>';
       continue;
     }
-    html+='<div class="cd" style="padding:16px;margin-bottom:8px"><div style="font-size:14px;font-weight:700;color:var(--ice);margin-bottom:8px">'+esc(day.name||"Day "+(d+1))+'</div>';
+    html+='<div class="cd" style="padding:16px;margin-bottom:8px"><div style="font-size:14px;font-weight:700;color:var(--ice);margin-bottom:'+(day.notes?'6px':'8px')+'">'+esc(day.name||"Day "+(d+1))+'</div>'+_dayNotes(day);
     if(day.exercises&&day.exercises.length){
-      for(var e=0;e<day.exercises.length;e++){
-        var ex=day.exercises[e];
-        html+='<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:12px;color:var(--ow)">'+esc(ex.name||"Exercise")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(ex.sets||3)+'x'+(ex.reps||"10-12")+'</span></div>';
-      }
+      for(var e=0;e<day.exercises.length;e++){html+=_exerciseRow(day.exercises[e],false);}
     }
-    if(day.cardio){
-      if(Array.isArray(day.cardio)){
-        for(var ci=0;ci<day.cardio.length;ci++){var cc=day.cardio[ci];html+='<div style="margin-top:8px;font-size:10px;color:var(--mu);font-family:var(--mono)">Cardio: '+esc(cc.type||"")+" "+esc(cc.duration||"")+'</div>';}
-      }else{html+='<div style="margin-top:8px;font-size:10px;color:var(--mu);font-family:var(--mono)">Cardio: '+esc(day.cardio.type||"")+" "+esc(day.cardio.duration||"")+'</div>';}
-    }
+    var _dcl=_cardioLines(day.cardio);
+    for(var ci=0;ci<_dcl.length;ci++){html+='<div style="margin-top:8px;font-size:10px;color:var(--mu);font-family:var(--mono)">Cardio: '+esc(_dcl[ci])+'</div>';}
     html+='</div>';
   }
   return html;
@@ -1254,7 +1456,7 @@ function renderNutrition(c){
         if(meal.foods&&meal.foods.length){
           var mP=0,mC=0,mF=0,mCal=0,hasMacros=false;
           for(var f=0;f<meal.foods.length;f++){var fd=meal.foods[f];
-            html+='<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:11px;color:var(--ow)">&bull; '+esc(fd.name||"Food")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(fd.qty||"")+" "+(fd.unit||"")+'</span></div>';
+            html+='<div class="row-kv" style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--borderS)"><span style="font-size:11px;color:var(--ow)">&bull; '+esc(fd.name||"Food")+'</span><span style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+(fd.qty||"")+" "+(fd.unit||"")+'</span></div>';
             if(fd.cal!==undefined||fd.p!==undefined){hasMacros=true;var per=fd.per||1;var mult=(fd.qty||0)/per;mP+=Math.round((fd.p||0)*mult);mC+=Math.round((fd.c||0)*mult);mF+=Math.round((fd.f||0)*mult);mCal+=Math.round((fd.cal||0)*mult);}
           }
           if(hasMacros)html+='<div style="display:flex;gap:8px;padding:5px 0;margin-top:4px;flex-wrap:wrap"><span style="font-size:9px;font-family:var(--mono);color:var(--success);background:rgba(120,200,120,.06);padding:2px 6px;border-radius:3px">P '+mP+'g</span><span style="font-size:9px;font-family:var(--mono);color:var(--warn);background:rgba(232,184,120,.06);padding:2px 6px;border-radius:3px">C '+mC+'g</span><span style="font-size:9px;font-family:var(--mono);color:var(--danger);background:rgba(216,120,120,.06);padding:2px 6px;border-radius:3px">F '+mF+'g</span><span style="font-size:9px;font-family:var(--mono);color:var(--acc);background:var(--accS);padding:2px 6px;border-radius:3px">'+mCal+' cal</span></div>';
@@ -1295,7 +1497,7 @@ function renderCheckin(c){
   }
   html+='<button class="btn2" aria-label="Add custom pose photo" onclick="addCheckinPhoto(\'Custom\')" style="padding:10px 12px;font-size:9px;min-height:40px;border-color:var(--accB);color:var(--accBright)">+ CUSTOM</button>';
   html+='</div>';
-  html+='<div style="margin-bottom:12px"><a href="#" role="button" onclick="localStorage.setItem(\'bm_comp_poses\',localStorage.getItem(\'bm_comp_poses\')===\'1\'?\'0\':\'1\');renderProgram();return false" style="font-size:10px;color:var(--acc);font-family:var(--mono);text-decoration:none;letter-spacing:.04em;display:inline-block;padding:8px 4px;min-height:32px;line-height:16px">'+(_showCompPoses?'\u25B2 Hide Competition Poses':'\u25BC Show Competition Poses')+'</a></div>';
+  html+='<div style="margin-bottom:12px"><a href="#" role="button" onclick="localStorage.setItem(\'bm_comp_poses\',localStorage.getItem(\'bm_comp_poses\')===\'1\'?\'0\':\'1\');renderProgram();return false" style="font-size:10px;color:var(--acc);font-family:var(--mono);text-decoration:none;letter-spacing:.04em;display:inline-block;padding:12px 4px;min-height:44px;line-height:20px">'+(_showCompPoses?'\u25B2 Hide Competition Poses':'\u25BC Show Competition Poses')+'</a></div>';
   /* Photo slots */
   html+='<div id="ciPhotoSlots">';
   html+=renderCheckinPhotoSlots();
@@ -1856,7 +2058,7 @@ function portalLogout(){
   ov.style.cssText="position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s ease";
   var box=document.createElement("div");
   box.style.cssText="background:linear-gradient(160deg,rgba(12,12,12,.99),rgba(6,6,6,.99));border:1.5px solid var(--borderH);border-radius:16px;padding:24px;max-width:360px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.6)";
-  box.innerHTML='<div class="sl" style="margin-bottom:12px">LOG OUT</div><div style="font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:20px">You will need your PIN to sign back in.</div><div style="display:flex;gap:8px"><button class="btn2" style="flex:1" id="_logoutCancel">CANCEL</button><button class="btn" style="flex:1;font-size:10px" id="_logoutConfirm">LOG OUT</button></div>';
+  box.innerHTML='<div class="sl" style="margin-bottom:12px">LOG OUT</div><div style="font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:20px">'+(OPEN_ACCESS?'You&rsquo;ll be returned to the sign-in screen.':'You will need your PIN to sign back in.')+'</div><div style="display:flex;gap:8px"><button class="btn2" style="flex:1" id="_logoutCancel">CANCEL</button><button class="btn" style="flex:1;font-size:10px" id="_logoutConfirm">LOG OUT</button></div>';
   ov.appendChild(box);
   document.body.appendChild(ov);
   ov.addEventListener("click",function(e){if(e.target===ov)ov.remove();});

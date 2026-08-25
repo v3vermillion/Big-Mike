@@ -766,6 +766,15 @@ function showLockScreen(){
 var _pinAttempts=parseInt(localStorage.getItem("fm_pin_attempts")||"0",10)||0;
 var _pinLockUntil=parseInt(localStorage.getItem("fm_pin_lock_until")||"0",10)||0;
 function tryUnlock(){
+  /* Open access: the lock screen stays available as a privacy
+     curtain (the header lock button still hides the app), but any
+     entry — or none — reopens it. */
+  if(OPEN_ACCESS){
+    _pinAttempts=0;
+    localStorage.removeItem("fm_pin_attempts");
+    localStorage.removeItem("fm_pin_lock_until");
+    haptic("success");_enterApp();return;
+  }
   if(Date.now()<_pinLockUntil){var secs=Math.ceil((_pinLockUntil-Date.now())/1000);var err=el("pinError");if(err)err.textContent="Locked out. Try again in "+secs+"s";return;}
   var inp=el("pinInput"),entered=inp?inp.value.trim():"";
   if(entered===getPIN()){
@@ -848,11 +857,11 @@ function renderHome(){
       _schedHTML+='<div class="cd" style="display:flex;align-items:center;gap:14px;border-left:3px solid '+bc+'">'
         +'<div style="min-width:50px;font-family:var(--mono);font-size:13px;font-weight:700;color:'+(ic?"var(--success)":"var(--acc)")+'">'+fmtTimeStr(s.time)+'</div>'
         +'<div style="flex:1;cursor:'+(cidx>=0?"pointer":"default")+'" onclick="'+(cidx>=0?"navToClient("+cidx+")":"")+'"><div style="font-size:14px;font-weight:500;color:var(--wh)">'+esc(s.clientName||"Unknown")+'</div><div style="font-size:10px;color:var(--dm)">'+esc(s.type||"Training")+' \u00b7 '+(s.duration||60)+'min'+(ic?' \u00b7 <span class="status-chip status-complete">COMPLETED</span>':ix?' \u00b7 <span class="status-chip status-cancelled">CANCELLED</span>':"")+'</div></div>'
-        +(!ic&&!ix?'<button onclick="completeScheduled(\''+s.id+'\')" aria-label="Complete session" style="width:32px;height:32px;border-radius:50%;background:var(--accGlow);border:1.5px solid var(--accB);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;box-shadow:0 0 8px var(--accS);flex-shrink:0" title="Complete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></button>':"")
+        +(!ic&&!ix?'<button onclick="completeScheduled(\''+s.id+'\')" aria-label="Complete session" style="width:44px;height:44px;border-radius:50%;background:var(--accGlow);border:1.5px solid var(--accB);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;box-shadow:0 0 8px var(--accS);flex-shrink:0" title="Complete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></button>':"")
         +(s.rate?'<div style="font-size:11px;color:var(--ow);font-family:var(--mono)">'+fmtCurrency(s.rate)+'</div>':'')+'</div>';
     }
   }else{
-    _schedHTML+='<div class="cd" style="text-align:center;padding:24px 20px;margin-top:20px;border:1px solid var(--borderS)"><div style="color:var(--dm);margin-bottom:10px;font-size:12px">No sessions scheduled today</div><button class="btn2" onclick="go(\'schedule\')" style="padding:10px 20px">+ SCHEDULE</button></div>';
+    _schedHTML+='<div class="cd" style="text-align:center;padding:24px 20px;margin-top:20px;border:1px solid var(--borderS)"><div style="color:var(--dm);margin-bottom:10px;font-size:12px">No sessions scheduled today</div><button class="btn2" onclick="go(\'schedule\')" style="padding:12px 20px;min-height:44px">+ SCHEDULE</button></div>';
   }
   /* Desktop: 2-column dashboard layout */
   html+='<div class="desk-dash-main"><div>';
@@ -862,11 +871,11 @@ function renderHome(){
   html+='<div class="g4" style="margin-top:4px;margin-bottom:'+(projected>0?8:20)+'px"><div class="stat stat-highlight"><b style="color:'+(moS.length?'var(--acc)':'var(--dm)')+'">'+moS.length+'</b><small>SESSIONS</small></div><div class="stat stat-highlight"><b style="color:'+(gross?'var(--ow)':'var(--dm)')+'">'+fmtCurrency(gross)+'</b><small>GROSS</small></div><div class="stat stat-highlight"><b style="color:var(--dm)">'+(cut>0?'<span style="font-size:50%;vertical-align:super;opacity:.5;margin-right:1px">-</span>':'')+fmtCurrency(cut)+'</b><small>GYM SPLIT ('+Math.round(getGymCut()*100)+'%)</small></div><div class="stat stat-highlight"'+(take?' style="border-color:var(--accB);box-shadow:0 0 12px var(--accS)"':'')+'><b style="color:'+(take?'var(--accVib)':'var(--dm)')+'">'+fmtCurrency(take)+'</b><small>YOUR TAKE</small></div></div>';
   if(projected>0)html+='<div style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:8px;background:var(--glassB);border:1px solid var(--borderS);margin-bottom:16px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--acc);flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span style="font-size:11px;color:var(--mu);font-family:var(--mono)">+'+fmtCurrency(projected)+' projected from '+projSched.length+' upcoming session'+(projSched.length!==1?"s":"")+'</span></div>';
   // Backup reminder (show when clients exist, no Supabase, and not dismissed)
-  if(clients.length&&!LS.get("backupDismissed",false)&&!LS.get("supa_url","")){html+='<div class="alert-banner" style="border:1px solid var(--borderH);background:linear-gradient(135deg,rgba(200,160,40,.03),transparent);margin-bottom:12px;display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2" style="flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div style="flex:1"><div style="font-size:11px;font-weight:600;color:var(--acc)">Backup Your Data</div><div style="font-size:9px;color:var(--dm);font-family:var(--mono)">Data is stored locally. Export a backup in Settings.</div></div><button class="btn2" onclick="go(\'settings\')" style="padding:4px 8px;font-size:7px;flex-shrink:0">EXPORT</button><span onclick="LS.set(\'backupDismissed\',true);render()" style="cursor:pointer;font-size:14px;color:var(--dm);padding:2px 4px">&times;</span></div>';}
+  if(clients.length&&!LS.get("backupDismissed",false)&&!LS.get("supa_url","")){html+='<div class="alert-banner" style="border:1px solid var(--borderH);background:linear-gradient(135deg,rgba(200,160,40,.03),transparent);margin-bottom:12px;display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2" style="flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div style="flex:1"><div style="font-size:11px;font-weight:600;color:var(--acc)">Backup Your Data</div><div style="font-size:9px;color:var(--dm);font-family:var(--mono)">Data is stored locally. Export a backup in Settings.</div></div><button class="btn2" onclick="go(\'settings\')" style="padding:12px 14px;font-size:9px;min-height:44px;flex-shrink:0">EXPORT</button><span onclick="LS.set(\'backupDismissed\',true);render()" role="button" tabindex="0" aria-label="Dismiss backup reminder" style="cursor:pointer;font-size:16px;color:var(--dm);width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">&times;</span></div>';}
   // Unpaid sessions alert
   var unpaid=schedule.filter(function(s){return s.status==="complete"&&!s.paid;});
   if(unpaid.length){var unpaidTotal=unpaid.reduce(function(a,s){return a+(parseFloat(s.rate)||0);},0);
-    html+='<div class="alert-banner alert-banner-warn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--warn)">'+unpaid.length+' Unpaid Session'+(unpaid.length!==1?"s":"")+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+fmtCurrency(unpaidTotal)+' outstanding</div></div><button class="btn2" onclick="go(\'schedule\')" style="padding:5px 10px;font-size:8px;border-color:rgba(232,184,120,.25);color:var(--warn)">VIEW</button></div>';}
+    html+='<div class="alert-banner alert-banner-warn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--warn)">'+unpaid.length+' Unpaid Session'+(unpaid.length!==1?"s":"")+'</div><div style="font-size:10px;color:var(--dm);font-family:var(--mono)">'+fmtCurrency(unpaidTotal)+' outstanding</div></div><button class="btn2" onclick="go(\'schedule\')" style="padding:12px 14px;font-size:9px;min-height:44px;border-color:rgba(232,184,120,.25);color:var(--warn)">VIEW</button></div>';}
   // Weekly overview insight (rendered in right column on desktop)
   var weekStart=getMonday(new Date()),weekEnd=new Date(weekStart);weekEnd.setDate(weekEnd.getDate()+6);
   var weekComplete=schedule.filter(function(s){var d=new Date(s.date+"T12:00:00");return d>=weekStart&&d<=weekEnd&&s.status==="complete";});
@@ -2907,7 +2916,7 @@ function renderSchedule(){
   var html='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><div class="pt" style="margin-bottom:0">Schedule</div><div style="display:flex;gap:6px"><button class="btn2" aria-label="Block time" onclick="showBlockTimeModal()" style="display:flex;align-items:center;gap:5px;padding:8px 12px;font-size:9px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9l6 6M15 9l-6 6"/></svg>BLOCK TIME</button><button class="btn2" onclick="var f=document.getElementById(\'schForm\');if(f){f.style.display=\'block\';f.scrollIntoView({behavior:\'smooth\'});}" style="display:flex;align-items:center;gap:5px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>ADD</button></div></div>'
     +'<div style="height:1px;background:linear-gradient(90deg,transparent,var(--accDeep),var(--acc),var(--accDeep),transparent);margin-bottom:12px"></div>';
   if(ws)html+='<div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;font-family:var(--mono);font-size:10px"><span style="color:var(--mu)">'+ws+' session'+(ws!==1?"s":"")+'</span><span style="color:var(--borderH)">\u00b7</span><span style="color:var(--acc)">'+fmtCurrency(wr)+'</span>'+(completedWeek?'<span style="color:var(--borderH)">\u00b7</span><span style="color:var(--success)">'+completedWeek+' completed</span>':'')+'</div>';
-  html+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><button class="btn2" aria-label="Previous week" onclick="scheduleWeekOffset--;_selectedDay=null;render()" style="padding:6px 12px">\u2039</button><div style="font-size:11px;color:var(--mu);font-family:var(--mono)">'+wl+(scheduleWeekOffset===0?" \u00b7 THIS WEEK":"")+'</div><button class="btn2" aria-label="Next week" onclick="scheduleWeekOffset++;_selectedDay=null;render()" style="padding:6px 12px">\u203a</button></div>';
+  html+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><button class="btn2" aria-label="Previous week" onclick="scheduleWeekOffset--;_selectedDay=null;render()" style="padding:6px 12px;min-width:44px;min-height:44px">\u2039</button><div style="font-size:11px;color:var(--mu);font-family:var(--mono)">'+wl+(scheduleWeekOffset===0?" \u00b7 THIS WEEK":"")+'</div><button class="btn2" aria-label="Next week" onclick="scheduleWeekOffset++;_selectedDay=null;render()" style="padding:6px 12px;min-width:44px;min-height:44px">\u203a</button></div>';
   html+='<div class="sched-cal-row" style="display:flex;gap:3px;margin-bottom:18px">';
   for(var i=0;i<days.length;i++){
     var d=days[i],di=d.toISOString().split("T")[0],isT=d.toDateString()===now.toDateString(),isSel=_selectedDay===di;
@@ -2930,7 +2939,7 @@ function renderSchedule(){
         html+='<div class="cd" style="display:flex;align-items:center;gap:12px;border-left:3px solid '+(isShow?"var(--accVib)":bc)+'">'
           +'<div style="min-width:48px;font-family:var(--mono);font-size:12px;font-weight:700;color:'+(isShow?"var(--accVib)":ic?"var(--success)":"var(--acc)")+'">'+fmtTimeStr(s.time)+'</div>'
           +'<div style="flex:1"><div style="font-size:13px;font-weight:500;color:var(--wh)">'+esc(schName)+(isShow?' <span style="font-size:8px;font-weight:700;color:var(--bg);background:var(--goldGrad);background-size:200% 100%;animation:shimmer 3s ease-in-out infinite;padding:1px 6px;border-radius:4px;letter-spacing:.06em;vertical-align:middle">SHOW</span>':'')+(s.source==="client_portal"?' <span style="font-size:7px;font-weight:700;color:var(--bg);background:var(--acc);padding:1px 5px;border-radius:3px;letter-spacing:.04em;vertical-align:middle;font-family:var(--mono)">ONLINE</span>':'')+'</div><div style="font-size:10px;color:var(--dm)">'+(s.type||"Training")+(s.showName?' \u00b7 '+esc(s.showName):'')+(s.showLocation?' \u00b7 '+esc(s.showLocation):'')+(s.rate?' \u00b7 '+fmtCurrency(s.rate):'')+(ic?' \u00b7 <span class="status-chip status-complete">COMPLETED</span>':ix?' \u00b7 <span class="status-chip status-cancelled">CANCELLED</span>':"")+'</div>'+(s.showNotes?'<div style="font-size:9px;color:var(--mu);font-family:var(--mono);margin-top:2px">'+esc(s.showNotes)+'</div>':'')+'</div>'
-          +(!ic&&!ix?'<div style="display:flex;align-items:center;gap:6px"><button onclick="completeScheduled(\''+s.id+'\')" aria-label="Complete session" style="width:36px;height:36px;border-radius:50%;background:var(--accGlow);border:1.5px solid var(--accB);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;box-shadow:0 0 8px var(--accS)" title="Complete"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></button><button onclick="push(\'edit\',{schedId:\''+s.id+'\'})" aria-label="Edit session" style="width:28px;height:28px;border-radius:50%;background:var(--glassB);border:1px solid var(--borderS);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s" title="Edit"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--dm)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button onclick="deleteScheduled(\''+s.id+'\')" aria-label="Cancel session" style="width:28px;height:28px;border-radius:50%;background:transparent;border:1px solid rgba(216,120,120,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s" title="Cancel"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>':"")
+          +(!ic&&!ix?'<div style="display:flex;align-items:center;gap:6px"><button onclick="completeScheduled(\''+s.id+'\')" aria-label="Complete session" style="width:44px;height:44px;border-radius:50%;background:var(--accGlow);border:1.5px solid var(--accB);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;box-shadow:0 0 8px var(--accS)" title="Complete"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></button><button onclick="push(\'edit\',{schedId:\''+s.id+'\'})" aria-label="Edit session" style="width:40px;height:40px;border-radius:50%;background:var(--glassB);border:1px solid var(--borderS);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s" title="Edit"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--dm)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button onclick="deleteScheduled(\''+s.id+'\')" aria-label="Cancel session" style="width:40px;height:40px;border-radius:50%;background:transparent;border:1px solid rgba(216,120,120,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s" title="Cancel"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>':"")
           +'</div>';
       }
     }else if(_selectedDay||ds.length||dayBlocks.length) html+='<div style="padding:6px 0;font-size:10px;color:var(--dmL)">No sessions</div>';
@@ -8587,6 +8596,36 @@ function showTutorial(){
 }
 function finishTutorial(){LS.set("tutorialDone",true);var ov=el("tutOverlay");if(ov)ov.remove();document.querySelectorAll(".ti").forEach(function(t){t.style.outline="";t.style.outlineOffset="";t.style.zIndex="";});_doGoTab("home");}
 // ── BIRTHDAY (expired — simplified) ──
+/* ── OPEN ACCESS MODE ──────────────────────────────────────────────
+   The credential gate on the coach portal is lifted at the owner's
+   request. The branded sign-in screen still renders as the front
+   door, but any email/password combination is accepted and the PIN
+   lock screen no longer challenges. Nothing is checked against
+   Supabase, so this is a convenience door and not a security
+   boundary — the deployed URL is the only thing keeping the app
+   private while this is on.
+
+   Set OPEN_ACCESS to false to restore the full gate. Every piece of
+   it is still here and untouched: doAuthLogin's signInWithPassword
+   call, the BIG_MIKE_COACH_UID allowlist in _verifyCoachUID,
+   checkSupabaseAuth's session refresh, and tryUnlock's PIN check
+   with its persisted 5-attempt lockout. */
+var OPEN_ACCESS=true;
+
+/* Single entry point into the logged-in app. Both the sign-in screen
+   and the lock screen land here, so the boot sequence (render, cloud
+   pull, SMS poll, tutorial) can't drift between the two paths. */
+function _enterApp(){
+  unlock();
+  var as=el("authScreen");if(as)as.remove();
+  var lk=el("lockScreen");if(lk)lk.remove();
+  el("app").style.display="";el("qnoteFab").style.display="";
+  render();
+  showTutorial();
+  cloudPull(function(){render();updateInboxBadge();});
+  startSMSChecker();
+  if("Notification" in window&&Notification.permission==="default"){setTimeout(requestNotifPermission,3000);}
+}
 function showAuthScreen(){
   el("app").style.display="none";el("qnoteFab").style.display="none";
   var ld=document.getElementById("authScreen");
@@ -8660,6 +8699,9 @@ function _verifyCoachUID(uid){
   return stored===uid;
 }
 function doAuthLogin(){
+  /* Open access: accept whatever was typed (including nothing) and
+     go straight in — no Supabase round trip, no PIN challenge. */
+  if(OPEN_ACCESS){haptic("success");_enterApp();return;}
   var email=val("authEmail"),pass=val("authPass");
   if(!email||!pass){el("authError").textContent="Enter email and password";return;}
   var btn=el("authBtn");btn.textContent="SIGNING IN...";btn.disabled=true;
@@ -8696,13 +8738,20 @@ function checkSupabaseAuth(callback){
     }).catch(function(){callback(false);});
   }).catch(function(){callback(false);});
 }
-function dismissBdayMsg(){checkSupabaseAuth(function(authed){if(authed)showLockScreen();else showAuthScreen();});}
+function dismissBdayMsg(){if(OPEN_ACCESS){showAuthScreen();return;}checkSupabaseAuth(function(authed){if(authed)showLockScreen();else showAuthScreen();});}
 function cleanupTombstones(){var cutoff=Date.now()-30*24*60*60*1000;var cleaned=false;for(var id in _deletedIds){if(_deletedIds[id]<cutoff){delete _deletedIds[id];cleaned=true;}}if(cleaned)LS.set("deletedIds",_deletedIds);}
 // ── BOOT ──
 (function boot(){
   if('scrollRestoration' in history)history.scrollRestoration='manual';
   window.scrollTo(0,0);
   cleanupTombstones();
+  if(OPEN_ACCESS){
+    /* Show the sign-in screen as the front door on a cold start;
+       an already-unlocked tab (reload mid-session) goes straight in. */
+    if(isUnlocked())_enterApp();
+    else showAuthScreen();
+    return;
+  }
   if(!isUnlocked()){
     checkSupabaseAuth(function(authed){if(authed)showLockScreen();else showAuthScreen();});
   }else{
